@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>Numpy库 | 草根之明～博客</title>
+  <meta name="description" content="NumPy库是Python中科学计算的核心库。它提供了一个高性能的多维数组对象，以及处理这些数组的工具。 载入包1import numpy as np  创建数组123456789101112a = np.array([1, 2, 3])&amp;gt;&amp;gt;&amp;gt; [1 2 3]b = np.array([(1.5, 2, 3), (4, 5, 6)], dtype=float)&amp;gt;&amp;gt;&amp;g">
+<meta name="keywords" content="Python包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Numpy库">
+<meta property="og:url" content="http://www.zhengming.pro/2019/10/01/Numpy库/index.html">
+<meta property="og:site_name" content="草根之明">
+<meta property="og:description" content="NumPy库是Python中科学计算的核心库。它提供了一个高性能的多维数组对象，以及处理这些数组的工具。 载入包1import numpy as np  创建数组123456789101112a = np.array([1, 2, 3])&amp;gt;&amp;gt;&amp;gt; [1 2 3]b = np.array([(1.5, 2, 3), (4, 5, 6)], dtype=float)&amp;gt;&amp;gt;&amp;g">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-10-01T08:37:28.818Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Numpy库">
+<meta name="twitter:description" content="NumPy库是Python中科学计算的核心库。它提供了一个高性能的多维数组对象，以及处理这些数组的工具。 载入包1import numpy as np  创建数组123456789101112a = np.array([1, 2, 3])&amp;gt;&amp;gt;&amp;gt; [1 2 3]b = np.array([(1.5, 2, 3), (4, 5, 6)], dtype=float)&amp;gt;&amp;gt;&amp;g">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://www.zhengming.pro/2019/10/01/Numpy库/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="草根之明" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="../images/favicon-16x16-next.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/justinzm" target="_blank">
+          <img class="img-circle img-rotate" src="/images/touxiang.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">草根之明</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> 武汉, 中国</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/justinzm" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/whzhengming" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>写点这一路的风景，自娱自乐吧</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发手册/">开发手册</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/热爱生活/">热爱生活</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/量化交易/">量化交易</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目管理/">项目管理</a><span class="category-list-count">13</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Matplotlib/">Matplotlib</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mongodb/">Mongodb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pandas/">Pandas</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python包/">Python包</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sklearn/">Sklearn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代码块/">代码块</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/培训/">培训</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术分析/">技术分析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/索引/">索引</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融-数据/">金融,数据</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/风险-收益/">风险&收益</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Matplotlib/" style="font-size: 13px;">Matplotlib</a> <a href="/tags/Mongodb/" style="font-size: 13px;">Mongodb</a> <a href="/tags/Pandas/" style="font-size: 13px;">Pandas</a> <a href="/tags/Python包/" style="font-size: 14px;">Python包</a> <a href="/tags/Sklearn/" style="font-size: 13px;">Sklearn</a> <a href="/tags/代码块/" style="font-size: 14px;">代码块</a> <a href="/tags/培训/" style="font-size: 13px;">培训</a> <a href="/tags/技术分析/" style="font-size: 13px;">技术分析</a> <a href="/tags/机器学习/" style="font-size: 13.5px;">机器学习</a> <a href="/tags/索引/" style="font-size: 13px;">索引</a> <a href="/tags/金融-数据/" style="font-size: 13px;">金融,数据</a> <a href="/tags/风险-收益/" style="font-size: 13px;">风险&收益</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">15</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/10/01/测试01/" class="title">测试01</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-10-01T11:57:08.000Z" itemprop="datePublished">2020-10-01</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/项目管理/">项目管理</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/09/29/一张图讲透SWOT分析法/" class="title">一张图讲透SWOT分析法</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-09-29T01:20:04.000Z" itemprop="datePublished">2020-09-29</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/项目管理/">项目管理</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/09/16/想让项目顺利推进？这件事很关键/" class="title">想让项目顺利推进？这件事很关键</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-09-16T02:53:30.000Z" itemprop="datePublished">2020-09-16</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/项目管理/">项目管理</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/09/15/项目为什么会终止/" class="title">项目为什么会终止</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-09-15T12:44:51.000Z" itemprop="datePublished">2020-09-15</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/项目管理/">项目管理</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/09/14/三头六臂的PM，要如何平衡你的角色/" class="title">三头六臂的PM，要如何平衡你的角色</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-09-14T07:17:03.000Z" itemprop="datePublished">2020-09-14</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#载入包"><span class="toc-number">1.</span> <span class="toc-text">载入包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建数组"><span class="toc-number">2.</span> <span class="toc-text">创建数组</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#最初的占位符-Initial-Placeholders"><span class="toc-number">2.1.</span> <span class="toc-text">最初的占位符 Initial Placeholders</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入-输出-I-O"><span class="toc-number">3.</span> <span class="toc-text">输入/输出 I/O</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数组以二进制格式保存-Saving-amp-Loading-On-Disk"><span class="toc-number">3.1.</span> <span class="toc-text">数组以二进制格式保存 Saving &amp; Loading On Disk</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#存取文本文件-Saving-amp-Loading-Text-Files"><span class="toc-number">3.2.</span> <span class="toc-text">存取文本文件 Saving &amp; Loading Text Files</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据类型"><span class="toc-number">4.</span> <span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查询数组-Inspecting-Your-Array"><span class="toc-number">5.</span> <span class="toc-text">查询数组 Inspecting Your Array</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数学-Array-Mathematics"><span class="toc-number">6.</span> <span class="toc-text">数学 Array Mathematics</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#算术运算-Arithmetic-Operations"><span class="toc-number">6.1.</span> <span class="toc-text">算术运算 Arithmetic Operations</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#比较-Comparison"><span class="toc-number">6.2.</span> <span class="toc-text">比较 Comparison</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#聚合函数-Aggregate-Functions"><span class="toc-number">6.3.</span> <span class="toc-text">聚合函数 Aggregate Functions</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复制-Copying-Arrays"><span class="toc-number">7.</span> <span class="toc-text">复制 Copying Arrays</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#排序-Sorting-Arrays"><span class="toc-number">8.</span> <span class="toc-text">排序 Sorting Arrays</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构造子集、切片、索引-Subsetting-Slicing-Indexing"><span class="toc-number">9.</span> <span class="toc-text">构造子集、切片、索引 Subsetting, Slicing, Indexing</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#构造子集-Subsetting"><span class="toc-number">9.1.</span> <span class="toc-text">构造子集 Subsetting</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#切片-Slicing"><span class="toc-number">9.2.</span> <span class="toc-text">切片 Slicing</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#布尔索引-Boolean-Indexing"><span class="toc-number">9.3.</span> <span class="toc-text">布尔索引 Boolean Indexing</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Fancy-Indexing"><span class="toc-number">9.4.</span> <span class="toc-text">Fancy Indexing</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组操作-Array-Manipulation"><span class="toc-number">10.</span> <span class="toc-text">数组操作 Array Manipulation</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#置换阵列-Transposing-Array"><span class="toc-number">10.1.</span> <span class="toc-text">置换阵列  Transposing Array</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#改变阵列形状-Changing-Array-Shape"><span class="toc-number">10.2.</span> <span class="toc-text">改变阵列形状 Changing Array Shape</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加-删除元素-Adding-Removing"><span class="toc-number">10.3.</span> <span class="toc-text">添加/删除元素 Adding/Removing</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#结合数组-Combining-Arrays"><span class="toc-number">10.4.</span> <span class="toc-text">结合数组 Combining Arrays</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Splitting-Arrays"><span class="toc-number">10.5.</span> <span class="toc-text">Splitting Arrays</span></a></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Numpy库" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Numpy库
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/10/01/Numpy库/" class="article-date">
+	  <time datetime="2019-10-01T12:27:26.000Z" itemprop="datePublished">2019-10-01</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Python包/">Python包</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/10/01/Numpy库/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>NumPy库是Python中科学计算的核心库。它提供了一个高性能的多维数组对象，以及处理这些数组的工具。</p>
+<h3 id="载入包"><a href="#载入包" class="headerlink" title="载入包"></a>载入包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([1, 2, 3])</span><br><span class="line">&gt;&gt;&gt; [1 2 3]</span><br><span class="line"></span><br><span class="line">b = np.array([(1.5, 2, 3), (4, 5, 6)], dtype=float)</span><br><span class="line">&gt;&gt;&gt; [[1.5 2.  3. ]</span><br><span class="line">&gt;&gt;&gt; [4.  5.  6. ]]</span><br><span class="line"></span><br><span class="line">c = np.array([[(1.5, 2, 3), (4, 5, 6)], [(3, 2, 1), (4, 5, 6)]], dtype=float)</span><br><span class="line">&gt;&gt;&gt; [[[1.5 2.  3. ]</span><br><span class="line">&gt;&gt;&gt; [4.  5.  6. ]]</span><br><span class="line">&gt;&gt;&gt; [[3.  2.  1. ]</span><br><span class="line">&gt;&gt;&gt; [4.  5.  6. ]]]</span><br></pre></td></tr></table></figure>
+
+<h4 id="最初的占位符-Initial-Placeholders"><a href="#最初的占位符-Initial-Placeholders" class="headerlink" title="最初的占位符 Initial Placeholders"></a>最初的占位符 Initial Placeholders</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">np.zeros((3, 4))</span><br><span class="line"># 用法：zeros(shape, dtype=float, order=&apos;C&apos;)</span><br><span class="line"># 返回：返回来一个给定形状和类型的用0填充的数组</span><br><span class="line"></span><br><span class="line">np.ones((2,3,4),dtype=np.int16)</span><br><span class="line"># 依据给定形状和类型(shape[, dtype, order])返回一个新的元素全部为1的数组</span><br><span class="line"></span><br><span class="line">d = np.arange(10, 25, 5)</span><br><span class="line"># arange函数用于创建等差数组</span><br><span class="line"># np.arange([start, ]stop, [step, ]dtype=None)</span><br><span class="line"># start:可忽略不写，默认从0开始;起始值</span><br><span class="line"># stop:结束值；生成的元素不包括结束值</span><br><span class="line"># step:可忽略不写，默认步长为1；步长</span><br><span class="line"># dtype:默认为None，设置显示元素的数据类型</span><br><span class="line">nd1 = np.arange(5)#array([0, 1, 2, 3, 4])</span><br><span class="line">nd2 = np.arange(1,5)#array([1, 2, 3, 4])</span><br><span class="line"></span><br><span class="line">np.arange(n)</span><br><span class="line"># 类似range()函数，返回ndarray类型，元素从0到n‐1</span><br><span class="line"></span><br><span class="line">np.linspace(0, 2, 9)</span><br><span class="line"># numpy.linspace(start, stop[, num=50[, endpoint=True[, retstep=False[, dtype=None]]]]])</span><br><span class="line"># 返回在指定范围内的均匀间隔的数字（组成的数组），也即返回一个等差数列</span><br><span class="line"># start - 起始点</span><br><span class="line"># stop - 结束点</span><br><span class="line"># num - 元素个数，默认为50</span><br><span class="line"># endpoint - 是否包含stop数值，默认为True，包含stop值；若为False，则不包含stop值</span><br><span class="line"># retstep - 返回值形式，默认为False，返回等差数列组，若为True，则返回结果(array([`samples`, `step`])),</span><br><span class="line"># dtype - 返回结果的数据类型，默认无，若无，则参考输入数据类型。</span><br><span class="line"></span><br><span class="line">e = np.full((2, 2), 7)</span><br><span class="line"># 创建一个由常数填充的数组,第一个参数是数组的形状，第二个参数是数组中填充的常数。</span><br><span class="line"></span><br><span class="line">f = np.eye(2)</span><br><span class="line"># 创建单位矩阵，函数中的参数n，则创建n * n的单位矩阵</span><br><span class="line"></span><br><span class="line">np.ones_like(a)</span><br><span class="line"># 根据数组a的形状生成一个全1数组</span><br><span class="line"></span><br><span class="line">np.zeros_like(a)</span><br><span class="line"># 根据数组a的形状生成一个全0数组</span><br><span class="line"></span><br><span class="line">np.full_like(a,val)</span><br><span class="line"># 根据数组a的形状生成一个数组，每个元素值都是val</span><br><span class="line"></span><br><span class="line">np.random.random((2, 2))</span><br><span class="line"># 按照参数中给出的形状来创建数组，创建随机数数组</span><br><span class="line"></span><br><span class="line">np.empty((3, 2))</span><br><span class="line"># 按照参数中给出的形状来创建数组，创建一个随机元素</span><br></pre></td></tr></table></figure>
+
+<h3 id="输入-输出-I-O"><a href="#输入-输出-I-O" class="headerlink" title="输入/输出 I/O"></a>输入/输出 I/O</h3><h4 id="数组以二进制格式保存-Saving-amp-Loading-On-Disk"><a href="#数组以二进制格式保存-Saving-amp-Loading-On-Disk" class="headerlink" title="数组以二进制格式保存 Saving &amp; Loading On Disk"></a>数组以二进制格式保存 Saving &amp; Loading On Disk</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; np.save(&apos;my_array&apos;, a)</span><br><span class="line">&gt;&gt;&gt; np.savez(&apos;array.npz&apos;, a, b)</span><br><span class="line">&gt;&gt;&gt; np.load(&apos;my_array.npy&apos;)</span><br><span class="line"></span><br><span class="line"># 例</span><br><span class="line">&gt;&gt;&gt; a=np.array([[1, 2, 3], [4, 5, 6]])</span><br><span class="line">&gt;&gt;&gt; b=np.array([1, 2])</span><br><span class="line">&gt;&gt;&gt; np.savez(&apos;/tmp/123.npz&apos;, a=a, b=b)</span><br><span class="line">&gt;&gt;&gt; data = np.load(&apos;/tmp/123.npz&apos;)</span><br><span class="line">&gt;&gt;&gt; data[&apos;a&apos;]</span><br><span class="line">array([[1, 2, 3],</span><br><span class="line">       [4, 5, 6]])</span><br><span class="line">&gt;&gt;&gt; data[&apos;b&apos;]</span><br><span class="line">array([1, 2])</span><br><span class="line">&gt;&gt;&gt; data.close()</span><br></pre></td></tr></table></figure>
+
+<h4 id="存取文本文件-Saving-amp-Loading-Text-Files"><a href="#存取文本文件-Saving-amp-Loading-Text-Files" class="headerlink" title="存取文本文件 Saving &amp; Loading Text Files"></a>存取文本文件 Saving &amp; Loading Text Files</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; np.loadtxt(&quot;myfile.txt&quot;)</span><br><span class="line">&gt;&gt;&gt; np.genfromtxt(&quot;my_file.csv&quot;, delimiter=&apos;,&apos;)</span><br><span class="line">&gt;&gt;&gt; np.savetxt(&quot;myarray.txt&quot;, a, delimiter=&quot; &quot;)</span><br><span class="line"># 使用 np.savetxt 和 np.loadtxt 只能读写 1 维和 2 维的数组 </span><br><span class="line"># np.savetxt：将数组写入以某种分隔符隔开的文本文件中 </span><br><span class="line"># np.loadtxt：指定某种分隔符，将文本文件读入到数组中</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">np.int64</span><br><span class="line"># 64位长度的整数，取值：[‐2^63 , 2^63‐1]</span><br><span class="line"></span><br><span class="line">np.float32</span><br><span class="line"># 32位半精度浮点数：1位符号位，8位指数，23位尾数</span><br><span class="line"></span><br><span class="line">np.complex</span><br><span class="line"># 复数类型</span><br><span class="line"></span><br><span class="line">np.bool</span><br><span class="line"># 布尔类型，True或False</span><br><span class="line"></span><br><span class="line">np.object</span><br><span class="line">np.string_</span><br><span class="line">np.unicode_</span><br></pre></td></tr></table></figure>
+
+<h3 id="查询数组-Inspecting-Your-Array"><a href="#查询数组-Inspecting-Your-Array" class="headerlink" title="查询数组 Inspecting Your Array"></a>查询数组 Inspecting Your Array</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">a.shape</span><br><span class="line"># 表示每个维度上的数组的大小</span><br><span class="line"></span><br><span class="line">len(a)</span><br><span class="line"># 获得narray的长度</span><br><span class="line"></span><br><span class="line">b.ndim</span><br><span class="line"># 表示数组对象或矩阵的维度</span><br><span class="line"></span><br><span class="line">e.size</span><br><span class="line"># 表示数组中元素的总数，等同于ndarray.shape中两个元素的乘积;</span><br><span class="line"></span><br><span class="line">b.dtype</span><br><span class="line"># 表示数组中元素的类型;</span><br><span class="line"></span><br><span class="line">b.dtype.name</span><br><span class="line"># 获得数据类型对象名称</span><br><span class="line"></span><br><span class="line">b.astype(int)</span><br><span class="line"># 转换数据类型</span><br></pre></td></tr></table></figure>
+
+<h3 id="数学-Array-Mathematics"><a href="#数学-Array-Mathematics" class="headerlink" title="数学 Array Mathematics"></a>数学 Array Mathematics</h3><h4 id="算术运算-Arithmetic-Operations"><a href="#算术运算-Arithmetic-Operations" class="headerlink" title="算术运算 Arithmetic Operations"></a>算术运算 Arithmetic Operations</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; np.subtract(a,b)</span><br><span class="line">&gt;&gt;&gt; g = a - b </span><br><span class="line">    array([[-0.5, 0. , 0. ], [-3. , -3. , -3. ]])</span><br><span class="line"># 减法</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; np.add(b,a)</span><br><span class="line">&gt;&gt;&gt; b + a</span><br><span class="line"> array([[ 2.5, 4. , 6. ],</span><br><span class="line"> [ 5. , 7. , 9. ]])</span><br><span class="line"># 加法</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; np.divide(a,b)</span><br><span class="line">&gt;&gt;&gt; a / b</span><br><span class="line"> array([[ 0.66666667, 1. , 1. ],</span><br><span class="line"> [ 0.25 , 0.4 , 0.5 ]])</span><br><span class="line"># 除法</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; np.multiply(a,b)</span><br><span class="line">&gt;&gt;&gt; a * b  </span><br><span class="line">  array([[ 1.5, 4. , 9. ],</span><br><span class="line">  [ 4. , 10. , 18. ]])</span><br><span class="line"># 乘法</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; np.exp(b) </span><br><span class="line"># 求幂</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; np.sqrt(b) </span><br><span class="line"># 计算数组各元素的平方根</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; np.sin(a) </span><br><span class="line"># 正弦值</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; np.cos(b) </span><br><span class="line"># 计算数组各元素的普通型和双曲型三角函数</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; np.log(a) </span><br><span class="line"># 计算数组各元素的自然对数、10底对数和2底对数</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; np.abs(x)  np.fabs(x)</span><br><span class="line"># 计算数组各元素的绝对值</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; e.dot(f)  </span><br><span class="line">array([[ 7., 7.],</span><br><span class="line">  [ 7., 7.]])</span><br></pre></td></tr></table></figure>
+
+<h4 id="比较-Comparison"><a href="#比较-Comparison" class="headerlink" title="比较 Comparison"></a>比较 Comparison</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a == b</span><br><span class="line"> array([[False, True, True],</span><br><span class="line">  [False, False, False]], dtype=bool)</span><br><span class="line">  </span><br><span class="line">&gt;&gt;&gt; a &lt; 2</span><br><span class="line"> array([True, False, False], dtype=bool)</span><br><span class="line"> </span><br><span class="line">&gt;&gt;&gt; np.array_equal(a, b)</span><br><span class="line"># 判断两数组是否相等</span><br></pre></td></tr></table></figure>
+
+<h4 id="聚合函数-Aggregate-Functions"><a href="#聚合函数-Aggregate-Functions" class="headerlink" title="聚合函数 Aggregate Functions"></a>聚合函数 Aggregate Functions</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a.sum() </span><br><span class="line"># 向量的加法</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; a.min() </span><br><span class="line"># 无参，所有中的最小值</span><br><span class="line"># axis=0; 每列的最小值</span><br><span class="line"># axis=1；每行的最小值</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; b.max(axis=0)</span><br><span class="line"># 无参，所有中的最大值</span><br><span class="line"># axis=0; 每列的最大值</span><br><span class="line"># axis=1；每行的最大值</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; b.cumsum(axis=1) </span><br><span class="line"># axis=0，按照行累加</span><br><span class="line"># axis=1，按照列累加</span><br><span class="line"># axis不给定具体值，就把numpy数组当成一个一维数组</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; a.mean() </span><br><span class="line"># axis 不设置值，对 m*n 个数求均值，返回一个实数</span><br><span class="line"># axis = 0：压缩行，对各列求均值，返回 1* n 矩阵</span><br><span class="line"># axis =1 ：压缩列，对各行求均值，返回 m *1 矩阵</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; b.median() </span><br><span class="line"># axis 不设置值，求中位数</span><br><span class="line"># axis = 0：压缩行，对各列求中位数</span><br><span class="line"># axis = 1：压缩列，对各行求中位数</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; a.corrcoef() </span><br><span class="line"># 计算皮尔逊积矩相关系数</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; np.std(b)</span><br><span class="line"># axis 不设置值，计算全局标准差</span><br><span class="line"># axis = 0：计算每一列的标准差</span><br><span class="line"># axis = 1：计算每一行的标准差</span><br></pre></td></tr></table></figure>
+
+<h3 id="复制-Copying-Arrays"><a href="#复制-Copying-Arrays" class="headerlink" title="复制 Copying Arrays"></a>复制 Copying Arrays</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; h = a.view() </span><br><span class="line"># 创建具有相同数据的数组视图</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; np.copy(a) </span><br><span class="line"># 创建数组的副本</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; h = a.copy()</span><br><span class="line"># 创建数组的深度副本</span><br></pre></td></tr></table></figure>
+
+<h3 id="排序-Sorting-Arrays"><a href="#排序-Sorting-Arrays" class="headerlink" title="排序 Sorting Arrays"></a>排序 Sorting Arrays</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a.sort() </span><br><span class="line"># 返回的是一个经过复制排序后的对维数组</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; c.sort(axis=0)</span><br><span class="line"># 0指的是列维度</span><br></pre></td></tr></table></figure>
+
+<h3 id="构造子集、切片、索引-Subsetting-Slicing-Indexing"><a href="#构造子集、切片、索引-Subsetting-Slicing-Indexing" class="headerlink" title="构造子集、切片、索引 Subsetting, Slicing, Indexing"></a>构造子集、切片、索引 Subsetting, Slicing, Indexing</h3><h4 id="构造子集-Subsetting"><a href="#构造子集-Subsetting" class="headerlink" title="构造子集 Subsetting"></a>构造子集 Subsetting</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a[2]  </span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; b[1,2]</span><br><span class="line">6.0</span><br></pre></td></tr></table></figure>
+
+<h4 id="切片-Slicing"><a href="#切片-Slicing" class="headerlink" title="切片 Slicing"></a>切片 Slicing</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a[0:2] </span><br><span class="line"># 选择索引0和1处的项</span><br><span class="line"> array([1, 2])</span><br><span class="line"> </span><br><span class="line">&gt;&gt;&gt; b[0:2,1] </span><br><span class="line"># 在第1列的第0行和第1行选择项</span><br><span class="line"> array([ 2., 5.]) </span><br><span class="line"> </span><br><span class="line">&gt;&gt;&gt; b[:1] </span><br><span class="line"># 选择第0行中的所有项(equivalent to b[0:1, :])</span><br><span class="line">array([[1.5, 2., 3.]]) </span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; c[1,...] </span><br><span class="line"># 相同 [1,:,:]</span><br><span class="line">array([[[ 3., 2., 1.],</span><br><span class="line"> [ 4., 5., 6.]]])</span><br><span class="line"> </span><br><span class="line">&gt;&gt;&gt; a[ : :-1] </span><br><span class="line"># 逆转了数组</span><br><span class="line">array([3, 2, 1])</span><br></pre></td></tr></table></figure>
+
+<h4 id="布尔索引-Boolean-Indexing"><a href="#布尔索引-Boolean-Indexing" class="headerlink" title="布尔索引 Boolean Indexing"></a>布尔索引 Boolean Indexing</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a[a&lt;2]</span><br><span class="line">array([1])</span><br><span class="line"># 从小于2的元素中选择元素</span><br></pre></td></tr></table></figure>
+
+<h4 id="Fancy-Indexing"><a href="#Fancy-Indexing" class="headerlink" title="Fancy Indexing"></a>Fancy Indexing</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; b[[1, 0, 1, 0],[0, 1, 2, 0]]  </span><br><span class="line"># 选择元素(1,0)、(0,1)、(1,2)和(0,0)</span><br><span class="line">array([ 4. , 2. , 6. , 1.5])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; b[[1, 0, 1, 0]][:,[0,1,2,0]]  </span><br><span class="line"># 选择矩阵的行和列的子集</span><br><span class="line">array([[ 4. ,5. , 6. , 4. ], </span><br><span class="line"> [ 1.5, 2. , 3. , 1.5],</span><br><span class="line"> [ 4. , 5. , 6. , 4. ],</span><br><span class="line"> [ 1.5, 2. , 3. , 1.5]])</span><br></pre></td></tr></table></figure>
+
+<h3 id="数组操作-Array-Manipulation"><a href="#数组操作-Array-Manipulation" class="headerlink" title="数组操作 Array Manipulation"></a>数组操作 Array Manipulation</h3><h4 id="置换阵列-Transposing-Array"><a href="#置换阵列-Transposing-Array" class="headerlink" title="置换阵列  Transposing Array"></a>置换阵列  Transposing Array</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; i = np.transpose(b) </span><br><span class="line">&gt;&gt;&gt; i.T</span><br><span class="line"># 交换数组维度</span><br></pre></td></tr></table></figure>
+
+<h4 id="改变阵列形状-Changing-Array-Shape"><a href="#改变阵列形状-Changing-Array-Shape" class="headerlink" title="改变阵列形状 Changing Array Shape"></a>改变阵列形状 Changing Array Shape</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; b.ravel() </span><br><span class="line"># 改成一维数组</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; g.reshape(3,-2)</span><br><span class="line"># 重塑，但不要改变数据</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加-删除元素-Adding-Removing"><a href="#添加-删除元素-Adding-Removing" class="headerlink" title="添加/删除元素 Adding/Removing"></a>添加/删除元素 Adding/Removing</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; h.resize((2,6)) </span><br><span class="line"># 返回一个形状为(2,6)的新数组</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; np.append(h,g) </span><br><span class="line"># 向数组追加项</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; np.insert(a, 1, 5) </span><br><span class="line"># 在数组中插入项</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; np.delete(a,[1])</span><br><span class="line"># 从数组中删除项</span><br></pre></td></tr></table></figure>
+
+<h4 id="结合数组-Combining-Arrays"><a href="#结合数组-Combining-Arrays" class="headerlink" title="结合数组 Combining Arrays"></a>结合数组 Combining Arrays</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; np.concatenate((a,d),axis=0) </span><br><span class="line">array([ 1, 2, 3, 10, 15, 20])</span><br><span class="line"># 合并数组</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; np.vstack((a,b))</span><br><span class="line">&gt;&gt;&gt; np.r_[e,f] </span><br><span class="line">array([[ 1. , 2. , 3. ],</span><br><span class="line"> [ 1.5, 2. , 3. ],</span><br><span class="line"> [ 4. , 5. , 6. ]])</span><br><span class="line"># 垂直堆栈数组(行方向)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; np.hstack((e,f))  </span><br><span class="line">array([[ 7., 7., 1., 0.], </span><br><span class="line">  [ 7., 7., 0., 1.]])</span><br><span class="line"># 水平堆栈阵列(按列排列)</span><br><span class="line">  </span><br><span class="line">&gt;&gt;&gt; np.column_stack((a,d))  </span><br><span class="line">array([[ 1, 10],</span><br><span class="line"> [ 2, 15],</span><br><span class="line"> [ 3, 20]])</span><br><span class="line">&gt;&gt;&gt; np.c_[a,d]</span><br><span class="line"># 创建堆叠的列方向数组</span><br></pre></td></tr></table></figure>
+
+<h4 id="Splitting-Arrays"><a href="#Splitting-Arrays" class="headerlink" title="Splitting Arrays"></a>Splitting Arrays</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; np.hsplit(a,3) </span><br><span class="line">[array([1]),array([2]),array([3])] </span><br><span class="line"># 在第3个索引处水平分割数组</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; np.vsplit(c,2) </span><br><span class="line">[array([[[ 1.5, 2. , 1. ],</span><br><span class="line"> [ 4. , 5. , 6. ]]]), </span><br><span class="line"> array([[[ 3., 2., 3.],</span><br><span class="line"> [ 4., 5., 6.]]])]</span><br><span class="line"># 在第二个索引处垂直拆分数组</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://www.zhengming.pro/2019/10/01/Numpy库/" title="Numpy库" target="_blank" rel="external">http://www.zhengming.pro/2019/10/01/Numpy库/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/justinzm" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/touxiang.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/justinzm" target="_blank"><span class="text-dark">草根之明</span><small class="ml-1x"></small></a></h3>
+        <div>项目经理&amp;全栈程序员，专注编程领域，分享编程中的点点滴滴！</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80Njg5NS8yMzM5Ng==">
+        <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+      </div>    
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2019/10/01/Pandas库/" title="Pandas库"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2019/10/01/祝新中国成立70周年/" title="祝新中国成立70周年"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/../images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/../images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/justinzm" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/whzhengming" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+<script defer type="text/javascript">
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+
+    if (typeof LivereTower === 'function') { return; }
+
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>
