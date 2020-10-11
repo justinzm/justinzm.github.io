@@ -17,21 +17,21 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>训练数据集与测试数据集切分 | 草根之明～博客</title>
-  <meta name="description" content="train test split 训练数据集与测试数据集 切分123456789import numpy as npfrom sklearn import datasets# http://sklearn.lzjqsdd.com/modules/generated/sklearn.datasets.load_iris.html# iris数据集(鸢尾花)iris = datasets.load_i">
-<meta name="keywords" content="机器学习">
+  <title>项目复盘的12条秘诀 | 草根之明～博客</title>
+  <meta name="description" content="学习有三种方法：从书本中学习，向身边的人学习，向自己学习。 其中向自己学习最靠谱。 如何向自己学习呢？向自己学习最有效的方法，就是复盘。 项目复盘的结构在许多地方与事后回顾是类似的。 主要是讨论下面几个问题：  重温项目的目标和交付成果 过去哪些做得比较好 哪些事能做得更好些  与事后回顾相比，复盘仍有以下特点：  更有深度 前瞻而规范 邀请客户参加  对于项目复盘，这12个项目操作注意事项被公认">
+<meta name="keywords" content="量化交易,机器学习,项目管理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="训练数据集与测试数据集切分">
-<meta property="og:url" content="http://www.zhengming.pro/2019/10/01/训练数据集与测试数据集切分/index.html">
+<meta property="og:title" content="项目复盘的12条秘诀">
+<meta property="og:url" content="http://www.zhengming.pro/2020/10/11/项目复盘的12条秘诀/index.html">
 <meta property="og:site_name" content="草根之明">
-<meta property="og:description" content="train test split 训练数据集与测试数据集 切分123456789import numpy as npfrom sklearn import datasets# http://sklearn.lzjqsdd.com/modules/generated/sklearn.datasets.load_iris.html# iris数据集(鸢尾花)iris = datasets.load_i">
+<meta property="og:description" content="学习有三种方法：从书本中学习，向身边的人学习，向自己学习。 其中向自己学习最靠谱。 如何向自己学习呢？向自己学习最有效的方法，就是复盘。 项目复盘的结构在许多地方与事后回顾是类似的。 主要是讨论下面几个问题：  重温项目的目标和交付成果 过去哪些做得比较好 哪些事能做得更好些  与事后回顾相比，复盘仍有以下特点：  更有深度 前瞻而规范 邀请客户参加  对于项目复盘，这12个项目操作注意事项被公认">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-10-01T08:37:28.822Z">
+<meta property="og:updated_time" content="2020-10-11T02:44:31.306Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="训练数据集与测试数据集切分">
-<meta name="twitter:description" content="train test split 训练数据集与测试数据集 切分123456789import numpy as npfrom sklearn import datasets# http://sklearn.lzjqsdd.com/modules/generated/sklearn.datasets.load_iris.html# iris数据集(鸢尾花)iris = datasets.load_i">
+<meta name="twitter:title" content="项目复盘的12条秘诀">
+<meta name="twitter:description" content="学习有三种方法：从书本中学习，向身边的人学习，向自己学习。 其中向自己学习最靠谱。 如何向自己学习呢？向自己学习最有效的方法，就是复盘。 项目复盘的结构在许多地方与事后回顾是类似的。 主要是讨论下面几个问题：  重温项目的目标和交付成果 过去哪些做得比较好 哪些事能做得更好些  与事后回顾相比，复盘仍有以下特点：  更有深度 前瞻而规范 邀请客户参加  对于项目复盘，这12个项目操作注意事项被公认">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://www.zhengming.pro/2019/10/01/训练数据集与测试数据集切分/index.html">
+  <link rel="canonical" href="http://www.zhengming.pro/2020/10/11/项目复盘的12条秘诀/index.html">
   
     <link rel="alternate" href="/atom.xml" title="草根之明" type="application/atom+xml">
   
@@ -332,21 +332,21 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">文章目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#train-test-split-训练数据集与测试数据集-切分"><span class="toc-number">1.</span> <span class="toc-text">train test split 训练数据集与测试数据集 切分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义-切分函数"><span class="toc-number">2.</span> <span class="toc-text">自定义 切分函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sklearn中的train-test-split"><span class="toc-number">3.</span> <span class="toc-text">sklearn中的train_test_split</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#召集会议"><span class="toc-number">1.</span> <span class="toc-text">召集会议</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#邀请合适的人"><span class="toc-number">2.</span> <span class="toc-text">邀请合适的人</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#任命联络人"><span class="toc-number">3.</span> <span class="toc-text">任命联络人</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#重温项目的目标和交付成果"><span class="toc-number">4.</span> <span class="toc-text">重温项目的目标和交付成果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#重温项目的计划或过程"><span class="toc-number">5.</span> <span class="toc-text">重温项目的计划或过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#询问“什么做得很成功”"><span class="toc-number">6.</span> <span class="toc-text">询问“什么做得很成功”</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分析成功的原因"><span class="toc-number">7.</span> <span class="toc-text">分析成功的原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#询问“哪些可以做得更好”"><span class="toc-number">8.</span> <span class="toc-text">询问“哪些可以做得更好”</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#找出困难和改进建议"><span class="toc-number">9.</span> <span class="toc-text">找出困难和改进建议</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#确保没有遗漏，每个人都畅所欲言"><span class="toc-number">10.</span> <span class="toc-text">确保没有遗漏，每个人都畅所欲言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#询问“接下来做什么”"><span class="toc-number">11.</span> <span class="toc-text">询问“接下来做什么”</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#整理并分发会议记录"><span class="toc-number">12.</span> <span class="toc-text">整理并分发会议记录</span></a></li></ol>
     </nav>
   </div>
 </aside>
 
 <main class="main" role="main">
   <div class="content">
-  <article id="post-训练数据集与测试数据集切分" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-项目复盘的12条秘诀" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      训练数据集与测试数据集切分
+      项目复盘的12条秘诀
     </h1>
   
 
@@ -354,22 +354,17 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2019/10/01/训练数据集与测试数据集切分/" class="article-date">
-	  <time datetime="2019-10-01T12:46:11.000Z" itemprop="datePublished">2019-10-01</time>
+	<a href="/2020/10/11/项目复盘的12条秘诀/" class="article-date">
+	  <time datetime="2020-10-11T02:26:49.000Z" itemprop="datePublished">2020-10-11</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/机器学习/">机器学习</a>
+    <a class="article-category-link" href="/categories/项目管理/">项目管理</a>
   </span>
 
         
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/机器学习/">机器学习</a>
-  </span>
-
 
         
 	<span class="article-read hidden-xs">
@@ -380,17 +375,65 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/10/01/训练数据集与测试数据集切分/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/10/11/项目复盘的12条秘诀/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="train-test-split-训练数据集与测试数据集-切分"><a href="#train-test-split-训练数据集与测试数据集-切分" class="headerlink" title="train test split 训练数据集与测试数据集 切分"></a>train test split 训练数据集与测试数据集 切分</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">from sklearn import datasets</span><br><span class="line"></span><br><span class="line"># http://sklearn.lzjqsdd.com/modules/generated/sklearn.datasets.load_iris.html</span><br><span class="line"># iris数据集(鸢尾花)</span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line"></span><br><span class="line">X = iris.data</span><br><span class="line">y = iris.target</span><br></pre></td></tr></table></figure>
+        <p>学习有三种方法：从书本中学习，向身边的人学习，向自己学习。</p>
+<p>其中向自己学习最靠谱。</p>
+<p>如何向自己学习呢？向自己学习最有效的方法，就是<strong>复盘</strong>。</p>
+<p>项目复盘的结构在许多地方与事后回顾是类似的。</p>
+<p>主要是讨论下面几个问题：</p>
+<ul>
+<li>重温项目的目标和交付成果</li>
+<li>过去哪些做得比较好</li>
+<li>哪些事能做得更好些</li>
+</ul>
+<p>与事后回顾相比，复盘仍有以下特点：</p>
+<ul>
+<li>更有深度</li>
+<li>前瞻而规范</li>
+<li>邀请客户参加</li>
+</ul>
+<p>对于项目复盘，这12个项目操作注意事项被公认为是屡试不爽的“秘诀”。</p>
+<h4 id="召集会议"><a href="#召集会议" class="headerlink" title="召集会议"></a>召集会议</h4><p>在项目结束时，你要以最快的速度召集项目复盘会议；比较理想的情况是项目结束后两周内。如果时间过了太久才开会，人们的记忆就会衰退，会被其他事情影响或冲淡，变得模糊不清。</p>
+<p>可以考虑将项目复盘会变成一次庆祝活动。对于会议时间，至少要保证每个人发言时间不少于20分钟，如果是长期的、连续的和复杂的大项目，还应适当延长时间。</p>
+<h4 id="邀请合适的人"><a href="#邀请合适的人" class="headerlink" title="邀请合适的人"></a>邀请合适的人</h4><p>如果可能的话，邀请一个“客户”参加研讨。</p>
+<p>如果有一个类似的项目正准备开始，或已经开始了，那么邀请这个新的项目小组成员参加复盘会，将是非常有价值的事情。</p>
+<p>因为这样可以让刚刚总结出来的经验与问题，一提出来就能立即传递给新的使用对象。</p>
+<h4 id="任命联络人"><a href="#任命联络人" class="headerlink" title="任命联络人"></a>任命联络人</h4><p>要保证项目复盘的各项工作顺利推进，必须指定一名<strong>独立的联络人</strong>。</p>
+<p>这个人最好是与这个项目关系不大的第三方人员。联络人的核心职责是引导大家讨论、开好项目复盘会，他不必熟悉要讨论的内容，也不必是项目业务方面的专家。</p>
+<h4 id="重温项目的目标和交付成果"><a href="#重温项目的目标和交付成果" class="headerlink" title="重温项目的目标和交付成果"></a>重温项目的目标和交付成果</h4><p>项目复盘也要从明确最初的目标开始，询问“<strong>我们预期的目标是什么</strong>”以及“<strong>我们真正取得的成果是什么</strong>”。</p>
+<p>联络人可能要问客户或参与者：“<strong>你们是否达到了预期目标</strong>”，并可以按照项目的“<strong>关键成功因素”(KSF)或关键绩效指标(KPI)</strong>”，逐个了解项目是否实现了预期目标，是否让客户满意，包括工期、成本、质量等。</p>
+<h4 id="重温项目的计划或过程"><a href="#重温项目的计划或过程" class="headerlink" title="重温项目的计划或过程"></a>重温项目的计划或过程</h4><p>对于大型或复杂的项目，应该重新审查项目计划，将它和实际进行的情况进行比较，找出其中的差距。如果可能的话，描绘出项目的“全貌”。这样会很有价值。</p>
+<p>联络人可以和小组成员一起，画出一个<strong>项目实际进度的流程图</strong>，同时确定出<strong>各个阶段的核心任务、关键步骤和决策点</strong>。用这种方法，你可以发现项目哪些部分延迟了，哪些提前了，哪些完成得效率很高，哪些拖拖拉拉，哪些部分小组成员还不大清楚做到了哪一步。</p>
+<h4 id="询问“什么做得很成功”"><a href="#询问“什么做得很成功”" class="headerlink" title="询问“什么做得很成功”"></a>询问“什么做得很成功”</h4><p>永远从做得好的地方开始！我们应该尽可能积累好的实践方法，并尽量避免错误。联络人可以询问：“在向目标迈进的过程中，我们取得成功的有哪几步？项目中真正做得很棒的是哪些地方？”</p>
+<p>同时，必须<strong>多问几次“为什么”</strong>，它会使你很快<strong>找到问题的根源</strong>。</p>
+<p>此外，保证每个人都参加讨论，请那些不作声的人发言。</p>
+<h4 id="分析成功的原因"><a href="#分析成功的原因" class="headerlink" title="分析成功的原因"></a>分析成功的原因</h4><p>找出成功的原因，总结出重要、可以重复使用的经验和建议。</p>
+<p>总结出的经验和建议，必须基于<strong>大家公认的事实</strong>。</p>
+<p>在这个阶段，主要采用团队对话引导的方式，让大家畅所欲言，以开放的心态，自由地探讨，不压制任何不同的声音，并将冲突引导为富有建设性的、创造性的对话，逐渐达成共识。</p>
+<h4 id="询问“哪些可以做得更好”"><a href="#询问“哪些可以做得更好”" class="headerlink" title="询问“哪些可以做得更好”"></a>询问“哪些可以做得更好”</h4><p><strong>没有完美的项目</strong>，即使是取得了全面成功的项目也有可以改进的空间。</p>
+<p>因此，接下来，要围绕着“<strong>哪些地方可以做得更好”“哪些过程是次优的”“还有哪些遗憾或缺陷</strong>”等问题，展开讨论。</p>
+<p>同时，再次运用“多问几个为什么”的技巧，探询一下影响项目组未能做到最好的原因。</p>
+<h4 id="找出困难和改进建议"><a href="#找出困难和改进建议" class="headerlink" title="找出困难和改进建议"></a>找出困难和改进建议</h4><p>项目复盘应放眼未来，不要纠缠于过去的错误。但是，找出“绊脚石”和容易犯的错误，以便将来不再犯这类错误，也是很重要的。</p>
+<p>下面的问题会非常有用：</p>
+<ul>
+<li>“在当时给定的信息和知识条件下，我们能做得更好吗？”</li>
+<li>“在现有的信息和知识条件下，我们怎样把这些项目做得不一样，以保证获得更大的成功？”</li>
+<li>“根据你现在的经验，你对将来这类项目的小组成员有什么建议？”</li>
+<li>“如果下次仍有机会做类似项目，你会在哪些方面采用不同的做法，以便做得更好？”</li>
+</ul>
+<h4 id="确保没有遗漏，每个人都畅所欲言"><a href="#确保没有遗漏，每个人都畅所欲言" class="headerlink" title="确保没有遗漏，每个人都畅所欲言"></a>确保没有遗漏，每个人都畅所欲言</h4><p>你不能让任何人在离开会场时觉得事情还没有说清楚，或觉得自己有价值的意见没被重视。因此，可以利用打分或让大家评价的方式，来确认是否有被遗漏的事项。你可以问大家：“现在想一想，你对这个项目的满意程度如何，如果10分为满分，你打多少分?”</p>
+<p>如果有人打了不到10分，你可以问：“你觉得怎样才能达到10分呢?”用这个方法，你就可以知道他们没有表达出来的、不满意的地方了。</p>
+<h4 id="询问“接下来做什么”"><a href="#询问“接下来做什么”" class="headerlink" title="询问“接下来做什么”"></a>询问“接下来做什么”</h4><p>项目复盘要<strong>付诸应用</strong>，才能真正发挥价值。如果与会者中有人正准备再做一个类似的项目，那么可以提醒他们是否能利用刚刚总结出来的经验教训，去对自己的项目计划、方法等加以优化。</p>
+<h4 id="整理并分发会议记录"><a href="#整理并分发会议记录" class="headerlink" title="整理并分发会议记录"></a>整理并分发会议记录</h4><p>有一个结构清晰、简明扼要但保持完整性的会议记录，是非常重要的，因为没有人喜欢看杂乱无章的长篇大论。但是，如果过于简略，缺少必要的细节，也将大大削弱会议记录的价值。</p>
+<p>因此，要尽可能详细地记录对将来工作有帮助的建议，将其醒目地标注出来，适当的时候要直接记录大家的发言。</p>
+<p>之后，应征求每一个参会者的意见，确保没有任何人的话被误解，也没有重要事项被遗漏。这是对联络人的一大挑战。</p>
+<p>一旦统一，要将最终的文件分发给大家，并共享给可能会从中受益的人。</p>
 
-<h3 id="自定义-切分函数"><a href="#自定义-切分函数" class="headerlink" title="自定义 切分函数"></a>自定义 切分函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">def train_test_split(X, y, test_ratio=0.2, seed=None):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    将数据X和y，按照test_ratio分割成X_train, y_train; X_test, y_test</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    if seed:</span><br><span class="line">        np.random.seed(seed)</span><br><span class="line"></span><br><span class="line">    # 对索引的乱序</span><br><span class="line">    shuffle_indexes = np.random.permutation(len(X))</span><br><span class="line"></span><br><span class="line">    test_size = int(len(X) * test_ratio)</span><br><span class="line"></span><br><span class="line">    test_indexes = shuffle_indexes[:test_size]</span><br><span class="line">    train_indexes = shuffle_indexes[test_size:]</span><br><span class="line"></span><br><span class="line">    X_train = X[train_indexes]</span><br><span class="line">    y_train = y[train_indexes]</span><br><span class="line"></span><br><span class="line">    X_test = X[test_indexes]</span><br><span class="line">    y_test = y[test_indexes]</span><br><span class="line"></span><br><span class="line">    return X_train, y_train, X_test, y_test</span><br></pre></td></tr></table></figure>
-
-<h3 id="sklearn中的train-test-split"><a href="#sklearn中的train-test-split" class="headerlink" title="sklearn中的train_test_split"></a>sklearn中的train_test_split</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line"></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=666)</span><br><span class="line"></span><br><span class="line"># random_state 随机种子</span><br></pre></td></tr></table></figure>
       
     </div>
     <div class="article-footer">
@@ -399,7 +442,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://www.zhengming.pro/2019/10/01/训练数据集与测试数据集切分/" title="训练数据集与测试数据集切分" target="_blank" rel="external">http://www.zhengming.pro/2019/10/01/训练数据集与测试数据集切分/</a>
+      <a href="http://www.zhengming.pro/2020/10/11/项目复盘的12条秘诀/" title="项目复盘的12条秘诀" target="_blank" rel="external">http://www.zhengming.pro/2020/10/11/项目复盘的12条秘诀/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -447,13 +490,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2019/10/05/Mongodb索引/" title="MongoDB索引类型"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2019/10/01/Pandas库/" title="Pandas库"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2020/10/11/带你看完项目管理全流程/" title="带你看完项目管理全流程"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
