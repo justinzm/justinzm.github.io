@@ -1,110 +1,216 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-cn">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <title>草根之明</title>
-    
-<link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-    
-<link rel="stylesheet" href="/css/gitment.css">
+<link rel="stylesheet" href="/css/main.css">
 
-    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
-<meta name="generator" content="Hexo 6.3.0"></head>
-<body>
-<header class="header">
-    <div class="header-inner">
-        <div class="header-title">
 
-        </div>
-        <nav class="header-nav">
-            
-            <a href="/" class="header-nav-link" >
-                首页
-            </a>
-            
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-            
-            <a href="/archives" class="header-nav-link">
-                归档
-            </a>
-            
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"justinzm.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-            
-            <a href="/tags" class="header-nav-link">
-                标签
-            </a>
-            
+  <meta name="description" content="何为三要素主动投资管理的先驱之一Richard Grinold写过一篇著名的文章，题为《α &#x3D; Volatility × IC × Score》。这篇文章标题直白醒目，简明扼要的说明了在主动管理中寻求股票α收益率的三要素。 Grinold对α的定义为个股收益率中无法被与市场收益率相关的β部分解释的残余部分。假设r为个股相对无风险收益率的超额收益，rm为市场相对无风险收益率的超额收益，那么">
+<meta property="og:type" content="article">
+<meta property="og:title" content="α的三要素">
+<meta property="og:url" content="https://justinzm.github.io/2019/10/31/%CE%B1%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0/index.html">
+<meta property="og:site_name" content="草根之明">
+<meta property="og:description" content="何为三要素主动投资管理的先驱之一Richard Grinold写过一篇著名的文章，题为《α &#x3D; Volatility × IC × Score》。这篇文章标题直白醒目，简明扼要的说明了在主动管理中寻求股票α收益率的三要素。 Grinold对α的定义为个股收益率中无法被与市场收益率相关的β部分解释的残余部分。假设r为个股相对无风险收益率的超额收益，rm为市场相对无风险收益率的超额收益，那么">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hrege0nvj30im06mgm8.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hrf5fl9oj30nw0c2die.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hrfwqi1qj30xk0l443w.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hrgj9y7qj30vs0eygph.jpg">
+<meta property="article:published_time" content="2019-10-31T14:40:36.000Z">
+<meta property="article:modified_time" content="2022-09-10T07:33:18.497Z">
+<meta property="article:author" content="Justin ZM">
+<meta property="article:tag" content="项目管理、产品管理、区块链">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hrege0nvj30im06mgm8.jpg">
 
-            
-            <a href="/about/" class="header-nav-link">
-                关于
-            </a>
-            
-        </nav>
+<link rel="canonical" href="https://justinzm.github.io/2019/10/31/%CE%B1%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-cn'
+  };
+</script>
+
+  <title>α的三要素 | 草根之明</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-</header>
-<header class="mobile-header">
-    <div class="mobile-nav">
-        <div class="mobile-nav-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="mobile-nav-title">
-            <a href="/" class="mobile-nav-title-link">Justin ZM's Blog</a>
-        </div>
+  </div>
 
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">草根之明</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">草根之明-管理及技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
     </div>
-    <nav class="mobile-menu">
-        <ul class="mobile-menu-list">
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-home"></i>
-                <a href="/" class="mobile-nav-link">首页</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-archive"></i>
-                <a href="/archives" class="mobile-nav-link">归档</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-tag"></i>
-                <a href="/tags" class="mobile-nav-link">标签</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-about"></i>
-                <a href="/about/" class="mobile-nav-link">关于</a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<div class="main">
-    <div class="content-inner">
-        <div class="posts">
-    <article class="post-whole">
-        <div class="post-title">
-            <h2 class="title">α的三要素</h2>
-            <div class="post-meta">
-                <span class="post-time">2019-10-31</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/">量化交易</a>
-                    
-                </span>
-                
-                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
-            </div>
-        </div>
-        <div class="post-toc" id="post-toc">
-    <strong class="post-toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%95%E4%B8%BA%E4%B8%89%E8%A6%81%E7%B4%A0"><span class="toc-text">何为三要素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%90%AB%E4%B9%89"><span class="toc-text">数学含义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%CE%B1%E5%85%AC%E5%BC%8F%E7%9A%84%E5%8F%98%E7%A7%8D"><span class="toc-text">α公式的变种</span></a></li></ol>
-    <div class="back-to-top" id="back-to-top">
-        <a href="javascript:void(0);">回到顶部</a>
-    </div>
+  </div>
 </div>
-        <div class="post-content">
-            <h3 id="何为三要素"><a href="#何为三要素" class="headerlink" title="何为三要素"></a>何为三要素</h3><p>主动投资管理的先驱之一Richard Grinold写过一篇著名的文章，题为《α &#x3D; Volatility × IC × Score》。这篇文章标题直白醒目，简明扼要的说明了在主动管理中寻求股票α收益率的三要素。</p>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>الأرشيفات</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-cn">
+    <link itemprop="mainEntityOfPage" href="https://justinzm.github.io/2019/10/31/%CE%B1%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Justin ZM">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="草根之明">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          α的三要素
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">نُشر في</span>
+
+              <time title="أُنشأ: 2019-10-31 22:40:36" itemprop="dateCreated datePublished" datetime="2019-10-31T22:40:36+08:00">2019-10-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">عُدل في</span>
+                <time title="عُدل: 2022-09-10 15:33:18" itemprop="dateModified" datetime="2022-09-10T15:33:18+08:00">2022-09-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">في</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/" itemprop="url" rel="index"><span itemprop="name">量化交易</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="何为三要素"><a href="#何为三要素" class="headerlink" title="何为三要素"></a>何为三要素</h3><p>主动投资管理的先驱之一Richard Grinold写过一篇著名的文章，题为《α &#x3D; Volatility × IC × Score》。这篇文章标题直白醒目，简明扼要的说明了在主动管理中寻求股票α收益率的三要素。</p>
 <p>Grinold对α的定义为个股收益率中无法被与市场收益率相关的β部分解释的残余部分。假设r为个股相对无风险收益率的超额收益，r<sub>m</sub>为市场相对无风险收益率的超额收益，那么我们有</p>
 <p>r &#x3D; α + β × r<sub>m</sub></p>
 <p>如果个股的α都是零（就像CAPM假设的那样），那么我们买个指数就万事大吉，所有主动型基金经理都会失业。但现实并不是这样，一些股票的确存在正的α，而另一些存在负的α。主动投资管理就是从所有的股票中选出拥有超额α收益的那些优秀股票。</p>
@@ -130,62 +236,194 @@
 <p>总结来说，<strong>因子和α收益率的相关性越高，个股α的差异性越大，我们的选股基础就越好</strong>。在这个基础上，只需要按照该因子选出分数高的股票就可以预期得到超额的α收益。如果所有股票的α都一样（Volatility &#x3D; 0）或者所有股票的因子取值都一样（Score &#x3D; 0），那么上式就相当于α &#x3D; 0，也就是说根本无法通过该因子选出含有超额α收益的股票；<strong>只有因子和α收益率的相关性越高，股票的差异性越大（α和因子的差异性都是越大越好），才越有可能找出α。</strong></p>
 <p><strong>截面回归方法往往是一种事后验证</strong>。即我们在已知t+1时刻所有股票的α的前提下，用t时刻的因子取值对α进行回归，以此来衡量该因子在t时刻的选股能力。然而，<strong>由于不同因子之间有相关性，这种衡量方法其实也是有一定缺陷的</strong>。此外，t时刻的选股能力更不能保证在t+1时刻该因子仍然有同样的选股能力。<strong>要正确判断一个因子的选股能力仍然需要从时间维度上的考察通过该因子构造的纯因子投资组合（即排除其他因子对目标因子的干扰）是否可以持续的获得超额收益。</strong></p>
 
-        </div>
-        
-    </article>
-</div>
-<div class="paginator">
-    
-        
-            <a class="prev" href="/2019/12/14/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8BSklearn/">
-                <i class="iconfont icon-prev"></i>
-                <span class="nav-default">机器学习之Sklearn</span>
-                <span class="nav-mobile">上一篇</span>
-            </a>
-        
-        
-            <a class="next" href="/2019/10/31/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%9D%87%EF%BC%8C%E4%BD%A0%E7%9F%A5%E9%81%93%E7%9A%84%E4%B8%8E%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84/">
-                <span class="nav-default">移动平均，你知道的与你不知道的</span>
-                <span class="nav-mobile">下一篇</span>
-                <i class="iconfont icon-next"></i>
-            </a>
-        
-    
-</div>
-<div id="comment-container"></div>
     </div>
-</div>
-<footer class="footer-social">
-    
 
     
-
+    
     
 
-    <div class="footer-copyright">
-        <p class="time-line">
-            &copy;
-            
-            
-            2022
-            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
-            <a target="_blank" href="https://github.com/iJinxin">Justin ZM</a>
-        </p>
-        <p class="theme-info">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
-            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
-        </p>
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/10/31/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%9D%87%EF%BC%8C%E4%BD%A0%E7%9F%A5%E9%81%93%E7%9A%84%E4%B8%8E%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84/" rel="prev" title="移动平均，你知道的与你不知道的">
+      <i class="fa fa-chevron-left"></i> 移动平均，你知道的与你不知道的
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/12/14/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8BSklearn/" rel="next" title="机器学习之Sklearn">
+      机器学习之Sklearn <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
-</footer>
-</body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      </footer>
+    
+  </article>
+  
+  
+  
 
-<script src="/js/index.js"></script>
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+
+          </div>
+          
+
 <script>
-    
-
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
 </script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%95%E4%B8%BA%E4%B8%89%E8%A6%81%E7%B4%A0"><span class="nav-number">1.</span> <span class="nav-text">何为三要素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6%E5%90%AB%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">数学含义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%CE%B1%E5%85%AC%E5%BC%8F%E7%9A%84%E5%8F%98%E7%A7%8D"><span class="nav-number">3.</span> <span class="nav-text">α公式的变种</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Justin ZM</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">التصنيفات</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">الوسوم</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Justin ZM</span>
+</div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
 </html>

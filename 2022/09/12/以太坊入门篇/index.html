@@ -1,110 +1,205 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-cn">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <title>草根之明</title>
-    
-<link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-    
-<link rel="stylesheet" href="/css/gitment.css">
+<link rel="stylesheet" href="/css/main.css">
 
-    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
-<meta name="generator" content="Hexo 6.3.0"></head>
-<body>
-<header class="header">
-    <div class="header-inner">
-        <div class="header-title">
 
-        </div>
-        <nav class="header-nav">
-            
-            <a href="/" class="header-nav-link" >
-                首页
-            </a>
-            
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-            
-            <a href="/archives" class="header-nav-link">
-                归档
-            </a>
-            
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"justinzm.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-            
-            <a href="/tags" class="header-nav-link">
-                标签
-            </a>
-            
+  <meta name="description" content="区块链就是建立在朴实无华的基本技术之上，一点也不神奇。虽然最近各种ICO把它炒得非常热。每个人都是站在巨人的肩膀上，如果你是程序员，你能对这些项目和技术，理解得更深。所以不要因为其它一些糟粕，而失去了一个提升自己的机会。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="以太坊入门篇">
+<meta property="og:url" content="https://justinzm.github.io/2022/09/12/%E4%BB%A5%E5%A4%AA%E5%9D%8A%E5%85%A5%E9%97%A8%E7%AF%87/index.html">
+<meta property="og:site_name" content="草根之明">
+<meta property="og:description" content="区块链就是建立在朴实无华的基本技术之上，一点也不神奇。虽然最近各种ICO把它炒得非常热。每个人都是站在巨人的肩膀上，如果你是程序员，你能对这些项目和技术，理解得更深。所以不要因为其它一些糟粕，而失去了一个提升自己的机会。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-09-12T07:20:43.000Z">
+<meta property="article:modified_time" content="2022-09-12T07:23:31.667Z">
+<meta property="article:author" content="Justin ZM">
+<meta property="article:tag" content="项目管理、产品管理、区块链">
+<meta name="twitter:card" content="summary">
 
-            
-            <a href="/about/" class="header-nav-link">
-                关于
-            </a>
-            
-        </nav>
+<link rel="canonical" href="https://justinzm.github.io/2022/09/12/%E4%BB%A5%E5%A4%AA%E5%9D%8A%E5%85%A5%E9%97%A8%E7%AF%87/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-cn'
+  };
+</script>
+
+  <title>以太坊入门篇 | 草根之明</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-</header>
-<header class="mobile-header">
-    <div class="mobile-nav">
-        <div class="mobile-nav-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="mobile-nav-title">
-            <a href="/" class="mobile-nav-title-link">Justin ZM's Blog</a>
-        </div>
+  </div>
 
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">草根之明</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">草根之明-管理及技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
     </div>
-    <nav class="mobile-menu">
-        <ul class="mobile-menu-list">
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-home"></i>
-                <a href="/" class="mobile-nav-link">首页</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-archive"></i>
-                <a href="/archives" class="mobile-nav-link">归档</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-tag"></i>
-                <a href="/tags" class="mobile-nav-link">标签</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-about"></i>
-                <a href="/about/" class="mobile-nav-link">关于</a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<div class="main">
-    <div class="content-inner">
-        <div class="posts">
-    <article class="post-whole">
-        <div class="post-title">
-            <h2 class="title">以太坊入门篇</h2>
-            <div class="post-meta">
-                <span class="post-time">2022-09-12</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/%E4%BB%A5%E5%A4%AA%E5%9D%8A/">以太坊</a>
-                    
-                </span>
-                
-                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
-            </div>
-        </div>
-        <div class="post-toc" id="post-toc">
-    <strong class="post-toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5%E5%A4%AA%E5%9D%8A"><span class="toc-text">以太坊</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6"><span class="toc-text">智能合约</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gas"><span class="toc-text">Gas</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8FAPP%EF%BC%88DApp-x2F-Dapp-x2F-dapp-x2F-dApp%EF%BC%89"><span class="toc-text">分布式APP（ĐApp &#x2F; Dapp &#x2F; dapp&#x2F; dApp）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DApp%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-text">DApp客户端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DApp%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-text">DApp浏览器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5%E5%A4%AA%E5%9D%8A%E8%8A%82%E7%82%B9"><span class="toc-text">以太坊节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5%E5%A4%AA%E5%9D%8A%E4%BB%A3%E5%B8%81"><span class="toc-text">以太坊代币</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ERC20%E4%BB%A3%E5%B8%81%E4%B8%8EERC23%E4%BB%A3%E5%B8%81"><span class="toc-text">ERC20代币与ERC23代币</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E8%AE%AE%E4%BB%A3%E5%B8%81%E4%B8%8EApp%E5%B8%81"><span class="toc-text">协议代币与App币</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8E%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E4%BA%A4%E4%BA%92"><span class="toc-text">与智能合约交互</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Truffle%E5%92%8CEmbark"><span class="toc-text">Truffle和Embark</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ETHPM"><span class="toc-text">ETHPM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C"><span class="toc-text">网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%90%E6%88%B7%E4%B8%8E%E9%92%B1%E5%8C%85"><span class="toc-text">帐户与钱包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EVM%E4%BB%A5%E5%8F%8A%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E5%88%9B%E5%BB%BA%E7%9A%84%E7%8A%B6%E6%80%81"><span class="toc-text">EVM以及智能合约创建的状态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Solidity"><span class="toc-text">Solidity</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LLL"><span class="toc-text">LLL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Serpent"><span class="toc-text">Serpent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E5%AE%83"><span class="toc-text">其它</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E5%8F%8D%E7%BC%96%E8%AF%91-x2F-Disassembly"><span class="toc-text">智能合约反编译&#x2F;Disassembly</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E7%9A%84%E5%AE%89%E5%85%A8"><span class="toc-text">智能合约的安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Whisper"><span class="toc-text">Whisper</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%BB%E4%B8%AD%E5%BF%83%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BB%84%E7%BB%87%EF%BC%88DAOs%EF%BC%89"><span class="toc-text">去中心自动化组织（DAOs）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Aragon"><span class="toc-text">Aragon</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPFS-amp-FileCoin"><span class="toc-text">IPFS&amp;FileCoin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Swarm"><span class="toc-text">Swarm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE"><span class="toc-text">项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Augur"><span class="toc-text">Augur</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gnosis"><span class="toc-text">Gnosis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Golem"><span class="toc-text">Golem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0xProject"><span class="toc-text">0xProject</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Swap"><span class="toc-text">Swap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bancor"><span class="toc-text">Bancor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Makerdao-amp-Dai"><span class="toc-text">Makerdao &amp; Dai</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Oraclize"><span class="toc-text">Oraclize</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BTCRelay"><span class="toc-text">BTCRelay</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Open-Zeppelin-amp-zeppelinOS"><span class="toc-text">Open Zeppelin &amp; zeppelinOS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ENS-%E4%BB%A5%E5%A4%AA%E5%9D%8A%E7%9A%84%E5%91%BD%E5%90%8D%E6%9C%8D%E5%8A%A1"><span class="toc-text">ENS - 以太坊的命名服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BAT-%E5%9F%BA%E7%A1%80%E6%B3%A8%E6%84%8F%E5%8A%9B%E4%BB%A3%E5%B8%81-amp-Brave%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-text">BAT 基础注意力代币 &amp; Brave浏览器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#uPort"><span class="toc-text">uPort</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#district0x"><span class="toc-text">district0x</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Steem"><span class="toc-text">Steem</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E4%B8%8E%E8%80%85%E4%B8%8E%E9%A2%86%E5%9F%9F%E5%86%85%E7%9A%84%E7%8E%A9%E5%AE%B6"><span class="toc-text">参与者与领域内的玩家</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConsenSys"><span class="toc-text">ConsenSys</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Zeppelin-Solutions"><span class="toc-text">Zeppelin Solutions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Protocol-Labs"><span class="toc-text">Protocol Labs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E5%9D%97%E9%93%BE%E8%B5%84%E6%9C%AC%E6%A6%82%E5%86%B5"><span class="toc-text">区块链资本概况</span></a></li></ol>
-    <div class="back-to-top" id="back-to-top">
-        <a href="javascript:void(0);">回到顶部</a>
-    </div>
+  </div>
 </div>
-        <div class="post-content">
-            <p>区块链就是建立在朴实无华的基本技术之上，一点也不神奇。虽然最近各种ICO把它炒得非常热。每个人都是站在巨人的肩膀上，如果你是程序员，你能对这些项目和技术，理解得更深。所以不要因为其它一些糟粕，而失去了一个提升自己的机会。<span id="more"></span></p>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>الأرشيفات</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-cn">
+    <link itemprop="mainEntityOfPage" href="https://justinzm.github.io/2022/09/12/%E4%BB%A5%E5%A4%AA%E5%9D%8A%E5%85%A5%E9%97%A8%E7%AF%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Justin ZM">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="草根之明">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          以太坊入门篇
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">نُشر في</span>
+              
+
+              <time title="أُنشأ: 2022-09-12 15:20:43 / عُدل: 15:23:31" itemprop="dateCreated datePublished" datetime="2022-09-12T15:20:43+08:00">2022-09-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">في</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BB%A5%E5%A4%AA%E5%9D%8A/" itemprop="url" rel="index"><span itemprop="name">以太坊</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>区块链就是建立在朴实无华的基本技术之上，一点也不神奇。虽然最近各种ICO把它炒得非常热。每个人都是站在巨人的肩膀上，如果你是程序员，你能对这些项目和技术，理解得更深。所以不要因为其它一些糟粕，而失去了一个提升自己的机会。<span id="more"></span></p>
 <h2 id="以太坊"><a href="#以太坊" class="headerlink" title="以太坊"></a>以太坊</h2><p><a target="_blank" rel="noopener" href="https://www.ethereum.org/">以太坊，Ethereum</a>是一个分布式的计算机，有许多的节点，其中的每一个节点，都会执行字节码（其实就是智能合约），然后把结果存在区块链上。由于整个网络是分布式的，且应用就是一个个的状态组成，存储了状态就有了服务；所以它就能永不停机，没有一个中心化的结点（没有任何一个节点说了算，去中心化的），任何第三方不能干预。</p>
 <p>显然上面这一段话，直接解释了以太坊是什么。但你可能有非常多的问题。可以先读一下<a target="_blank" rel="noopener" href="https://github.com/ethereum/wiki/wiki/White-Paper">以太坊的白皮书</a>。或者看下这个视频，<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=66SaEDzlmP4">25分钟理解以太坊</a>。（译者注：以太坊入门，确实没有什么好的办法，就是看白皮书最好，最快）</p>
 <h2 id="智能合约"><a href="#智能合约" class="headerlink" title="智能合约"></a>智能合约</h2><p>智能合约与平时的代码其实没有什么区别，只是运行于一个以太坊这样的分布式平台上而已。这个运行的平台，赋予了这些代码不可变，确定性，分布式和可自校验状态等特点。代码运行过程中状态的存储，是不可变的。每一个人，都可以开一个自己的节点，重放整个区块链，将会获得同样的结果（译者注：能控制所有节点都达到一致状态，就是所谓的共识）。</p>
@@ -251,62 +346,194 @@
 <h2 id="Protocol-Labs"><a href="#Protocol-Labs" class="headerlink" title="Protocol Labs"></a>Protocol Labs</h2><p><a target="_blank" rel="noopener" href="https://protocol.ai/">Protocol Labs</a>是一群让人印象深刻的人，致力于IPFS，FileCoin，lip2p以及IPLD等其它项目的开发。</p>
 <h2 id="区块链资本概况"><a href="#区块链资本概况" class="headerlink" title="区块链资本概况"></a>区块链资本概况</h2><p><a target="_blank" rel="noopener" href="https://medium.com/@etiennebr">Etienne Brunet</a>有一篇<a target="_blank" rel="noopener" href="https://medium.com/@etiennebr/my-token-ico-blockchain-capital-markets-landscape-617e6ff1eae1">关于代币，ICO和VC的概况文章</a>。</p>
 
-        </div>
-        
-    </article>
-</div>
-<div class="paginator">
-    
-        
-            <a class="prev" href="/2022/09/12/solidity%E7%BC%96%E7%A8%8B%E6%94%BB%E7%95%A5%E4%B9%8B%E4%B8%80/">
-                <i class="iconfont icon-prev"></i>
-                <span class="nav-default">solidity编程攻略之一</span>
-                <span class="nav-mobile">上一篇</span>
-            </a>
-        
-        
-            <a class="next" href="/2021/04/24/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E4%B9%8B%E9%9C%80%E6%B1%82%E7%AE%A1%E7%90%86/">
-                <span class="nav-default">项目管理之需求管理</span>
-                <span class="nav-mobile">下一篇</span>
-                <i class="iconfont icon-next"></i>
-            </a>
-        
-    
-</div>
-<div id="comment-container"></div>
     </div>
-</div>
-<footer class="footer-social">
-    
 
     
-
+    
     
 
-    <div class="footer-copyright">
-        <p class="time-line">
-            &copy;
-            
-            
-            2022
-            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
-            <a target="_blank" href="https://github.com/iJinxin">Justin ZM</a>
-        </p>
-        <p class="theme-info">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
-            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
-        </p>
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/04/24/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E4%B9%8B%E9%9C%80%E6%B1%82%E7%AE%A1%E7%90%86/" rel="prev" title="项目管理之需求管理">
+      <i class="fa fa-chevron-left"></i> 项目管理之需求管理
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/09/12/solidity%E7%BC%96%E7%A8%8B%E6%94%BB%E7%95%A5%E4%B9%8B%E4%B8%80/" rel="next" title="solidity编程攻略之一">
+      solidity编程攻略之一 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
-</footer>
-</body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      </footer>
+    
+  </article>
+  
+  
+  
 
-<script src="/js/index.js"></script>
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+
+          </div>
+          
+
 <script>
-    
-
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
 </script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E5%A4%AA%E5%9D%8A"><span class="nav-number">1.</span> <span class="nav-text">以太坊</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6"><span class="nav-number">2.</span> <span class="nav-text">智能合约</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gas"><span class="nav-number">3.</span> <span class="nav-text">Gas</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8FAPP%EF%BC%88DApp-x2F-Dapp-x2F-dapp-x2F-dApp%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">分布式APP（ĐApp &#x2F; Dapp &#x2F; dapp&#x2F; dApp）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DApp%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="nav-number">5.</span> <span class="nav-text">DApp客户端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DApp%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="nav-number">6.</span> <span class="nav-text">DApp浏览器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E5%A4%AA%E5%9D%8A%E8%8A%82%E7%82%B9"><span class="nav-number">7.</span> <span class="nav-text">以太坊节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E5%A4%AA%E5%9D%8A%E4%BB%A3%E5%B8%81"><span class="nav-number">8.</span> <span class="nav-text">以太坊代币</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ERC20%E4%BB%A3%E5%B8%81%E4%B8%8EERC23%E4%BB%A3%E5%B8%81"><span class="nav-number">9.</span> <span class="nav-text">ERC20代币与ERC23代币</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%8F%E8%AE%AE%E4%BB%A3%E5%B8%81%E4%B8%8EApp%E5%B8%81"><span class="nav-number">10.</span> <span class="nav-text">协议代币与App币</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8E%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E4%BA%A4%E4%BA%92"><span class="nav-number">11.</span> <span class="nav-text">与智能合约交互</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Truffle%E5%92%8CEmbark"><span class="nav-number">12.</span> <span class="nav-text">Truffle和Embark</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ETHPM"><span class="nav-number">13.</span> <span class="nav-text">ETHPM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C"><span class="nav-number">14.</span> <span class="nav-text">网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%90%E6%88%B7%E4%B8%8E%E9%92%B1%E5%8C%85"><span class="nav-number">15.</span> <span class="nav-text">帐户与钱包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EVM%E4%BB%A5%E5%8F%8A%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E5%88%9B%E5%BB%BA%E7%9A%84%E7%8A%B6%E6%80%81"><span class="nav-number">16.</span> <span class="nav-text">EVM以及智能合约创建的状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Solidity"><span class="nav-number">16.1.</span> <span class="nav-text">Solidity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LLL"><span class="nav-number">17.</span> <span class="nav-text">LLL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Serpent"><span class="nav-number">17.1.</span> <span class="nav-text">Serpent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E5%AE%83"><span class="nav-number">17.2.</span> <span class="nav-text">其它</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E5%8F%8D%E7%BC%96%E8%AF%91-x2F-Disassembly"><span class="nav-number">17.3.</span> <span class="nav-text">智能合约反编译&#x2F;Disassembly</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E7%9A%84%E5%AE%89%E5%85%A8"><span class="nav-number">18.</span> <span class="nav-text">智能合约的安全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Whisper"><span class="nav-number">19.</span> <span class="nav-text">Whisper</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%BB%E4%B8%AD%E5%BF%83%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BB%84%E7%BB%87%EF%BC%88DAOs%EF%BC%89"><span class="nav-number">20.</span> <span class="nav-text">去中心自动化组织（DAOs）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Aragon"><span class="nav-number">21.</span> <span class="nav-text">Aragon</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IPFS-amp-FileCoin"><span class="nav-number">22.</span> <span class="nav-text">IPFS&amp;FileCoin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Swarm"><span class="nav-number">23.</span> <span class="nav-text">Swarm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE"><span class="nav-number">24.</span> <span class="nav-text">项目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Augur"><span class="nav-number">24.1.</span> <span class="nav-text">Augur</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gnosis"><span class="nav-number">24.2.</span> <span class="nav-text">Gnosis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Golem"><span class="nav-number">24.3.</span> <span class="nav-text">Golem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0xProject"><span class="nav-number">24.4.</span> <span class="nav-text">0xProject</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Swap"><span class="nav-number">25.</span> <span class="nav-text">Swap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bancor"><span class="nav-number">26.</span> <span class="nav-text">Bancor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Makerdao-amp-Dai"><span class="nav-number">27.</span> <span class="nav-text">Makerdao &amp; Dai</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oraclize"><span class="nav-number">28.</span> <span class="nav-text">Oraclize</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BTCRelay"><span class="nav-number">29.</span> <span class="nav-text">BTCRelay</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Open-Zeppelin-amp-zeppelinOS"><span class="nav-number">30.</span> <span class="nav-text">Open Zeppelin &amp; zeppelinOS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ENS-%E4%BB%A5%E5%A4%AA%E5%9D%8A%E7%9A%84%E5%91%BD%E5%90%8D%E6%9C%8D%E5%8A%A1"><span class="nav-number">31.</span> <span class="nav-text">ENS - 以太坊的命名服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BAT-%E5%9F%BA%E7%A1%80%E6%B3%A8%E6%84%8F%E5%8A%9B%E4%BB%A3%E5%B8%81-amp-Brave%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="nav-number">32.</span> <span class="nav-text">BAT 基础注意力代币 &amp; Brave浏览器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#uPort"><span class="nav-number">33.</span> <span class="nav-text">uPort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#district0x"><span class="nav-number">34.</span> <span class="nav-text">district0x</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Steem"><span class="nav-number">35.</span> <span class="nav-text">Steem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E4%B8%8E%E8%80%85%E4%B8%8E%E9%A2%86%E5%9F%9F%E5%86%85%E7%9A%84%E7%8E%A9%E5%AE%B6"><span class="nav-number">36.</span> <span class="nav-text">参与者与领域内的玩家</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ConsenSys"><span class="nav-number">37.</span> <span class="nav-text">ConsenSys</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Zeppelin-Solutions"><span class="nav-number">38.</span> <span class="nav-text">Zeppelin Solutions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Protocol-Labs"><span class="nav-number">39.</span> <span class="nav-text">Protocol Labs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%BA%E5%9D%97%E9%93%BE%E8%B5%84%E6%9C%AC%E6%A6%82%E5%86%B5"><span class="nav-number">40.</span> <span class="nav-text">区块链资本概况</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Justin ZM</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">التصنيفات</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">الوسوم</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Justin ZM</span>
+</div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
 </html>

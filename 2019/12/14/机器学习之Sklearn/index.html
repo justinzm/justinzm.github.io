@@ -1,110 +1,256 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-cn">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <title>草根之明</title>
-    
-<link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-    
-<link rel="stylesheet" href="/css/gitment.css">
+<link rel="stylesheet" href="/css/main.css">
 
-    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
-<meta name="generator" content="Hexo 6.3.0"></head>
-<body>
-<header class="header">
-    <div class="header-inner">
-        <div class="header-title">
 
-        </div>
-        <nav class="header-nav">
-            
-            <a href="/" class="header-nav-link" >
-                首页
-            </a>
-            
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-            
-            <a href="/archives" class="header-nav-link">
-                归档
-            </a>
-            
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"justinzm.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-            
-            <a href="/tags" class="header-nav-link">
-                标签
-            </a>
-            
+  <meta name="description" content="Sklearn (全称 Scikit-Learn) 是基于 Python 语言的机器学习工具。它建立在 NumPy, SciPy, Pandas 和 Matplotlib 之上，里面的 API 的设计非常好，所有对象的接口简单，很适合新手上路。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习之Sklearn">
+<meta property="og:url" content="https://justinzm.github.io/2019/12/14/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8BSklearn/index.html">
+<meta property="og:site_name" content="草根之明">
+<meta property="og:description" content="Sklearn (全称 Scikit-Learn) 是基于 Python 语言的机器学习工具。它建立在 NumPy, SciPy, Pandas 和 Matplotlib 之上，里面的 API 的设计非常好，所有对象的接口简单，很适合新手上路。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://img.9lake.com/uPic/9NRoXM.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/lxUBeP.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/9BXoLs.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/Ztm9nF.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/cHnZTW.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/PkKSiH.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/N0yZnd.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/ggTLBd.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/60V2LY.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/Knzhdo.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/jeRRFB.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/ThUnLs.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/Rx6KAH.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/Pd3R9c.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/L5SyyT.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/4xkf68.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/JyJEKN.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/ucO1IA.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/K6gYLk.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/Wk40iH.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/I3W58A.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/WQkgZT.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/baMnJA.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/UMLsNX.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/z8o4Qx.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/tYvPFv.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/biWRkH.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/uub7kl.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/Po4pCQ.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/divLLr.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/dfCAgS.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/uFV0mx.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/mGgmL5.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/J3TQYX.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/o9FjM1.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/pPhE65.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/Pp9ZCS.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/LA2olY.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/VMzrvG.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/qbDoeq.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/7gM0cr.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/xnVNGW.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/qdEMHh.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/TDE8uM.jpg">
+<meta property="article:published_time" content="2019-12-14T13:10:17.000Z">
+<meta property="article:modified_time" content="2022-09-10T07:24:47.412Z">
+<meta property="article:author" content="Justin ZM">
+<meta property="article:tag" content="Sklearn">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://img.9lake.com/uPic/9NRoXM.jpg">
 
-            
-            <a href="/about/" class="header-nav-link">
-                关于
-            </a>
-            
-        </nav>
+<link rel="canonical" href="https://justinzm.github.io/2019/12/14/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8BSklearn/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-cn'
+  };
+</script>
+
+  <title>机器学习之Sklearn | 草根之明</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-</header>
-<header class="mobile-header">
-    <div class="mobile-nav">
-        <div class="mobile-nav-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="mobile-nav-title">
-            <a href="/" class="mobile-nav-title-link">Justin ZM's Blog</a>
-        </div>
+  </div>
 
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">草根之明</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">草根之明-管理及技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
     </div>
-    <nav class="mobile-menu">
-        <ul class="mobile-menu-list">
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-home"></i>
-                <a href="/" class="mobile-nav-link">首页</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-archive"></i>
-                <a href="/archives" class="mobile-nav-link">归档</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-tag"></i>
-                <a href="/tags" class="mobile-nav-link">标签</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-about"></i>
-                <a href="/about/" class="mobile-nav-link">关于</a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<div class="main">
-    <div class="content-inner">
-        <div class="posts">
-    <article class="post-whole">
-        <div class="post-title">
-            <h2 class="title">机器学习之Sklearn</h2>
-            <div class="post-meta">
-                <span class="post-time">2019-12-14</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
-                    
-                </span>
-                
-                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
-            </div>
-        </div>
-        <div class="post-toc" id="post-toc">
-    <strong class="post-toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%86%E7%B1%BB-Classification"><span class="toc-text">分类 (Classification)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%9E%E5%BD%92-Regression"><span class="toc-text">回归 (Regression)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%81%9A%E7%B1%BB-Clustering"><span class="toc-text">聚类 (Clustering)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%99%8D%E7%BB%B4-Dimensionality-Reduction"><span class="toc-text">降维 (Dimensionality Reduction)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9-Model-Selection"><span class="toc-text">模型选择 (Model Selection)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%84%E5%A4%84%E7%90%86-Preprocessing"><span class="toc-text">预处理 (Preprocessing)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86-Dataset"><span class="toc-text">数据集 (Dataset)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B"><span class="toc-text">机器学习简介</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%92%8C%E7%BB%84%E6%88%90%E5%85%83%E7%B4%A0"><span class="toc-text">定义和组成元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE"><span class="toc-text">数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E5%8C%96%E5%92%8C%E9%9D%9E%E7%BB%93%E6%9E%84%E5%8C%96"><span class="toc-text">结构化和非结构化</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%9D%9E%E7%BB%93%E6%9E%84%E5%8C%96%E6%95%B0%E6%8D%AE"><span class="toc-text">非结构化数据</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E5%8C%96%E6%95%B0%E6%8D%AE"><span class="toc-text">结构化数据</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E5%92%8C%E5%8A%A0%E5%B7%A5"><span class="toc-text">原始和加工</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E6%80%A7%E6%95%B0%E6%8D%AE"><span class="toc-text">图像性数据</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E5%9E%8B%E6%95%B0%E6%8D%AE"><span class="toc-text">文本型数据</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%88%86%E7%B1%BB%E5%9E%8B%E5%8F%98%E9%87%8F"><span class="toc-text">分类型变量</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%B7%E6%9C%AC%E5%86%85%E5%92%8C%E6%A0%B7%E6%9C%AC%E5%A4%96"><span class="toc-text">样本内和样本外</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1"><span class="toc-text">任务</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="toc-text">有监督学习</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%88%86%E7%B1%BB"><span class="toc-text">分类</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%9B%9E%E5%BD%92"><span class="toc-text">回归</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%97%A0%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="toc-text">无监督学习</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%81%9A%E7%B1%BB"><span class="toc-text">聚类</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%99%8D%E7%BB%B4"><span class="toc-text">降维</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%BA%A6%E9%87%8F"><span class="toc-text">性能度量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B"><span class="toc-text">模型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sklearn-%E6%95%B0%E6%8D%AE"><span class="toc-text">Sklearn 数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="toc-text">数据格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%B8%A6%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-text">自带数据集</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%89%B9%E4%BE%8B%E6%8F%8F%E8%BF%B0"><span class="toc-text">特例描述</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Pandas-DataFrame"><span class="toc-text">Pandas DataFrame</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Seaborn-Pairplot"><span class="toc-text">Seaborn Pairplot</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A3%E8%A7%84%E5%BC%95%E5%85%A5"><span class="toc-text">正规引入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83-API"><span class="toc-text">核心 API</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%B0%E8%AE%A1%E5%99%A8"><span class="toc-text">估计器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-text">线性回归</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#K-%E5%9D%87%E5%80%BC"><span class="toc-text">K 均值</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%84%E6%B5%8B%E5%99%A8"><span class="toc-text">预测器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AF%B9%E7%8E%87%E5%9B%9E%E5%BD%92"><span class="toc-text">对率回归</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#K-%E5%9D%87%E5%80%BC-1"><span class="toc-text">K 均值</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B0%8F%E8%8A%82"><span class="toc-text">小节</span></a></li></ol>
-    <div class="back-to-top" id="back-to-top">
-        <a href="javascript:void(0);">回到顶部</a>
-    </div>
+  </div>
 </div>
-        <div class="post-content">
-            <p>Sklearn (全称 Scikit-Learn) 是基于 Python 语言的机器学习工具。它建立在 NumPy, SciPy, Pandas 和 Matplotlib 之上，里面的 API 的设计非常好，所有对象的接口简单，很适合新手上路。<span id="more"></span></p>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>الأرشيفات</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-cn">
+    <link itemprop="mainEntityOfPage" href="https://justinzm.github.io/2019/12/14/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8BSklearn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Justin ZM">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="草根之明">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          机器学习之Sklearn
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">نُشر في</span>
+
+              <time title="أُنشأ: 2019-12-14 21:10:17" itemprop="dateCreated datePublished" datetime="2019-12-14T21:10:17+08:00">2019-12-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">عُدل في</span>
+                <time title="عُدل: 2022-09-10 15:24:47" itemprop="dateModified" datetime="2022-09-10T15:24:47+08:00">2022-09-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">في</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Sklearn (全称 Scikit-Learn) 是基于 Python 语言的机器学习工具。它建立在 NumPy, SciPy, Pandas 和 Matplotlib 之上，里面的 API 的设计非常好，所有对象的接口简单，很适合新手上路。<span id="more"></span></p>
 <p>在 Sklearn 里面有六大任务模块：分别是分类、回归、聚类、降维、模型选择和预处理，如下图从其官网的截屏。</p>
 <p><img src="http://img.9lake.com/uPic/9NRoXM.jpg" alt="9NRoXM"></p>
 <p>要使用上述六大模块的方法，可以用以下的伪代码，注意 import 后面我用的都是一些通用名称，如 SomeClassifier, SomeRegressor, SomeModel，具体化的名称由具体问题而定，比如</p>
@@ -486,68 +632,197 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 无监督学习</span><br><span class="line">from sklearn.xxx import SomeModel</span><br><span class="line"># xxx 可以是 cluster 或 decomposition 等</span><br><span class="line"></span><br><span class="line">model = SomeModel( hyperparameter )</span><br><span class="line">model.fit( X )</span><br><span class="line">idx_pred = model.predict( X_new )</span><br><span class="line">s = model.score( X_new )</span><br></pre></td></tr></table></figure>
 
 
-        </div>
-        
-        <div class="post-tag">
-            
-            <a class="tag" href="/tags/Sklearn/" title="Sklearn">Sklearn</a>
-            
-        </div>
-        
-    </article>
-</div>
-<div class="paginator">
-    
-        
-            <a class="prev" href="/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BPandas/">
-                <i class="iconfont icon-prev"></i>
-                <span class="nav-default">数据结构之Pandas</span>
-                <span class="nav-mobile">上一篇</span>
-            </a>
-        
-        
-            <a class="next" href="/2019/10/31/%CE%B1%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0/">
-                <span class="nav-default">α的三要素</span>
-                <span class="nav-mobile">下一篇</span>
-                <i class="iconfont icon-next"></i>
-            </a>
-        
-    
-</div>
-<div id="comment-container"></div>
     </div>
-</div>
-<footer class="footer-social">
-    
 
     
-
+    
     
 
-    <div class="footer-copyright">
-        <p class="time-line">
-            &copy;
-            
-            
-            2022
-            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
-            <a target="_blank" href="https://github.com/iJinxin">Justin ZM</a>
-        </p>
-        <p class="theme-info">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
-            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
-        </p>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Sklearn/" rel="tag"># Sklearn</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/10/31/%CE%B1%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0/" rel="prev" title="α的三要素">
+      <i class="fa fa-chevron-left"></i> α的三要素
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BPandas/" rel="next" title="数据结构之Pandas">
+      数据结构之Pandas <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
-</footer>
-</body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      </footer>
+    
+  </article>
+  
+  
+  
 
-<script src="/js/index.js"></script>
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+
+          </div>
+          
+
 <script>
-    
-
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
 </script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%86%E7%B1%BB-Classification"><span class="nav-number">1.</span> <span class="nav-text">分类 (Classification)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9B%9E%E5%BD%92-Regression"><span class="nav-number">2.</span> <span class="nav-text">回归 (Regression)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%81%9A%E7%B1%BB-Clustering"><span class="nav-number">3.</span> <span class="nav-text">聚类 (Clustering)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%99%8D%E7%BB%B4-Dimensionality-Reduction"><span class="nav-number">4.</span> <span class="nav-text">降维 (Dimensionality Reduction)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9-Model-Selection"><span class="nav-number">5.</span> <span class="nav-text">模型选择 (Model Selection)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A2%84%E5%A4%84%E7%90%86-Preprocessing"><span class="nav-number">6.</span> <span class="nav-text">预处理 (Preprocessing)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86-Dataset"><span class="nav-number">7.</span> <span class="nav-text">数据集 (Dataset)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B"><span class="nav-number"></span> <span class="nav-text">机器学习简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%92%8C%E7%BB%84%E6%88%90%E5%85%83%E7%B4%A0"><span class="nav-number"></span> <span class="nav-text">定义和组成元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE"><span class="nav-number"></span> <span class="nav-text">数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E5%8C%96%E5%92%8C%E9%9D%9E%E7%BB%93%E6%9E%84%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">结构化和非结构化</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%9D%9E%E7%BB%93%E6%9E%84%E5%8C%96%E6%95%B0%E6%8D%AE"><span class="nav-number">1.1.</span> <span class="nav-text">非结构化数据</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E5%8C%96%E6%95%B0%E6%8D%AE"><span class="nav-number">1.2.</span> <span class="nav-text">结构化数据</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8E%9F%E5%A7%8B%E5%92%8C%E5%8A%A0%E5%B7%A5"><span class="nav-number">2.</span> <span class="nav-text">原始和加工</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F%E6%80%A7%E6%95%B0%E6%8D%AE"><span class="nav-number">2.1.</span> <span class="nav-text">图像性数据</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E5%9E%8B%E6%95%B0%E6%8D%AE"><span class="nav-number">2.2.</span> <span class="nav-text">文本型数据</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%88%86%E7%B1%BB%E5%9E%8B%E5%8F%98%E9%87%8F"><span class="nav-number">2.3.</span> <span class="nav-text">分类型变量</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A0%B7%E6%9C%AC%E5%86%85%E5%92%8C%E6%A0%B7%E6%9C%AC%E5%A4%96"><span class="nav-number">3.</span> <span class="nav-text">样本内和样本外</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A1"><span class="nav-number"></span> <span class="nav-text">任务</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.</span> <span class="nav-text">有监督学习</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%88%86%E7%B1%BB"><span class="nav-number">1.1.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%9B%9E%E5%BD%92"><span class="nav-number">1.2.</span> <span class="nav-text">回归</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%97%A0%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="nav-number">2.</span> <span class="nav-text">无监督学习</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%81%9A%E7%B1%BB"><span class="nav-number">2.1.</span> <span class="nav-text">聚类</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%99%8D%E7%BB%B4"><span class="nav-number">2.2.</span> <span class="nav-text">降维</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E5%BA%A6%E9%87%8F"><span class="nav-number"></span> <span class="nav-text">性能度量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B"><span class="nav-number"></span> <span class="nav-text">模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sklearn-%E6%95%B0%E6%8D%AE"><span class="nav-number"></span> <span class="nav-text">Sklearn 数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="nav-number"></span> <span class="nav-text">数据格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%B8%A6%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number"></span> <span class="nav-text">自带数据集</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%89%B9%E4%BE%8B%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">特例描述</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Pandas-DataFrame"><span class="nav-number">1.1.</span> <span class="nav-text">Pandas DataFrame</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Seaborn-Pairplot"><span class="nav-number">1.2.</span> <span class="nav-text">Seaborn Pairplot</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%A3%E8%A7%84%E5%BC%95%E5%85%A5"><span class="nav-number">2.</span> <span class="nav-text">正规引入</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83-API"><span class="nav-number"></span> <span class="nav-text">核心 API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%B0%E8%AE%A1%E5%99%A8"><span class="nav-number"></span> <span class="nav-text">估计器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="nav-number">1.</span> <span class="nav-text">线性回归</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#K-%E5%9D%87%E5%80%BC"><span class="nav-number">2.</span> <span class="nav-text">K 均值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%84%E6%B5%8B%E5%99%A8"><span class="nav-number"></span> <span class="nav-text">预测器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AF%B9%E7%8E%87%E5%9B%9E%E5%BD%92"><span class="nav-number">1.</span> <span class="nav-text">对率回归</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#K-%E5%9D%87%E5%80%BC-1"><span class="nav-number">2.</span> <span class="nav-text">K 均值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B0%8F%E8%8A%82"><span class="nav-number">3.</span> <span class="nav-text">小节</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Justin ZM</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">التصنيفات</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">الوسوم</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Justin ZM</span>
+</div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
 </html>

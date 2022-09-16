@@ -1,110 +1,308 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-cn">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <title>草根之明</title>
-    
-<link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-    
-<link rel="stylesheet" href="/css/gitment.css">
+<link rel="stylesheet" href="/css/main.css">
 
-    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
-<meta name="generator" content="Hexo 6.3.0"></head>
-<body>
-<header class="header">
-    <div class="header-inner">
-        <div class="header-title">
 
-        </div>
-        <nav class="header-nav">
-            
-            <a href="/" class="header-nav-link" >
-                首页
-            </a>
-            
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-            
-            <a href="/archives" class="header-nav-link">
-                归档
-            </a>
-            
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"justinzm.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-            
-            <a href="/tags" class="header-nav-link">
-                标签
-            </a>
-            
+  <meta name="description" content="Matplotlib 是 Python 中最基本的可视化工具，官网里 ((https:&#x2F;&#x2F;matplotlib.org&#x2F;) 有无数好资料，但这不是重点，本文肯定和市面上的所有讲解都不一样。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基本可视化之Matplotlib">
+<meta property="og:url" content="https://justinzm.github.io/2019/12/15/%E5%9F%BA%E6%9C%AC%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8BMatplotlib/index.html">
+<meta property="og:site_name" content="草根之明">
+<meta property="og:description" content="Matplotlib 是 Python 中最基本的可视化工具，官网里 ((https:&#x2F;&#x2F;matplotlib.org&#x2F;) 有无数好资料，但这不是重点，本文肯定和市面上的所有讲解都不一样。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://img.9lake.com/uPic/kgENNB.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/fdaF5c.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/GZLAWh.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/SykcaA.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/A7OKpu.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/6xREbX.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/W5VtkZ.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/zxugfW.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/o6iTGg.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/didvI1.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/98H3Og.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/MSblwi.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/rK1U1V.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/JRxKmK.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/hhDntd.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/XvvvSb.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/Txvquz.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/2wqy9P.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/RLEgEu.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/R4O7FS.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/ZvdZmz.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/XzQPtk.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/B6l9R1.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/smzqS5.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/z6I417.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/Rk81yg.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/9Fpcgg.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/L3cRID.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/FKd4cK.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/caaOVA.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/AONeX0.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/4NtBYh.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/2hRCJC.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/r84Mmk.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/ZOVD6c.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/uTUesN.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/MRJTP3.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/cIgc2A.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/Zfv5RH.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/ZZFrEz.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/LNEzAr.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/k1quZK.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/FuSMmG.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/jyY8sG.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/wN26mR.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/QdbMqJ.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/fIzZ3z.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/2LUaeM.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/7l3vuA.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/ca6LGZ.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/8VQWaq.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/ZMjXad.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/II9xoQ.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/SmpW9b.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/F0CBk1.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/2JQHWu.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/hboZJ1.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/9Lz0dK.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/TSfrft.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/fimjyg.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/h5Cd3H.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/OGUWAM.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/jmWOzW.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/2rbar0.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/HkZzJQ.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/mxF2VJ.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/OR8m7c.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/p6sZEP.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/TJ0sKO.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/PeYmN3.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/xPzrgV.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/ryWXiX.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/0weHXu.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/6Hn7Et.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/Dc48ZG.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/v8Dwf4.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/MFABaS.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/otcNuO.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/dYLiIE.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/3O3mel.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/CiZqNP.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/cBRHNp.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/bNt72W.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/ptWhHY.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/xRuih7.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/gARBN8.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/GigJlg.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/Uo91tl.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/VU6Rtn.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/dwDcmP.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/DnnvJi.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/Ri189t.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/PX8fsq.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/vLj4As.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/uSVQlK.jpg">
+<meta property="og:image" content="http://img.9lake.com/uPic/ZDehSH.jpg">
+<meta property="article:published_time" content="2019-12-15T03:41:56.000Z">
+<meta property="article:modified_time" content="2022-09-10T07:25:20.651Z">
+<meta property="article:author" content="Justin ZM">
+<meta property="article:tag" content="项目管理、产品管理、区块链">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://img.9lake.com/uPic/kgENNB.jpg">
 
-            
-            <a href="/about/" class="header-nav-link">
-                关于
-            </a>
-            
-        </nav>
+<link rel="canonical" href="https://justinzm.github.io/2019/12/15/%E5%9F%BA%E6%9C%AC%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8BMatplotlib/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-cn'
+  };
+</script>
+
+  <title>基本可视化之Matplotlib | 草根之明</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-</header>
-<header class="mobile-header">
-    <div class="mobile-nav">
-        <div class="mobile-nav-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="mobile-nav-title">
-            <a href="/" class="mobile-nav-title-link">Justin ZM's Blog</a>
-        </div>
+  </div>
 
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">草根之明</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">草根之明-管理及技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
     </div>
-    <nav class="mobile-menu">
-        <ul class="mobile-menu-list">
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-home"></i>
-                <a href="/" class="mobile-nav-link">首页</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-archive"></i>
-                <a href="/archives" class="mobile-nav-link">归档</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-tag"></i>
-                <a href="/tags" class="mobile-nav-link">标签</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-about"></i>
-                <a href="/about/" class="mobile-nav-link">关于</a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<div class="main">
-    <div class="content-inner">
-        <div class="posts">
-    <article class="post-whole">
-        <div class="post-title">
-            <h2 class="title">基本可视化之Matplotlib</h2>
-            <div class="post-meta">
-                <span class="post-time">2019-12-15</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/Python/">Python</a>
-                    
-                </span>
-                
-                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
-            </div>
-        </div>
-        <div class="post-toc" id="post-toc">
-    <strong class="post-toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Matplotlib"><span class="toc-text">Matplotlib</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%A7%88"><span class="toc-text">概览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE"><span class="toc-text">图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%90%E6%A0%87%E7%B3%BB-amp-%E5%AD%90%E5%9B%BE"><span class="toc-text">坐标系 &amp; 子图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%90%E5%9B%BE"><span class="toc-text">子图</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%C3%972-%E5%AD%90%E5%9B%BE"><span class="toc-text">1×2 子图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%C3%971-%E5%AD%90%E5%9B%BE"><span class="toc-text">2×1 子图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%C3%972-%E5%AD%90%E5%9B%BE"><span class="toc-text">2×2 子图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="toc-text">坐标系</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%8D%E8%A7%84%E5%88%99%E7%BD%91%E6%A0%BC"><span class="toc-text">不规则网格</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%A7%E5%9B%BE%E5%A5%97%E5%B0%8F%E5%9B%BE"><span class="toc-text">大图套小图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%87%8D%E5%8F%A0%E5%9B%BE"><span class="toc-text">重叠图</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E7%94%9F%E6%88%90%E5%9D%90%E6%A0%87%E7%B3%BB%E7%9A%84%E6%8E%A8%E8%8D%90%E4%BB%A3%E7%A0%81"><span class="toc-text">两种生成坐标系的推荐代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9D%90%E6%A0%87%E8%BD%B4"><span class="toc-text">坐标轴</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%BB%E5%BA%A6"><span class="toc-text">刻度</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%89%8D%E6%9C%9F%E5%B7%A5%E4%BD%9C"><span class="toc-text">前期工作</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%BB%E5%BA%A6%E5%B1%95%E7%A4%BA"><span class="toc-text">刻度展示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-6-%E5%9F%BA%E7%A1%80%E5%85%83%E7%B4%A0"><span class="toc-text">1.6 基础元素</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%94%BB%E7%BE%8E%E6%84%9F%E5%9B%BE"><span class="toc-text">2 画美感图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E5%9B%BE%E7%9A%84%E9%BB%98%E8%AE%A4%E8%AE%BE%E7%BD%AE"><span class="toc-text">2.2 图的默认设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-%E8%AE%BE%E7%BD%AE%E5%B0%BA%E5%AF%B8%E5%92%8C-DPI"><span class="toc-text">2.3 设置尺寸和 DPI</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-%E8%AE%BE%E7%BD%AE%E9%A2%9C%E8%89%B2-%E9%A3%8E%E6%A0%BC-%E5%AE%BD%E5%BA%A6"><span class="toc-text">2.4 设置颜色-风格-宽度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-%E8%AE%BE%E7%BD%AE%E8%BE%B9%E7%95%8C"><span class="toc-text">2.5 设置边界</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-%E8%AE%BE%E7%BD%AE%E5%88%BB%E5%BA%A6%E5%92%8C%E6%A0%87%E7%AD%BE"><span class="toc-text">2.6 设置刻度和标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-%E6%B7%BB%E5%8A%A0%E5%9B%BE%E4%BE%8B"><span class="toc-text">2.7 添加图例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-8-%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%BA%8C%E5%B9%85%E5%9B%BE"><span class="toc-text">2.8 添加第二幅图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-9-%E4%B8%A4%E4%B8%AA%E5%9D%90%E6%A0%87%E7%B3%BB-amp-%E4%B8%A4%E5%B9%85%E5%AD%90%E5%9B%BE"><span class="toc-text">2.9 两个坐标系 &amp; 两幅子图</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%A4%E4%B8%AA%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="toc-text">两个坐标系</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%A4%E5%B9%85%E5%AD%90%E5%9B%BE"><span class="toc-text">两幅子图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-10-%E8%AE%BE%E7%BD%AE%E6%A0%87%E6%B3%A8"><span class="toc-text">2.10 设置标注</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-11-%E8%AE%BE%E7%BD%AE%E9%80%8F%E6%98%8E%E5%BA%A6"><span class="toc-text">2.11 设置透明度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-12-%E5%AE%8C%E5%96%84%E7%BB%86%E8%8A%82"><span class="toc-text">2.12 完善细节</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%94%BB%E6%9C%89%E6%95%88%E5%9B%BE"><span class="toc-text">3 画有效图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-%E6%A6%82%E8%A7%88"><span class="toc-text">3.1 概览</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="toc-text">3.2 直方图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-%E6%95%A3%E7%82%B9%E5%9B%BE"><span class="toc-text">3.3 散点图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-%E6%8A%98%E7%BA%BF%E5%9B%BE"><span class="toc-text">3.4 折线图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-%E9%A5%BC%E7%8A%B6%E5%9B%BE"><span class="toc-text">3.5 饼状图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-6-%E5%90%8C%E7%90%86%E5%BF%83"><span class="toc-text">3.6 同理心</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BA%E7%94%A8%E6%88%B7%E4%B9%A0%E6%83%AF%E8%80%83%E8%99%91"><span class="toc-text">为用户习惯考虑</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BA%E5%9B%BE%E8%A1%A8%E4%BF%A1%E6%81%AF%E8%80%83%E8%99%91"><span class="toc-text">为图表信息考虑</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BA%E8%89%B2%E7%9B%B2%E7%94%A8%E6%88%B7%E8%80%83%E8%99%91"><span class="toc-text">为色盲用户考虑</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E6%80%BB%E7%BB%93"><span class="toc-text">4总结</span></a></li></ol></li></ol>
-    <div class="back-to-top" id="back-to-top">
-        <a href="javascript:void(0);">回到顶部</a>
-    </div>
+  </div>
 </div>
-        <div class="post-content">
-            <p>Matplotlib 是 Python 中最基本的可视化工具，官网里 ((<a target="_blank" rel="noopener" href="https://matplotlib.org/">https://matplotlib.org/</a>) 有无数好资料，但这不是重点，本文肯定和市面上的所有讲解都不一样。<span id="more"></span></p>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>الأرشيفات</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-cn">
+    <link itemprop="mainEntityOfPage" href="https://justinzm.github.io/2019/12/15/%E5%9F%BA%E6%9C%AC%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8BMatplotlib/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Justin ZM">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="草根之明">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          基本可视化之Matplotlib
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">نُشر في</span>
+
+              <time title="أُنشأ: 2019-12-15 11:41:56" itemprop="dateCreated datePublished" datetime="2019-12-15T11:41:56+08:00">2019-12-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">عُدل في</span>
+                <time title="عُدل: 2022-09-10 15:25:20" itemprop="dateModified" datetime="2022-09-10T15:25:20+08:00">2022-09-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">في</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Matplotlib 是 Python 中最基本的可视化工具，官网里 ((<a target="_blank" rel="noopener" href="https://matplotlib.org/">https://matplotlib.org/</a>) 有无数好资料，但这不是重点，本文肯定和市面上的所有讲解都不一样。<span id="more"></span></p>
 <p>和 NumPy, SciPy, Pandas 一样，要用 Matplotlib，首先引用其库。</p>
 <pre><code>import matplotlib
 </code></pre>
@@ -718,62 +916,194 @@
 <p>我们现在处于一个大数据的时代，制图能力现在和写作能力一样重要。任何人现在都可以用各种制图工具或者编程语言来画图，但是很少人懂得画出好图。</p>
 <p>好图不是指的绚烂的颜色 (fancy colors) 和复杂的层级 (complex layers)，当一张图里的信息能够以最清晰和有效的方式传递给使用者，那么这张图就是好图。</p>
 
-        </div>
-        
-    </article>
-</div>
-<div class="paginator">
-    
-        
-            <a class="prev" href="/2020/02/15/%E9%87%91%E8%9E%8D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
-                <i class="iconfont icon-prev"></i>
-                <span class="nav-default">金融数据结构--数据类型</span>
-                <span class="nav-mobile">上一篇</span>
-            </a>
-        
-        
-            <a class="next" href="/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BPandas/">
-                <span class="nav-default">数据结构之Pandas</span>
-                <span class="nav-mobile">下一篇</span>
-                <i class="iconfont icon-next"></i>
-            </a>
-        
-    
-</div>
-<div id="comment-container"></div>
     </div>
-</div>
-<footer class="footer-social">
-    
 
     
-
+    
     
 
-    <div class="footer-copyright">
-        <p class="time-line">
-            &copy;
-            
-            
-            2022
-            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
-            <a target="_blank" href="https://github.com/iJinxin">Justin ZM</a>
-        </p>
-        <p class="theme-info">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
-            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
-        </p>
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BPandas/" rel="prev" title="数据结构之Pandas">
+      <i class="fa fa-chevron-left"></i> 数据结构之Pandas
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/15/%E9%87%91%E8%9E%8D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="next" title="金融数据结构--数据类型">
+      金融数据结构--数据类型 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
-</footer>
-</body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      </footer>
+    
+  </article>
+  
+  
+  
 
-<script src="/js/index.js"></script>
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+
+          </div>
+          
+
 <script>
-    
-
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
 </script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Matplotlib"><span class="nav-number">1.</span> <span class="nav-text">Matplotlib</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E8%A7%88"><span class="nav-number">1.1.</span> <span class="nav-text">概览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE"><span class="nav-number">1.2.</span> <span class="nav-text">图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9D%90%E6%A0%87%E7%B3%BB-amp-%E5%AD%90%E5%9B%BE"><span class="nav-number">1.3.</span> <span class="nav-text">坐标系 &amp; 子图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%90%E5%9B%BE"><span class="nav-number">1.3.1.</span> <span class="nav-text">子图</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%C3%972-%E5%AD%90%E5%9B%BE"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">1×2 子图</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%C3%971-%E5%AD%90%E5%9B%BE"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">2×1 子图</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%C3%972-%E5%AD%90%E5%9B%BE"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">2×2 子图</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="nav-number">1.3.2.</span> <span class="nav-text">坐标系</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%8D%E8%A7%84%E5%88%99%E7%BD%91%E6%A0%BC"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">不规则网格</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%A7%E5%9B%BE%E5%A5%97%E5%B0%8F%E5%9B%BE"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">大图套小图</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%87%8D%E5%8F%A0%E5%9B%BE"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">重叠图</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E7%94%9F%E6%88%90%E5%9D%90%E6%A0%87%E7%B3%BB%E7%9A%84%E6%8E%A8%E8%8D%90%E4%BB%A3%E7%A0%81"><span class="nav-number">1.3.2.3.1.</span> <span class="nav-text">两种生成坐标系的推荐代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9D%90%E6%A0%87%E8%BD%B4"><span class="nav-number">1.3.3.</span> <span class="nav-text">坐标轴</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%BB%E5%BA%A6"><span class="nav-number">1.3.4.</span> <span class="nav-text">刻度</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%89%8D%E6%9C%9F%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">前期工作</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%BB%E5%BA%A6%E5%B1%95%E7%A4%BA"><span class="nav-number">1.3.5.</span> <span class="nav-text">刻度展示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6-%E5%9F%BA%E7%A1%80%E5%85%83%E7%B4%A0"><span class="nav-number">1.3.6.</span> <span class="nav-text">1.6 基础元素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%94%BB%E7%BE%8E%E6%84%9F%E5%9B%BE"><span class="nav-number">1.4.</span> <span class="nav-text">2 画美感图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E5%9B%BE%E7%9A%84%E9%BB%98%E8%AE%A4%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.4.1.</span> <span class="nav-text">2.2 图的默认设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-%E8%AE%BE%E7%BD%AE%E5%B0%BA%E5%AF%B8%E5%92%8C-DPI"><span class="nav-number">1.4.2.</span> <span class="nav-text">2.3 设置尺寸和 DPI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-%E8%AE%BE%E7%BD%AE%E9%A2%9C%E8%89%B2-%E9%A3%8E%E6%A0%BC-%E5%AE%BD%E5%BA%A6"><span class="nav-number">1.4.3.</span> <span class="nav-text">2.4 设置颜色-风格-宽度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-%E8%AE%BE%E7%BD%AE%E8%BE%B9%E7%95%8C"><span class="nav-number">1.4.4.</span> <span class="nav-text">2.5 设置边界</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-%E8%AE%BE%E7%BD%AE%E5%88%BB%E5%BA%A6%E5%92%8C%E6%A0%87%E7%AD%BE"><span class="nav-number">1.4.5.</span> <span class="nav-text">2.6 设置刻度和标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-7-%E6%B7%BB%E5%8A%A0%E5%9B%BE%E4%BE%8B"><span class="nav-number">1.4.6.</span> <span class="nav-text">2.7 添加图例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-8-%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%BA%8C%E5%B9%85%E5%9B%BE"><span class="nav-number">1.4.7.</span> <span class="nav-text">2.8 添加第二幅图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-9-%E4%B8%A4%E4%B8%AA%E5%9D%90%E6%A0%87%E7%B3%BB-amp-%E4%B8%A4%E5%B9%85%E5%AD%90%E5%9B%BE"><span class="nav-number">1.4.8.</span> <span class="nav-text">2.9 两个坐标系 &amp; 两幅子图</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%A4%E4%B8%AA%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="nav-number">1.4.8.1.</span> <span class="nav-text">两个坐标系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%A4%E5%B9%85%E5%AD%90%E5%9B%BE"><span class="nav-number">1.4.8.2.</span> <span class="nav-text">两幅子图</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-10-%E8%AE%BE%E7%BD%AE%E6%A0%87%E6%B3%A8"><span class="nav-number">1.4.9.</span> <span class="nav-text">2.10 设置标注</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-11-%E8%AE%BE%E7%BD%AE%E9%80%8F%E6%98%8E%E5%BA%A6"><span class="nav-number">1.4.10.</span> <span class="nav-text">2.11 设置透明度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-12-%E5%AE%8C%E5%96%84%E7%BB%86%E8%8A%82"><span class="nav-number">1.4.11.</span> <span class="nav-text">2.12 完善细节</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E7%94%BB%E6%9C%89%E6%95%88%E5%9B%BE"><span class="nav-number">1.5.</span> <span class="nav-text">3 画有效图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E6%A6%82%E8%A7%88"><span class="nav-number">1.5.1.</span> <span class="nav-text">3.1 概览</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="nav-number">1.5.2.</span> <span class="nav-text">3.2 直方图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-%E6%95%A3%E7%82%B9%E5%9B%BE"><span class="nav-number">1.5.3.</span> <span class="nav-text">3.3 散点图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-%E6%8A%98%E7%BA%BF%E5%9B%BE"><span class="nav-number">1.5.4.</span> <span class="nav-text">3.4 折线图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-%E9%A5%BC%E7%8A%B6%E5%9B%BE"><span class="nav-number">1.5.5.</span> <span class="nav-text">3.5 饼状图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-6-%E5%90%8C%E7%90%86%E5%BF%83"><span class="nav-number">1.5.6.</span> <span class="nav-text">3.6 同理心</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BA%E7%94%A8%E6%88%B7%E4%B9%A0%E6%83%AF%E8%80%83%E8%99%91"><span class="nav-number">1.5.6.1.</span> <span class="nav-text">为用户习惯考虑</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BA%E5%9B%BE%E8%A1%A8%E4%BF%A1%E6%81%AF%E8%80%83%E8%99%91"><span class="nav-number">1.5.6.2.</span> <span class="nav-text">为图表信息考虑</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BA%E8%89%B2%E7%9B%B2%E7%94%A8%E6%88%B7%E8%80%83%E8%99%91"><span class="nav-number">1.5.6.3.</span> <span class="nav-text">为色盲用户考虑</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E6%80%BB%E7%BB%93"><span class="nav-number">1.6.</span> <span class="nav-text">4总结</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Justin ZM</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">التصنيفات</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">الوسوم</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Justin ZM</span>
+</div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
 </html>
