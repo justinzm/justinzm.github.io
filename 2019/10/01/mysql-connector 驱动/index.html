@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>草根之明</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                首页
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="/tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+            <a href="/about/" class="header-nav-link">
+                关于
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Justin ZM's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">mysql-connector 驱动</h2>
+            <div class="post-meta">
+                <span class="post-time">2019-10-01</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/Python/">Python</a>
+                    
+                </span>
+                
+                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">创建数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">链接数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="toc-text">插入数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="toc-text">批量插入数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE"><span class="toc-text">查询数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#where-%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5"><span class="toc-text">where 条件语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="toc-text">删除数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E8%A1%A8%E6%95%B0%E6%8D%AE"><span class="toc-text">更新表数据</span></a></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install mysql-connector</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><p>创建数据库使用 “CREATE DATABASE” 语句，以下创建一个名为 runoob_db 的数据库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import mysql.connector</span><br><span class="line"> </span><br><span class="line">mydb = mysql.connector.connect(</span><br><span class="line">  host=<span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">  user=<span class="string">&quot;root&quot;</span>,</span><br><span class="line">  passwd=<span class="string">&quot;123456&quot;</span></span><br><span class="line">)</span><br><span class="line"> </span><br><span class="line">mycursor = mydb.cursor()</span><br><span class="line"> </span><br><span class="line">mycursor.execute(<span class="string">&quot;CREATE DATABASE runoob_db&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="链接数据库"><a href="#链接数据库" class="headerlink" title="链接数据库"></a>链接数据库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import mysql.connector</span><br><span class="line"> </span><br><span class="line">mydb = mysql.connector.connect(</span><br><span class="line">  host=<span class="string">&quot;localhost&quot;</span>,       <span class="comment"># 数据库主机地址</span></span><br><span class="line">  user=<span class="string">&quot;yourusername&quot;</span>,    <span class="comment"># 数据库用户名</span></span><br><span class="line">  passwd=<span class="string">&quot;yourpassword&quot;</span>   <span class="comment"># 数据库密码</span></span><br><span class="line">  database=<span class="string">&quot;runoob_db&quot;</span>    <span class="comment"># 数据库名称</span></span><br><span class="line">)</span><br><span class="line"><span class="built_in">print</span>(mydb)</span><br></pre></td></tr></table></figure>
+
+<h3 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import mysql.connector</span><br><span class="line"> </span><br><span class="line">mydb = mysql.connector.connect(</span><br><span class="line">  host=<span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">  user=<span class="string">&quot;root&quot;</span>,</span><br><span class="line">  passwd=<span class="string">&quot;123456&quot;</span>,</span><br><span class="line">  database=<span class="string">&quot;runoob_db&quot;</span></span><br><span class="line">)</span><br><span class="line">mycursor = mydb.cursor()</span><br><span class="line"> </span><br><span class="line">sql = <span class="string">&quot;INSERT INTO sites (name, url) VALUES (%s, %s)&quot;</span></span><br><span class="line">val = (<span class="string">&quot;RUNOOB&quot;</span>, <span class="string">&quot;https://www.runoob.com&quot;</span>)</span><br><span class="line">mycursor.execute(sql, val)</span><br><span class="line"> </span><br><span class="line">mydb.commit()    <span class="comment"># 数据表内容有更新，必须使用到该语句</span></span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span>(mycursor.rowcount, <span class="string">&quot;记录插入成功。&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="批量插入数据"><a href="#批量插入数据" class="headerlink" title="批量插入数据"></a>批量插入数据</h4><p>批量插入使用 executemany() 方法，该方法的第二个参数是一个元组列表，包含了我们要插入的数据：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import mysql.connector</span><br><span class="line"> </span><br><span class="line">mydb = mysql.connector.connect(</span><br><span class="line">  host=<span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">  user=<span class="string">&quot;root&quot;</span>,</span><br><span class="line">  passwd=<span class="string">&quot;123456&quot;</span>,</span><br><span class="line">  database=<span class="string">&quot;runoob_db&quot;</span></span><br><span class="line">)</span><br><span class="line">mycursor = mydb.cursor()</span><br><span class="line"> </span><br><span class="line">sql = <span class="string">&quot;INSERT INTO sites (name, url) VALUES (%s, %s)&quot;</span></span><br><span class="line">val = [</span><br><span class="line">  (<span class="string">&#x27;Google&#x27;</span>, <span class="string">&#x27;https://www.google.com&#x27;</span>),</span><br><span class="line">  (<span class="string">&#x27;Github&#x27;</span>, <span class="string">&#x27;https://www.github.com&#x27;</span>),</span><br><span class="line">  (<span class="string">&#x27;Taobao&#x27;</span>, <span class="string">&#x27;https://www.taobao.com&#x27;</span>),</span><br><span class="line">  (<span class="string">&#x27;stackoverflow&#x27;</span>, <span class="string">&#x27;https://www.stackoverflow.com/&#x27;</span>)</span><br><span class="line">]</span><br><span class="line"> </span><br><span class="line">mycursor.executemany(sql, val)</span><br><span class="line"> </span><br><span class="line">mydb.commit()    <span class="comment"># 数据表内容有更新，必须使用到该语句</span></span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span>(mycursor.rowcount, <span class="string">&quot;记录插入成功。&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>如果我们想在数据记录插入后，获取该记录的 ID ，可以使用以下代码 (mycursor.lastrowid)：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import mysql.connector</span><br><span class="line"> </span><br><span class="line">mydb = mysql.connector.connect(</span><br><span class="line">  host=<span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">  user=<span class="string">&quot;root&quot;</span>,</span><br><span class="line">  passwd=<span class="string">&quot;123456&quot;</span>,</span><br><span class="line">  database=<span class="string">&quot;runoob_db&quot;</span></span><br><span class="line">)</span><br><span class="line">mycursor = mydb.cursor()</span><br><span class="line"> </span><br><span class="line">sql = <span class="string">&quot;INSERT INTO sites (name, url) VALUES (%s, %s)&quot;</span></span><br><span class="line">val = (<span class="string">&quot;Zhihu&quot;</span>, <span class="string">&quot;https://www.zhihu.com&quot;</span>)</span><br><span class="line">mycursor.execute(sql, val)</span><br><span class="line"> </span><br><span class="line">mydb.commit()</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;1 条记录已插入, ID:&quot;</span>, mycursor.lastrowid)</span><br></pre></td></tr></table></figure>
+
+<h3 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h3><p>查询数据使用 SELECT 语句：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import mysql.connector</span><br><span class="line"> </span><br><span class="line">mydb = mysql.connector.connect(</span><br><span class="line">  host=<span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">  user=<span class="string">&quot;root&quot;</span>,</span><br><span class="line">  passwd=<span class="string">&quot;123456&quot;</span>,</span><br><span class="line">  database=<span class="string">&quot;runoob_db&quot;</span></span><br><span class="line">)</span><br><span class="line">mycursor = mydb.cursor()</span><br><span class="line"> </span><br><span class="line">mycursor.execute(<span class="string">&quot;SELECT * FROM sites&quot;</span>)</span><br><span class="line"> </span><br><span class="line">myresult = mycursor.fetchall()     <span class="comment"># fetchall() 获取所有记录</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> myresult:</span><br><span class="line">  <span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
+<p>执行代码，输出结果为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(1, <span class="string">&#x27;RUNOOB&#x27;</span>, <span class="string">&#x27;https://www.runoob.com&#x27;</span>)</span><br><span class="line">(2, <span class="string">&#x27;Google&#x27;</span>, <span class="string">&#x27;https://www.google.com&#x27;</span>)</span><br><span class="line">(3, <span class="string">&#x27;Github&#x27;</span>, <span class="string">&#x27;https://www.github.com&#x27;</span>)</span><br><span class="line">(4, <span class="string">&#x27;Taobao&#x27;</span>, <span class="string">&#x27;https://www.taobao.com&#x27;</span>)</span><br><span class="line">(5, <span class="string">&#x27;stackoverflow&#x27;</span>, <span class="string">&#x27;https://www.stackoverflow.com/&#x27;</span>)</span><br><span class="line">(6, <span class="string">&#x27;Zhihu&#x27;</span>, <span class="string">&#x27;https://www.zhihu.com&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>如果我们只想读取一条数据，可以使用 fetchone() 方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import mysql.connector</span><br><span class="line"> </span><br><span class="line">mydb = mysql.connector.connect(</span><br><span class="line">  host=<span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">  user=<span class="string">&quot;root&quot;</span>,</span><br><span class="line">  passwd=<span class="string">&quot;123456&quot;</span>,</span><br><span class="line">  database=<span class="string">&quot;runoob_db&quot;</span></span><br><span class="line">)</span><br><span class="line">mycursor = mydb.cursor()</span><br><span class="line">mycursor.execute(<span class="string">&quot;SELECT * FROM sites&quot;</span>)</span><br><span class="line">myresult = mycursor.fetchone()</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span>(myresult)</span><br></pre></td></tr></table></figure>
+
+<h3 id="where-条件语句"><a href="#where-条件语句" class="headerlink" title="where 条件语句"></a>where 条件语句</h3><p>如果我们要读取指定条件的数据，可以使用 where 语句</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import mysql.connector</span><br><span class="line"> </span><br><span class="line">mydb = mysql.connector.connect(</span><br><span class="line">  host=<span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">  user=<span class="string">&quot;root&quot;</span>,</span><br><span class="line">  passwd=<span class="string">&quot;123456&quot;</span>,</span><br><span class="line">  database=<span class="string">&quot;runoob_db&quot;</span></span><br><span class="line">)</span><br><span class="line">mycursor = mydb.cursor()</span><br><span class="line"> </span><br><span class="line">sql = <span class="string">&quot;SELECT * FROM sites WHERE name =&#x27;RUNOOB&#x27;&quot;</span></span><br><span class="line">mycursor.execute(sql)</span><br><span class="line">myresult = mycursor.fetchall()</span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> myresult:</span><br><span class="line">  <span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
+
+<p>为了防止数据库查询发生 SQL 注入的攻击，我们可以使用 %s 占位符来转义查询的条件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import mysql.connector</span><br><span class="line"> </span><br><span class="line">mydb = mysql.connector.connect(</span><br><span class="line">  host=<span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">  user=<span class="string">&quot;root&quot;</span>,</span><br><span class="line">  passwd=<span class="string">&quot;123456&quot;</span>,</span><br><span class="line">  database=<span class="string">&quot;runoob_db&quot;</span></span><br><span class="line">)</span><br><span class="line">mycursor = mydb.cursor()</span><br><span class="line"> </span><br><span class="line">sql = <span class="string">&quot;SELECT * FROM sites WHERE name = %s&quot;</span></span><br><span class="line">na = (<span class="string">&quot;RUNOOB&quot;</span>, )</span><br><span class="line"> </span><br><span class="line">mycursor.execute(sql, na)</span><br><span class="line">myresult = mycursor.fetchall()</span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> myresult:</span><br><span class="line">  <span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><p>删除记录使用 “DELETE FROM” 语句</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import mysql.connector</span><br><span class="line"> </span><br><span class="line">mydb = mysql.connector.connect(</span><br><span class="line">  host=<span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">  user=<span class="string">&quot;root&quot;</span>,</span><br><span class="line">  passwd=<span class="string">&quot;123456&quot;</span>,</span><br><span class="line">  database=<span class="string">&quot;runoob_db&quot;</span></span><br><span class="line">)</span><br><span class="line">mycursor = mydb.cursor()</span><br><span class="line"> </span><br><span class="line">sql = <span class="string">&quot;DELETE FROM sites WHERE name = &#x27;stackoverflow&#x27;&quot;</span></span><br><span class="line"> </span><br><span class="line">mycursor.execute(sql)</span><br><span class="line">mydb.commit()</span><br><span class="line"><span class="built_in">print</span>(mycursor.rowcount, <span class="string">&quot; 条记录删除&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="更新表数据"><a href="#更新表数据" class="headerlink" title="更新表数据"></a>更新表数据</h3><p>数据表更新使用 “UPDATE” 语句</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import mysql.connector</span><br><span class="line"> </span><br><span class="line">mydb = mysql.connector.connect(</span><br><span class="line">  host=<span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">  user=<span class="string">&quot;root&quot;</span>,</span><br><span class="line">  passwd=<span class="string">&quot;123456&quot;</span>,</span><br><span class="line">  database=<span class="string">&quot;runoob_db&quot;</span></span><br><span class="line">)</span><br><span class="line">mycursor = mydb.cursor()</span><br><span class="line"> </span><br><span class="line">sql = <span class="string">&quot;UPDATE sites SET name = &#x27;ZH&#x27; WHERE name = &#x27;Zhihu&#x27;&quot;</span></span><br><span class="line"> </span><br><span class="line">mycursor.execute(sql)</span><br><span class="line">mydb.commit()</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span>(mycursor.rowcount, <span class="string">&quot; 条记录被修改&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="/2019/10/01/k%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">kNN k近邻算法</span>
+                <span class="nav-mobile">上一篇</span>
+            </a>
+        
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+            2022
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Justin ZM</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>草根之明</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                首页
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="/tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+            <a href="/about/" class="header-nav-link">
+                关于
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Justin ZM's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">solidity编程攻略之一</h2>
+            <div class="post-meta">
+                <span class="post-time">2022-09-12</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/%E4%BB%A5%E5%A4%AA%E5%9D%8A/">以太坊</a>
+                    
+                </span>
+                
+                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="toc-text">智能合约文件结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E7%94%B3%E6%98%8E"><span class="toc-text">版本申明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E5%85%B6%E5%AE%83%E6%BA%90%E6%96%87%E4%BB%B6"><span class="toc-text">引用其它源文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E5%99%A8%E8%A7%A3%E6%9E%90%E5%BC%95%E7%94%A8%E6%96%87%E4%BB%B6%E6%9C%BA%E5%88%B6"><span class="toc-text">编译器解析引用文件机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#solc%E7%BC%96%E8%AF%91%E5%99%A8"><span class="toc-text">solc编译器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%B3%A8%E9%87%8A"><span class="toc-text">代码注释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E6%B3%A8%E9%87%8A"><span class="toc-text">文档注释</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E6%BA%90%E6%96%87%E4%BB%B6%E5%9F%BA%E6%9C%AC%E8%A6%81%E7%B4%A0%E6%A6%82%E8%A7%88%EF%BC%88Structure-of-a-Contract%EF%BC%89"><span class="toc-text">智能合约源文件基本要素概览（Structure of a Contract）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E5%8F%98%E9%87%8F-State-Variables"><span class="toc-text">状态变量 State Variables</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0-Functions"><span class="toc-text">函数 Functions</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E4%BF%AE%E9%A5%B0%E7%AC%A6-Modifier"><span class="toc-text">函数修饰符 Modifier</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6-Events"><span class="toc-text">事件 Events</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%94%99%E8%AF%AF-Error"><span class="toc-text">错误 Error</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E7%B1%BB%E5%9E%8B-Struct-Types"><span class="toc-text">结构体类型 Struct Types</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE-Enum-Types"><span class="toc-text">枚举 Enum Types</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%A0%E5%B0%84-mapping"><span class="toc-text">映射-mapping</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%93-library"><span class="toc-text">库 library</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3-Interface"><span class="toc-text">接口 Interface</span></a></li></ol></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <p>Solidity是一门面向合约的、为实现智能合约而创建的高级编程语言。这门语言受到了C++，Python和Javascript语言的影响，设计的目的是能在以太坊虚拟机（EVM）上运行。<span id="more"></span></p>
+<h3 id="智能合约文件结构"><a href="#智能合约文件结构" class="headerlink" title="智能合约文件结构"></a>智能合约文件结构</h3><h4 id="版本申明"><a href="#版本申明" class="headerlink" title="版本申明"></a>版本申明</h4><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.0；</span><br></pre></td></tr></table></figure>
+
+<p>说明：<br>1 版本要高于0.4才可以编译<br>2 号表示高于0.5的版本则不可编译，第三位的版本号但可以变，留出来用做bug可以修复（如0.4.1的编译器有bug，可在0.4.2修复，现有合约不用改代码）。</p>
+<h4 id="引用其它源文件"><a href="#引用其它源文件" class="headerlink" title="引用其它源文件"></a>引用其它源文件</h4><ul>
+<li>全局引入 *</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import “filename”;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>自定义命名空间引入 *</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import * as symbolName from “filename”</span><br></pre></td></tr></table></figure>
+
+<p>分别定义引入</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import  &#123;symbol1 as alias, symbol2&#125; from “filename”</span><br></pre></td></tr></table></figure>
+
+<p>非es6兼容的简写语法</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import “filename” as symbolName</span><br></pre></td></tr></table></figure>
+
+<p>等同于上述</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import * as symbolName from “filename”</span><br></pre></td></tr></table></figure>
+
+<p><strong>关于路径</strong></p>
+<p>引入文件路径时要注意，非<code>.</code>打头的路径会被认为是绝对路径，所以要引用同目录下的文件使用</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import “./x” as x</span><br></pre></td></tr></table></figure>
+
+<p>也不要使用下述方式，这样会是在一个全局的目录下</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import “x” as x;</span><br></pre></td></tr></table></figure>
+
+<p>为什么会有这个区别，是因为这取决于编译器，如果解析路径，通常来说目录层级结构并不与我们本地的文件一一对应，它非常有可能是通过ipfs,http，或git建立的一个网络上的虚拟目录。</p>
+<h4 id="编译器解析引用文件机制"><a href="#编译器解析引用文件机制" class="headerlink" title="编译器解析引用文件机制"></a>编译器解析引用文件机制</h4><p>各编译器提供了文件前缀映射机制。</p>
+<ol>
+<li>可以将一个域名下的文件映射到本地，从而从本地的某个文件中读取</li>
+<li>提供对同一实现的不同版本的支持（可能某版本的实现前后不兼容，需要区分）</li>
+<li>如果前缀相同，取最长，</li>
+<li>有一个”fallback-remapping”机制，空串会映射到“&#x2F;usr&#x2F;local&#x2F;include&#x2F;solidify”</li>
+</ol>
+<h4 id="solc编译器"><a href="#solc编译器" class="headerlink" title="solc编译器"></a>solc编译器</h4><p>命令行编译器，通过下述命令命名空间映射提供支持</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">context:prefix=target</span><br></pre></td></tr></table></figure>
+
+<p>上述的<code>context:</code>和<code>=target</code>是可选的。所有<code>context</code>目录下的以<code>prefix</code>开头的会被替换为<code>target</code>。<br>举例来说，如果你将<code>github.com/ethereum/dapp-bin</code>拷到本地的<code>/usr/local/dapp-bin</code>，并使用下述方式使用文件</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import “github.com/ethereum/dapp-bin/library/iterable_mapping.sol” as it_mapping;</span><br></pre></td></tr></table></figure>
+
+<p>要编译这个文件，使用下述命令：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">solc github.com/ethereum/dapp-bin=/usr/local/dapp-bin source.sol</span><br></pre></td></tr></table></figure>
+
+<p>另一个更复杂的例子，如果你使用一个更旧版本的dapp-bin，旧版本在&#x2F;url&#x2F;local&#x2F;dapp-bin_old，那么，你可以使用下述命令编译</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">solc module1:github.com/ethereum/dapp-bin=/usr/local/dapp-bin  \</span><br><span class="line">        modeule2:github.com/ethereum/dapp-bin=/usr/local/dapp-bin_old \</span><br><span class="line">        source.sol</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是solc仅仅允许包含实际存在的文件。它必须存在于你重映射后目录里，或其子目录里。如果你想包含直接的绝对路径包含，那么可以将命名空间重映射为<code>=\</code><br>备注：如果有多个重映射指向了同一个文件，那么取最长的那个文件。</p>
+<h4 id="代码注释"><a href="#代码注释" class="headerlink" title="代码注释"></a>代码注释</h4><p>两种方式,单行（<code>//</code>）,多行使用(<code>/*…*/</code>)</p>
+<p><em>示例</em></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// this is a single-line comment</span><br><span class="line">/*</span><br><span class="line">this is a</span><br><span class="line">mulit-line comment</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+
+<h4 id="文档注释"><a href="#文档注释" class="headerlink" title="文档注释"></a>文档注释</h4><p>写文档用。三个斜杠<code>///</code>或<code>/** … */</code>，可使用<code>Doxygen</code>语法，以支持生成对文档的说明，参数验证的注解，或者是在用户调用这个函数时，弹出来的确认内容。</p>
+<p><em>示例</em></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.0；</span><br><span class="line">/** @title Shape calculator.*/</span><br><span class="line">contract shapeCalculator&#123;</span><br><span class="line">    /**</span><br><span class="line">    *@dev calculate a rectangle&#x27;s suface and perimeter</span><br><span class="line">    *@param w width of the rectangles</span><br><span class="line">    *@param h height of the rectangles</span><br><span class="line">    *@return s surface of the rectangles</span><br><span class="line">    *@return p perimeter of the rectangles</span><br><span class="line">    */</span><br><span class="line"></span><br><span class="line">    function rectangles(uint w, uint h) returns (uint s, uint p)&#123;</span><br><span class="line">        s = w * h;</span><br><span class="line">        p = 2 * ( w + h) ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="智能合约源文件基本要素概览（Structure-of-a-Contract）"><a href="#智能合约源文件基本要素概览（Structure-of-a-Contract）" class="headerlink" title="智能合约源文件基本要素概览（Structure of a Contract）"></a>智能合约源文件基本要素概览（Structure of a Contract）</h3><p><code>Solidity</code> 合约和面向对象语言非常相似。每个合约均能包含状态变量<code>State Variables</code>, 函数<code>Functions</code>, 函数修饰符<code>Function Modifiers</code>, 事件<code>Events</code>, 结构体类型<code>Struct Types</code> 和 枚举类型<code>Enum Types</code>。除此以外，还有比较特殊的合约叫做库<code>libraries</code>和接口<code>interfaces</code>。</p>
+<ul>
+<li>合约类似面向对象语言中的类。</li>
+<li>支持继承</li>
+</ul>
+<h4 id="状态变量-State-Variables"><a href="#状态变量-State-Variables" class="headerlink" title="状态变量 State Variables"></a>状态变量 State Variables</h4><p>状态变量是其永远存储在合约实例中的变量。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: GPL-3.0</span><br><span class="line">pragma solidity &gt;=0.7.0 &lt;0.9.0;</span><br><span class="line"></span><br><span class="line">contract SimpleStorage &#123;</span><br><span class="line">    uint storedData; // 状态变量</span><br><span class="line">    // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.13;</span><br><span class="line"></span><br><span class="line">contract Variables &#123;</span><br><span class="line">    // 状态变量存储在区块链上</span><br><span class="line">    string public text = &quot;Hello&quot;;</span><br><span class="line">    uint public num = 123;</span><br><span class="line"></span><br><span class="line">    function doSomething() public &#123;</span><br><span class="line">        // 局部变量不保存到区块链</span><br><span class="line">        uint i = 456;</span><br><span class="line"></span><br><span class="line">        // 全局变量</span><br><span class="line">        uint timestamp = block.timestamp; // 当前块的时间戳</span><br><span class="line">        address sender = msg.sender; // 来访者地址</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>详情见<code>类型（Types）</code>章节，关于所有支持的类型和变量相关的可见性（Visibility and Accessors）。</p>
+<h4 id="函数-Functions"><a href="#函数-Functions" class="headerlink" title="函数 Functions"></a>函数 Functions</h4><p>函数是合约实例对象的一种行为，可以通过合约实例调用函数请求其帮助我们完成我们期望的某个任务。</p>
+<p>函数是代码的可执行单元。函数通常在合约内定义，但也可以在合约外定义。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: GPL-3.0</span><br><span class="line">pragma solidity &gt;=0.7.0 &lt;0.9.0;</span><br><span class="line">contract SimpleAuction &#123;</span><br><span class="line">    function bid() public payable &#123; // 函数、行为、方法</span><br><span class="line">        // ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Helper function defined outside of a contract</span><br><span class="line">function helper(uint x) pure returns (uint) &#123;</span><br><span class="line">    return x * 2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函数调用可以设置为内部（Internal）的和外部（External）的。同时对于其它合同的不同级别的可见性和访问控制(Visibility and Accessors)。具体的情况详见后面类型中关于函数的章节。</p>
+<h4 id="函数修饰符-Modifier"><a href="#函数修饰符-Modifier" class="headerlink" title="函数修饰符 Modifier"></a>函数修饰符 Modifier</h4><p>修改器（modifier）可以用来轻易的改变一个函数的行为，控制函数的逻辑，比如用于在函数执行前检查某种前置条件。</p>
+<p>修改器是一种合约属性，可以被继承，同时还可被派生的合约重写（override）；</p>
+<p>对于一个函数可以有多个修改器限制，在函数定义的时候依次写上，并用加空格分隔，执行的时候也是依次执行。多个修改器是同时限制，也就是说必须满足所有的修改器的权限，才可以执行函数体的代码；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">modifier 函数修改器名(参数)｛</span><br><span class="line">	a++;	// 代表函数前执行的代码</span><br><span class="line">	_;		// 表示被修饰的函数中的代码</span><br><span class="line">	a--;	// 代表函数后执行的代码</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+
+<p>函数修饰符可用于以声明方式修改功能的语义。Modifier修饰符不支持重载，也就是相同的名字不可能出现两个。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: GPL-3.0</span><br><span class="line">pragma solidity &gt;=0.7.0 &lt;0.9.0;</span><br><span class="line">contract Purchase &#123;</span><br><span class="line">    address public seller;</span><br><span class="line">    modifier onlySeller() &#123; // Modifier修饰符</span><br><span class="line">        require(</span><br><span class="line">            msg.sender == seller,</span><br><span class="line">            &quot;Only seller can call this.&quot;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // Modifier 使用场景，当调用`abort()`函数时，会先执行`onlySeller`检查是否满足条件，满足，继续执行，不满足，发生异常，停止</span><br><span class="line">    function abort() public view onlySeller &#123; </span><br><span class="line">        // ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="事件-Events"><a href="#事件-Events" class="headerlink" title="事件 Events"></a>事件 Events</h4><p>事件是以太坊虚拟机(EVM)日志基础设施提供的一个便利接口。用于获取当前发生的事件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: GPL-3.0</span><br><span class="line">pragma solidity &gt;=0.7.0 &lt;0.9.0;</span><br><span class="line">contract SimpleAuction &#123;</span><br><span class="line">    event HighestBidIncreased(address bidder, uint amount); // Event</span><br><span class="line">    function bid() public payable &#123;</span><br><span class="line">        // ...</span><br><span class="line">        emit HighestBidIncreased(msg.sender, msg.value); // 触发 event</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="错误-Error"><a href="#错误-Error" class="headerlink" title="错误 Error"></a>错误 Error</h4><p>错误允许您为故障情况定义描述性名称和数据。错误可用于还原语句。与字符串描述相比，错误要便宜得多，并且允许您对附加数据进行编码。您可以使用 NatSpec 向用户描述错误。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: GPL-3.0</span><br><span class="line">pragma solidity ^0.8.4;</span><br><span class="line"></span><br><span class="line">/// Not enough funds for transfer. Requested `requested`,</span><br><span class="line">/// but only `available` available.</span><br><span class="line">error NotEnoughFunds(uint requested, uint available);</span><br><span class="line"></span><br><span class="line">contract Token &#123;</span><br><span class="line">    mapping(address =&gt; uint) balances;</span><br><span class="line">    function transfer(address to, uint amount) public &#123;</span><br><span class="line">        uint balance = balances[msg.sender];</span><br><span class="line">        if (balance &lt; amount)</span><br><span class="line">            revert NotEnoughFunds(amount, balance);</span><br><span class="line">        balances[msg.sender] -= amount;</span><br><span class="line">        balances[to] += amount;</span><br><span class="line">        // ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="结构体类型-Struct-Types"><a href="#结构体类型-Struct-Types" class="headerlink" title="结构体类型 Struct Types"></a>结构体类型 Struct Types</h4><p>结构是自定义的结构类型，可以对多个变量进行分组封装；</p>
+<p>自定义的将几个变量组合在一起形成的类型。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: GPL-3.0</span><br><span class="line">pragma solidity &gt;=0.7.0 &lt;0.9.0;</span><br><span class="line">contract Ballot &#123;</span><br><span class="line">    struct Voter &#123; // Struct</span><br><span class="line">        uint weight;</span><br><span class="line">        bool voted;</span><br><span class="line">        address delegate;</span><br><span class="line">        uint vote;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    struct manager&#123;</span><br><span class="line">        Voter employ;</span><br><span class="line">        string title;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="枚举-Enum-Types"><a href="#枚举-Enum-Types" class="headerlink" title="枚举 Enum Types"></a>枚举 Enum Types</h4><p>特殊的自定义类型，类型的所有值可枚举的情况。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: GPL-3.0</span><br><span class="line">pragma solidity &gt;=0.7.0 &lt;0.9.0;</span><br><span class="line">contract Purchase &#123;</span><br><span class="line">    enum State &#123; Created, Locked, Inactive &#125; // Enum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="映射-mapping"><a href="#映射-mapping" class="headerlink" title="映射-mapping"></a>映射-mapping</h4><p>映射是一种引用类型，存储键–值对</p>
+<p>格式：mapping(key&#x3D;&gt;value)</p>
+<p>在mapping中，key可以是整型、字符串等基本数据类型，但不能使用动态数组、contract、枚举、struct、以及mapping这些类型；</p>
+<p>value的类型没有限制；</p>
+<p>mapping不能作为参数的形参使用</p>
+<h4 id="库-library"><a href="#库-library" class="headerlink" title="库 library"></a>库 library</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: GPL-3.0</span><br><span class="line">pragma solidity &gt;=0.7.0 &lt;0.9.0;</span><br><span class="line">struct Data &#123;</span><br><span class="line">    mapping(uint256 =&gt; bool) flags;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">library Set &#123;</span><br><span class="line">    // 集合 Set library</span><br><span class="line"></span><br><span class="line">    function insert(Data storage self, uint256 value) public returns (bool) &#123;</span><br><span class="line">        if (self.flags[value]) return false;</span><br><span class="line">        self.flags[value] = true;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function remove(Data storage self, uint256 value) public returns (bool) &#123;</span><br><span class="line">        if (!self.flags[value]) return false;</span><br><span class="line">        self.flags[value] = false;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function contains(Data storage self, uint256 value)</span><br><span class="line">        public</span><br><span class="line">        view</span><br><span class="line">        returns (bool)</span><br><span class="line">    &#123;</span><br><span class="line">        return self.flags[value];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract C &#123;</span><br><span class="line">    Data knownValues;</span><br><span class="line"></span><br><span class="line">    function register(uint256 value) public &#123;</span><br><span class="line">        // library 函数不需要通过实例对象调用，可直接通过 library 名字直接调用</span><br><span class="line">        require(Set.insert(knownValues, value));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="接口-Interface"><a href="#接口-Interface" class="headerlink" title="接口 Interface"></a>接口 Interface</h4><p>接口类似于抽象协议，但是不能实现任何功能。还有其他限制：</p>
+<ul>
+<li>它们不能继承其他合约，但是可以从其他接口继承。</li>
+<li>所有声明的函数都必须是外部的。</li>
+<li>接口不能声明构造函数。</li>
+<li>接口不能声明状态变量。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: GPL-3.0</span><br><span class="line">pragma solidity &gt;=0.7.0 &lt;0.9.0;</span><br><span class="line">interface ParentA &#123;</span><br><span class="line">    function test() external returns (uint256);</span><br><span class="line">&#125;</span><br><span class="line">interface ParentB &#123;</span><br><span class="line">    function test() external returns (uint256);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="/tags/solidity/" title="solidity">solidity</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+        
+            <a class="next" href="/2022/09/12/%E4%BB%A5%E5%A4%AA%E5%9D%8A%E5%85%A5%E9%97%A8%E7%AF%87/">
+                <span class="nav-default">以太坊入门篇</span>
+                <span class="nav-mobile">下一篇</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+            2022
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Justin ZM</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>

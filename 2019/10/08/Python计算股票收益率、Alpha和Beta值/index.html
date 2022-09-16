@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>草根之明</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                首页
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="/tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+            <a href="/about/" class="header-nav-link">
+                关于
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Justin ZM's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">Python计算股票收益率、Alpha和Beta值</h2>
+            <div class="post-meta">
+                <span class="post-time">2019-10-08</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/">量化交易</a>
+                    
+                </span>
+                
+                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%B6%E7%9B%8A%E7%8E%87"><span class="toc-text">收益率</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E6%9C%9F%E6%94%B6%E7%9B%8A%E7%8E%87"><span class="toc-text">单期收益率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E6%95%B0%E6%94%B6%E7%9B%8A%E7%8E%87"><span class="toc-text">对数收益率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B6%E7%9B%8A%E7%8E%87%E8%BD%AC%E5%8C%96"><span class="toc-text">收益率转化</span></a></li></ol></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <p>使用Python计算股票的收益率，重点展示如何利用Python对日收益率数据向月、年收益率转换，然后演示个股Alpha和Beta值的计算。</p>
+<h3 id="收益率"><a href="#收益率" class="headerlink" title="收益率"></a>收益率</h3><h4 id="单期收益率"><a href="#单期收益率" class="headerlink" title="单期收益率"></a>单期收益率</h4><p>单期（一个时期）的收益率计算方法如下：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7r5o3ph4gj309u02owef.jpg"></p>
+<p>其中，r 是收益率，pt 是时间 t 时的资产价格，p0 是初始时间的资产价格。我们利用 Python 程序来实现这个过程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rate_return = 102.0/100 - 1</span><br><span class="line">print(rate_return)</span><br></pre></td></tr></table></figure>
+<p>假设我们买了 100 美元的股票，半年后它涨到了 102 美元。一年后，价格又涨到了 104 美元。那么我们应该如何计算它的总回报呢？首先，我们可以把它看做是一个时期的投资回报，即股票直接从 100 美元涨到了 104 美元，那么我们的回报率可以这样计算：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7r5qpk26hj309602i748.jpg"></p>
+<p>或者，我们也可以把这个当做两个时期的回报，即股票先从 100 美元涨到 102 美元，然后再从 102 美元涨到 104 美元，那么我们的回报率可以这样计算：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7r5ru8pcqj30n202c3yn.jpg"></p>
+<p>在这里，我们对一年的回报进行了两次计算，这种计算被称为半年复合。那么季度复合呢？让我们假设一下，每个季度末的股票价格分别为 p1，p2，p3和p4。</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7r5tognrlj30ma028q30.jpg"></p>
+<p>我们在此计算的收益率称为累积回报或者总回报。它衡量一段时间内该资产的总回报。</p>
+<p>现在考虑以下一个问题：我们有两个策略，策略A和策略B。我们将策略A运行了一年，累积回报率是20%。而我们运行策略B三年，累积回报率是65%。那么你觉得哪种策略的回报率更高呢？我们常用的比较方法是将所有收益转换为年复合收益率，无论每种策略的投资期限如何，我们都能通过这种方法来比较两种方法的收益率。我们通过计算获得策略 B 的年复合收益率如下：<br><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7r5wswmyhj30ck04qglr.jpg"></p>
+<p>所以，策略A有更高的年复合收益率（compounding annual return）。</p>
+<h4 id="对数收益率"><a href="#对数收益率" class="headerlink" title="对数收益率"></a>对数收益率</h4><p>年复合收益率，这是一种有效的回报率。但是，你也可以将其看做是一种 “假设回报”，因为策略 B 在三年的测试过程中，不可能每年的回报率都是 18.167% 。但是，我们可以假设策略B每年的回报率是 18.167%，所以它能达到三年的累积回报率是 65%。正如我们之前提到的，如果我们假设一个策略是季度复利的，那么季度有效收益率和年回报之间的关系为：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7r62m11jpj308a024t8m.jpg"></p>
+<p>更一般的说，如果一年内复合的时间是 n，而年回报率是 r，那么我们可以得到如下的关系式：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7r63tly11j308802a3yf.jpg"></p>
+<p>现在想象一下股市，我们的资产是每秒都在变化，甚至每毫秒都是在变化的。如果符合的时间或 n 接近无限大，则称为连续复合。计算公式如下：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7r657kgftj30ac028weg.jpg"></p>
+<p>从上面的方程中，我们知道如果我们假设复合收益是连续的：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7r677nbabj307y0280sn.jpg"></p>
+<p>我们对等式两边都取自然对数 ln ，则：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7r67ki419j30au022gll.jpg"></p>
+<p>在这里我们获取了对数收益率，或者称为连续复合收益。这在计算回报时经常被使用，因为一旦我们采用资产价格的对数，我们就可以通过简单的减法来计算对数回报。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 先引入后面可能用到的包</span><br><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line">from scipy import stats</span><br><span class="line">import tushare as ts</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line"># 正常显示画图时出现的中文和负号</span><br><span class="line">plt.rcParams[&#x27;font.sans-serif&#x27;] = [&#x27;SimHei&#x27;]</span><br><span class="line">plt.rcParams[&#x27;axes.unicode_minus&#x27;] = False</span><br></pre></td></tr></table></figure>
+
+<h4 id="收益率转化"><a href="#收益率转化" class="headerlink" title="收益率转化"></a>收益率转化</h4><p>对日期进行处理，分别将日对数收益率转化为月和年收益率。主要有三个步骤：</p>
+<p>1.估计股票每日对数收益率；<br>2.加总对数收益率到每月（年）；<br>3.将月（年）收益率转化为百分比收益率  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">stock = &#x27;sh&#x27;</span><br><span class="line">df = ts.get_k_data(stock, start=&#x27;2010-01-03&#x27;)</span><br><span class="line"># 使用tushare中的get_k_data()得到的数据框索引是顺序数字，而不是日期序列，因此，为分析方面，需要进行变换，即使用“date”作为索引。</span><br><span class="line">df.set_index([&#x27;date&#x27;], inplace=True)</span><br></pre></td></tr></table></figure>
+<p>步骤一：计算对数收益率</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 计算的时候第一个数成为缺失值，删掉</span><br><span class="line">lograte = np.log(df.close/df.close.shift(1))</span><br></pre></td></tr></table></figure>
+
+<p>步骤二：加总对数收益率到每日</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">month = []</span><br><span class="line">index = lograte.index</span><br><span class="line"></span><br><span class="line">for i in range(0, np.size(lograte)):</span><br><span class="line">    month.append(index[i][:7])</span><br><span class="line"></span><br><span class="line">y = pd.DataFrame(lograte.values, index=month, columns=[&quot;月收益率&quot;])</span><br></pre></td></tr></table></figure>
+
+<p>步骤三：将日收益率转化为月收益率</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ret_monthly = y.groupby(y.index).sum()</span><br><span class="line">print(ret_monthly)</span><br><span class="line"></span><br><span class="line">#          月收益率</span><br><span class="line"># 2019-05 -0.060128</span><br><span class="line"># 2019-06  0.027285</span><br><span class="line"># 2019-07 -0.015689</span><br><span class="line"># 2019-08 -0.015904</span><br><span class="line"># 2019-09  0.033933</span><br></pre></td></tr></table></figure>
+
+<p><strong>将日收益率转化为年收益率</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">stock = &#x27;601318&#x27;</span><br><span class="line">df = ts.get_k_data(code=stock, ktype=&#x27;D&#x27;, autype=&#x27;qfq&#x27;, start=&#x27;2007-03-01&#x27;)</span><br><span class="line"></span><br><span class="line">df.set_index([&#x27;date&#x27;], inplace=True)</span><br><span class="line"></span><br><span class="line"># 计算的时候第一个数成为缺失值，删掉</span><br><span class="line">lograte = np.log(df.close/df.close.shift(1))[1:]</span><br><span class="line"></span><br><span class="line">year = []</span><br><span class="line">index = lograte.index</span><br><span class="line"></span><br><span class="line">for i in range(0, np.size(lograte)):</span><br><span class="line">    year.append(index[i][:4])</span><br><span class="line"></span><br><span class="line">y = pd.DataFrame(lograte.values, index=year, columns=[&quot;年收益率&quot;])</span><br><span class="line"></span><br><span class="line">ret_annual = np.exp(y.groupby(y.index).sum())-1</span><br><span class="line">print(ret_annual)</span><br></pre></td></tr></table></figure>
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="/2019/10/16/Flex%E5%B8%83%E5%B1%80%E5%9F%BA%E7%A1%80/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">Flex布局基础</span>
+                <span class="nav-mobile">上一篇</span>
+            </a>
+        
+        
+            <a class="next" href="/2019/10/06/python%E7%9A%845%E7%A7%8D%E5%AE%9E%E6%88%98%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+                <span class="nav-default">python的5种实战小技巧</span>
+                <span class="nav-mobile">下一篇</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+            2022
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Justin ZM</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>

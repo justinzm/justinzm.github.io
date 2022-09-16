@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>草根之明</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                首页
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="/tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+            <a href="/about/" class="header-nav-link">
+                关于
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Justin ZM's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">金融数据结构--数据类型</h2>
+            <div class="post-meta">
+                <span class="post-time">2020-02-15</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/">量化交易</a>
+                    
+                </span>
+                
+                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E9%9D%A2%E6%95%B0%E6%8D%AE"><span class="toc-text">基本面数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%82%E5%9C%BA%E6%95%B0%E6%8D%AE"><span class="toc-text">市场数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#L1-%E4%BF%A1%E6%81%AF"><span class="toc-text">L1 信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#L2-%E4%BF%A1%E6%81%AF"><span class="toc-text">L2 信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#L3-%E4%BF%A1%E6%81%AF"><span class="toc-text">L3 信息</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E6%95%B0%E6%8D%AE"><span class="toc-text">分析数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%A6%E7%B1%BB%E6%95%B0%E6%8D%AE"><span class="toc-text">另类数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E6%95%B0%E6%8D%AE"><span class="toc-text">个人数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%95%86%E4%B8%9A%E6%95%B0%E6%8D%AE"><span class="toc-text">商业数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%A0%E6%84%9F%E6%95%B0%E6%8D%AE"><span class="toc-text">传感数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p><strong>数据越原始其含有的价值越高</strong>。被处理过的数据虽然用起来很方便，但当你使用时别人很可能已经使用过了。这句话也适用于金融数据 (financial data)。金融数据主要可分为四类，见下表总结。</p>
+<p><img src="http://img.9lake.com/uPic/cXMF1b.jpg" alt="cXMF1b"></p>
+<p>接下来我们详细讨论它们的特征以及应用。</p>
+<h3 id="基本面数据"><a href="#基本面数据" class="headerlink" title="基本面数据"></a>基本面数据</h3><p>**基本面数据 (Fundamental Data) **通常是会计数据  (accounting data)，包括资产 (assets)、负债 (liabilities)、销量 (sales) 和盈利 (earnings) 等等，来源于按季度发布的财务报告。</p>
+<p>下图展示了苹果第二季度的财务报表中的部分基本面数据(销量、销售成本、运营费用等等)。</p>
+<p><img src="http://img.9lake.com/uPic/exoY4q.jpg" alt="exoY4q"></p>
+<p>在使用基本面数据时需注意数据发布日期 (release date) 和季度报告截止日期 (quarter-end reporting period) 不一样！前者一般<strong>晚于</strong>后者 6 周，有时个股的发布日期各不相同。</p>
+<p>以茅台 (600519.SH) 举例来看一段万矿 (WindQuant) 的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">_, date = w.wsd( &quot;600519.SH&quot;,</span><br><span class="line">                 &quot;stm_issuingdate&quot;, </span><br><span class="line">                 &quot;2018-01-01&quot;, &quot;2019-03-31&quot;,</span><br><span class="line">                 &quot;Period=Q;Days=Alldays;Fill=Previous&quot;, </span><br><span class="line">                 usedf=True )</span><br><span class="line">WTable(data = date).plot()</span><br></pre></td></tr></table></figure>
+
+<p>这里 stm_issuingdate 代表「定期报告披露日期」。关于代码里的 wsd 的相关知识，请参考〖Pandas 上〗一贴。</p>
+<p><img src="http://img.9lake.com/uPic/yPWy3w.jpg" alt="yPWy3w"></p>
+<p>对茅台 2018 年第一季度 (Q2) 来说，发布日期 (2018-08-02) 才是最重要的日期，因为只有发布之后大家才知道基本面数据值 (比如每股收益 EPS)，用报告截止日期 (2018-06-30) 就会引进前视偏差 (look-ahead bias)，因此在 2018-06-30 那天数据没有发布给大众，大众根本不知道 Q2 的 EPS 是多少。</p>
+<p>万矿是取每个季度最后一天作为报告期，2018 年的报告期设置分别为</p>
+<ul>
+<li>一季报：2018-03-31</li>
+<li>半年报：2018-06-30</li>
+<li>三季报：2018-09-30</li>
+<li>年报：2018-12-31</li>
+</ul>
+<p>下图展示了茅台 2018 年到 2019 年 Q1 的数据发布日期和报告截止日期。</p>
+<p><img src="http://img.9lake.com/uPic/cOIi5U.jpg" alt="cOIi5U"></p>
+<p>用万矿来查看茅台 2018-06-30 的 EPS 值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">_, df = w.wsd( &quot;600519.SH&quot;,</span><br><span class="line">               &quot;eps_basic_is&quot;, </span><br><span class="line">               &quot;2018-01-01&quot;, &quot;2019-03-31&quot;,</span><br><span class="line">               &quot;Days=Alldays;rptType=1&quot;, </span><br><span class="line">               usedf=True )</span><br><span class="line">WTable(data = df).plot()</span><br></pre></td></tr></table></figure>
+
+<p>这里 eps_basic_is 代表「基本每股收益」。</p>
+<p><img src="http://img.9lake.com/uPic/HliaJ9.jpg" alt="HliaJ9"></p>
+<p>我们可以看到 2018-06-30 对应 eps_basic_is 的值为 12.55。由上面日期对比图可知，这个 12.55 的 EPS 应该在 2019-08-02 才发布。因此推断出 2018-06-30 这天的12.55 是从 2019-08-02 那天回填 (backfill) 得到的。</p>
+<pre><code>公司披露年报或季报经常会在第一次披露之后发布多个修订版本，对原本缺失的一些数据进行回填。
+</code></pre>
+<p>继续深挖验证我们的推断。用万矿来查看 2018-08-02 (Q2 数据的发布日) 的 EPS 值。这时 wsd 函数中用参数 fa_eps_basic 而不是用 eps_basic_is，fa_eps_basic 代表「基本每股收益_PIT」。用万矿里的 API 选出 fa_eps_basic 即可，操作非常简单如下屏所示。</p>
+<p><img src="http://img.9lake.com/uPic/bXhtEH.jpg" alt="bXhtEH"></p>
+<p>上图操作完成之后，查看茅台 2018-06-30 的 EPS_PIT 值 (用的 fa_eps_basic) 的代码自动生成出来。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">_, df = w.wsd( &quot;600519.SH&quot;,</span><br><span class="line">               &quot;fa_eps_basic&quot;, </span><br><span class="line">               &quot;2018-01-01&quot;, &quot;2019-03-31&quot;,</span><br><span class="line">               &quot;Days=Alldays;rptType=1&quot;, </span><br><span class="line">               usedf=True )</span><br><span class="line">WTable(data = df).plot()</span><br></pre></td></tr></table></figure>
+
+<p>PIT 全称是 point-in-time，没有找到很好的中文翻译，就理解成「数据发布的时点」吧。</p>
+<p>从下图发现 2018-08-02 的 EPS 值为 12.55，可以确定 2018-06-30 的 EPS 值是回填得来的。</p>
+<p><img src="http://img.9lake.com/uPic/QibSlu.jpg" alt="QibSlu"></p>
+<p><img src="http://img.9lake.com/uPic/CCTzgl.jpg" alt="CCTzgl"></p>
+<p>此外，我们还发现 12.55 对应的起始日 2018-08-02 和终止日 2018-10-28，它们不正是 Q2 的发布日期和 Q3 的发布日期前一天吗？下图就是2018 Q2 到 Q3 的 PIT 数据。</p>
+<p><img src="http://img.9lake.com/uPic/r8daMA.jpg" alt="r8daMA"></p>
+<p>由于 12.55 是 Q2 截止日 2018-06-30 时 EPS 的值，但是在 Q2 发布日 2018-08-02 才公布于众，直到 2018-10-28。后一天 2018-10-29 是Q3截止日 2018-09-30 时 EPS 的发布日，那么 EPS 也会被更新。</p>
+<p>下图给出了一年的 PIT 数据。</p>
+<p><img src="http://img.9lake.com/uPic/dXZpgM.jpg" alt="dXZpgM"></p>
+<p>使用 PIT 数据可以避免「前视偏差」，自己收集 PIT 的数据太过繁琐，而购买提供 PIT 的数据商又太过昂贵。万矿做得真心不错，免费提供 PIT 数据。</p>
+<p>国内有万矿，国外有 Quantopian，下面截屏蓝色高亮那部分说的就是 Quantopian 也考虑了 PIT 而消除了「前视偏差」。</p>
+<p><img src="http://img.9lake.com/uPic/xLs3l0.jpg" alt="xLs3l0"></p>
+<p>在 Quantopian 用代码看看 Facebook 的基本面数据发布日期 (file_date) 和报告截止日期 (period_ending_date)。关于代码里的 Pipeline 相关知识，请参考〖张量 101〗一贴。</p>
+<p><img src="http://img.9lake.com/uPic/25BExY.jpg" alt="25BExY"></p>
+<p><img src="http://img.9lake.com/uPic/Tw5Oaa.jpg" alt="Tw5Oaa"></p>
+<p>DataFrame 的前五行是 2018 年 1 月 2 日到 8 日的数据要看 2017-09-30 (Q3) 的数据，而其发布日是 2017-11-02。</p>
+<p>DataFrame 的后五行意思是 2018 年 12 月 24 日到 31 日的数据要看 2018-09-30 (Q3) 的数据，而其发布日是 2018-10-31。</p>
+<p><strong>总结：基本面数据频率低，监管严，易获得，价值可被挖掘的差不多，通常是把基本面数据和其它类数据一起使用。</strong></p>
+<h3 id="市场数据"><a href="#市场数据" class="headerlink" title="市场数据"></a>市场数据</h3><p><strong>市场数据 (Market Data)</strong> 包含交易所有类型产品时收集到的数据，包括现货价格 (spot price)、期货价格 (futures price)、利率 (interest rate)、汇率 (exchange rate)、波动率 (volatility)、成交量 (volume) 等等。</p>
+<p>在交易中，市场数据以限价定单簿 (limitorder book, LOB) 的形式呈现。每个市场参与者都可从中看到订单信息 (order information)。</p>
+<p>以阿里巴巴股票 (BABA) 为例的 LOB 如下图所示。</p>
+<p><img src="http://img.9lake.com/uPic/rr0uvP.jpg" alt="rr0uvP"></p>
+<p>在 LOB 中，卖家看 Bid，买家看 Ask。LOB 里面有四个重要参数，合称为最佳买卖报价 (Best Bid and Offer, BBO)，分别是</p>
+<ul>
+<li>买价 (bid price)：卖家可以卖到的最高价 (160 美元)</li>
+<li>买量 (bid quantity)：卖家可以卖的数量 (500 股)</li>
+<li>卖价 (ask price)：买家可以买到的最低价 (161 美元)</li>
+<li>卖量 (ask quantity)：买家可以买的数量 (600 股)</li>
+</ul>
+<p>在每个时点LOB可以显示三种不同层次的信息。</p>
+<h4 id="L1-信息"><a href="#L1-信息" class="headerlink" title="L1 信息"></a>L1 信息</h4><p>如果只看 BABA 的最佳买卖价 (Best Bid and Offer, BBO)，那么它是一维数据 (price)，通常称为 Level 1 (L1) 信息。</p>
+<p><img src="http://img.9lake.com/uPic/yXF7XP.jpg" alt="yXF7XP"></p>
+<p>卖家可以从市场中以 160 美元卖出 500 股，买家可以从市场中以 161 美元买进 600 股。</p>
+<h4 id="L2-信息"><a href="#L2-信息" class="headerlink" title="L2 信息"></a>L2 信息</h4><p>如果还看 BABA 的非最佳买卖价 (Not Best Bid and Offer, NBBO)，那么它是二维数据 (price+depth)，通常称为 Level 2 (L2) 信息。</p>
+<p><img src="http://img.9lake.com/uPic/C2wpzd.jpg" alt="C2wpzd"></p>
+<p>卖家可以从市场中以 160 美元卖出 500 股，吃完最佳买价 (hitting the bid) 之后，卖家可以继续从市场中以 159 美元卖出 550 股…</p>
+<p>买家可以从市场中以 161 美元买进 600 股，吃完最佳卖价(lifting the offer) 之后，买家可以继续从市场中以 162 美元买进 800 股…</p>
+<h4 id="L3-信息"><a href="#L3-信息" class="headerlink" title="L3 信息"></a>L3 信息</h4><p>如果在一个价位上，还想区分不同人下单的量 (比如 600 股有 200 是我下的，400 是小明下的，我比小明先下单)，那么它是三维数据(price+depth+size)，通常称为 Level 3 (L3) 信息。</p>
+<p><img src="http://img.9lake.com/uPic/6x3OBS.jpg" alt="6x3OBS"></p>
+<p>通常数据商提供的是像金融信息交换协议 (Financial Information eXchange, FIX) 类似的原始数据，可以搭建出每个时点的交易账簿 (order book)，更精确点的描述是限价定单簿 (limit order book, LOB)。</p>
+<p>CME Globex 是世界上第一个期货电子交易系统，下图是 Globex 里 FIX  的数据结构说明。</p>
+<p><img src="http://img.9lake.com/uPic/7eiKYx.jpg" alt="7eiKYx"></p>
+<p>从上面表格可看出：</p>
+<ul>
+<li>第 1 行显示价格的层位(为构建 L2 信息)</li>
+<li>第 2 行显示信息发送时间</li>
+<li>第 3-4 行显示买价和买量</li>
+<li>第 5-6 行显示卖价和卖量</li>
+<li>第 7 行显示数据更新状态，0 代表插入新信息，1 代表更新现有信息；2 代表删除老信息</li>
+<li>第 8 行显示某层价位的订单数 (为构建 L3 信息)</li>
+</ul>
+<p>等等。。。</p>
+<p>用第 1 到 9 行的信息可以从 FIX 表格重建 L3 的 LOB。</p>
+<ul>
+<li>side S - 分买入 (bid) 和卖出 (ask)</li>
+<li>class – 包含价格 (price) 和成交量 (size)</li>
+<li>price level M - LOB 的深度</li>
+</ul>
+<p>伪代码如下：</p>
+<p><img src="http://img.9lake.com/uPic/I0N3qQ.jpg" alt="I0N3qQ"></p>
+<p>而第 7 行和 10 到 15 行用来做交易匹配 (trade matching) 的。</p>
+<p><strong>总结：基本面数据相比，市场数据更规范，而且频率更高，数据量更大，处理起来也更困难，但是价值更大。</strong></p>
+<h3 id="分析数据"><a href="#分析数据" class="headerlink" title="分析数据"></a>分析数据</h3><p>类比金融产品的原生资产和衍生品的关系，<strong>分析数据 (Analytics Data)</strong> 是原始数据的衍生品，即由原始数据加工得来的。原始数据可以是基本面数据和市场数据，甚至还可以是下节讨论的另类数据。</p>
+<p>我们可用</p>
+<ul>
+<li>销量、成本、运营费用等「基本面数据」来评估一个公司的盈利能力和运营质量，并推荐买卖其股票</li>
+<li>限价定单簿和交易信息等「市场数据」来预测冰山单 (iceberg order) 的大小和概率</li>
+<li>新闻舆情、财报公告、卫星图像等「另类数据」来做情感分析 (sentiment analysis) 和经营预测</li>
+</ul>
+<p>下图总结各类原始数据和对应的分析数据。</p>
+<p><img src="http://img.9lake.com/uPic/EnlX0n.jpg" alt="EnlX0n"></p>
+<p>使用「分析数据」有利有弊</p>
+<ul>
+<li>优点是特征和信号已经从原始数据中提取出来，使用起来方便</li>
+<li>缺点是价格昂贵，而且处理方法不透明 (opaque) 也可能存有偏差 (bias)</li>
+</ul>
+<h3 id="另类数据"><a href="#另类数据" class="headerlink" title="另类数据"></a>另类数据</h3><p><strong>另类数据 (Alternative Data)</strong> 包括传统数据之外的新的数据，主要成分如下图。</p>
+<p><img src="http://img.9lake.com/uPic/KBLB5M.jpg" alt="KBLB5M"></p>
+<h4 id="个人数据"><a href="#个人数据" class="headerlink" title="个人数据"></a>个人数据</h4><p>个人数据 (Individual Data) 是由个人网上行为产生的，它还可细分为</p>
+<ul>
+<li>社交网络数据 (social media data): Twitter, LinkedIn, 微信</li>
+<li>新闻舆论数据 (news &amp; reviews data): 新闻、产品舆论</li>
+<li>网页搜索数据 (web search data): 谷歌搜索、百度搜索、邮件</li>
+</ul>
+<p>案例：</p>
+<ul>
+<li>iSentium 提供交易股票时用到的 Twitter 上的情绪数据指标</li>
+<li>RavenPack 提供交易债券、外汇和股票时用到的新闻情绪数据指标</li>
+</ul>
+<h4 id="商业数据"><a href="#商业数据" class="headerlink" title="商业数据"></a>商业数据</h4><p>商业数据 (Business Process Data) 是由商业流程产生的，它还可细分为</p>
+<ul>
+<li>交易数据 (transcation data): 主要是消费者交易数据 (Square,Intuit, Xero 等)</li>
+<li>公司数据 (corporate data): 主要是行业数据 (AROQ, Edmunds, SNL Financial, Smith Travel 等)</li>
+<li>政府机构数据 (government agency data): 国际级别(IMF, WTO, World Bank)，国家级别(美联储, 人民央行)</li>
+</ul>
+<p>案例</p>
+<p>Eagle Alpha 提供交易个股时用到的用户电子邮件收据。</p>
+<h4 id="传感数据"><a href="#传感数据" class="headerlink" title="传感数据"></a>传感数据</h4><p>传感数据 (Sensor Data) 是由手机、无人机、卫星上的传感器产生的，它还可细分为</p>
+<ul>
+<li>卫星图像数据 (satellites images data): 卫星、无人机</li>
+<li>地理定位数据 (geolocation data): GPS、手机 APP</li>
+<li>天气数据 (weather data)</li>
+</ul>
+<p>案例：</p>
+<ul>
+<li>Advan Research 提供交易个股时用手机记录的地理位置数据 (根据人流量预测零售)</li>
+<li>RSMetrics 提供交易个股时用无人机拍的停车场和仓库图像数据 (根据车位占满率预测员工)</li>
+</ul>
+<p>使用「另类数据」有利有弊</p>
+<ul>
+<li>优点是没被处理过，也没有为其他使用者提供，因此有很高的价值等待发掘，深度学习里的「计算机视觉」和「自然语言处理」的技术可以用来处理图像和文本数据</li>
+<li>缺点是「获取昂贵」和「隐私忧患」</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>金融市场数据可分四类，基本面数据、交易数据、分析数据和另类数据。</p>
+<p>前三类属于结构性数据 (structured data)，即可以用二维数据表 (excel, DataFrame 等) 储存的；而最后的另类数据属于非结构性数据(unstructured data)，在使用前通常要转换成结构性数据。</p>
+<ul>
+<li>处理「基本面数据」最容易 (人人可做)，但剩余可发掘的价值也不太高了。</li>
+<li>处理「另类数据」最困难 (鲜有人做)，一旦你做了对你的价值是唯一的。</li>
+</ul>
+<p>有价值的东西做起来从来不容易，如果太容易，大概率没什么价值。有人开玩笑说，如果一套数据集让数据科学家处理起来时很头疼，这套数据集很可能价值很高。</p>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="/tags/%E9%87%91%E8%9E%8D-%E6%95%B0%E6%8D%AE/" title="金融,数据">金融,数据</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="/2020/08/25/%E5%A6%82%E4%BD%95%E5%81%9A%E5%A5%BD%E9%A1%B9%E7%9B%AE%E5%9F%B9%E8%AE%AD%EF%BC%9F/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">如何做好项目培训？</span>
+                <span class="nav-mobile">上一篇</span>
+            </a>
+        
+        
+            <a class="next" href="/2019/12/15/%E5%9F%BA%E6%9C%AC%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8BMatplotlib/">
+                <span class="nav-default">基本可视化之Matplotlib</span>
+                <span class="nav-mobile">下一篇</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+            2022
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Justin ZM</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>

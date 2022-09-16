@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>草根之明</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                首页
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="/tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+            <a href="/about/" class="header-nav-link">
+                关于
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Justin ZM's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">Pandas库</h2>
+            <div class="post-meta">
+                <span class="post-time">2019-10-01</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/Python/">Python</a>
+                    
+                </span>
+                
+                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5pandas"><span class="toc-text">导入pandas</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pandas-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-text">Pandas 数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Series"><span class="toc-text">Series</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%83%BD%E5%A4%9F%E5%AE%B9%E7%BA%B3%E4%BB%BB%E4%BD%95%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%B8%80%E7%BB%B4%E6%A0%87%E8%AE%B0%E6%95%B0%E7%BB%84"><span class="toc-text">能够容纳任何数据类型的一维标记数组</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DataFrame"><span class="toc-text">DataFrame</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E4%BA%8C%E7%BB%B4%E6%A0%87%E8%AE%B0%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%8C%E5%8C%85%E5%90%AB%E5%8F%AF%E8%83%BD%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%88%97"><span class="toc-text">一个二维标记的数据结构，包含可能不同类型的列</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9-Selection"><span class="toc-text">选择 Selection</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%BE%97-Getting"><span class="toc-text">获得 Getting</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%EF%BC%8C%E5%B8%83%E5%B0%94%E7%B4%A2%E5%BC%95%E5%92%8C%E8%AE%BE%E7%BD%AE-Selecting-Boolean-Indexing-amp-Setting"><span class="toc-text">选择，布尔索引和设置 Selecting, Boolean Indexing &amp; Setting</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4-Dropping"><span class="toc-text">删除 Dropping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F%E5%92%8C%E7%AD%89%E7%BA%A7-Sort-amp-Rank"><span class="toc-text">排序和等级 Sort &amp; Rank</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E7%B4%A2%E7%B3%BB%E5%88%97-x2F-DataFrame%E4%BF%A1%E6%81%AF-Retrieving-Series-x2F-DataFrame-Information"><span class="toc-text">检索系列&#x2F; DataFrame信息 Retrieving Series&#x2F;DataFrame Information</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF-Basic-Information"><span class="toc-text">基本信息 Basic Information</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E8%AE%A1%E7%AE%97%E6%93%8D%E4%BD%9C-Summary"><span class="toc-text">数学计算操作 Summary</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%87%BD%E6%95%B0-Applying-Functions"><span class="toc-text">应用函数 Applying Functions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5-x2F-%E8%BE%93%E5%87%BA-I-x2F-O"><span class="toc-text">输入&#x2F;输出 I&#x2F;O</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Read-and-Write-to-CSV"><span class="toc-text">Read and Write to CSV</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Read-and-Write-to-Excel"><span class="toc-text">Read and Write to Excel</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Read-and-Write-to-SQL-Query-or-Database-Table"><span class="toc-text">Read and Write to SQL Query or Database Table</span></a></li></ol></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <h3 id="导入pandas"><a href="#导入pandas" class="headerlink" title="导入pandas"></a>导入pandas</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br></pre></td></tr></table></figure>
+
+<h3 id="Pandas-数据结构"><a href="#Pandas-数据结构" class="headerlink" title="Pandas 数据结构"></a>Pandas 数据结构</h3><h4 id="Series"><a href="#Series" class="headerlink" title="Series"></a>Series</h4><h5 id="能够容纳任何数据类型的一维标记数组"><a href="#能够容纳任何数据类型的一维标记数组" class="headerlink" title="能够容纳任何数据类型的一维标记数组"></a>能够容纳任何数据类型的一维标记数组</h5><p><img src="http://ww1.sinaimg.cn/mw690/405e87d9gy1g67cawl9jyj203z02yq2r.jpg"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; s = pd.Series([3, -5, 7, 4], index=[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;])</span><br></pre></td></tr></table></figure>
+
+<h4 id="DataFrame"><a href="#DataFrame" class="headerlink" title="DataFrame"></a>DataFrame</h4><h5 id="一个二维标记的数据结构，包含可能不同类型的列"><a href="#一个二维标记的数据结构，包含可能不同类型的列" class="headerlink" title="一个二维标记的数据结构，包含可能不同类型的列"></a>一个二维标记的数据结构，包含可能不同类型的列</h5><p><img src="http://ww1.sinaimg.cn/mw690/405e87d9gy1g67c56zcnqj207s046wel.jpg"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; data = &#123;&#x27;Country&#x27;: [&#x27;Belgium&#x27;, &#x27;India&#x27;, &#x27;Brazil&#x27;], </span><br><span class="line">&#x27;Capital&#x27;: [&#x27;Brussels&#x27;, &#x27;New Delhi&#x27;, &#x27;Brasília&#x27;],</span><br><span class="line">&#x27;Population&#x27;: [11190846, 1303171035, 207847528]&#125;</span><br><span class="line">&gt;&gt;&gt; df = pd.DataFrame(data, columns=[&#x27;Country&#x27;, &#x27;Capital&#x27;, &#x27;Population&#x27;])</span><br></pre></td></tr></table></figure>
+
+<h3 id="选择-Selection"><a href="#选择-Selection" class="headerlink" title="选择 Selection"></a>选择 Selection</h3><h4 id="获得-Getting"><a href="#获得-Getting" class="headerlink" title="获得 Getting"></a>获得 Getting</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 得到一个元素</span><br><span class="line">&gt;&gt;&gt; s[&#x27;b&#x27;] </span><br><span class="line">-5</span><br><span class="line"></span><br><span class="line"># 获取DataFrame的子集</span><br><span class="line">&gt;&gt;&gt; df[1:] </span><br><span class="line"> Country Capital Population</span><br><span class="line"> 1 India New Delhi 1303171035</span><br><span class="line"> 2 Brazil Brasília 207847528</span><br></pre></td></tr></table></figure>
+
+<h4 id="选择，布尔索引和设置-Selecting-Boolean-Indexing-amp-Setting"><a href="#选择，布尔索引和设置-Selecting-Boolean-Indexing-amp-Setting" class="headerlink" title="选择，布尔索引和设置 Selecting, Boolean Indexing &amp; Setting"></a>选择，布尔索引和设置 Selecting, Boolean Indexing &amp; Setting</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"># 按行和列选择单个值</span><br><span class="line">&gt;&gt;&gt; df.iloc[[0],[0]] </span><br><span class="line">&#x27;Belgium&#x27; </span><br><span class="line"></span><br><span class="line"># 按行和列选择单个值</span><br><span class="line">&gt;&gt;&gt; df.iat([0],[0])</span><br><span class="line">&#x27;Belgium&#x27;</span><br><span class="line"></span><br><span class="line"># 通过行和列标签选择单个值</span><br><span class="line">&gt;&gt;&gt; df.loc[[0], [&#x27;Country&#x27;]] </span><br><span class="line">&#x27;Belgium&#x27; </span><br><span class="line"></span><br><span class="line"># 通过行和列标签选择单个值</span><br><span class="line">&gt;&gt;&gt; df.at([0], [&#x27;Country&#x27;]) </span><br><span class="line">&#x27;Belgium&#x27;</span><br><span class="line"></span><br><span class="line"># 选择行子集的单行</span><br><span class="line">&gt;&gt;&gt; df.ix[2] </span><br><span class="line">Country Brazil </span><br><span class="line">Capital Brasília</span><br><span class="line">Population 207847528</span><br><span class="line"></span><br><span class="line"># 选择列的子集的单个列</span><br><span class="line">&gt;&gt;&gt; df.ix[:,&#x27;Capital&#x27;]  </span><br><span class="line">0 Brussels  </span><br><span class="line">1 New Delhi</span><br><span class="line">2 Brasília </span><br><span class="line"></span><br><span class="line"># 选择行和列</span><br><span class="line">&gt;&gt;&gt; df.ix[1,&#x27;Capital&#x27;]  </span><br><span class="line">&#x27;New Delhi&#x27;</span><br><span class="line"></span><br><span class="line"># Series s where value is not &gt;1</span><br><span class="line">&gt;&gt;&gt; s[~(s &gt; 1)] </span><br><span class="line"></span><br><span class="line"># s where value is &lt;-1 or &gt;2</span><br><span class="line">&gt;&gt;&gt; s[(s &lt; -1) | (s &gt; 2)] </span><br><span class="line"></span><br><span class="line"># 使用过滤器调整dataframe</span><br><span class="line">&gt;&gt;&gt; df[df[&#x27;Population&#x27;]&gt;1200000000]</span><br><span class="line"></span><br><span class="line"># Set index a of Series s to 6</span><br><span class="line">&gt;&gt;&gt; s[&#x27;a&#x27;] = 6</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除-Dropping"><a href="#删除-Dropping" class="headerlink" title="删除 Dropping"></a>删除 Dropping</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 从行中删除值</span><br><span class="line">&gt;&gt;&gt; s.drop([&#x27;a&#x27;, &#x27;c&#x27;])</span><br><span class="line"></span><br><span class="line"># 从列中删除值(轴=1)</span><br><span class="line">&gt;&gt;&gt; df.drop(&#x27;Country&#x27;, axis=1) </span><br><span class="line"></span><br><span class="line"># 删除行</span><br><span class="line">&gt;&gt;&gt; df.drop([1])</span><br></pre></td></tr></table></figure>
+
+<h3 id="排序和等级-Sort-amp-Rank"><a href="#排序和等级-Sort-amp-Rank" class="headerlink" title="排序和等级 Sort &amp; Rank"></a>排序和等级 Sort &amp; Rank</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"># 按标签沿轴排序</span><br><span class="line">&gt;&gt;&gt; df.sort_index()</span><br><span class="line"></span><br><span class="line"># 默认按“行标签”升序排序，或df.sort_index(axis=0, ascending=True)</span><br><span class="line"># df.sort_index(axis=1) #按“列标签”升序排序</span><br><span class="line"></span><br><span class="line"># df.sort_index(by = [&#x27;b&#x27;,&#x27;a&#x27;],ascending = [False,True]) </span><br><span class="line"># 先按b列“降序”排列，因为b列中有相同值，相同值再按a列的“升序”排列</span><br><span class="line"></span><br><span class="line"># sort_index(axis=0, level=None, ascending=True, inplace=False, kind=&#x27;quicksort&#x27;, na_position=&#x27;last&#x27;, sort_remaining=True, by=None)--&gt;</span><br><span class="line"># axis：0按照行名排序；1按照列名排序</span><br><span class="line"># level：默认None，否则按照给定的level顺序排列---貌似并不是，文档</span><br><span class="line"># ascending：默认True升序排列；False降序排列</span><br><span class="line"># inplace：默认False，否则排序之后的数据直接替换原来的数据框</span><br><span class="line"># kind：排序方法，&#123;‘quicksort’, ‘mergesort’, ‘heapsort’&#125;, default ‘quicksort’。似乎不用太关心。</span><br><span class="line"># na_position：缺失值默认排在最后&#123;&quot;first&quot;,&quot;last&quot;&#125;</span><br><span class="line"># by：按照某一列或几列数据进行排序，但是by参数貌似不建议使用</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 既可以根据列数据，也可根据行数据排序</span><br><span class="line">&gt;&gt;&gt; df.sort_values(by=&#x27;Country&#x27;) </span><br><span class="line"></span><br><span class="line"># 按b列升序排序</span><br><span class="line"># df.sort_values(by=&#x27;b&#x27;) #等同于df.sort_values(by=&#x27;b&#x27;,axis=0)</span><br><span class="line"></span><br><span class="line"># 先按b列降序，再按a列升序排序</span><br><span class="line"># df.sort_values(by=[&#x27;b&#x27;,&#x27;a&#x27;],axis=0,ascending=[False,True])</span><br><span class="line"></span><br><span class="line"># 按行3升序排列</span><br><span class="line">df.sort_values(by=3,axis=1) #必须指定axis=1</span><br><span class="line"></span><br><span class="line"># 按行3升序，行0降排列</span><br><span class="line"># df.sort_values(by=[3,0],axis=1,ascending=[True,False])</span><br><span class="line"></span><br><span class="line"># DataFrame.sort_values(by, axis=0, ascending=True, inplace=False, kind=&#x27;quicksort&#x27;, na_position=&#x27;last&#x27;)</span><br><span class="line"># axis：&#123;0 or ‘index’, 1 or ‘columns’&#125;, default 0，默认按照列排序，即纵向排序；如果为1，则是横向排序。</span><br><span class="line"># by：str or list of str；如果axis=0，那么by=&quot;列名&quot;；如果axis=1，那么by=&quot;行名&quot;。</span><br><span class="line"># ascending：布尔型，True则升序，如果by=[&#x27;列名1&#x27;,&#x27;列名2&#x27;]，则该参数可以是[True, False]，即第一字段升序，第二个降序。</span><br><span class="line"># inplace：布尔型，是否用排序后的数据框替换现有的数据框。</span><br><span class="line"># kind：排序方法，&#123;‘quicksort’, ‘mergesort’, ‘heapsort’&#125;, default ‘quicksort’。似乎不用太关心。</span><br><span class="line"># na_position：&#123;‘first’, ‘last’&#125;, default ‘last’，默认缺失值排在最后面。</span><br><span class="line"></span><br><span class="line"># 返回从小到大排序的下标</span><br><span class="line">&gt;&gt;&gt; df.rank()</span><br></pre></td></tr></table></figure>
+
+<h3 id="检索系列-x2F-DataFrame信息-Retrieving-Series-x2F-DataFrame-Information"><a href="#检索系列-x2F-DataFrame信息-Retrieving-Series-x2F-DataFrame-Information" class="headerlink" title="检索系列&#x2F; DataFrame信息 Retrieving Series&#x2F;DataFrame Information"></a>检索系列&#x2F; DataFrame信息 Retrieving Series&#x2F;DataFrame Information</h3><h4 id="基本信息-Basic-Information"><a href="#基本信息-Basic-Information" class="headerlink" title="基本信息 Basic Information"></a>基本信息 Basic Information</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; df.shape </span><br><span class="line"># (rows,columns) </span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.index </span><br><span class="line"># 所有的行标签</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.columns </span><br><span class="line"># 得到所有的列标签</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.info() </span><br><span class="line"># 查看索引、数据类型和内存信息</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.count()</span><br><span class="line"># 统计</span><br></pre></td></tr></table></figure>
+
+<h4 id="数学计算操作-Summary"><a href="#数学计算操作-Summary" class="headerlink" title="数学计算操作 Summary"></a>数学计算操作 Summary</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; df.sum() </span><br><span class="line"># 求和 返回一个含有列小计的Series </span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.cumsum() </span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.min()/df.max() </span><br><span class="line"># 最小值和最大值</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.idxmin()/df.idxmax() </span><br><span class="line"># 最小值和最大值的索引值</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.describe() </span><br><span class="line"># 针对 Series 或 DF 的列计算汇总统计</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.mean() </span><br><span class="line"># 均值</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.median()</span><br><span class="line"># 中位数</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.var()</span><br><span class="line"># 方差</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.std()</span><br><span class="line"># 标准差</span><br></pre></td></tr></table></figure>
+
+<h3 id="应用函数-Applying-Functions"><a href="#应用函数-Applying-Functions" class="headerlink" title="应用函数 Applying Functions"></a>应用函数 Applying Functions</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f = lambda x: x*2</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.apply(f)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.applymap(f)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="输入-x2F-输出-I-x2F-O"><a href="#输入-x2F-输出-I-x2F-O" class="headerlink" title="输入&#x2F;输出 I&#x2F;O"></a>输入&#x2F;输出 I&#x2F;O</h3><h4 id="Read-and-Write-to-CSV"><a href="#Read-and-Write-to-CSV" class="headerlink" title="Read and Write to CSV"></a>Read and Write to CSV</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; pd.read_csv(&#x27;file.csv&#x27;, header=None, nrows=5)</span><br><span class="line">&gt;&gt;&gt; df.to_csv(&#x27;myDataFrame.csv&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Read-and-Write-to-Excel"><a href="#Read-and-Write-to-Excel" class="headerlink" title="Read and Write to Excel"></a>Read and Write to Excel</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; pd.read_excel(&#x27;file.xlsx&#x27;)</span><br><span class="line">&gt;&gt;&gt; pd.to_excel(&#x27;dir/myDataFrame.xlsx&#x27;, sheet_name=&#x27;Sheet1&#x27;)</span><br><span class="line"># Read multiple sheets from the same file</span><br><span class="line">&gt;&gt;&gt; xlsx = pd.ExcelFile(&#x27;file.xls&#x27;)</span><br><span class="line">&gt;&gt;&gt; df = pd.read_excel(xlsx, &#x27;Sheet1&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Read-and-Write-to-SQL-Query-or-Database-Table"><a href="#Read-and-Write-to-SQL-Query-or-Database-Table" class="headerlink" title="Read and Write to SQL Query or Database Table"></a>Read and Write to SQL Query or Database Table</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from sqlalchemy import create_engine</span><br><span class="line">&gt;&gt;&gt; engine = create_engine(&#x27;sqlite:///:memory:&#x27;)</span><br><span class="line">&gt;&gt;&gt; pd.read_sql(&quot;SELECT * FROM my_table;&quot;, engine)</span><br><span class="line">&gt;&gt;&gt; pd.read_sql_table(&#x27;my_table&#x27;, engine)</span><br><span class="line">&gt;&gt;&gt; pd.read_sql_query(&quot;SELECT * FROM my_table;&quot;, engine)</span><br><span class="line"></span><br><span class="line"># read_sql()is a convenience wrapper around read_sql_table() and </span><br><span class="line">read_sql_query()</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; pd.to_sql(&#x27;myDf&#x27;, engine)</span><br></pre></td></tr></table></figure>
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="/2019/10/01/%E8%AE%AD%E7%BB%83%E6%95%B0%E6%8D%AE%E9%9B%86%E4%B8%8E%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%87%E5%88%86/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">训练数据集与测试数据集切分</span>
+                <span class="nav-mobile">上一篇</span>
+            </a>
+        
+        
+            <a class="next" href="/2019/10/01/Numpy%E5%BA%93/">
+                <span class="nav-default">Numpy库</span>
+                <span class="nav-mobile">下一篇</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+            2022
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Justin ZM</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>

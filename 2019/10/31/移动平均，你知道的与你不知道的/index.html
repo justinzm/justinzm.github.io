@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>草根之明</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                首页
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="/tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+            <a href="/about/" class="header-nav-link">
+                关于
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Justin ZM's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">移动平均，你知道的与你不知道的</h2>
+            <div class="post-meta">
+                <span class="post-time">2019-10-31</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/">量化交易</a>
+                    
+                </span>
+                
+                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%9D%87%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="toc-text">移动平均的本质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E6%9D%83%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%9D%87"><span class="toc-text">加权移动平均</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E6%95%B0%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%9D%87"><span class="toc-text">指数移动平均</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%BD%A2%E8%87%AA%E9%80%82%E5%BA%94%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%9D%87"><span class="toc-text">分形自适应移动平均</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%AB%E5%B0%94%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%9D%87"><span class="toc-text">赫尔移动平均</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-text">结语</span></a></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><strong>移动平均（Moving Average，MA）</strong>，又称移动平均线，简称均线。作为技术分析中一种分析时间序列的常用工具，常被应用于股票价格序列。移动平均可过滤高频噪声，反映出中长期低频趋势，辅助投资者做出投资判断。</p>
+<p>根据计算方法的不同，流行的移动平均包括<strong>简单移动平均、加权移动平均、指数移动平均</strong>，更高阶的移动平均算法则有<strong>分形自适应移动平均、赫尔移动平均</strong>等。这其中，简单移动平均又最为常见。下图为上证指数日线的5个不同计算窗口（20日，50日，120日，200日，300日）的简单移动平均线。</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hn7t9e97j30yw0ge160.jpg"></p>
+<p><strong>简单移动平均（Simple Moving Average,SMA）</strong> 就是对时间序列直接求<strong>等权重均值</strong>，因此使用简单。但其最令人诟病的就是它的<strong>滞后性</strong>。从上图不难看出，<strong>随着计算窗口T的增大，移动平均线越来越平滑，但同时也越来越滞后</strong>。以120日均线为例，在2015年6月份之后的大熊市开始了很长一段时间之后，120日均线才开始呈现下降趋势。如果我们按照这个趋势进行投资，那这个滞后无疑造成了巨额的亏损。</p>
+<p><strong>事实上，任何移动平均算法都会呈现一定的滞后性。它以滞后性的代价换来了平滑性，移动平均必须在平滑性和滞后性之间取舍。</strong> </p>
+<ul>
+<li>滞后性是怎么产生的呢？</li>
+<li>简单移动平均在时间上滞后多少呢？</li>
+<li>有没有什么高级的移动平均算法能在保证平滑性的同时将滞后性减小到最低呢？</li>
+</ul>
+<p>这些就是本文要回答的问题。</p>
+<h3 id="移动平均的本质"><a href="#移动平均的本质" class="headerlink" title="移动平均的本质"></a>移动平均的本质</h3><p><strong>移动平均的本质是一种低通滤波。</strong> 它的&#x3D;&#x3D;目的是过滤掉时间序列中的高频扰动，保留有用的低频趋势&#x3D;&#x3D;。如何从时间序列中抽取出真正的低频趋势呢？无论采取哪种移动平均算法，理论上的计算方法都相同，下面我们简要说明。同时，我们也会清晰地阐述&#x3D;&#x3D;该计算方法仅在理论上有效，而在实际应用中是无法实现的&#x3D;&#x3D;，并由此揭示产生滞后性的原因。</p>
+<p>假设我们有一个时间序列y &#x3D; {…, yt-2, yt-1, yt, yt+1, yt+2, …}，如下图所示。另外，假设我们有一个作用在时域t上的过滤函数F（注：这个F的具体形式根据不同的移动平均算法而不同）。</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hne63b6fj30zg08wgp6.jpg"></p>
+<p>在理论上，在任意t时刻的低频滤波（用x<sub>t</sub>表示）在数学上可以表示为该时间序列y和过滤函数F在&#x3D;&#x3D;整个时域上的卷积&#x3D;&#x3D;，即</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hnap2zdij30bq042mxf.jpg"></p>
+<p>其中，F<sub>i</sub>为过滤函数F在时刻i的取值。由于在实际中不可能用到无穷多的数据，因此可以考虑给过滤加一个窗函数，即过滤函数F只在窗口长度T内有效、在窗口之外为0，如下图所示：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hnf8g6xyj30z209a77p.jpg"></p>
+<p>加入长度为T的窗函数后，在时刻t的低频滤波变为该时间序列y和过滤函数F在这个窗口内的卷积：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hqzk5ckbj30dw066js1.jpg"></p>
+<p>然而，无论是否使用加窗函数，上述公式最大的问题是，&#x3D;&#x3D;在计算t时刻的低频分量时，利用到了未来的数据。&#x3D;&#x3D; 换句话说，&#x3D;&#x3D;理论上的低通滤波（或者移动平滑）必须要用事后数据，其假设所有数据都发生后再在全局上计算所有时点的低频分量。但这在实时数据中是不可能的，因为在任何当前时刻t，我们都没有未来数据可以利用。&#x3D;&#x3D;</p>
+<p>正因如此，在实际应用中，我们无法使用t-(T-1)&#x2F;2到t+(T-1)&#x2F;2之间的数据，只能退而求其次使用t-(T-1)到t之间的数据。这相当于我们把计算低频趋势的过滤窗函数在时域上向左平移(T-1)&#x2F;2个单位，如下图所示：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hr1d5uh1j311m0byq7b.jpg"></p>
+<p>如此处理后，对于实时数据，在当前时刻t的低频滤波变为该时间序列y和过滤函数F在t-T+1到t之间的卷积：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hr2dqh2tj30di056jrt.jpg"></p>
+<p>没有未来数据便是滞后的根本原因。</p>
+<p>&#x3D;&#x3D;对于简单移动平均来说，在窗口T内，过滤函数在每个时点的取值都是1&#x2F;T。利用上述公式计算得到的实际上是t-(T-1)&#x2F;2时刻（而非t时刻）的低频趋势，而我们把它当作t时刻的低频趋势使用，这便产生了(T-1)&#x2F;2的滞后。换句话说，当我们使用简单移动平均时，在当前时刻t，对于给定的时间窗口T，我们仅能求出t-(T-1)&#x2F;2时刻之前的低频趋势，而无法求出t-(T-1)&#x2F;2之后的低频趋势。&#x3D;&#x3D;这也解释了为什么时间窗口T越大，滞后(T-1)&#x2F;2越多。这就是为什么看股票数据里面MA20、MA30、MA50等日均线这种，计算均线的窗口T越大，得到的移动平滑曲线越滞后。</p>
+<p>既然无论如何都没有未来数据，那么是否意味着我们就只能接受移动平均的滞后性呢？答案是否定的。换个角度来考虑这个问题，&#x3D;&#x3D;滞后性说明由简单移动平均计算得到的低频趋势对近期的最新数据不够敏感&#x3D;&#x3D;。这是由于它在计算低频趋势时，对窗口内所有的数据点都给予相同的权重。按着这个思路延伸，自然的想法就是&#x3D;&#x3D;在计算移动平均时，给近期的数据更高的权重，而给窗口内较远的数据更低的权重，以更快的捕捉近期的变化。&#x3D;&#x3D;</p>
+<p>由此便得到了加权移动平均和指数移动平均。</p>
+<h3 id="加权移动平均"><a href="#加权移动平均" class="headerlink" title="加权移动平均"></a>加权移动平均</h3><p>在<strong>计算加权移动平均（Weighted Moving Average, WMA）</strong> 时，窗口内的过滤函数的取值从当前数据到之前第T-1期的数据依次&#x3D;&#x3D;线性递减&#x3D;&#x3D;。因此，第t-i期的Fi为2(T-i)&#x2F;(T(T+1))，i &#x3D; 0,2,……,T-1。该权重是i的单调线性递减函数。下图为T&#x3D;15时不同i的取值对应的权重</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hr345vpnj312k0scaeq.jpg"></p>
+<p>在确定了权重后，t时刻的加权移动平均（记为WMAt）由下式得到：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hr3vbqtwj30sm068myk.jpg"></p>
+<p>值得一提的是，由于严格的按照线性递减，因此权重会最终在当前时刻之前的第T期时点衰减为0。</p>
+<p>以上证指数过去10年的日数据为例，下图比较了T&#x3D;100时的简单移动平均和加权移动平均的过滤效果。可以看到，&#x3D;&#x3D;加权移动平均比简单移动平均对近期的变化更加敏感，尤其是在牛熊市转换的时候，加权移动平均的滞后性小于简单移动平均。&#x3D;&#x3D;但是，&#x3D;&#x3D;由于仅采用线性权重衰减，加权移动平均仍然呈现出滞后性&#x3D;&#x3D;。</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hr4kbdu1j311w0kqtl3.jpg"></p>
+<h3 id="指数移动平均"><a href="#指数移动平均" class="headerlink" title="指数移动平均"></a>指数移动平均</h3><p><strong>指数移动平均（Exponential Moving Average, EMA）</strong> 和加权移动平均类似，但不同之处是各数值的加权按<strong>指数递减</strong>，而非线性递减。此外，在指数衰减中，无论往前看多远的数据，该期数据的系数都不会衰减到0，而仅仅是向0逼近。因此，指数移动平均实际上是一个<strong>无穷级数</strong>，即无论多久远的数据都会在计算当期的指数移动平均数值时有一定的作用，只不过离当前太远的数据权重非非常低，因此它们的作用往往可以忽略。</p>
+<p>在实际应用中，t时刻的指数移动平均（记为EMA<sub>t</sub>）可以按如下方法得到：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hr5abpfsj30ne062q3z.jpg"></p>
+<p>其中alpha表示权重的衰减程度，取值在0和1之间。alpha越大，过去的观测值衰减的越快。虽然指数移动平均是一个无穷级数，但在实际应用时，我们也经常看到T期指数移动平均的说法。这里的T是用来计算alpha的参数，它不表示指数衰减在T期后结束。alpha和T的关系为alpha &#x3D; 2&#x2F;(T+1)。下图为T&#x3D;15时不同时刻的权重。可以看到，任何一期的权重都不会衰减到0。</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hr64dp51j31240skdlj.jpg"></p>
+<p>下图比较了T&#x3D;100时简单移动平均、加权移动平均和指数移动平均的平滑效果。&#x3D;&#x3D;指数移动平均由于对近期的数据赋予了更高的权重，因此它比加权移动平均对近期的变化更加敏感，但这种效果在本例中并不显著，指数移动平均也存在一定的滞后。&#x3D;&#x3D;</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hr6tfjncj31240lwk33.jpg"></p>
+<p>当alpha&#x3D;1&#x2F;T时，得到的指数移动平均又称为<strong>修正移动平均（Modified Moving Average，MMA）</strong>或<strong>平滑移动平均（SMoothed Moving Average，SMMA）</strong>，它们在应用中也十分常见。比如，在计算技术指标ADX的时候，就应用到了平滑移动平均。</p>
+<p>无论是加权还是指数移动平均，它们都是通过对近期的数值赋予更高的权重来提高低频趋势对近期变化的敏感程度。<strong>然而，它们的计算表达式（或算法结构）是固定的，在整个时间序列上的各个时点都使用同样的结构（即一成不变的权重分配方法）计算移动平均，而不考虑时间序列自身的特点。</strong></p>
+<p><strong>一个优秀的移动平均算法计算出来的均线应在时间序列自身波动不明显的时点足够平滑，而在时间序列自身发生巨变时迅速捕捉、将滞后最小化</strong>。要想达到这种效果，就必须利用时间序列自身的特点。&#x3D;&#x3D;分形自适应移动平均算法就是这样一个有力的工具。&#x3D;&#x3D;</p>
+<h3 id="分形自适应移动平均"><a href="#分形自适应移动平均" class="headerlink" title="分形自适应移动平均"></a>分形自适应移动平均</h3><p>顾名思义，<strong>分形自适应移动平均（FRactal Adaptive Moving Average，FRAMA）</strong> 利用了投资品价格序列的分形特征。简单的说，该算法通过一个简单的公式计算从时间序列从当前时点往前2T长度的时间窗口内的分形维数D，并利用分形维数进一步求解指数移动平均的参数alpha。</p>
+<p><strong>分形维数描述时间序列的趋势，其取值在1到2之间，越大说明趋势越明显，越小说明时间序列越随机。因此，通过连续的计算时间序列局部的分形维数，该算法可以动态的、自适应的根据时间序列的特征计算平滑所用的参数。</strong> 由于alpha是D的减函数，因此D越大（趋势越明显），alpha越小，即指数平滑时对过去的数值衰减的越慢；D越小（随机性越强），alpha越大，即指数平滑时对过去的数值衰减的越快、对最新数据的变化越敏感。</p>
+<p>具体的，对于当前时点t和给定的窗口T，该方法用到了三个时间窗口，即t到t-T+1（记为窗口W1，长度为T），t-T到t-2T+1（记为窗口W2，长度为T），以及t到t-2T+1（记为窗口W，长度为2T）。不难看出，W&#x3D;W1+W2。该方法的步骤如下：</p>
+<p><strong>计算FRAMA均线的步骤</strong></p>
+<ol>
+<li>用窗口W1内的最高价和最低价计算 N1 &#x3D; (最高价 – 最低价) &#x2F; T</li>
+<li>用窗口W2内的最高价和最低价计算 N2 &#x3D; (最高价 – 最低价) &#x2F; T</li>
+<li>用窗口T内的最高价和最低价计算 N3 &#x3D; (最高价 – 最低价) &#x2F; (2T)</li>
+<li>计算分形维数 D &#x3D; [log(N1+N2) – log(N3)] &#x2F; log(2)</li>
+<li>计算指数移动平均的参数alpha &#x3D; exp(-4.6*(D-1))，并使其满足在0.01和1之间</li>
+<li>将alpha带入指数移动平均的公式求解t时刻的FRAMA移动平均值</li>
+</ol>
+<p>下图比较了T&#x3D;100时指数移动平均以及分形自适应移动平均的平滑效果。很明显，由于利用了时间序列自身的分形特征，<strong>FRAMA均线对滞后性的提高非常明显，这意味着在价格趋势发生变化的时候它捕捉的更加及时。当然，取决于选取的参数，FRAMA均线在一些局部可能不够平滑，它体现了一种动态的对平滑度和灵敏度的取舍。</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hr7hkhrcj31240lwam6.jpg"></p>
+<h3 id="赫尔移动平均"><a href="#赫尔移动平均" class="headerlink" title="赫尔移动平均"></a>赫尔移动平均</h3><p>最后，我们再介绍一种业界常用的高级移动平均算法，即<strong>赫尔移动平均（Hull Moving Average，HMA）</strong>。它由Alan Hull发明，故由此得名。该算法最大的特点是&#x3D;&#x3D;在减少滞后的同时有效的提高了均线的平滑程度&#x3D;&#x3D;。</p>
+<p>在本文中，我们并不对它背后的逻辑做太多的剖析。我们直接给出它的计算步骤。对于给定的窗口T：</p>
+<p><strong>计算HMA均线的步骤</strong></p>
+<ol>
+<li>计算窗口为T&#x2F;2的加权移动平均，并把结果乘以2（如果T&#x2F;2不是整数则取整）</li>
+<li>计算窗口为T的加权移动平均</li>
+<li>用第1步的结果减去第2部的结果，得到一个新的时间序列</li>
+<li>以第3步得到的时间序列为对象，计算窗口为sqrt(T)，即根号T，的加权移动平均（如果根号T不是整数则取整）</li>
+</ol>
+<p>上述步骤的数学表达式为 HMA &#x3D; WMA((2*WMA(y, int(T&#x2F;2)) – WMA(y, T)), int(sqrt(T)))。</p>
+<p>最后，比较T&#x3D;100时分形自适应移动平均和赫尔移动平均的平滑效果。令人惊喜的看到，<strong>HMA均线有着不输FRAMA均线的灵敏性（滞后性非常低），并且在局部也提高了平滑性，确实做到了在保证平滑性的同时最大的降低了滞后性</strong>。</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hr83vzo3j31240kyk30.jpg"></p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>作为技术分析的利器，移动平均线人人都在看、人人都在用。可又有多少人想得清楚、用的明白呢？本文详尽的分析了移动平均技术的本质，揭示了滞后性产生的原因。通过对五种不同过滤技术的分析和对比，说明了高级的移动平均技术（比如FRAMA和HMA）可以有效的降低滞后性并保证均线的平滑性。</p>
+
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="/2019/10/31/%CE%B1%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">α的三要素</span>
+                <span class="nav-mobile">上一篇</span>
+            </a>
+        
+        
+            <a class="next" href="/2019/10/16/Flex%E5%B8%83%E5%B1%80%E5%9F%BA%E7%A1%80/">
+                <span class="nav-default">Flex布局基础</span>
+                <span class="nav-mobile">下一篇</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+            2022
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Justin ZM</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>

@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>草根之明</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                首页
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="/tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+            <a href="/about/" class="header-nav-link">
+                关于
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Justin ZM's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2019/10/31/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%9D%87%EF%BC%8C%E4%BD%A0%E7%9F%A5%E9%81%93%E7%9A%84%E4%B8%8E%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84/">移动平均，你知道的与你不知道的</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2019-10-31</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/">量化交易</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><strong>移动平均（Moving Average，MA）</strong>，又称移动平均线，简称均线。作为技术分析中一种分析时间序列的常用工具，常被应用于股票价格序列。移动平均可过滤高频噪声，反映出中长期低频趋势，辅助投资者做出投资判断。</p>
+<p>根据计算方法的不同，流行的移动平均包括<strong>简单移动平均、加权移动平均、指数移动平均</strong>，更高阶的移动平均算法则有<strong>分形自适应移动平均、赫尔移动平均</strong>等。这其中，简单移动平均又最为常见。下图为上证指数日线的5个不同计算窗口（20日，50日，120日，200日，300日）的简单移动平均线。</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hn7t9e97j30yw0ge160.jpg"></p>
+<p><strong>简单移动平均（Simple Moving Average,SMA）</strong> 就是对时间序列直接求<strong>等权重均值</strong>，因此使用简单。但其最令人诟病的就是它的<strong>滞后性</strong>。从上图不难看出，<strong>随着计算窗口T的增大，移动平均线越来越平滑，但同时也越来越滞后</strong>。以120日均线为例，在2015年6月份之后的大熊市开始了很长一段时间之后，120日均线才开始呈现下降趋势。如果我们按照这个趋势进行投资，那这个滞后无疑造成了巨额的亏损。</p>
+<p><strong>事实上，任何移动平均算法都会呈现一定的滞后性。它以滞后性的代价换来了平滑性，移动平均必须在平滑性和滞后性之间取舍。</strong> </p>
+<ul>
+<li>滞后性是怎么产生的呢？</li>
+<li>简单移动平均在时间上滞后多少呢？</li>
+<li>有没有什么高级的移动平均算法能在保证平滑性的同时将滞后性减小到最低呢？</li>
+</ul>
+<p>这些就是本文要回答的问题。</p>
+<h3 id="移动平均的本质"><a href="#移动平均的本质" class="headerlink" title="移动平均的本质"></a>移动平均的本质</h3><p><strong>移动平均的本质是一种低通滤波。</strong> 它的&#x3D;&#x3D;目的是过滤掉时间序列中的高频扰动，保留有用的低频趋势&#x3D;&#x3D;。如何从时间序列中抽取出真正的低频趋势呢？无论采取哪种移动平均算法，理论上的计算方法都相同，下面我们简要说明。同时，我们也会清晰地阐述&#x3D;&#x3D;该计算方法仅在理论上有效，而在实际应用中是无法实现的&#x3D;&#x3D;，并由此揭示产生滞后性的原因。</p>
+<p>假设我们有一个时间序列y &#x3D; {…, yt-2, yt-1, yt, yt+1, yt+2, …}，如下图所示。另外，假设我们有一个作用在时域t上的过滤函数F（注：这个F的具体形式根据不同的移动平均算法而不同）。</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hne63b6fj30zg08wgp6.jpg"></p>
+<p>在理论上，在任意t时刻的低频滤波（用x<sub>t</sub>表示）在数学上可以表示为该时间序列y和过滤函数F在&#x3D;&#x3D;整个时域上的卷积&#x3D;&#x3D;，即</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hnap2zdij30bq042mxf.jpg"></p>
+<p>其中，F<sub>i</sub>为过滤函数F在时刻i的取值。由于在实际中不可能用到无穷多的数据，因此可以考虑给过滤加一个窗函数，即过滤函数F只在窗口长度T内有效、在窗口之外为0，如下图所示：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hnf8g6xyj30z209a77p.jpg"></p>
+<p>加入长度为T的窗函数后，在时刻t的低频滤波变为该时间序列y和过滤函数F在这个窗口内的卷积：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hqzk5ckbj30dw066js1.jpg"></p>
+<p>然而，无论是否使用加窗函数，上述公式最大的问题是，&#x3D;&#x3D;在计算t时刻的低频分量时，利用到了未来的数据。&#x3D;&#x3D; 换句话说，&#x3D;&#x3D;理论上的低通滤波（或者移动平滑）必须要用事后数据，其假设所有数据都发生后再在全局上计算所有时点的低频分量。但这在实时数据中是不可能的，因为在任何当前时刻t，我们都没有未来数据可以利用。&#x3D;&#x3D;</p>
+<p>正因如此，在实际应用中，我们无法使用t-(T-1)&#x2F;2到t+(T-1)&#x2F;2之间的数据，只能退而求其次使用t-(T-1)到t之间的数据。这相当于我们把计算低频趋势的过滤窗函数在时域上向左平移(T-1)&#x2F;2个单位，如下图所示：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hr1d5uh1j311m0byq7b.jpg"></p>
+<p>如此处理后，对于实时数据，在当前时刻t的低频滤波变为该时间序列y和过滤函数F在t-T+1到t之间的卷积：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hr2dqh2tj30di056jrt.jpg"></p>
+<p>没有未来数据便是滞后的根本原因。</p>
+<p>&#x3D;&#x3D;对于简单移动平均来说，在窗口T内，过滤函数在每个时点的取值都是1&#x2F;T。利用上述公式计算得到的实际上是t-(T-1)&#x2F;2时刻（而非t时刻）的低频趋势，而我们把它当作t时刻的低频趋势使用，这便产生了(T-1)&#x2F;2的滞后。换句话说，当我们使用简单移动平均时，在当前时刻t，对于给定的时间窗口T，我们仅能求出t-(T-1)&#x2F;2时刻之前的低频趋势，而无法求出t-(T-1)&#x2F;2之后的低频趋势。&#x3D;&#x3D;这也解释了为什么时间窗口T越大，滞后(T-1)&#x2F;2越多。这就是为什么看股票数据里面MA20、MA30、MA50等日均线这种，计算均线的窗口T越大，得到的移动平滑曲线越滞后。</p>
+<p>既然无论如何都没有未来数据，那么是否意味着我们就只能接受移动平均的滞后性呢？答案是否定的。换个角度来考虑这个问题，&#x3D;&#x3D;滞后性说明由简单移动平均计算得到的低频趋势对近期的最新数据不够敏感&#x3D;&#x3D;。这是由于它在计算低频趋势时，对窗口内所有的数据点都给予相同的权重。按着这个思路延伸，自然的想法就是&#x3D;&#x3D;在计算移动平均时，给近期的数据更高的权重，而给窗口内较远的数据更低的权重，以更快的捕捉近期的变化。&#x3D;&#x3D;</p>
+<p>由此便得到了加权移动平均和指数移动平均。</p>
+<h3 id="加权移动平均"><a href="#加权移动平均" class="headerlink" title="加权移动平均"></a>加权移动平均</h3><p>在<strong>计算加权移动平均（Weighted Moving Average, WMA）</strong> 时，窗口内的过滤函数的取值从当前数据到之前第T-1期的数据依次&#x3D;&#x3D;线性递减&#x3D;&#x3D;。因此，第t-i期的Fi为2(T-i)&#x2F;(T(T+1))，i &#x3D; 0,2,……,T-1。该权重是i的单调线性递减函数。下图为T&#x3D;15时不同i的取值对应的权重</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hr345vpnj312k0scaeq.jpg"></p>
+<p>在确定了权重后，t时刻的加权移动平均（记为WMAt）由下式得到：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hr3vbqtwj30sm068myk.jpg"></p>
+<p>值得一提的是，由于严格的按照线性递减，因此权重会最终在当前时刻之前的第T期时点衰减为0。</p>
+<p>以上证指数过去10年的日数据为例，下图比较了T&#x3D;100时的简单移动平均和加权移动平均的过滤效果。可以看到，&#x3D;&#x3D;加权移动平均比简单移动平均对近期的变化更加敏感，尤其是在牛熊市转换的时候，加权移动平均的滞后性小于简单移动平均。&#x3D;&#x3D;但是，&#x3D;&#x3D;由于仅采用线性权重衰减，加权移动平均仍然呈现出滞后性&#x3D;&#x3D;。</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hr4kbdu1j311w0kqtl3.jpg"></p>
+<h3 id="指数移动平均"><a href="#指数移动平均" class="headerlink" title="指数移动平均"></a>指数移动平均</h3><p><strong>指数移动平均（Exponential Moving Average, EMA）</strong> 和加权移动平均类似，但不同之处是各数值的加权按<strong>指数递减</strong>，而非线性递减。此外，在指数衰减中，无论往前看多远的数据，该期数据的系数都不会衰减到0，而仅仅是向0逼近。因此，指数移动平均实际上是一个<strong>无穷级数</strong>，即无论多久远的数据都会在计算当期的指数移动平均数值时有一定的作用，只不过离当前太远的数据权重非非常低，因此它们的作用往往可以忽略。</p>
+<p>在实际应用中，t时刻的指数移动平均（记为EMA<sub>t</sub>）可以按如下方法得到：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hr5abpfsj30ne062q3z.jpg"></p>
+<p>其中alpha表示权重的衰减程度，取值在0和1之间。alpha越大，过去的观测值衰减的越快。虽然指数移动平均是一个无穷级数，但在实际应用时，我们也经常看到T期指数移动平均的说法。这里的T是用来计算alpha的参数，它不表示指数衰减在T期后结束。alpha和T的关系为alpha &#x3D; 2&#x2F;(T+1)。下图为T&#x3D;15时不同时刻的权重。可以看到，任何一期的权重都不会衰减到0。</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hr64dp51j31240skdlj.jpg"></p>
+<p>下图比较了T&#x3D;100时简单移动平均、加权移动平均和指数移动平均的平滑效果。&#x3D;&#x3D;指数移动平均由于对近期的数据赋予了更高的权重，因此它比加权移动平均对近期的变化更加敏感，但这种效果在本例中并不显著，指数移动平均也存在一定的滞后。&#x3D;&#x3D;</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hr6tfjncj31240lwk33.jpg"></p>
+<p>当alpha&#x3D;1&#x2F;T时，得到的指数移动平均又称为<strong>修正移动平均（Modified Moving Average，MMA）</strong>或<strong>平滑移动平均（SMoothed Moving Average，SMMA）</strong>，它们在应用中也十分常见。比如，在计算技术指标ADX的时候，就应用到了平滑移动平均。</p>
+<p>无论是加权还是指数移动平均，它们都是通过对近期的数值赋予更高的权重来提高低频趋势对近期变化的敏感程度。<strong>然而，它们的计算表达式（或算法结构）是固定的，在整个时间序列上的各个时点都使用同样的结构（即一成不变的权重分配方法）计算移动平均，而不考虑时间序列自身的特点。</strong></p>
+<p><strong>一个优秀的移动平均算法计算出来的均线应在时间序列自身波动不明显的时点足够平滑，而在时间序列自身发生巨变时迅速捕捉、将滞后最小化</strong>。要想达到这种效果，就必须利用时间序列自身的特点。&#x3D;&#x3D;分形自适应移动平均算法就是这样一个有力的工具。&#x3D;&#x3D;</p>
+<h3 id="分形自适应移动平均"><a href="#分形自适应移动平均" class="headerlink" title="分形自适应移动平均"></a>分形自适应移动平均</h3><p>顾名思义，<strong>分形自适应移动平均（FRactal Adaptive Moving Average，FRAMA）</strong> 利用了投资品价格序列的分形特征。简单的说，该算法通过一个简单的公式计算从时间序列从当前时点往前2T长度的时间窗口内的分形维数D，并利用分形维数进一步求解指数移动平均的参数alpha。</p>
+<p><strong>分形维数描述时间序列的趋势，其取值在1到2之间，越大说明趋势越明显，越小说明时间序列越随机。因此，通过连续的计算时间序列局部的分形维数，该算法可以动态的、自适应的根据时间序列的特征计算平滑所用的参数。</strong> 由于alpha是D的减函数，因此D越大（趋势越明显），alpha越小，即指数平滑时对过去的数值衰减的越慢；D越小（随机性越强），alpha越大，即指数平滑时对过去的数值衰减的越快、对最新数据的变化越敏感。</p>
+<p>具体的，对于当前时点t和给定的窗口T，该方法用到了三个时间窗口，即t到t-T+1（记为窗口W1，长度为T），t-T到t-2T+1（记为窗口W2，长度为T），以及t到t-2T+1（记为窗口W，长度为2T）。不难看出，W&#x3D;W1+W2。该方法的步骤如下：</p>
+<p><strong>计算FRAMA均线的步骤</strong></p>
+<ol>
+<li>用窗口W1内的最高价和最低价计算 N1 &#x3D; (最高价 – 最低价) &#x2F; T</li>
+<li>用窗口W2内的最高价和最低价计算 N2 &#x3D; (最高价 – 最低价) &#x2F; T</li>
+<li>用窗口T内的最高价和最低价计算 N3 &#x3D; (最高价 – 最低价) &#x2F; (2T)</li>
+<li>计算分形维数 D &#x3D; [log(N1+N2) – log(N3)] &#x2F; log(2)</li>
+<li>计算指数移动平均的参数alpha &#x3D; exp(-4.6*(D-1))，并使其满足在0.01和1之间</li>
+<li>将alpha带入指数移动平均的公式求解t时刻的FRAMA移动平均值</li>
+</ol>
+<p>下图比较了T&#x3D;100时指数移动平均以及分形自适应移动平均的平滑效果。很明显，由于利用了时间序列自身的分形特征，<strong>FRAMA均线对滞后性的提高非常明显，这意味着在价格趋势发生变化的时候它捕捉的更加及时。当然，取决于选取的参数，FRAMA均线在一些局部可能不够平滑，它体现了一种动态的对平滑度和灵敏度的取舍。</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hr7hkhrcj31240lwam6.jpg"></p>
+<h3 id="赫尔移动平均"><a href="#赫尔移动平均" class="headerlink" title="赫尔移动平均"></a>赫尔移动平均</h3><p>最后，我们再介绍一种业界常用的高级移动平均算法，即<strong>赫尔移动平均（Hull Moving Average，HMA）</strong>。它由Alan Hull发明，故由此得名。该算法最大的特点是&#x3D;&#x3D;在减少滞后的同时有效的提高了均线的平滑程度&#x3D;&#x3D;。</p>
+<p>在本文中，我们并不对它背后的逻辑做太多的剖析。我们直接给出它的计算步骤。对于给定的窗口T：</p>
+<p><strong>计算HMA均线的步骤</strong></p>
+<ol>
+<li>计算窗口为T&#x2F;2的加权移动平均，并把结果乘以2（如果T&#x2F;2不是整数则取整）</li>
+<li>计算窗口为T的加权移动平均</li>
+<li>用第1步的结果减去第2部的结果，得到一个新的时间序列</li>
+<li>以第3步得到的时间序列为对象，计算窗口为sqrt(T)，即根号T，的加权移动平均（如果根号T不是整数则取整）</li>
+</ol>
+<p>上述步骤的数学表达式为 HMA &#x3D; WMA((2*WMA(y, int(T&#x2F;2)) – WMA(y, T)), int(sqrt(T)))。</p>
+<p>最后，比较T&#x3D;100时分形自适应移动平均和赫尔移动平均的平滑效果。令人惊喜的看到，<strong>HMA均线有着不输FRAMA均线的灵敏性（滞后性非常低），并且在局部也提高了平滑性，确实做到了在保证平滑性的同时最大的降低了滞后性</strong>。</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8hr83vzo3j31240kyk30.jpg"></p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>作为技术分析的利器，移动平均线人人都在看、人人都在用。可又有多少人想得清楚、用的明白呢？本文详尽的分析了移动平均技术的本质，揭示了滞后性产生的原因。通过对五种不同过滤技术的分析和对比，说明了高级的移动平均技术（比如FRAMA和HMA）可以有效的降低滞后性并保证均线的平滑性。</p>
+
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2019/10/16/Flex%E5%B8%83%E5%B1%80%E5%9F%BA%E7%A1%80/">Flex布局基础</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2019-10-16</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/">开发手册</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <p>Flex 是 Flexible Box 的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。</p>
+<p>任何一个容器都可以指定为 Flex 布局。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">  display: flex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>行内元素也可以使用 Flex 布局。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">  display: inline-flex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意，设为 Flex 布局以后，子元素的<strong>float、clear和vertical-align属性</strong>将失效。</p>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>采用 Flex 布局的元素，称为 Flex 容器（flex container），简称”容器”。它的所有子元素自动成为容器成员，称为 Flex 项目（flex item），简称”项目”。</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g80dh4ad2sj30fn099q2x.jpg"></p>
+<p>容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做<strong>main start</strong>，结束位置叫做<strong>main end</strong>；交叉轴的开始位置叫做<strong>cross start</strong>，结束位置叫做<strong>cross end</strong>。</p>
+<p>项目默认沿主轴排列。单个项目占据的主轴空间叫做<strong>main size</strong>，占据的交叉轴空间叫做<strong>cross size</strong>。</p>
+<h3 id="容器的属性"><a href="#容器的属性" class="headerlink" title="容器的属性"></a>容器的属性</h3><p>以下6个属性设置在容器上。</p>
+<ul>
+<li>flex-direction</li>
+<li>flex-wrap</li>
+<li>flex-flow</li>
+<li>justify-content</li>
+<li>align-items</li>
+<li>align-content</li>
+</ul>
+<h4 id="flex-direction属性"><a href="#flex-direction属性" class="headerlink" title="flex-direction属性"></a>flex-direction属性</h4><p>flex-direction属性决定主轴的方向（即项目的排列方向）。<br><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g80dlpyyloj30m405na9z.jpg"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  flex-direction: row | row-reverse | column | column-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>它可能有4个值。</p>
+<ul>
+<li>row（默认值）：主轴为水平方向，起点在左端。</li>
+<li>row-reverse：主轴为水平方向，起点在右端。</li>
+<li>column：主轴为垂直方向，起点在上沿。</li>
+<li>column-reverse：主轴为垂直方向，起点在下沿。</li>
+</ul>
+<h4 id="flex-wrap属性"><a href="#flex-wrap属性" class="headerlink" title="flex-wrap属性"></a>flex-wrap属性</h4><p>默认情况下，项目都排在一条线（又称”轴线”）上。flex-wrap属性定义，如果一条轴线排不下，如何换行。</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g80dnfwtogj30m607oa9u.jpg"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">  flex-wrap: nowrap | wrap | wrap-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>它可能取三个值。</p>
+<p>（1）nowrap（默认）：不换行。<br><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g80docemzsj30jg041aam.jpg"></p>
+<p>（2）wrap：换行，第一行在上方。<br><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g80dp0lvdtj30jg04x3yv.jpg"></p>
+<p>（3）wrap-reverse：换行，第一行在下方。<br><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g80dp5srs8j30jg04xmxf.jpg"></p>
+<h4 id="flex-flow属性"><a href="#flex-flow属性" class="headerlink" title="flex-flow属性"></a>flex-flow属性</h4><p>flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  flex-flow: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="justify-content属性"><a href="#justify-content属性" class="headerlink" title="justify-content属性"></a>justify-content属性</h4><p>justify-content属性定义了项目在主轴上的对齐方式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  justify-content: flex-start | flex-end | center | space-between | space-around;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g80drsndazj30hp0l70sn.jpg"></p>
+<p>它可能取5个值，具体对齐方式与轴的方向有关。下面假设主轴为从左到右。</p>
+<ul>
+<li>flex-start（默认值）：左对齐</li>
+<li>flex-end：右对齐</li>
+<li>center： 居中</li>
+<li>space-between：两端对齐，项目之间的间隔都相等。</li>
+<li>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。</li>
+</ul>
+<h4 id="align-items属性"><a href="#align-items属性" class="headerlink" title="align-items属性"></a>align-items属性</h4><p>align-items属性定义项目在交叉轴上如何对齐。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  align-items: flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g80dtsdcksj30h50lu3yg.jpg"></p>
+<p>它可能取5个值。具体的对齐方式与交叉轴的方向有关，下面假设交叉轴从上到下。</p>
+<ul>
+<li>flex-start：交叉轴的起点对齐。</li>
+<li>flex-end：交叉轴的终点对齐。</li>
+<li>center：交叉轴的中点对齐。</li>
+<li>baseline: 项目的第一行文字的基线对齐。</li>
+<li>stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。</li>
+</ul>
+<h4 id="align-content属性"><a href="#align-content属性" class="headerlink" title="align-content属性"></a>align-content属性</h4><p>align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  align-content: flex-start | flex-end | center | space-between | space-around | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g80dw5osdpj30h80lu0so.jpg"></p>
+<p>该属性可能取6个值。</p>
+<ul>
+<li>flex-start：与交叉轴的起点对齐。</li>
+<li>flex-end：与交叉轴的终点对齐。</li>
+<li>center：与交叉轴的中点对齐。</li>
+<li>space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。</li>
+<li>space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</li>
+<li>stretch（默认值）：轴线占满整个交叉轴。</li>
+</ul>
+<h3 id="item-项目的属性"><a href="#item-项目的属性" class="headerlink" title="item 项目的属性"></a>item 项目的属性</h3><p>以下6个属性设置在item项目上。</p>
+<ul>
+<li>order</li>
+<li>flex-grow</li>
+<li>flex-shrink</li>
+<li>flex-basis</li>
+<li>flex</li>
+<li>align-self</li>
+</ul>
+<h4 id="order属性"><a href="#order属性" class="headerlink" title="order属性"></a>order属性</h4><p>order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  order: &lt;integer&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g80e1ck8b3j30kv0dca9v.jpg"></p>
+<h4 id="flex-grow属性"><a href="#flex-grow属性" class="headerlink" title="flex-grow属性"></a>flex-grow属性</h4><p>flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  flex-grow: &lt;number&gt;; /* default 0 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g80e2hrykkj30ma05v3yf.jpg"></p>
+<p>如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</p>
+<h4 id="flex-shrink属性"><a href="#flex-shrink属性" class="headerlink" title="flex-shrink属性"></a>flex-shrink属性</h4><p>flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  flex-shrink: &lt;number&gt;; /* default 1 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g80e3rw65gj30jg041t8x.jpg"></p>
+<p>如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。</p>
+<p>负值对该属性无效.</p>
+<h4 id="flex-basis属性"><a href="#flex-basis属性" class="headerlink" title="flex-basis属性"></a>flex-basis属性</h4><p>flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  flex-basis: &lt;length&gt; | auto; /* default auto */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间。</p>
+<h4 id="flex属性"><a href="#flex属性" class="headerlink" title="flex属性"></a>flex属性</h4><p>flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  flex: none | [ &lt;&#x27;flex-grow&#x27;&gt; &lt;&#x27;flex-shrink&#x27;&gt;? || &lt;&#x27;flex-basis&#x27;&gt; ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。</p>
+<p>建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</p>
+<h4 id="align-self属性"><a href="#align-self属性" class="headerlink" title="align-self属性"></a>align-self属性</h4><p>align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  align-self: auto | flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g80e68qcbdj30kn0aua9w.jpg"></p>
+<p>该属性可能取6个值，除了auto，其他都与align-items属性完全一致。</p>
+
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2019/10/08/Python%E8%AE%A1%E7%AE%97%E8%82%A1%E7%A5%A8%E6%94%B6%E7%9B%8A%E7%8E%87%E3%80%81Alpha%E5%92%8CBeta%E5%80%BC/">Python计算股票收益率、Alpha和Beta值</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2019-10-08</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/">量化交易</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <p>使用Python计算股票的收益率，重点展示如何利用Python对日收益率数据向月、年收益率转换，然后演示个股Alpha和Beta值的计算。</p>
+<h3 id="收益率"><a href="#收益率" class="headerlink" title="收益率"></a>收益率</h3><h4 id="单期收益率"><a href="#单期收益率" class="headerlink" title="单期收益率"></a>单期收益率</h4><p>单期（一个时期）的收益率计算方法如下：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7r5o3ph4gj309u02owef.jpg"></p>
+<p>其中，r 是收益率，pt 是时间 t 时的资产价格，p0 是初始时间的资产价格。我们利用 Python 程序来实现这个过程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rate_return = 102.0/100 - 1</span><br><span class="line">print(rate_return)</span><br></pre></td></tr></table></figure>
+<p>假设我们买了 100 美元的股票，半年后它涨到了 102 美元。一年后，价格又涨到了 104 美元。那么我们应该如何计算它的总回报呢？首先，我们可以把它看做是一个时期的投资回报，即股票直接从 100 美元涨到了 104 美元，那么我们的回报率可以这样计算：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7r5qpk26hj309602i748.jpg"></p>
+<p>或者，我们也可以把这个当做两个时期的回报，即股票先从 100 美元涨到 102 美元，然后再从 102 美元涨到 104 美元，那么我们的回报率可以这样计算：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7r5ru8pcqj30n202c3yn.jpg"></p>
+<p>在这里，我们对一年的回报进行了两次计算，这种计算被称为半年复合。那么季度复合呢？让我们假设一下，每个季度末的股票价格分别为 p1，p2，p3和p4。</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7r5tognrlj30ma028q30.jpg"></p>
+<p>我们在此计算的收益率称为累积回报或者总回报。它衡量一段时间内该资产的总回报。</p>
+<p>现在考虑以下一个问题：我们有两个策略，策略A和策略B。我们将策略A运行了一年，累积回报率是20%。而我们运行策略B三年，累积回报率是65%。那么你觉得哪种策略的回报率更高呢？我们常用的比较方法是将所有收益转换为年复合收益率，无论每种策略的投资期限如何，我们都能通过这种方法来比较两种方法的收益率。我们通过计算获得策略 B 的年复合收益率如下：<br><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7r5wswmyhj30ck04qglr.jpg"></p>
+<p>所以，策略A有更高的年复合收益率（compounding annual return）。</p>
+<h4 id="对数收益率"><a href="#对数收益率" class="headerlink" title="对数收益率"></a>对数收益率</h4><p>年复合收益率，这是一种有效的回报率。但是，你也可以将其看做是一种 “假设回报”，因为策略 B 在三年的测试过程中，不可能每年的回报率都是 18.167% 。但是，我们可以假设策略B每年的回报率是 18.167%，所以它能达到三年的累积回报率是 65%。正如我们之前提到的，如果我们假设一个策略是季度复利的，那么季度有效收益率和年回报之间的关系为：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7r62m11jpj308a024t8m.jpg"></p>
+<p>更一般的说，如果一年内复合的时间是 n，而年回报率是 r，那么我们可以得到如下的关系式：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7r63tly11j308802a3yf.jpg"></p>
+<p>现在想象一下股市，我们的资产是每秒都在变化，甚至每毫秒都是在变化的。如果符合的时间或 n 接近无限大，则称为连续复合。计算公式如下：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7r657kgftj30ac028weg.jpg"></p>
+<p>从上面的方程中，我们知道如果我们假设复合收益是连续的：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7r677nbabj307y0280sn.jpg"></p>
+<p>我们对等式两边都取自然对数 ln ，则：</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7r67ki419j30au022gll.jpg"></p>
+<p>在这里我们获取了对数收益率，或者称为连续复合收益。这在计算回报时经常被使用，因为一旦我们采用资产价格的对数，我们就可以通过简单的减法来计算对数回报。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 先引入后面可能用到的包</span><br><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line">from scipy import stats</span><br><span class="line">import tushare as ts</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line"># 正常显示画图时出现的中文和负号</span><br><span class="line">plt.rcParams[&#x27;font.sans-serif&#x27;] = [&#x27;SimHei&#x27;]</span><br><span class="line">plt.rcParams[&#x27;axes.unicode_minus&#x27;] = False</span><br></pre></td></tr></table></figure>
+
+<h4 id="收益率转化"><a href="#收益率转化" class="headerlink" title="收益率转化"></a>收益率转化</h4><p>对日期进行处理，分别将日对数收益率转化为月和年收益率。主要有三个步骤：</p>
+<p>1.估计股票每日对数收益率；<br>2.加总对数收益率到每月（年）；<br>3.将月（年）收益率转化为百分比收益率  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">stock = &#x27;sh&#x27;</span><br><span class="line">df = ts.get_k_data(stock, start=&#x27;2010-01-03&#x27;)</span><br><span class="line"># 使用tushare中的get_k_data()得到的数据框索引是顺序数字，而不是日期序列，因此，为分析方面，需要进行变换，即使用“date”作为索引。</span><br><span class="line">df.set_index([&#x27;date&#x27;], inplace=True)</span><br></pre></td></tr></table></figure>
+<p>步骤一：计算对数收益率</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 计算的时候第一个数成为缺失值，删掉</span><br><span class="line">lograte = np.log(df.close/df.close.shift(1))</span><br></pre></td></tr></table></figure>
+
+<p>步骤二：加总对数收益率到每日</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">month = []</span><br><span class="line">index = lograte.index</span><br><span class="line"></span><br><span class="line">for i in range(0, np.size(lograte)):</span><br><span class="line">    month.append(index[i][:7])</span><br><span class="line"></span><br><span class="line">y = pd.DataFrame(lograte.values, index=month, columns=[&quot;月收益率&quot;])</span><br></pre></td></tr></table></figure>
+
+<p>步骤三：将日收益率转化为月收益率</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ret_monthly = y.groupby(y.index).sum()</span><br><span class="line">print(ret_monthly)</span><br><span class="line"></span><br><span class="line">#          月收益率</span><br><span class="line"># 2019-05 -0.060128</span><br><span class="line"># 2019-06  0.027285</span><br><span class="line"># 2019-07 -0.015689</span><br><span class="line"># 2019-08 -0.015904</span><br><span class="line"># 2019-09  0.033933</span><br></pre></td></tr></table></figure>
+
+<p><strong>将日收益率转化为年收益率</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">stock = &#x27;601318&#x27;</span><br><span class="line">df = ts.get_k_data(code=stock, ktype=&#x27;D&#x27;, autype=&#x27;qfq&#x27;, start=&#x27;2007-03-01&#x27;)</span><br><span class="line"></span><br><span class="line">df.set_index([&#x27;date&#x27;], inplace=True)</span><br><span class="line"></span><br><span class="line"># 计算的时候第一个数成为缺失值，删掉</span><br><span class="line">lograte = np.log(df.close/df.close.shift(1))[1:]</span><br><span class="line"></span><br><span class="line">year = []</span><br><span class="line">index = lograte.index</span><br><span class="line"></span><br><span class="line">for i in range(0, np.size(lograte)):</span><br><span class="line">    year.append(index[i][:4])</span><br><span class="line"></span><br><span class="line">y = pd.DataFrame(lograte.values, index=year, columns=[&quot;年收益率&quot;])</span><br><span class="line"></span><br><span class="line">ret_annual = np.exp(y.groupby(y.index).sum())-1</span><br><span class="line">print(ret_annual)</span><br></pre></td></tr></table></figure>
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2019/10/06/python%E7%9A%845%E7%A7%8D%E5%AE%9E%E6%88%98%E5%B0%8F%E6%8A%80%E5%B7%A7/">python的5种实战小技巧</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2019-10-06</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/Python/">Python</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h3 id="字符串运算"><a href="#字符串运算" class="headerlink" title="字符串运算"></a>字符串运算</h3><p>字符串本质上也是一种元组，但是字符串有很多“运算”方式。最直观的是字符串的 + 和 * 运算，它们分别表示重复和连接。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; my_string = &quot;Hi Medium..!&quot;</span><br><span class="line">&gt;&gt;&gt; print(my_string * 2)</span><br><span class="line">Hi Medium..!Hi Medium..!</span><br><span class="line">&gt;&gt;&gt; print(my_string + &quot; I love Python&quot; * 2)</span><br><span class="line">Hi Medium..! I love Python I love Python</span><br></pre></td></tr></table></figure>
+
+<p>此外，如果希望获得反向字符串，也可以直接使用 [::-1] 进行索引：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(my_string[::-1])</span><br><span class="line">!..muideM iH</span><br><span class="line">&gt;&gt;&gt; my_list = [1,2,3,4,5]</span><br><span class="line">&gt;&gt;&gt; print(my_list[::-1])</span><br><span class="line">[5, 4, 3, 2, 1]</span><br></pre></td></tr></table></figure>
+
+<p>如果列表元素都是字符串，那么我们可以快速地使用 join() 方法将所有元素拼接在一起：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; word_list = [&quot;awesome&quot;, &quot;is&quot;, &quot;this&quot;]</span><br><span class="line">&gt;&gt;&gt; print(&#x27; &#x27;.join(word_list[::-1]) + &#x27;!&#x27;)</span><br><span class="line">this is awesome!</span><br></pre></td></tr></table></figure>
+
+<p>如上我们使用 .join() 方法拼接列表元素，其中 『 』 表示连接方式为空格。其实在自然语言处理中，这个方法会经常使用，例如我们将句子拆分为了字符，那么处理后的合并就需要使用 join() 了。</p>
+<h3 id="列表推导式"><a href="#列表推导式" class="headerlink" title="列表推导式"></a>列表推导式</h3><p>我们先定义一个简单的函数，它会算变量的平方并加 5：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; def stupid_func(x):</span><br><span class="line">&gt;&gt;&gt; return x**2 + 5</span><br></pre></td></tr></table></figure>
+
+<p>如果我们希望将该函数应用到列表中的奇数项，那么不采用列表推导式的情况下，我们一般会写成以下形式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; my_list = [1, 2, 3, 4, 5]</span><br><span class="line">&gt;&gt;&gt; new_list = []</span><br><span class="line">&gt;&gt;&gt; for x in my_list:</span><br><span class="line">&gt;&gt;&gt; if x % 2 != 0:</span><br><span class="line">&gt;&gt;&gt; new_list.append(stupid_func(x))</span><br><span class="line">&gt;&gt;&gt; print(new_list)</span><br><span class="line">[6, 14, 30]</span><br></pre></td></tr></table></figure>
+
+<p>但是现在我们有了列表推导式，那么上面代码可以等价修改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; my_list = [1, 2, 3, 4, 5]</span><br><span class="line">&gt;&gt;&gt; print([stupid_func(x) for x in my_list if x % 2 != 0])</span><br><span class="line">[6, 14, 30]</span><br></pre></td></tr></table></figure>
+
+<p>列表推导式的一般语法可以表示为 [ expression for item in list ]，如果你希望加上一些布尔型条件语句，那么上面的语法可以修改为 [ expression for item in list if conditional ]，它的结构其实和下面是等价的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; for item in list:</span><br><span class="line">&gt;&gt;&gt; if conditional:</span><br><span class="line">&gt;&gt;&gt; expression</span><br></pre></td></tr></table></figure>
+
+<p>上面的列表推导式可以进一步简化，即不需要定义一个新函数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print([x ** 2 + 5 for x in my_list if x % 2 != 0])</span><br><span class="line">[6, 14, 30]</span><br></pre></td></tr></table></figure>
+
+<h3 id="Lambda-和-Map"><a href="#Lambda-和-Map" class="headerlink" title="Lambda 和 Map"></a>Lambda 和 Map</h3><p>Lambda 是一种匿名函数，它看起来可能有一点奇怪，但是一旦你理解了它，那么它就会变得非常直观与强大。</p>
+<p>一般而言，Lambda 函数都比较小，它也不需要定义函数名。那么为什么需要匿名函数？简单而言，Lambda 最常执行一些直观的运算，它并不需要标准的函数定义，而且也不需要新的函数名再次调用。</p>
+<p>还是拿上面的先平方再加 5 为例，前面我们是定义了一个标准的函数，def stupid_func(x)，现在我们可以试试 Lambda 匿名函数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; stupid_func = (lambda x : x ** 2 + 5)</span><br><span class="line">&gt;&gt;&gt; print([stupid_func(1), stupid_func(3), stupid_func(5)])</span><br><span class="line">[6, 14, 30]</span><br></pre></td></tr></table></figure>
+
+<p>那么我们为什么要用上面的表达式？很大一部分原因在于，当我们想执行一些简单运算时，可以不需要定义真实函数就能完成。例如排序列表元素，一种直观的方法可以使用 sorted() 方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; my_list = [2, 1, 0, -1, -2]</span><br><span class="line">&gt;&gt;&gt; print(sorted(my_list))</span><br><span class="line">[-2, -1, 0, 1, 2]</span><br></pre></td></tr></table></figure>
+
+<p>这只能默认从大到小或从小到大排序，但是借助 Lambda 表达式，我们可以实现更自由的排序标准。如下所示我们希望根据最小的平方数对列表进行排序，其可以使用 Lambda 函数定义键，从而告诉 sorted() 方法该怎样排序。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(sorted(my_list, key = lambda x : x ** 2))</span><br><span class="line">[0, -1, 1, -2, 2]</span><br></pre></td></tr></table></figure>
+
+<p>Map 是一个简单的函数，它可以将某个函数应用到其它一些序列元素，例如列表。如果我们有两个列表，我们希望将这两个列表对应的元素相乘，那么使用 lambda 函数和 map 可以快速实现这一功能：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(list(map(lambda x, y : x * y, [1, 2, 3], [4, 5, 6])))</span><br><span class="line">[4, 10, 18]</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码非常优雅，如果不用它们两者，那么一般的表达需要写成这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; x, y = [1, 2, 3], [4, 5, 6]</span><br><span class="line">&gt;&gt;&gt; z = []</span><br><span class="line">&gt;&gt;&gt; for i in range(len(x)):</span><br><span class="line">&gt;&gt;&gt; z.append(x[i] * y[i])</span><br><span class="line">&gt;&gt;&gt; print(z)</span><br><span class="line">[4, 10, 18]</span><br></pre></td></tr></table></figure>
+
+<h3 id="单行条件语句"><a href="#单行条件语句" class="headerlink" title="单行条件语句"></a>单行条件语句</h3><p>如果我们使用条件语句，那么最可能写成下面这个样子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; x = int(input())</span><br><span class="line">&gt;&gt;&gt; if x &gt;= 10:</span><br><span class="line">&gt;&gt;&gt; print(&quot;Horse&quot;)</span><br><span class="line">&gt;&gt;&gt; elif 1 &lt; x &lt; 10:</span><br><span class="line">&gt;&gt;&gt; print(&quot;Duck&quot;)</span><br><span class="line">&gt;&gt;&gt; else:</span><br><span class="line">&gt;&gt;&gt; print(&quot;Baguette&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>但其实我们也可以把所有条件都写在 print 函数内，即上面 7 行代码可以等价写成如下一行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(&quot;Horse&quot; if x &gt;= 10 else &quot;Duck&quot; if 1 &lt; x &lt; 10 else &quot;Baguette&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>这样看起来真的非常简洁，如果你查看以前写的代码，真的有很多都可以改成这种表达式。</p>
+<h3 id="zip"><a href="#zip" class="headerlink" title="zip()"></a>zip()</h3><p>前面在介绍 map() 函数时，我们举了个例子将某个函数应用到平行的两个列表，而 zip() 函数可以更简单地做到这一点。</p>
+<p>如果我们有两个列表，第一个列表包含了名，第二个列表包含了姓，使用 zip() 函数，我们可以将它们拼接在一起。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; first_names = [&quot;Peter&quot;, &quot;Christian&quot;, &quot;Klaus&quot;]</span><br><span class="line">&gt;&gt;&gt; last_names = [&quot;Jensen&quot;, &quot;Smith&quot;, &quot;Nistrup&quot;]</span><br><span class="line">&gt;&gt;&gt; print([&#x27; &#x27;.join(x) for x in zip(first_names, last_names)])</span><br><span class="line">[&#x27;Peter Jensen&#x27;, &#x27;Christian Smith&#x27;, &#x27;Klaus Nistrup&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p>也就是说，zip 将两个等长的列表变为了一对一对的，即 ((“Peter”, “Jensen”), (“Christian”, “Smith”), (“Klaus”, “Nistrup”))。</p>
+
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2019/10/05/Python-Tablib%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BAN%E7%A7%8D%E6%A0%BC%E5%BC%8F/">Python Tablib实现数据导出N种格式</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2019-10-05</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/Python/">Python</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h3 id="遇见-Tablib"><a href="#遇见-Tablib" class="headerlink" title="遇见 Tablib"></a>遇见 Tablib</h3><p>我们在 Python 实际开发过程中，经常涉及将数据导出为 Excel、Csv、Yaml、Json 等各种格式的文件的需求，一些粗鲁的实现方式是通过安装各种第三方模块以支持不同格式文件的导出操作。</p>
+<p>接下来要我们要介绍的这个模块，再也不需要担心因导出不同格式数据时而调用各种第三方模块了，当然使用 Pandas 也是一个不错的选择，只是过于重量级了。</p>
+<p>Python Tablib 是麻省理工学院授权的与格式无关的表格数据集库。支持导入、导出和操作表格数据集。优雅的将数据导出为各种不同的格式，包括Excel，Json，Html，Yaml，Csv，Tsv等格式。</p>
+<h3 id="Tablib-安装"><a href="#Tablib-安装" class="headerlink" title="Tablib 安装"></a>Tablib 安装</h3><p>我们在 Windows10 Python3 环境下，使用 pip 进行安装 ，安装命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install tablib</span><br></pre></td></tr></table></figure>
+<p>接下来，让我们一步步了解如何使用 Tablib ，简洁而又优雅的实现将数据导出为各种格式。</p>
+<h3 id="创建数据集"><a href="#创建数据集" class="headerlink" title="创建数据集"></a>创建数据集</h3><p>我们使用 tablib.Dataset 方法，采用如下方式创建数据集：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import tablib</span><br><span class="line"></span><br><span class="line"># 表头 字段名或者列名</span><br><span class="line">headers = (&#x27;id&#x27;, &#x27;name&#x27;, &#x27;age&#x27;, &#x27;grade&#x27;)</span><br><span class="line"># 数据</span><br><span class="line">data = [</span><br><span class="line">    [1, &#x27;Troy&#x27;, 20, 78],</span><br><span class="line">    [2, &#x27;Orla&#x27;, 21, 89],</span><br><span class="line">    [3, &#x27;Cody&#x27;, 20, 96],</span><br><span class="line">    [4, &#x27;Yana&#x27;, 19, 77],</span><br><span class="line">    [5, &#x27;Maya&#x27;, 21, 59],</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"># 创建数据集</span><br><span class="line">dataset_o = tablib.Dataset(*data, headers=headers)</span><br><span class="line">print(dataset_o)</span><br><span class="line"></span><br><span class="line"># id|name|age|grade</span><br><span class="line"># --|----|---|-----</span><br><span class="line"># 1 |Troy|20 |78   </span><br><span class="line"># 2 |Orla|21 |89   </span><br><span class="line"># 3 |Cody|20 |96   </span><br><span class="line"># 4 |Yana|19 |77   </span><br><span class="line"># 5 |Maya|21 |59 </span><br></pre></td></tr></table></figure>
+<p>我们还可以另一种方式创建数据集，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import tablib</span><br><span class="line"></span><br><span class="line">dataset_t = tablib.Dataset()</span><br><span class="line"></span><br><span class="line"># 添加表头 字段名或者列名</span><br><span class="line">dataset_t.headers = (&#x27;id&#x27;, &#x27;name&#x27;, &#x27;age&#x27;, &#x27;grade&#x27;)</span><br><span class="line"># 数据</span><br><span class="line">data = [</span><br><span class="line">    [1, &#x27;Troy&#x27;, 20, 78],</span><br><span class="line">    [2, &#x27;Orla&#x27;, 21, 89],</span><br><span class="line">    [3, &#x27;Cody&#x27;, 20, 96],</span><br><span class="line">    [4, &#x27;Yana&#x27;, 19, 77],</span><br><span class="line">    [5, &#x27;Maya&#x27;, 21, 59],</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">for t in data:</span><br><span class="line">    # 添加数据</span><br><span class="line">    dataset_t.append(t)</span><br><span class="line">print(dataset_t)</span><br><span class="line"></span><br><span class="line"># id|name|age|grade</span><br><span class="line"># --|----|---|-----</span><br><span class="line"># 1 |Troy|20 |78   </span><br><span class="line"># 2 |Orla|21 |89   </span><br><span class="line"># 3 |Cody|20 |96   </span><br><span class="line"># 4 |Yana|19 |77   </span><br><span class="line"># 5 |Maya|21 |59 </span><br></pre></td></tr></table></figure>
+
+<p>我们还可以通过导入现有文件数据的方式创建数据集，如下，我们为 dump.json 文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[&quot;Jack&quot;, &quot;20&quot;], [&quot;Tom&quot;, &quot;30&quot;]]</span><br></pre></td></tr></table></figure>
+
+<p>我们使用 tablib.Dataset.load 方法导入 dump.json 文件数据，实现如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import tablib</span><br><span class="line"></span><br><span class="line">dataset_json = tablib.Dataset().load(open(&#x27;dump.json&#x27;).read())</span><br><span class="line">print(dataset_json)</span><br><span class="line">print(dataset_json.json)</span><br><span class="line"></span><br><span class="line"># Jack|20</span><br><span class="line"># Tom |30</span><br><span class="line"># [[&quot;Jack&quot;, &quot;20&quot;], [&quot;Tom&quot;, &quot;30&quot;]]</span><br></pre></td></tr></table></figure>
+
+<p>创建一个 tablib.Dataset 通过 load 方法，导入现已存在的文件。强大之处是 tablib 能够自动检测传入的文件类型，并使用适当的格式化方法进行导入，实现从各种不同的文件类型中导入。</p>
+<p>比如，我们再导入 dataset.xlsx 文件，代码实现如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import tablib</span><br><span class="line">dataset_xlsx = tablib.Dataset().load(open(&#x27;dump.xlsx&#x27;).read())</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加行"><a href="#添加行" class="headerlink" title="添加行"></a>添加行</h3><p>我们可以使用 tablib.Dataset.append 方法，实现向数据集尾部添加行数据，需要注意的是每行的元素数量应与数据集的列数相同</p>
+<p>我们也可以使用 tablib.Dataset.insert 方法，实现向数据集指定位置添加行数据，同样需要注意每行的元素数量应与数据集的列数相同</p>
+<p>代码实现如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">import tablib</span><br><span class="line"></span><br><span class="line"># 表头 字段名或者列名</span><br><span class="line">headers = (&#x27;id&#x27;, &#x27;name&#x27;, &#x27;age&#x27;, &#x27;grade&#x27;)</span><br><span class="line"># 数据</span><br><span class="line">data = [</span><br><span class="line">    [1, &#x27;Troy&#x27;, 20, 78],</span><br><span class="line">    [2, &#x27;Orla&#x27;, 21, 89],</span><br><span class="line">    [3, &#x27;Cody&#x27;, 20, 96],</span><br><span class="line">    [4, &#x27;Yana&#x27;, 19, 77],</span><br><span class="line">    [5, &#x27;Maya&#x27;, 21, 59],</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"># 创建数据集</span><br><span class="line">dataset_o = tablib.Dataset(*data, headers=headers)</span><br><span class="line"></span><br><span class="line"># 添加到最后一行的下面</span><br><span class="line">dataset_o.append([7, &#x27;Lucy&#x27;, 21, 68])</span><br><span class="line"></span><br><span class="line"># 向数据集的第6行，添加数据</span><br><span class="line">dataset_o.insert(5, [6, &#x27;Zoya&#x27;, 20, 99])</span><br><span class="line">print(dataset_o)</span><br><span class="line"></span><br><span class="line"># id|name|age|grade</span><br><span class="line"># --|----|---|-----</span><br><span class="line"># 1 |Troy|20 |78   </span><br><span class="line"># 2 |Orla|21 |89   </span><br><span class="line"># 3 |Cody|20 |96   </span><br><span class="line"># 4 |Yana|19 |77   </span><br><span class="line"># 5 |Maya|21 |59   </span><br><span class="line"># 6 |Zoya|20 |99   </span><br><span class="line"># 6 |Lucy|21 |68 </span><br></pre></td></tr></table></figure>
+
+<h3 id="添加列"><a href="#添加列" class="headerlink" title="添加列"></a>添加列</h3><p>我们可以使用 tablib.Dataset.append_col 方法，实现向数据集<strong>尾部添加列数据</strong>，需要注意的是每列的元素数量应与数据集的行数相同。</p>
+<p>我们也可以使用 tablib.Dataset.insert_col 方法，实现向数据集指定位置添加列数据，需要注意的是每列的元素数量应于数据集的行数相同，代码实现如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import tablib</span><br><span class="line"></span><br><span class="line"># 表头 字段名或者列名</span><br><span class="line">headers = (&#x27;id&#x27;, &#x27;name&#x27;, &#x27;age&#x27;, &#x27;grade&#x27;)</span><br><span class="line"># 数据</span><br><span class="line">data = [</span><br><span class="line">    [1, &#x27;Troy&#x27;, 20, 78],</span><br><span class="line">    [2, &#x27;Orla&#x27;, 21, 89],</span><br><span class="line">    [3, &#x27;Cody&#x27;, 20, 96],</span><br><span class="line">    [4, &#x27;Yana&#x27;, 19, 77],</span><br><span class="line">    [5, &#x27;Maya&#x27;, 21, 59],</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"># 创建数据集</span><br><span class="line">dataset_o = tablib.Dataset(*data, headers=headers)</span><br><span class="line"></span><br><span class="line"># 添加列到最后一列，数据集中有5行，因此该列数据应为5个元素</span><br><span class="line">dataset_o.append_col([&#x27;302&#x27;, &#x27;303&#x27;, &#x27;304&#x27;, &#x27;305&#x27;, &#x27;306&#x27;], header=&#x27;class&#x27;)</span><br><span class="line"></span><br><span class="line"># 在第3列添加新列，数据集中有5行，因此该列数据应为5个元素。</span><br><span class="line">dataset_o.insert_col(2, (&#x27;male&#x27;, &#x27;female&#x27;, &#x27;abc&#x27;, &#x27;efg&#x27;, &#x27;zxc&#x27;), header=&#x27;sex&#x27;)</span><br><span class="line"></span><br><span class="line">print(dataset_o)</span><br><span class="line"></span><br><span class="line"># id|name|sex   |age|grade|class</span><br><span class="line"># --|----|------|---|-----|-----</span><br><span class="line"># 1 |Troy|male  |20 |78   |302  </span><br><span class="line"># 2 |Orla|female|21 |89   |303  </span><br><span class="line"># 3 |Cody|abc   |20 |96   |304  </span><br><span class="line"># 4 |Yana|efg   |19 |77   |305  </span><br><span class="line"># 5 |Maya|zxc   |21 |59   |306 </span><br></pre></td></tr></table></figure>
+
+<h3 id="选择行和列"><a href="#选择行和列" class="headerlink" title="选择行和列"></a>选择行和列</h3><p>我们可以像Python列表一样通过切片和索引获取行数据。像Python字典通过列名和索引获取列数据，代码实现如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">import tablib</span><br><span class="line"></span><br><span class="line"># 表头 字段名或者列名</span><br><span class="line">headers = (&#x27;id&#x27;, &#x27;name&#x27;, &#x27;age&#x27;, &#x27;grade&#x27;)</span><br><span class="line"># 数据</span><br><span class="line">data = [</span><br><span class="line">    [1, &#x27;Troy&#x27;, 20, 78],</span><br><span class="line">    [2, &#x27;Orla&#x27;, 21, 89],</span><br><span class="line">    [3, &#x27;Cody&#x27;, 20, 96],</span><br><span class="line">    [4, &#x27;Yana&#x27;, 19, 77],</span><br><span class="line">    [5, &#x27;Maya&#x27;, 21, 59],</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"># 创建数据集</span><br><span class="line">dataset_o = tablib.Dataset(*data, headers=headers)</span><br><span class="line"></span><br><span class="line"># 获得表头</span><br><span class="line">print(dataset_o.headers)</span><br><span class="line"></span><br><span class="line"># 获取第一行</span><br><span class="line">print(dataset_o[0])</span><br><span class="line"></span><br><span class="line"># 获取grade列</span><br><span class="line">print(dataset_o[&#x27;grade&#x27;])</span><br><span class="line"></span><br><span class="line"># 获取最后一行</span><br><span class="line">print(dataset_o[-1])</span><br><span class="line"></span><br><span class="line"># [&#x27;id&#x27;, &#x27;name&#x27;, &#x27;age&#x27;, &#x27;grade&#x27;]</span><br><span class="line"># (1, &#x27;Troy&#x27;, 20, 78)</span><br><span class="line"># [78, 89, 96, 77, 59]</span><br><span class="line"># (5, &#x27;Maya&#x27;, 21, 59)</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除行"><a href="#删除行" class="headerlink" title="删除行"></a>删除行</h3><p>我们可以使用以下方式，实现行删除：</p>
+<ul>
+<li>tablib.Dataset.pop ：删除最后一行</li>
+<li>tablib.Dataset.lpop ：删除第一行</li>
+<li>del dataset[n: m] ：删除指定范围的行</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import tablib</span><br><span class="line"></span><br><span class="line"># 表头 字段名或者列名</span><br><span class="line">headers = (&#x27;id&#x27;, &#x27;name&#x27;, &#x27;age&#x27;, &#x27;grade&#x27;)</span><br><span class="line"># 数据</span><br><span class="line">data = [</span><br><span class="line">    [1, &#x27;Troy&#x27;, 20, 78],</span><br><span class="line">    [2, &#x27;Orla&#x27;, 21, 89],</span><br><span class="line">    [3, &#x27;Cody&#x27;, 20, 96],</span><br><span class="line">    [4, &#x27;Yana&#x27;, 19, 77],</span><br><span class="line">    [5, &#x27;Maya&#x27;, 21, 59],</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"># 创建数据集</span><br><span class="line">dataset_o = tablib.Dataset(*data, headers=headers)</span><br><span class="line"></span><br><span class="line"># 删除最后一行</span><br><span class="line">dataset_o.pop()</span><br><span class="line"></span><br><span class="line"># 删除第一行</span><br><span class="line">dataset_o.lpop()</span><br><span class="line"></span><br><span class="line"># 删除第[2,)行数据，只保留前两行</span><br><span class="line">del dataset_o[2:]</span><br><span class="line"></span><br><span class="line">print(dataset_o)</span><br><span class="line"></span><br><span class="line"># id|name|age|grade</span><br><span class="line"># --|----|---|-----</span><br><span class="line"># 2 |Orla|21 |89   </span><br><span class="line"># 3 |Cody|20 |96   </span><br></pre></td></tr></table></figure>
+
+<h3 id="删除列"><a href="#删除列" class="headerlink" title="删除列"></a>删除列</h3><p>我们可以使用 del dataset[‘column_name’] ，实现删除指定列，代码实现如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import tablib</span><br><span class="line"></span><br><span class="line"># 表头 字段名或者列名</span><br><span class="line">headers = (&#x27;id&#x27;, &#x27;name&#x27;, &#x27;age&#x27;, &#x27;grade&#x27;)</span><br><span class="line"># 数据</span><br><span class="line">data = [</span><br><span class="line">    [1, &#x27;Troy&#x27;, 20, 78],</span><br><span class="line">    [2, &#x27;Orla&#x27;, 21, 89],</span><br><span class="line">    [3, &#x27;Cody&#x27;, 20, 96],</span><br><span class="line">    [4, &#x27;Yana&#x27;, 19, 77],</span><br><span class="line">    [5, &#x27;Maya&#x27;, 21, 59],</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"># 创建数据集</span><br><span class="line">dataset_o = tablib.Dataset(*data, headers=headers)</span><br><span class="line"></span><br><span class="line"># 删除age列</span><br><span class="line">del dataset_o[&#x27;age&#x27;]</span><br><span class="line"></span><br><span class="line">print(dataset_o)</span><br><span class="line"></span><br><span class="line"># id|name|grade</span><br><span class="line"># --|----|-----</span><br><span class="line"># 1 |Troy|78   </span><br><span class="line"># 2 |Orla|89   </span><br><span class="line"># 3 |Cody|96   </span><br><span class="line"># 4 |Yana|77   </span><br><span class="line"># 5 |Maya|59   </span><br></pre></td></tr></table></figure>
+
+<h3 id="数据格式转换"><a href="#数据格式转换" class="headerlink" title="数据格式转换"></a>数据格式转换</h3><p>我们可以将数据集转换为如下任一格式，强无敌。</p>
+<ul>
+<li>Excel ( 支持Books)</li>
+<li>Json ( 支持Books)</li>
+<li>Yaml (支持 Books)</li>
+<li>Pandas DataFrames</li>
+<li>Csv</li>
+<li>Html</li>
+<li>Jira</li>
+<li>Tsv</li>
+<li>Ods</li>
+<li>Dbf</li>
+<li>Dict</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">import tablib</span><br><span class="line"></span><br><span class="line"># 表头 字段名或者列名</span><br><span class="line">headers = (&#x27;id&#x27;, &#x27;name&#x27;, &#x27;age&#x27;, &#x27;grade&#x27;)</span><br><span class="line"># 数据</span><br><span class="line">data = [</span><br><span class="line">    [1, &#x27;Troy&#x27;, 20, 20],</span><br><span class="line">    [2, &#x27;Orla&#x27;, 21, 89],</span><br><span class="line">    [3, &#x27;Cody&#x27;, 20, 96],</span><br><span class="line">    [4, &#x27;Yana&#x27;, 19, 77],</span><br><span class="line">    [5, &#x27;Maya&#x27;, 21, 59],</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"># 创建数据集</span><br><span class="line">dataset_o = tablib.Dataset(*data, headers=headers)</span><br><span class="line"></span><br><span class="line">print(dataset_o.yaml)</span><br><span class="line">print(dataset_o.csv)</span><br><span class="line">print(dataset_o.json)</span><br><span class="line">print(dataset_o.df)</span><br><span class="line"></span><br><span class="line"># - age: 20</span><br><span class="line">#   grade: 20</span><br><span class="line">#   id: 1</span><br><span class="line">#   name: Troy</span><br><span class="line"># - age: 21</span><br><span class="line">#   grade: 89</span><br><span class="line">#   id: 2</span><br><span class="line">#   name: Orla</span><br><span class="line"># - age: 20</span><br><span class="line">#   grade: 96</span><br><span class="line">#   id: 3</span><br><span class="line">#   name: Cody</span><br><span class="line"># - age: 19</span><br><span class="line">#   grade: 77</span><br><span class="line">#   id: 4</span><br><span class="line">#   name: Yana</span><br><span class="line"># - age: 21</span><br><span class="line">#   grade: 59</span><br><span class="line">#   id: 5</span><br><span class="line">#   name: Maya</span><br><span class="line"># </span><br><span class="line"># id,name,age,grade</span><br><span class="line"># 1,Troy,20,20</span><br><span class="line"># 2,Orla,21,89</span><br><span class="line"># 3,Cody,20,96</span><br><span class="line"># 4,Yana,19,77</span><br><span class="line"># 5,Maya,21,59</span><br><span class="line"># </span><br><span class="line"># [&#123;&quot;id&quot;: 1, &quot;name&quot;: &quot;Troy&quot;, &quot;age&quot;: 20, &quot;grade&quot;: 20&#125;, &#123;&quot;id&quot;: 2, &quot;name&quot;: &quot;Orla&quot;, &quot;age&quot;: 21, &quot;grade&quot;: 89&#125;, &#123;&quot;id&quot;: 3, &quot;name&quot;: &quot;Cody&quot;, &quot;age&quot;: 20, &quot;grade&quot;: 96&#125;, &#123;&quot;id&quot;: 4, &quot;name&quot;: &quot;Yana&quot;, &quot;age&quot;: 19, &quot;grade&quot;: 77&#125;, &#123;&quot;id&quot;: 5, &quot;name&quot;: &quot;Maya&quot;, &quot;age&quot;: 21, &quot;grade&quot;: 59&#125;]</span><br><span class="line">#    id  name  age  grade</span><br><span class="line"># 0   1  Troy   20     20</span><br><span class="line"># 1   2  Orla   21     89</span><br><span class="line"># 2   3  Cody   20     96</span><br><span class="line"># 3   4  Yana   19     77</span><br><span class="line"># 4   5  Maya   21     59</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据导出"><a href="#数据导出" class="headerlink" title="数据导出"></a>数据导出</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import tablib</span><br><span class="line"></span><br><span class="line"># 表头 字段名或者列名</span><br><span class="line">headers = (&#x27;id&#x27;, &#x27;name&#x27;, &#x27;age&#x27;, &#x27;grade&#x27;)</span><br><span class="line"># 数据</span><br><span class="line">data = [</span><br><span class="line">    [1, &#x27;Troy&#x27;, 20, 20],</span><br><span class="line">    [2, &#x27;Orla&#x27;, 21, 89],</span><br><span class="line">    [3, &#x27;Cody&#x27;, 20, 96],</span><br><span class="line">    [4, &#x27;Yana&#x27;, 19, 77],</span><br><span class="line">    [5, &#x27;Maya&#x27;, 21, 59],</span><br><span class="line">]</span><br><span class="line">                          </span><br><span class="line"># 创建数据集</span><br><span class="line">dataset_o = tablib.Dataset(*data, headers=headers)</span><br><span class="line"></span><br><span class="line"># 设置标签（sheet）</span><br><span class="line">dataset_o.title = &#x27;dataset_o&#x27;</span><br><span class="line">with open(&#x27;dataset_o.xlsx&#x27;, &#x27;wb&#x27;) as xlsx:</span><br><span class="line">    xlsx.write(dataset_o.xlsx)</span><br></pre></td></tr></table></figure>
+<p>使用DataBook 导出多页数据</p>
+
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2019/10/05/python%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/">python实用技巧</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2019-10-05</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/Python/">Python</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h3 id="重复元素判定"><a href="#重复元素判定" class="headerlink" title="重复元素判定"></a>重复元素判定</h3><p>以下方法可以检查给定列表是不是存在重复元素，它会使用 set() 函数来移除所有重复元素。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def all_unique(lst):</span><br><span class="line">    return len(lst) == len(set(lst))</span><br><span class="line"></span><br><span class="line">x = [1,1,2,2,3,2,3,4,5,6]</span><br><span class="line">y = [1,2,3,4,5]</span><br><span class="line">all_unique(x) # False</span><br><span class="line">all_unique(y) # True</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符元素组成判定"><a href="#字符元素组成判定" class="headerlink" title="字符元素组成判定"></a>字符元素组成判定</h3><p>检查两个字符串的组成元素是不是一样的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from collections import Counter</span><br><span class="line"></span><br><span class="line">def anagram(first, second):</span><br><span class="line">    return Counter(first) == Counter(second)</span><br><span class="line"></span><br><span class="line">anagram(&quot;abcd3&quot;, &quot;3acdb&quot;) # True</span><br></pre></td></tr></table></figure>
+
+<h3 id="内存占用"><a href="#内存占用" class="headerlink" title="内存占用"></a>内存占用</h3><p>下面的代码块可以检查变量 variable 所占用的内存。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import sys </span><br><span class="line"></span><br><span class="line">variable = 30 </span><br><span class="line">print(sys.getsizeof(variable)) # 24</span><br></pre></td></tr></table></figure>
+
+<h3 id="字节占用"><a href="#字节占用" class="headerlink" title="字节占用"></a>字节占用</h3><p>下面的代码块可以检查字符串占用的字节数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def byte_size(string):</span><br><span class="line">    return(len(string.encode(&#x27;utf-8&#x27;)))</span><br><span class="line"></span><br><span class="line">byte_size(&#x27;😀&#x27;) # 4</span><br><span class="line">byte_size(&#x27;Hello World&#x27;) # 11   </span><br></pre></td></tr></table></figure>
+
+<h3 id="打印-N-次字符串"><a href="#打印-N-次字符串" class="headerlink" title="打印 N 次字符串"></a>打印 N 次字符串</h3><p>该代码块不需要循环语句就能打印 N 次字符串。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">n = 2; </span><br><span class="line">s =&quot;Programming&quot;; </span><br><span class="line"></span><br><span class="line">print(s * n);</span><br><span class="line"># ProgrammingProgramming  </span><br></pre></td></tr></table></figure>
+
+<h3 id="大写第一个字母"><a href="#大写第一个字母" class="headerlink" title="大写第一个字母"></a>大写第一个字母</h3><p>以下代码块会使用 title() 方法，从而大写字符串中每一个单词的首字母。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s = &quot;programming is awesome&quot;</span><br><span class="line"></span><br><span class="line">print(s.title())</span><br><span class="line"># Programming Is Awesome</span><br></pre></td></tr></table></figure>
+
+<h3 id="分块"><a href="#分块" class="headerlink" title="分块"></a>分块</h3><p>给定具体的大小，定义一个函数以按照这个大小切割列表。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from math import ceil</span><br><span class="line"></span><br><span class="line">def chunk(lst, size):</span><br><span class="line">    return list(</span><br><span class="line">        map(lambda x: lst[x * size:x * size + size],</span><br><span class="line">            list(range(0, ceil(len(lst) / size)))))</span><br><span class="line"></span><br><span class="line">chunk([1,2,3,4,5],2)</span><br><span class="line"># [[1,2],[3,4],5]</span><br></pre></td></tr></table></figure>
+
+<h3 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h3><p>这个方法可以将布尔型的值去掉，例如（False，None，0，“”），它使用 filter() 函数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def compact(lst):</span><br><span class="line">    return list(filter(bool, lst))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">compact([0, 1, False, 2, &#x27;&#x27;, 3, &#x27;a&#x27;, &#x27;s&#x27;, 34])</span><br><span class="line"># [ 1, 2, 3, &#x27;a&#x27;, &#x27;s&#x27;, 34 ]</span><br></pre></td></tr></table></figure>
+
+<h3 id="解包"><a href="#解包" class="headerlink" title="解包"></a>解包</h3><p>如下代码段可以将打包好的成对列表解开成两组不同的元组。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">array = [[&#x27;a&#x27;, &#x27;b&#x27;], [&#x27;c&#x27;, &#x27;d&#x27;], [&#x27;e&#x27;, &#x27;f&#x27;]]</span><br><span class="line">transposed = zip(*array)</span><br><span class="line">print(transposed)</span><br><span class="line"># [(&#x27;a&#x27;, &#x27;c&#x27;, &#x27;e&#x27;), (&#x27;b&#x27;, &#x27;d&#x27;, &#x27;f&#x27;)]</span><br></pre></td></tr></table></figure>
+
+<h3 id="链式对比"><a href="#链式对比" class="headerlink" title="链式对比"></a>链式对比</h3><p>我们可以在一行代码中使用不同的运算符对比多个不同的元素。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = 3</span><br><span class="line">print( 2 &lt; a &lt; 8) # True</span><br><span class="line">print(1 == a &lt; 2) # False</span><br></pre></td></tr></table></figure>
+
+<h3 id="逗号连接"><a href="#逗号连接" class="headerlink" title="逗号连接"></a>逗号连接</h3><p>下面的代码可以将列表连接成单个字符串，且每一个元素间的分隔方式设置为了逗号。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hobbies = [&quot;basketball&quot;, &quot;football&quot;, &quot;swimming&quot;]</span><br><span class="line"></span><br><span class="line">print(&quot;My hobbies are: &quot; + &quot;, &quot;.join(hobbies))</span><br><span class="line"># My hobbies are: basketball, football, swimming</span><br></pre></td></tr></table></figure>
+
+<h3 id="元音统计"><a href="#元音统计" class="headerlink" title="元音统计"></a>元音统计</h3><p>以下方法将统计字符串中的元音 (‘a’, ‘e’, ‘i’, ‘o’, ‘u’) 的个数，它是通过正则表达式做的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line"></span><br><span class="line">def count_vowels(str):</span><br><span class="line">    return len(len(re.findall(r&#x27;[aeiou]&#x27;, str, re.IGNORECASE)))</span><br><span class="line"></span><br><span class="line">count_vowels(&#x27;foobar&#x27;) # 3</span><br><span class="line">count_vowels(&#x27;gym&#x27;) # 0</span><br></pre></td></tr></table></figure>
+
+<h3 id="首字母小写"><a href="#首字母小写" class="headerlink" title="首字母小写"></a>首字母小写</h3><p>如下方法将令给定字符串的第一个字符统一为小写。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def decapitalize(string):</span><br><span class="line">    return str[:1].lower() + str[1:]</span><br><span class="line"></span><br><span class="line">decapitalize(&#x27;FooBar&#x27;) # &#x27;fooBar&#x27;</span><br><span class="line">decapitalize(&#x27;FooBar&#x27;) # &#x27;fooBar&#x27;</span><br></pre></td></tr></table></figure>
+
+<h3 id="展开列表"><a href="#展开列表" class="headerlink" title="展开列表"></a>展开列表</h3><p>该方法将通过递归的方式将列表的嵌套展开为单个列表。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">def spread(arg):</span><br><span class="line">    ret = []</span><br><span class="line">    for i in arg:</span><br><span class="line">        if isinstance(i, list):</span><br><span class="line">            ret.extend(i)</span><br><span class="line">        else:</span><br><span class="line">            ret.append(i)</span><br><span class="line">    return ret</span><br><span class="line"></span><br><span class="line">def deep_flatten(lst):</span><br><span class="line">    result = []</span><br><span class="line">    result.extend(</span><br><span class="line">        spread(list(map(lambda x: deep_flatten(x) if type(x) == list else x, lst))))</span><br><span class="line">    return result</span><br><span class="line"></span><br><span class="line">deep_flatten([1, [2], [[3], 4], 5]) </span><br><span class="line"># [1,2,3,4,5]</span><br></pre></td></tr></table></figure>
+
+<h3 id="列表的差"><a href="#列表的差" class="headerlink" title="列表的差"></a>列表的差</h3><p>该方法将返回第一个列表的元素，其不在第二个列表内。如果同时要反馈第二个列表独有的元素，还需要加一句 set_b.difference(set_a)。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def difference(a, b):</span><br><span class="line">    set_a = set(a)</span><br><span class="line">    set_b = set(b)</span><br><span class="line">    comparison = set_a.difference(set_b)</span><br><span class="line">    return list(comparison)</span><br><span class="line"></span><br><span class="line">difference([1,2,3], [1,2,4]) </span><br><span class="line"># [3]</span><br></pre></td></tr></table></figure>
+
+<h3 id="通过函数取差"><a href="#通过函数取差" class="headerlink" title="通过函数取差"></a>通过函数取差</h3><p>如下方法首先会应用一个给定的函数，然后再返回应用函数后结果有差别的列表元素。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def difference_by(a, b, fn):</span><br><span class="line">    b = set(map(fn, b))</span><br><span class="line">    return [item for item in a if fn(item) not in b]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">from math import floor</span><br><span class="line">difference_by([2.1, 1.2], [2.3, 3.4],floor) # [1.2]</span><br><span class="line">difference_by([&#123; &#x27;x&#x27;: 2 &#125;, &#123; &#x27;x&#x27;: 1 &#125;], [&#123; &#x27;x&#x27;: 1 &#125;], lambda v : v[&#x27;x&#x27;])</span><br><span class="line"># [ &#123; x: 2 &#125; ]</span><br></pre></td></tr></table></figure>
+
+<h3 id="链式函数调用"><a href="#链式函数调用" class="headerlink" title="链式函数调用"></a>链式函数调用</h3><p>你可以在一行代码内调用多个函数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def add(a, b):</span><br><span class="line">    return a + b</span><br><span class="line"></span><br><span class="line">def subtract(a, b):</span><br><span class="line">    return a - b</span><br><span class="line"></span><br><span class="line">a, b = 4, 5</span><br><span class="line">print((subtract if a &gt; b else add)(a, b)) </span><br><span class="line"># 9 </span><br></pre></td></tr></table></figure>
+
+<h3 id="检查重复项"><a href="#检查重复项" class="headerlink" title="检查重复项"></a>检查重复项</h3><p>如下代码将检查两个列表是不是有重复项。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def has_duplicates(lst):</span><br><span class="line">    return len(lst) != len(set(lst))</span><br><span class="line"></span><br><span class="line">x = [1,2,3,4,5,5]</span><br><span class="line">y = [1,2,3,4,5]</span><br><span class="line">has_duplicates(x) # True</span><br><span class="line">has_duplicates(y) # False</span><br></pre></td></tr></table></figure>
+
+<h3 id="合并两个字典"><a href="#合并两个字典" class="headerlink" title="合并两个字典"></a>合并两个字典</h3><p>下面的方法将用于合并两个字典。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def merge_two_dicts(a, b):</span><br><span class="line">    c = a.copy()   # make a copy of a </span><br><span class="line">    c.update(b)    # modify keys and values of a with the ones from b</span><br><span class="line">    return c</span><br><span class="line"></span><br><span class="line">a = &#123; &#x27;x&#x27;: 1, &#x27;y&#x27;: 2&#125;</span><br><span class="line">b = &#123; &#x27;y&#x27;: 3, &#x27;z&#x27;: 4&#125;</span><br><span class="line">print(merge_two_dicts(a, b))</span><br><span class="line"># &#123;&#x27;y&#x27;: 3, &#x27;x&#x27;: 1, &#x27;z&#x27;: 4&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在 Python 3.5 或更高版本中，我们也可以用以下方式合并字典：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def merge_dictionaries(a, b)</span><br><span class="line">   return &#123;**a, **b&#125;</span><br><span class="line"></span><br><span class="line">a = &#123; &#x27;x&#x27;: 1, &#x27;y&#x27;: 2&#125;</span><br><span class="line">b = &#123; &#x27;y&#x27;: 3, &#x27;z&#x27;: 4&#125;</span><br><span class="line">print(merge_dictionaries(a, b))</span><br><span class="line"># &#123;&#x27;y&#x27;: 3, &#x27;x&#x27;: 1, &#x27;z&#x27;: 4&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="将两个列表转化为字典"><a href="#将两个列表转化为字典" class="headerlink" title="将两个列表转化为字典"></a>将两个列表转化为字典</h3><p>如下方法将会把两个列表转化为单个字典。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def to_dictionary(keys, values):</span><br><span class="line">    return dict(zip(keys, values))</span><br><span class="line"></span><br><span class="line">keys = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]    </span><br><span class="line">values = [2, 3, 4]</span><br><span class="line">print(to_dictionary(keys, values))</span><br><span class="line"># &#123;&#x27;a&#x27;: 2, &#x27;c&#x27;: 4, &#x27;b&#x27;: 3&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用枚举"><a href="#使用枚举" class="headerlink" title="使用枚举"></a>使用枚举</h3><p>我们常用 For 循环来遍历某个列表，同样我们也能枚举列表的索引与值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">list = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;]</span><br><span class="line">for index, element in enumerate(list): </span><br><span class="line">    print(&quot;Value&quot;, element, &quot;Index &quot;, index, )</span><br><span class="line"></span><br><span class="line"># (&#x27;Value&#x27;, &#x27;a&#x27;, &#x27;Index &#x27;, 0)</span><br><span class="line"># (&#x27;Value&#x27;, &#x27;b&#x27;, &#x27;Index &#x27;, 1)</span><br><span class="line"># (&#x27;Value&#x27;, &#x27;c&#x27;, &#x27;Index &#x27;, 2)</span><br><span class="line"># (&#x27;Value&#x27;, &#x27;d&#x27;, &#x27;Index &#x27;, 3)    </span><br></pre></td></tr></table></figure>
+
+<h3 id="执行时间"><a href="#执行时间" class="headerlink" title="执行时间"></a>执行时间</h3><p>如下代码块可以用来计算执行特定代码所花费的时间。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line"></span><br><span class="line">start_time = time.time()</span><br><span class="line"></span><br><span class="line">a = 1</span><br><span class="line">b = 2</span><br><span class="line">c = a + b</span><br><span class="line">print(c) #3</span><br><span class="line"></span><br><span class="line">end_time = time.time()</span><br><span class="line">total_time = end_time - start_time</span><br><span class="line">print(&quot;Time: &quot;, total_time)</span><br><span class="line"></span><br><span class="line"># (&#x27;Time: &#x27;, 1.1205673217773438e-05)  </span><br></pre></td></tr></table></figure>
+
+<h3 id="Try-else"><a href="#Try-else" class="headerlink" title="Try else"></a>Try else</h3><p>我们在使用 try&#x2F;except 语句的时候也可以加一个 else 子句，如果没有触发错误的话，这个子句就会被运行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    2*3</span><br><span class="line">except TypeError:</span><br><span class="line">    print(&quot;An exception was raised&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;Thank God, no exceptions were raised.&quot;)</span><br><span class="line"></span><br><span class="line"># Thank God, no exceptions were raised.</span><br></pre></td></tr></table></figure>
+
+<h3 id="元素频率"><a href="#元素频率" class="headerlink" title="元素频率"></a>元素频率</h3><p>下面的方法会根据元素频率取列表中最常见的元素。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def most_frequent(list):</span><br><span class="line">    return max(set(list), key = list.count)</span><br><span class="line"></span><br><span class="line">list = [1,2,1,2,3,2,1,4,2]</span><br><span class="line">most_frequent(list)  </span><br></pre></td></tr></table></figure>
+
+<h3 id="回文序列"><a href="#回文序列" class="headerlink" title="回文序列"></a>回文序列</h3><p>以下方法会检查给定的字符串是不是回文序列，它首先会把所有字母转化为小写，并移除非英文字母符号。最后，它会对比字符串与反向字符串是否相等，相等则表示为回文序列。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def palindrome(string):</span><br><span class="line">    from re import sub</span><br><span class="line">    s = sub(&#x27;[\W_]&#x27;, &#x27;&#x27;, string.lower())</span><br><span class="line">    return s == s[::-1]</span><br><span class="line"></span><br><span class="line">palindrome(&#x27;taco cat&#x27;) # True</span><br></pre></td></tr></table></figure>
+
+<h3 id="不使用-if-else-的计算子"><a href="#不使用-if-else-的计算子" class="headerlink" title="不使用 if-else 的计算子"></a>不使用 if-else 的计算子</h3><p>这一段代码可以不使用条件语句就实现加减乘除、求幂操作，它通过字典这一数据结构实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import operator</span><br><span class="line">action = &#123;</span><br><span class="line">    &quot;+&quot;: operator.add,</span><br><span class="line">    &quot;-&quot;: operator.sub,</span><br><span class="line">    &quot;/&quot;: operator.truediv,</span><br><span class="line">    &quot;*&quot;: operator.mul,</span><br><span class="line">    &quot;**&quot;: pow</span><br><span class="line">&#125;</span><br><span class="line">print(action[&#x27;-&#x27;](50, 25)) </span><br><span class="line"># 25</span><br></pre></td></tr></table></figure>
+
+<h3 id="Shuffle"><a href="#Shuffle" class="headerlink" title="Shuffle"></a>Shuffle</h3><p>该算法会打乱列表元素的顺序，它主要会通过 Fisher-Yates 算法对新列表进行排序：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">from copy import deepcopy</span><br><span class="line">from random import randint</span><br><span class="line"></span><br><span class="line">def shuffle(lst):</span><br><span class="line">    temp_lst = deepcopy(lst)</span><br><span class="line">    m = len(temp_lst)</span><br><span class="line">    while (m):</span><br><span class="line">        m -= 1</span><br><span class="line">        i = randint(0, m)</span><br><span class="line">        temp_lst[m], temp_lst[i] = temp_lst[i], temp_lst[m]</span><br><span class="line">    return temp_lst</span><br><span class="line"></span><br><span class="line">foo = [1,2,3]</span><br><span class="line">shuffle(foo) </span><br><span class="line"># [2,3,1] , foo = [1,2,3]</span><br></pre></td></tr></table></figure>
+
+<h3 id="展开列表-1"><a href="#展开列表-1" class="headerlink" title="展开列表"></a>展开列表</h3><p>将列表内的所有元素，包括子列表，都展开成一个列表。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def spread(arg):</span><br><span class="line">    ret = []</span><br><span class="line">    for i in arg:</span><br><span class="line">        if isinstance(i, list):</span><br><span class="line">            ret.extend(i)</span><br><span class="line">        else:</span><br><span class="line">            ret.append(i)</span><br><span class="line">    return ret</span><br><span class="line"></span><br><span class="line">spread([1,2,3,[4,5,6],[7],8,9]) </span><br><span class="line"># [1,2,3,4,5,6,7,8,9]</span><br></pre></td></tr></table></figure>
+
+<h3 id="交换值"><a href="#交换值" class="headerlink" title="交换值"></a>交换值</h3><p>不需要额外的操作就能交换两个变量的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def swap(a, b):</span><br><span class="line">  return b, a</span><br><span class="line"></span><br><span class="line">a, b = -1, 14</span><br><span class="line">swap(a, b) </span><br><span class="line"># (14, -1)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="字典默认值"><a href="#字典默认值" class="headerlink" title="字典默认值"></a>字典默认值</h3><p>通过 Key 取对应的 Value 值，可以通过以下方式设置默认值。如果 get() 方法没有设置默认值，那么如果遇到不存在的 Key，则会返回 None。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;&#x27;a&#x27;: 1, &#x27;b&#x27;: 2&#125;</span><br><span class="line"></span><br><span class="line">print(d.get(&#x27;c&#x27;, 3)) </span><br><span class="line"># 3</span><br></pre></td></tr></table></figure>
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2019/10/05/Mongodb%E7%B4%A2%E5%BC%95/">MongoDB索引类型</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2019-10-05</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/">开发手册</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h3 id="MongoDB索引的类型"><a href="#MongoDB索引的类型" class="headerlink" title="MongoDB索引的类型"></a>MongoDB索引的类型</h3><h4 id="索引的概念"><a href="#索引的概念" class="headerlink" title="索引的概念"></a>索引的概念</h4><p>数据库索引是对数据库中一列或多列的值进行排序的一种数据结构，使用索引可以快速访问数据库表中的特定信息</p>
+<p>数据库索引的功能类似于书籍的索引，书籍有了索引就不需要翻查整本书。与此类似，在进行查询时，数据库会首先在索引中查找，找到相应的条目后，就可以直接挑转到目标文档的位置</p>
+<p>所有的索引信息被保存在system.indexes集合中，且默认总是为_id创建索引。db.system.indexes.find()可以查看当前数据库中创建的所有索引。</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7nb9qbmbnj31a60n2niu.jpg"></p>
+<h4 id="单字段索引"><a href="#单字段索引" class="headerlink" title="单字段索引"></a>单字段索引</h4><p>MongoDB可以在单个字段上建立索引，字段可以是普通字段、整个子文档以及子文档的某个字段。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.student.createIndex(&#123;&#x27;address&#x27;:1&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>_id索引是系统默认创建的<strong>单字段升序且具有唯一属性</strong>的索引，每个集合文档都会包含该字段，不能被删除，默认值是ObjectId类型。</p>
+<h4 id="复合索引"><a href="#复合索引" class="headerlink" title="复合索引"></a>复合索引</h4><p>复合索引是建立在多个字段上的索引，功能比单字段索引强大，但使用较复杂。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.student.createIndex(&#123;name:1, age:-1&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>索引字段的排序方向</strong> 上面例子中，索引数据会首先按照name升序排序，对于name相同的文档会按照age进行降序排序。<br><strong>索引字段排序顺序</strong>MongoDB在使用索引时，会自动进行优化，利用上面的索引可以支持如下的两个排序操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">db.student.find().sort(&#123;name:1, age:-1&#125;)</span><br><span class="line">db.student.find().sort(&#123;name:-1, age:1&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>对于复合索引，Mongodb支持前缀匹配</p>
+<h4 id="多键索引"><a href="#多键索引" class="headerlink" title="多键索引"></a>多键索引</h4><p>多键索引是对数组类型建立的索引，<strong>对数组建立索引，实际上是对数组的每个元素建立索引，而不是对数组本身建立索引</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">obj1 = &#123;name:&#x27;bob&#x27;, scores:[95, 98]&#125;</span><br><span class="line">obj2 = &#123;name:&#x27;joe&#x27;, scores:[95, 99]&#125;</span><br><span class="line">db.student.createIndex(&#123;scores:1&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="哈希索引"><a href="#哈希索引" class="headerlink" title="哈希索引"></a>哈希索引</h4><p>哈希索引项中存储的是索引键的哈希值，哈希索引只支持等值查询，不支持范围查找</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.student.createIndex(&#123;name:&quot;hashed&quot;&#125;)</span><br></pre></td></tr></table></figure>
+
+
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2019/10/01/%E8%AE%AD%E7%BB%83%E6%95%B0%E6%8D%AE%E9%9B%86%E4%B8%8E%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%87%E5%88%86/">训练数据集与测试数据集切分</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2019-10-01</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h3 id="train-test-split-训练数据集与测试数据集-切分"><a href="#train-test-split-训练数据集与测试数据集-切分" class="headerlink" title="train test split 训练数据集与测试数据集 切分"></a>train test split 训练数据集与测试数据集 切分</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">from sklearn import datasets</span><br><span class="line"></span><br><span class="line"># http://sklearn.lzjqsdd.com/modules/generated/sklearn.datasets.load_iris.html</span><br><span class="line"># iris数据集(鸢尾花)</span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line"></span><br><span class="line">X = iris.data</span><br><span class="line">y = iris.target</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义-切分函数"><a href="#自定义-切分函数" class="headerlink" title="自定义 切分函数"></a>自定义 切分函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">def train_test_split(X, y, test_ratio=0.2, seed=None):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    将数据X和y，按照test_ratio分割成X_train, y_train; X_test, y_test</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    if seed:</span><br><span class="line">        np.random.seed(seed)</span><br><span class="line"></span><br><span class="line">    # 对索引的乱序</span><br><span class="line">    shuffle_indexes = np.random.permutation(len(X))</span><br><span class="line"></span><br><span class="line">    test_size = int(len(X) * test_ratio)</span><br><span class="line"></span><br><span class="line">    test_indexes = shuffle_indexes[:test_size]</span><br><span class="line">    train_indexes = shuffle_indexes[test_size:]</span><br><span class="line"></span><br><span class="line">    X_train = X[train_indexes]</span><br><span class="line">    y_train = y[train_indexes]</span><br><span class="line"></span><br><span class="line">    X_test = X[test_indexes]</span><br><span class="line">    y_test = y[test_indexes]</span><br><span class="line"></span><br><span class="line">    return X_train, y_train, X_test, y_test</span><br></pre></td></tr></table></figure>
+
+<h3 id="sklearn中的train-test-split"><a href="#sklearn中的train-test-split" class="headerlink" title="sklearn中的train_test_split"></a>sklearn中的train_test_split</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line"></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=666)</span><br><span class="line"></span><br><span class="line"># random_state 随机种子</span><br></pre></td></tr></table></figure>
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2019/10/01/Pandas%E5%BA%93/">Pandas库</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2019-10-01</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/Python/">Python</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h3 id="导入pandas"><a href="#导入pandas" class="headerlink" title="导入pandas"></a>导入pandas</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br></pre></td></tr></table></figure>
+
+<h3 id="Pandas-数据结构"><a href="#Pandas-数据结构" class="headerlink" title="Pandas 数据结构"></a>Pandas 数据结构</h3><h4 id="Series"><a href="#Series" class="headerlink" title="Series"></a>Series</h4><h5 id="能够容纳任何数据类型的一维标记数组"><a href="#能够容纳任何数据类型的一维标记数组" class="headerlink" title="能够容纳任何数据类型的一维标记数组"></a>能够容纳任何数据类型的一维标记数组</h5><p><img src="http://ww1.sinaimg.cn/mw690/405e87d9gy1g67cawl9jyj203z02yq2r.jpg"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; s = pd.Series([3, -5, 7, 4], index=[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;])</span><br></pre></td></tr></table></figure>
+
+<h4 id="DataFrame"><a href="#DataFrame" class="headerlink" title="DataFrame"></a>DataFrame</h4><h5 id="一个二维标记的数据结构，包含可能不同类型的列"><a href="#一个二维标记的数据结构，包含可能不同类型的列" class="headerlink" title="一个二维标记的数据结构，包含可能不同类型的列"></a>一个二维标记的数据结构，包含可能不同类型的列</h5><p><img src="http://ww1.sinaimg.cn/mw690/405e87d9gy1g67c56zcnqj207s046wel.jpg"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; data = &#123;&#x27;Country&#x27;: [&#x27;Belgium&#x27;, &#x27;India&#x27;, &#x27;Brazil&#x27;], </span><br><span class="line">&#x27;Capital&#x27;: [&#x27;Brussels&#x27;, &#x27;New Delhi&#x27;, &#x27;Brasília&#x27;],</span><br><span class="line">&#x27;Population&#x27;: [11190846, 1303171035, 207847528]&#125;</span><br><span class="line">&gt;&gt;&gt; df = pd.DataFrame(data, columns=[&#x27;Country&#x27;, &#x27;Capital&#x27;, &#x27;Population&#x27;])</span><br></pre></td></tr></table></figure>
+
+<h3 id="选择-Selection"><a href="#选择-Selection" class="headerlink" title="选择 Selection"></a>选择 Selection</h3><h4 id="获得-Getting"><a href="#获得-Getting" class="headerlink" title="获得 Getting"></a>获得 Getting</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 得到一个元素</span><br><span class="line">&gt;&gt;&gt; s[&#x27;b&#x27;] </span><br><span class="line">-5</span><br><span class="line"></span><br><span class="line"># 获取DataFrame的子集</span><br><span class="line">&gt;&gt;&gt; df[1:] </span><br><span class="line"> Country Capital Population</span><br><span class="line"> 1 India New Delhi 1303171035</span><br><span class="line"> 2 Brazil Brasília 207847528</span><br></pre></td></tr></table></figure>
+
+<h4 id="选择，布尔索引和设置-Selecting-Boolean-Indexing-amp-Setting"><a href="#选择，布尔索引和设置-Selecting-Boolean-Indexing-amp-Setting" class="headerlink" title="选择，布尔索引和设置 Selecting, Boolean Indexing &amp; Setting"></a>选择，布尔索引和设置 Selecting, Boolean Indexing &amp; Setting</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"># 按行和列选择单个值</span><br><span class="line">&gt;&gt;&gt; df.iloc[[0],[0]] </span><br><span class="line">&#x27;Belgium&#x27; </span><br><span class="line"></span><br><span class="line"># 按行和列选择单个值</span><br><span class="line">&gt;&gt;&gt; df.iat([0],[0])</span><br><span class="line">&#x27;Belgium&#x27;</span><br><span class="line"></span><br><span class="line"># 通过行和列标签选择单个值</span><br><span class="line">&gt;&gt;&gt; df.loc[[0], [&#x27;Country&#x27;]] </span><br><span class="line">&#x27;Belgium&#x27; </span><br><span class="line"></span><br><span class="line"># 通过行和列标签选择单个值</span><br><span class="line">&gt;&gt;&gt; df.at([0], [&#x27;Country&#x27;]) </span><br><span class="line">&#x27;Belgium&#x27;</span><br><span class="line"></span><br><span class="line"># 选择行子集的单行</span><br><span class="line">&gt;&gt;&gt; df.ix[2] </span><br><span class="line">Country Brazil </span><br><span class="line">Capital Brasília</span><br><span class="line">Population 207847528</span><br><span class="line"></span><br><span class="line"># 选择列的子集的单个列</span><br><span class="line">&gt;&gt;&gt; df.ix[:,&#x27;Capital&#x27;]  </span><br><span class="line">0 Brussels  </span><br><span class="line">1 New Delhi</span><br><span class="line">2 Brasília </span><br><span class="line"></span><br><span class="line"># 选择行和列</span><br><span class="line">&gt;&gt;&gt; df.ix[1,&#x27;Capital&#x27;]  </span><br><span class="line">&#x27;New Delhi&#x27;</span><br><span class="line"></span><br><span class="line"># Series s where value is not &gt;1</span><br><span class="line">&gt;&gt;&gt; s[~(s &gt; 1)] </span><br><span class="line"></span><br><span class="line"># s where value is &lt;-1 or &gt;2</span><br><span class="line">&gt;&gt;&gt; s[(s &lt; -1) | (s &gt; 2)] </span><br><span class="line"></span><br><span class="line"># 使用过滤器调整dataframe</span><br><span class="line">&gt;&gt;&gt; df[df[&#x27;Population&#x27;]&gt;1200000000]</span><br><span class="line"></span><br><span class="line"># Set index a of Series s to 6</span><br><span class="line">&gt;&gt;&gt; s[&#x27;a&#x27;] = 6</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除-Dropping"><a href="#删除-Dropping" class="headerlink" title="删除 Dropping"></a>删除 Dropping</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 从行中删除值</span><br><span class="line">&gt;&gt;&gt; s.drop([&#x27;a&#x27;, &#x27;c&#x27;])</span><br><span class="line"></span><br><span class="line"># 从列中删除值(轴=1)</span><br><span class="line">&gt;&gt;&gt; df.drop(&#x27;Country&#x27;, axis=1) </span><br><span class="line"></span><br><span class="line"># 删除行</span><br><span class="line">&gt;&gt;&gt; df.drop([1])</span><br></pre></td></tr></table></figure>
+
+<h3 id="排序和等级-Sort-amp-Rank"><a href="#排序和等级-Sort-amp-Rank" class="headerlink" title="排序和等级 Sort &amp; Rank"></a>排序和等级 Sort &amp; Rank</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"># 按标签沿轴排序</span><br><span class="line">&gt;&gt;&gt; df.sort_index()</span><br><span class="line"></span><br><span class="line"># 默认按“行标签”升序排序，或df.sort_index(axis=0, ascending=True)</span><br><span class="line"># df.sort_index(axis=1) #按“列标签”升序排序</span><br><span class="line"></span><br><span class="line"># df.sort_index(by = [&#x27;b&#x27;,&#x27;a&#x27;],ascending = [False,True]) </span><br><span class="line"># 先按b列“降序”排列，因为b列中有相同值，相同值再按a列的“升序”排列</span><br><span class="line"></span><br><span class="line"># sort_index(axis=0, level=None, ascending=True, inplace=False, kind=&#x27;quicksort&#x27;, na_position=&#x27;last&#x27;, sort_remaining=True, by=None)--&gt;</span><br><span class="line"># axis：0按照行名排序；1按照列名排序</span><br><span class="line"># level：默认None，否则按照给定的level顺序排列---貌似并不是，文档</span><br><span class="line"># ascending：默认True升序排列；False降序排列</span><br><span class="line"># inplace：默认False，否则排序之后的数据直接替换原来的数据框</span><br><span class="line"># kind：排序方法，&#123;‘quicksort’, ‘mergesort’, ‘heapsort’&#125;, default ‘quicksort’。似乎不用太关心。</span><br><span class="line"># na_position：缺失值默认排在最后&#123;&quot;first&quot;,&quot;last&quot;&#125;</span><br><span class="line"># by：按照某一列或几列数据进行排序，但是by参数貌似不建议使用</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 既可以根据列数据，也可根据行数据排序</span><br><span class="line">&gt;&gt;&gt; df.sort_values(by=&#x27;Country&#x27;) </span><br><span class="line"></span><br><span class="line"># 按b列升序排序</span><br><span class="line"># df.sort_values(by=&#x27;b&#x27;) #等同于df.sort_values(by=&#x27;b&#x27;,axis=0)</span><br><span class="line"></span><br><span class="line"># 先按b列降序，再按a列升序排序</span><br><span class="line"># df.sort_values(by=[&#x27;b&#x27;,&#x27;a&#x27;],axis=0,ascending=[False,True])</span><br><span class="line"></span><br><span class="line"># 按行3升序排列</span><br><span class="line">df.sort_values(by=3,axis=1) #必须指定axis=1</span><br><span class="line"></span><br><span class="line"># 按行3升序，行0降排列</span><br><span class="line"># df.sort_values(by=[3,0],axis=1,ascending=[True,False])</span><br><span class="line"></span><br><span class="line"># DataFrame.sort_values(by, axis=0, ascending=True, inplace=False, kind=&#x27;quicksort&#x27;, na_position=&#x27;last&#x27;)</span><br><span class="line"># axis：&#123;0 or ‘index’, 1 or ‘columns’&#125;, default 0，默认按照列排序，即纵向排序；如果为1，则是横向排序。</span><br><span class="line"># by：str or list of str；如果axis=0，那么by=&quot;列名&quot;；如果axis=1，那么by=&quot;行名&quot;。</span><br><span class="line"># ascending：布尔型，True则升序，如果by=[&#x27;列名1&#x27;,&#x27;列名2&#x27;]，则该参数可以是[True, False]，即第一字段升序，第二个降序。</span><br><span class="line"># inplace：布尔型，是否用排序后的数据框替换现有的数据框。</span><br><span class="line"># kind：排序方法，&#123;‘quicksort’, ‘mergesort’, ‘heapsort’&#125;, default ‘quicksort’。似乎不用太关心。</span><br><span class="line"># na_position：&#123;‘first’, ‘last’&#125;, default ‘last’，默认缺失值排在最后面。</span><br><span class="line"></span><br><span class="line"># 返回从小到大排序的下标</span><br><span class="line">&gt;&gt;&gt; df.rank()</span><br></pre></td></tr></table></figure>
+
+<h3 id="检索系列-x2F-DataFrame信息-Retrieving-Series-x2F-DataFrame-Information"><a href="#检索系列-x2F-DataFrame信息-Retrieving-Series-x2F-DataFrame-Information" class="headerlink" title="检索系列&#x2F; DataFrame信息 Retrieving Series&#x2F;DataFrame Information"></a>检索系列&#x2F; DataFrame信息 Retrieving Series&#x2F;DataFrame Information</h3><h4 id="基本信息-Basic-Information"><a href="#基本信息-Basic-Information" class="headerlink" title="基本信息 Basic Information"></a>基本信息 Basic Information</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; df.shape </span><br><span class="line"># (rows,columns) </span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.index </span><br><span class="line"># 所有的行标签</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.columns </span><br><span class="line"># 得到所有的列标签</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.info() </span><br><span class="line"># 查看索引、数据类型和内存信息</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.count()</span><br><span class="line"># 统计</span><br></pre></td></tr></table></figure>
+
+<h4 id="数学计算操作-Summary"><a href="#数学计算操作-Summary" class="headerlink" title="数学计算操作 Summary"></a>数学计算操作 Summary</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; df.sum() </span><br><span class="line"># 求和 返回一个含有列小计的Series </span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.cumsum() </span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.min()/df.max() </span><br><span class="line"># 最小值和最大值</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.idxmin()/df.idxmax() </span><br><span class="line"># 最小值和最大值的索引值</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.describe() </span><br><span class="line"># 针对 Series 或 DF 的列计算汇总统计</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.mean() </span><br><span class="line"># 均值</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.median()</span><br><span class="line"># 中位数</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.var()</span><br><span class="line"># 方差</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.std()</span><br><span class="line"># 标准差</span><br></pre></td></tr></table></figure>
+
+<h3 id="应用函数-Applying-Functions"><a href="#应用函数-Applying-Functions" class="headerlink" title="应用函数 Applying Functions"></a>应用函数 Applying Functions</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f = lambda x: x*2</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.apply(f)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; df.applymap(f)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="输入-x2F-输出-I-x2F-O"><a href="#输入-x2F-输出-I-x2F-O" class="headerlink" title="输入&#x2F;输出 I&#x2F;O"></a>输入&#x2F;输出 I&#x2F;O</h3><h4 id="Read-and-Write-to-CSV"><a href="#Read-and-Write-to-CSV" class="headerlink" title="Read and Write to CSV"></a>Read and Write to CSV</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; pd.read_csv(&#x27;file.csv&#x27;, header=None, nrows=5)</span><br><span class="line">&gt;&gt;&gt; df.to_csv(&#x27;myDataFrame.csv&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Read-and-Write-to-Excel"><a href="#Read-and-Write-to-Excel" class="headerlink" title="Read and Write to Excel"></a>Read and Write to Excel</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; pd.read_excel(&#x27;file.xlsx&#x27;)</span><br><span class="line">&gt;&gt;&gt; pd.to_excel(&#x27;dir/myDataFrame.xlsx&#x27;, sheet_name=&#x27;Sheet1&#x27;)</span><br><span class="line"># Read multiple sheets from the same file</span><br><span class="line">&gt;&gt;&gt; xlsx = pd.ExcelFile(&#x27;file.xls&#x27;)</span><br><span class="line">&gt;&gt;&gt; df = pd.read_excel(xlsx, &#x27;Sheet1&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Read-and-Write-to-SQL-Query-or-Database-Table"><a href="#Read-and-Write-to-SQL-Query-or-Database-Table" class="headerlink" title="Read and Write to SQL Query or Database Table"></a>Read and Write to SQL Query or Database Table</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from sqlalchemy import create_engine</span><br><span class="line">&gt;&gt;&gt; engine = create_engine(&#x27;sqlite:///:memory:&#x27;)</span><br><span class="line">&gt;&gt;&gt; pd.read_sql(&quot;SELECT * FROM my_table;&quot;, engine)</span><br><span class="line">&gt;&gt;&gt; pd.read_sql_table(&#x27;my_table&#x27;, engine)</span><br><span class="line">&gt;&gt;&gt; pd.read_sql_query(&quot;SELECT * FROM my_table;&quot;, engine)</span><br><span class="line"></span><br><span class="line"># read_sql()is a convenience wrapper around read_sql_table() and </span><br><span class="line">read_sql_query()</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; pd.to_sql(&#x27;myDf&#x27;, engine)</span><br></pre></td></tr></table></figure>
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2019/10/01/Numpy%E5%BA%93/">Numpy库</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2019-10-01</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/Python/">Python</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <p>NumPy库是Python中科学计算的核心库。它提供了一个高性能的多维数组对象，以及处理这些数组的工具。
+                    <div class="read-more">
+                        <a href="/2019/10/01/Numpy%E5%BA%93/" class="read-more-link">
+                            阅读全文
+                            <i class="iconfont icon-readmore"></i>
+                        </a>
+                    </div>
+                
+            </div>
+        </article>
+    
+</div>
+<div class="paginator">
+    
+        
+        <a class="prev" href="/page/4/">
+            <i class="iconfont icon-prev"></i>
+            上一页
+        </a>
+        
+        
+        <a class="next" href="/page/6/">
+            下一页
+            <i class="iconfont icon-next"></i>
+        </a>
+        
+    
+</div>
+
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+            2022
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Justin ZM</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>

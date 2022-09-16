@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>草根之明</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                首页
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="/tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+            <a href="/about/" class="header-nav-link">
+                关于
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Justin ZM's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">了解数据分析的整体流程</h2>
+            <div class="post-meta">
+                <span class="post-time">2021-02-25</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">项目管理</a>
+                    
+                </span>
+                
+                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87%E7%A1%AE%E5%AE%9A"><span class="toc-text">目标确定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96"><span class="toc-text">数据获取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97"><span class="toc-text">数据清洗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%95%B4%E7%90%86"><span class="toc-text">数据整理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0%E5%88%86%E6%9E%90"><span class="toc-text">描述分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B4%9E%E5%AF%9F%E7%BB%93%E8%AE%BA"><span class="toc-text">洞察结论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%92%B0%E5%86%99%E6%8A%A5%E5%91%8A"><span class="toc-text">撰写报告</span></a></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <h3 id="目标确定"><a href="#目标确定" class="headerlink" title="目标确定"></a>目标确定</h3><p>我们需要探究数据分析的目的是什么？是为了解决什么问题？达到什么目标？</p>
+<p>一般分析目的分为两种：</p>
+<p>1、针对现有情况 - 描述性分析</p>
+<p>2、基于现状，预测未来情况 - 预测性分析</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例如：对于一只股票，分析他的走势，涨跌。这是描述性分析针对这些涨跌，回测应该在什么时间点买入什么时间点卖出。这是预测性分析</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据获取"><a href="#数据获取" class="headerlink" title="数据获取"></a>数据获取</h3><p>针对目标，就要想要获取哪些数据，数据获取分为两个部分</p>
+<p>1、字段设计</p>
+<p>2、数据提取</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例如：需要分析某销售团队的销售数据，基础指标有平均销售额，销售总额，增减幅度等，但是这些指标在数据库中都没有，那么就需要从数据库中提取现有的字段加以处理得到上面的基础指标 - 这是字段设计从销售软件中导入导出数据，用 SQL 从数据库中导入导出 - 这是数据提取</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据清洗"><a href="#数据清洗" class="headerlink" title="数据清洗"></a>数据清洗</h3><p>从数据获取的步骤过来后我们就获取到需要的数据了，但是这样的数据我们还没办法直接使用，需要做进一步的处理，这就是数据清洗</p>
+<p>数据清洗主要是针对空白值、无效值、重复值等异常值。</p>
+<h3 id="数据整理"><a href="#数据整理" class="headerlink" title="数据整理"></a>数据整理</h3><p>做过清洗过的数据还是没有办法直接使用的，这里需要进行数据整理这一步骤，这一步骤主要是针对数据的格式化。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例如：日期的处理，将数据中的日期处理为统一格式行列的格式化基础的计算，如平均值、总额、众数等的歌</span><br></pre></td></tr></table></figure>
+
+<h3 id="描述分析"><a href="#描述分析" class="headerlink" title="描述分析"></a>描述分析</h3><p>做完上面的数据操作之后就可以开始描述分析了</p>
+<p>描述分析分为两个部分</p>
+<p>1、数据描述：描述数据的基本情况，比如数据的总数、时间跨度、数据来源等</p>
+<p>2、指标统计：结合实际业务分析实际情况的数据指标，比如要分析网站流量，网站的 PV 、IP 、留存、跳转率、转化率等等</p>
+<p>针对指标统计有四类的主要描述场景</p>
+<p>1）变化：随着时间的变动的增减变化</p>
+<p>2）分布：不同层次上的表现，例如地域分布、男女分布、人群分布</p>
+<p>3）对比：数据项之间的比较</p>
+<p>4）预测：根据现有的增减幅度，预测未来的变化</p>
+<h3 id="洞察结论"><a href="#洞察结论" class="headerlink" title="洞察结论"></a>洞察结论</h3><p>这个部分是结合你自己数据分析的功底，结合你对于手上所负责的业务的了解程度，这部分是数据报告的核心，也同样体现了你的数据分析能力</p>
+<h3 id="撰写报告"><a href="#撰写报告" class="headerlink" title="撰写报告"></a>撰写报告</h3><p>经过一通分析，你需要将你得出来的内容汇总成数据分析报告</p>
+<p>数据报告主要包含下面的内容</p>
+<p>1、报告背景：主要描述你要解决的业务现状</p>
+<p>2、报告目的：主要描述你要解决什么问题</p>
+<p>3、数据基本情况：主要体现数据的可信度，你的数据来源是否可靠，数据维度、数据完整性等等</p>
+<p>4、可视化图表：数据的可理解程度，增强看报表的人的理解</p>
+<p>5、策略选择：提出解决方案，阐述你的结论，提供解决策略等</p>
+
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="/2021/04/24/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E4%B9%8B%E9%9C%80%E6%B1%82%E7%AE%A1%E7%90%86/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">项目管理之需求管理</span>
+                <span class="nav-mobile">上一篇</span>
+            </a>
+        
+        
+            <a class="next" href="/2021/02/12/%E4%BA%A7%E5%93%81%E6%88%98%E7%95%A5%E5%92%8C%E6%88%98%E6%9C%AF/">
+                <span class="nav-default">产品战略和战术</span>
+                <span class="nav-mobile">下一篇</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+            2022
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Justin ZM</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>

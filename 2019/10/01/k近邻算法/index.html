@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>草根之明</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                首页
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="/tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+            <a href="/about/" class="header-nav-link">
+                关于
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Justin ZM's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">kNN k近邻算法</h2>
+            <div class="post-meta">
+                <span class="post-time">2019-10-01</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+                    
+                </span>
+                
+                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E6%95%B0%E6%8D%AE"><span class="toc-text">练习数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kNN%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="toc-text">kNN的过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AC%A7%E6%8B%89%E8%B7%9D%E7%A6%BB"><span class="toc-text">欧拉距离</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kNN-%E7%AE%97%E6%B3%95%E5%B0%81%E8%A3%85"><span class="toc-text">kNN 算法封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8scikit-learn%E4%B8%AD%E7%9A%84kNN"><span class="toc-text">使用scikit-learn中的kNN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E5%A4%8D%E6%9E%84%E9%80%A0%E8%87%AA%E5%AE%9A%E4%B9%89kNN%E7%B1%BB"><span class="toc-text">重复构造自定义kNN类</span></a></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <p>kNN k近邻算法是思想极度简单；效果好；应用数学知识少 <span id="more"></span></p>
+<h2 id="练习数据"><a href="#练习数据" class="headerlink" title="练习数据"></a>练习数据</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">raw_data_X = [</span><br><span class="line">    [3.393533211, 2.331273381],</span><br><span class="line">    [3.110073483, 1.781539638],</span><br><span class="line">    [1.343808831, 3.368360954],</span><br><span class="line">    [3.582294042, 4.679179110],</span><br><span class="line">    [2.280362439, 2.866990263],</span><br><span class="line">    [7.423436942, 4.696522875],</span><br><span class="line">    [5.745051997, 3.533989803],</span><br><span class="line">    [9.172168622, 2.511101045],</span><br><span class="line">    [7.792783481, 3.424088941],</span><br><span class="line">    [7.939820817, 0.791637231]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">raw_data_y = [0, 0, 0, 0, 0, 1, 1, 1, 1, 1]</span><br><span class="line"></span><br><span class="line">X_train = np.array(raw_data_X)</span><br><span class="line">y_train = np.array(raw_data_y)</span><br><span class="line"></span><br><span class="line"># 需要预测的点</span><br><span class="line">x = np.array([8.093607318, 3.365731514])</span><br><span class="line"></span><br><span class="line">plt.scatter(X_train[y_train == 0, 0], X_train[y_train == 0, 1], color=&#x27;g&#x27;)</span><br><span class="line">plt.scatter(X_train[y_train == 1, 0], X_train[y_train == 1, 1], color=&#x27;r&#x27;)</span><br><span class="line">plt.scatter(x[0], x[1], color=&#x27;b&#x27;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<h2 id="kNN的过程"><a href="#kNN的过程" class="headerlink" title="kNN的过程"></a>kNN的过程</h2><h4 id="欧拉距离"><a href="#欧拉距离" class="headerlink" title="欧拉距离"></a>欧拉距离</h4><p><img src="http://ww1.sinaimg.cn/large/405e87d9gy1g5nrlfcp9lj218q0pi41d.jpg"></p>
+<p><img src="http://ww1.sinaimg.cn/large/405e87d9gy1g5nrn9fc9ej21820pgtat.jpg"></p>
+<p>实现欧拉距离；获得测试点与所有点的距离</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from math import sqrt</span><br><span class="line">distances = []</span><br><span class="line">for x_train in X_train:</span><br><span class="line">    d = sqrt(np.sum((x_train - x)**2))</span><br><span class="line">    distances.append(d)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">distances = [sqrt(np.sum((x_train - x)**2)) for x_train in X_train]</span><br></pre></td></tr></table></figure>
+
+<p>对数据进行排序，返回数组的索引</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nearest = np.argsort(distances)</span><br></pre></td></tr></table></figure>
+
+<p>设置最近的k个点 获取最近点的y的数据值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">k = 6</span><br><span class="line">topK_y = [y_train[i] for i in nearest[:k]]</span><br></pre></td></tr></table></figure>
+
+<p>把数组中的值进行归纳 Counter；获取最多的值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from collections import Counter</span><br><span class="line">votes = Counter(topK_y)</span><br><span class="line">predict_y = votes.most_common(1)[0][0]</span><br></pre></td></tr></table></figure>
+
+<h2 id="kNN-算法封装"><a href="#kNN-算法封装" class="headerlink" title="kNN 算法封装"></a>kNN 算法封装</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">from math import sqrt</span><br><span class="line">from collections import Counter</span><br><span class="line"></span><br><span class="line">def kNN_classify(k, X_train, y_train, x):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    kNN算法函数</span><br><span class="line">    :param k: </span><br><span class="line">    :param X_train: 训练数据集</span><br><span class="line">    :param y_train: 训练数据集</span><br><span class="line">    :param x:   预测集</span><br><span class="line">    :return: 输出预测结果</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    distances = [sqrt(np.sum((x_train - x)**2)) for x_train in X_train]</span><br><span class="line">    nearest = np.argsort(distances)</span><br><span class="line"></span><br><span class="line">    topK_y = [y_train[i] for i in nearest[:k]]</span><br><span class="line">    votes = Counter(topK_y)</span><br><span class="line"></span><br><span class="line">    return votes.most_common(1)[0][0]</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">raw_data_X = [</span><br><span class="line">    [3.393533211, 2.331273381],</span><br><span class="line">    [3.110073483, 1.781539638],</span><br><span class="line">    [1.343808831, 3.368360954],</span><br><span class="line">    [3.582294042, 4.679179110],</span><br><span class="line">    [2.280362439, 2.866990263],</span><br><span class="line">    [7.423436942, 4.696522875],</span><br><span class="line">    [5.745051997, 3.533989803],</span><br><span class="line">    [9.172168622, 2.511101045],</span><br><span class="line">    [7.792783481, 3.424088941],</span><br><span class="line">    [7.939820817, 0.791637231]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">raw_data_y = [0, 0, 0, 0, 0, 1, 1, 1, 1, 1]</span><br><span class="line"></span><br><span class="line"># 二维矩阵\向量</span><br><span class="line">X_train = np.array(raw_data_X)</span><br><span class="line">y_train = np.array(raw_data_y)</span><br><span class="line"></span><br><span class="line"># 需要预测的点</span><br><span class="line">x = np.array([8.093607318, 3.365731514])</span><br><span class="line"></span><br><span class="line">k = 6</span><br><span class="line"></span><br><span class="line">predict_y = kNN_classify(k, X_train, y_train, x)</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://ww1.sinaimg.cn/mw690/405e87d9gy1g5osg2si1lj20t80bl41g.jpg"></p>
+<h2 id="使用scikit-learn中的kNN"><a href="#使用scikit-learn中的kNN" class="headerlink" title="使用scikit-learn中的kNN"></a>使用scikit-learn中的kNN</h2><p><a target="_blank" rel="noopener" href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html">https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.neighbors import KNeighborsClassifier</span><br><span class="line"></span><br><span class="line"># 1、生成对象，参数n_neighbors 对比参数数量</span><br><span class="line">kNN_classifier = KNeighborsClassifier(n_neighbors=k)</span><br><span class="line"></span><br><span class="line"># 2、fit进行拟合</span><br><span class="line">kNN_classifier.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line"># 一位数组转换为矩阵</span><br><span class="line">X_predict = x.reshape(1, -1)</span><br><span class="line"></span><br><span class="line"># 3、获得预测值</span><br><span class="line">predict_y = kNN_classifier.predict(X_predict)</span><br></pre></td></tr></table></figure>
+
+<h2 id="重复构造自定义kNN类"><a href="#重复构造自定义kNN类" class="headerlink" title="重复构造自定义kNN类"></a>重复构造自定义kNN类</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">from math import sqrt</span><br><span class="line">from collections import Counter</span><br><span class="line"></span><br><span class="line">class KNNClassifier:</span><br><span class="line">    def __init__(self, k):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        初始化kNN分类器</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self.k = k</span><br><span class="line">        self._X_train = None</span><br><span class="line">        self._y_train = None</span><br><span class="line"></span><br><span class="line">    def fit(self, X_train, y_train):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        根据训练集X_train和y_train训练kNN分类器</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self._X_train = X_train</span><br><span class="line">        self._y_train = y_train</span><br><span class="line">        return self</span><br><span class="line"></span><br><span class="line">    def predict(self, X_predict):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        给定待预测数据集X_predict，返回表示X_predict的结果向量</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        y_predict = [self._predict(x) for x in X_predict]</span><br><span class="line">        return np.array(y_predict)</span><br><span class="line"></span><br><span class="line">    def _predict(self, x):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        给定单个待预测数据x，返回x的预测结果值</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        distances = [sqrt(np.sum((x_train - x) ** 2)) for x_train in self._X_train]</span><br><span class="line">        nearest = np.argsort(distances)</span><br><span class="line"></span><br><span class="line">        topK_y = [self._y_train[i] for i in nearest[:self.k]]</span><br><span class="line">        votes = Counter(topK_y)</span><br><span class="line"></span><br><span class="line">        return votes.most_common(1)[0][0]</span><br><span class="line"></span><br><span class="line">    def score(self, X_test, y_test):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        计算X_test和y_test之间的准确率</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        y_predict = self.predict(X_test)</span><br><span class="line">        return sum(y_test == y_predict) / len(y_predict)</span><br><span class="line"></span><br><span class="line">    def __repr__(self):</span><br><span class="line">        return &quot;kNN(k=%d)&quot; % self.k</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="/2019/10/01/%E6%95%B0%E6%8D%AE%E5%BD%92%E4%B8%80%E5%8C%96/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">数据归一化</span>
+                <span class="nav-mobile">上一篇</span>
+            </a>
+        
+        
+            <a class="next" href="/2019/10/01/mysql-connector%20%E9%A9%B1%E5%8A%A8/">
+                <span class="nav-default">mysql-connector 驱动</span>
+                <span class="nav-mobile">下一篇</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+            2022
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Justin ZM</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>

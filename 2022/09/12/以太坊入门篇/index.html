@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>草根之明</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                首页
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="/tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+            <a href="/about/" class="header-nav-link">
+                关于
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Justin ZM's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">以太坊入门篇</h2>
+            <div class="post-meta">
+                <span class="post-time">2022-09-12</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/%E4%BB%A5%E5%A4%AA%E5%9D%8A/">以太坊</a>
+                    
+                </span>
+                
+                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5%E5%A4%AA%E5%9D%8A"><span class="toc-text">以太坊</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6"><span class="toc-text">智能合约</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gas"><span class="toc-text">Gas</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8FAPP%EF%BC%88DApp-x2F-Dapp-x2F-dapp-x2F-dApp%EF%BC%89"><span class="toc-text">分布式APP（ĐApp &#x2F; Dapp &#x2F; dapp&#x2F; dApp）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DApp%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-text">DApp客户端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DApp%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-text">DApp浏览器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5%E5%A4%AA%E5%9D%8A%E8%8A%82%E7%82%B9"><span class="toc-text">以太坊节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5%E5%A4%AA%E5%9D%8A%E4%BB%A3%E5%B8%81"><span class="toc-text">以太坊代币</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ERC20%E4%BB%A3%E5%B8%81%E4%B8%8EERC23%E4%BB%A3%E5%B8%81"><span class="toc-text">ERC20代币与ERC23代币</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E8%AE%AE%E4%BB%A3%E5%B8%81%E4%B8%8EApp%E5%B8%81"><span class="toc-text">协议代币与App币</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8E%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E4%BA%A4%E4%BA%92"><span class="toc-text">与智能合约交互</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Truffle%E5%92%8CEmbark"><span class="toc-text">Truffle和Embark</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ETHPM"><span class="toc-text">ETHPM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C"><span class="toc-text">网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%90%E6%88%B7%E4%B8%8E%E9%92%B1%E5%8C%85"><span class="toc-text">帐户与钱包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EVM%E4%BB%A5%E5%8F%8A%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E5%88%9B%E5%BB%BA%E7%9A%84%E7%8A%B6%E6%80%81"><span class="toc-text">EVM以及智能合约创建的状态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Solidity"><span class="toc-text">Solidity</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LLL"><span class="toc-text">LLL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Serpent"><span class="toc-text">Serpent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E5%AE%83"><span class="toc-text">其它</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E5%8F%8D%E7%BC%96%E8%AF%91-x2F-Disassembly"><span class="toc-text">智能合约反编译&#x2F;Disassembly</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E7%9A%84%E5%AE%89%E5%85%A8"><span class="toc-text">智能合约的安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Whisper"><span class="toc-text">Whisper</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%BB%E4%B8%AD%E5%BF%83%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BB%84%E7%BB%87%EF%BC%88DAOs%EF%BC%89"><span class="toc-text">去中心自动化组织（DAOs）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Aragon"><span class="toc-text">Aragon</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPFS-amp-FileCoin"><span class="toc-text">IPFS&amp;FileCoin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Swarm"><span class="toc-text">Swarm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE"><span class="toc-text">项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Augur"><span class="toc-text">Augur</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gnosis"><span class="toc-text">Gnosis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Golem"><span class="toc-text">Golem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0xProject"><span class="toc-text">0xProject</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Swap"><span class="toc-text">Swap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bancor"><span class="toc-text">Bancor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Makerdao-amp-Dai"><span class="toc-text">Makerdao &amp; Dai</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Oraclize"><span class="toc-text">Oraclize</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BTCRelay"><span class="toc-text">BTCRelay</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Open-Zeppelin-amp-zeppelinOS"><span class="toc-text">Open Zeppelin &amp; zeppelinOS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ENS-%E4%BB%A5%E5%A4%AA%E5%9D%8A%E7%9A%84%E5%91%BD%E5%90%8D%E6%9C%8D%E5%8A%A1"><span class="toc-text">ENS - 以太坊的命名服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BAT-%E5%9F%BA%E7%A1%80%E6%B3%A8%E6%84%8F%E5%8A%9B%E4%BB%A3%E5%B8%81-amp-Brave%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-text">BAT 基础注意力代币 &amp; Brave浏览器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#uPort"><span class="toc-text">uPort</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#district0x"><span class="toc-text">district0x</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Steem"><span class="toc-text">Steem</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E4%B8%8E%E8%80%85%E4%B8%8E%E9%A2%86%E5%9F%9F%E5%86%85%E7%9A%84%E7%8E%A9%E5%AE%B6"><span class="toc-text">参与者与领域内的玩家</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConsenSys"><span class="toc-text">ConsenSys</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Zeppelin-Solutions"><span class="toc-text">Zeppelin Solutions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Protocol-Labs"><span class="toc-text">Protocol Labs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E5%9D%97%E9%93%BE%E8%B5%84%E6%9C%AC%E6%A6%82%E5%86%B5"><span class="toc-text">区块链资本概况</span></a></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <p>区块链就是建立在朴实无华的基本技术之上，一点也不神奇。虽然最近各种ICO把它炒得非常热。每个人都是站在巨人的肩膀上，如果你是程序员，你能对这些项目和技术，理解得更深。所以不要因为其它一些糟粕，而失去了一个提升自己的机会。<span id="more"></span></p>
+<h2 id="以太坊"><a href="#以太坊" class="headerlink" title="以太坊"></a>以太坊</h2><p><a target="_blank" rel="noopener" href="https://www.ethereum.org/">以太坊，Ethereum</a>是一个分布式的计算机，有许多的节点，其中的每一个节点，都会执行字节码（其实就是智能合约），然后把结果存在区块链上。由于整个网络是分布式的，且应用就是一个个的状态组成，存储了状态就有了服务；所以它就能永不停机，没有一个中心化的结点（没有任何一个节点说了算，去中心化的），任何第三方不能干预。</p>
+<p>显然上面这一段话，直接解释了以太坊是什么。但你可能有非常多的问题。可以先读一下<a target="_blank" rel="noopener" href="https://github.com/ethereum/wiki/wiki/White-Paper">以太坊的白皮书</a>。或者看下这个视频，<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=66SaEDzlmP4">25分钟理解以太坊</a>。（译者注：以太坊入门，确实没有什么好的办法，就是看白皮书最好，最快）</p>
+<h2 id="智能合约"><a href="#智能合约" class="headerlink" title="智能合约"></a>智能合约</h2><p>智能合约与平时的代码其实没有什么区别，只是运行于一个以太坊这样的分布式平台上而已。这个运行的平台，赋予了这些代码不可变，确定性，分布式和可自校验状态等特点。代码运行过程中状态的存储，是不可变的。每一个人，都可以开一个自己的节点，重放整个区块链，将会获得同样的结果（译者注：能控制所有节点都达到一致状态，就是所谓的共识）。</p>
+<p>在以太坊中，每个合约都有一个唯一的地址来标识它自己（由创建者的哈希地址和曾经发送过的交易的数量推算出来）。客户端可以与这个地址进行交互，可以发送ether，调用函数，查询当前的状态等。</p>
+<p>智能合约，本质上来说就是代码，以及代码运行后存储到区块链上的状态两个元素组成。比如，你用来收发ETH的钱包，本质上就是一个智能合约，只是外面套了一个界面。</p>
+<p>概念非常强大，而我相信你已经看完了。而你在看相关的新闻，经常听到这个非常有潜力，经常听到资产&#x2F;权利管理，分权自治组织（DAO），身份，社交网络等炫酷。但他本质就是这些。</p>
+<h2 id="Gas"><a href="#Gas" class="headerlink" title="Gas"></a>Gas</h2><p>智能合约，就是一些代码，运行整个分布式网络中。由于网络中的每一个节点都是一个全节点。这样的好处是容错性强，坏处是效率低，消耗资源与时间（译者注：原来只在一个节点执行一次就行，现在所有节点中每一个，都要执行一模一样的运算）。因为执行计算要花钱，而要执行的运算量与代码直接相关。所以，每个在网络运行的底层操作都需要一定量的<code>gas</code>。<code>gas</code>只是一个名字，它代表的是执行所需要花费的成本（译者注：由于以太坊是图灵完备的，随便一个死循环就将导致网络不可用，所以引入了<code>gas</code>的概念）。整个分布式网络引入了强制限制，来避免<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Halting_problem">停机问题</a>。因此如果你写一个死循环，当<code>gas</code>耗尽后，网络就会拒绝执行接下来的操作，并且回滚你之前的所有操作。</p>
+<p><code>gas</code>的价格由市场决定，类似于比特币的交易费机制。如果你的<code>gas</code>价格高，节点则将优先因为利益问题打包你的交易。</p>
+<p>一般来说，在Ethereum中计算和存储东西比在传统环境中做的更为昂贵，但是，Ethereum为您的代码提供了上述我们讨论过的那些好的属性，这可能是一样有价值的。</p>
+<p>一般来说，在以太坊网上读取状态是免费的，只有写入状态是收费的。下面这个文章是<code>gas</code>概念的一些<a target="_blank" rel="noopener" href="https://hackernoon.com/ether-purchase-power-df40a38c5a2f">深度解析</a>。</p>
+<h2 id="分布式APP（DApp-x2F-Dapp-x2F-dapp-x2F-dApp）"><a href="#分布式APP（DApp-x2F-Dapp-x2F-dapp-x2F-dApp）" class="headerlink" title="分布式APP（ĐApp &#x2F; Dapp &#x2F; dapp&#x2F; dApp）"></a>分布式APP（ĐApp &#x2F; Dapp &#x2F; dapp&#x2F; dApp）</h2><p>一个分布式App是指，服务端运行于以太坊网络上一个或多个智能合约。</p>
+<p>一个分布式的App不用将所有状态都存储在区块链上，或者在链上进行所有计算（译者注：比如图形渲染），这样就太花<code>gas</code>了。所以一个分布式App把需要大家共同信任的状态存在区块链上就好了。许多的分布式应用使用后面提到的技术，如IPFS和Gelem，在链下进行分布式存储和计算。虽然没在以太坊上，但仍使用的是区块链技术。</p>
+<p>我不知道谁开始在D上使用这个小小的缺点，是看起来酷，但会影响搜索。 你可以自由使用，但尽量方便别人的搜索。</p>
+<p>以太坊的github上，有一个<a target="_blank" rel="noopener" href="https://github.com/ethereum/dapp-bin">dapp-bin的目录</a>，有一些文档和示例。使用前，你需要看看文件最近的状态，因为他们将很可能已经被淘汰。</p>
+<h2 id="DApp客户端"><a href="#DApp客户端" class="headerlink" title="DApp客户端"></a>DApp客户端</h2><p>大多数的分布式应用都通过一些用户友好的前端提供服务，因为不是所有人都愿意通过命令行，通过自己手动组装哈希串和操作指令码进行交易。</p>
+<p>一个DApp与传统的开发中的，客户端或前端是类似，区别仅在于它们与以太坊的区块链进行交互（也可以同时与其它服务交互）。这些客户端往往用JS编写，因为当前还暂时没有完成全部的向NodeJS的转换。</p>
+<p>另外，大多数的Dapp客户端使用JS的原因，是因为它可以在浏览器中运行，因为大家都有浏览器，这样每个人都可以运行了。由于有更多的go语言的开发工具，使用go语言来写客户端的也不少。在现在这个激烈的发展期，这意味着，除非你有自己的偏好，否则可能要从go和JS（也许还有，Rust）来选择一种语言，来与以太坊区块链，以及基于以太坊开发的协议进行交互了。</p>
+<p>以太坊的一个核心开发者，<a target="_blank" rel="noopener" href="https://github.com/ethereum/wiki/wiki/Dapp-using-Meteor">写了一篇关于使用Meteor工具来创建Dapp的文章</a>，这意味着Meteor已经成为Dapp客户端开发的新标准。这绝对是基于JS建立全栈应用时的一个首选方法。但需要注意的是Meteor只是提供了一个开发工具，与DApp客户端并不等同，DApp客户端也完全可以由其它方式开发。（译者注：还有一些其它的开发工具，如Truffle，也是非常不错的哦）。</p>
+<p>因为围绕Meteor和DApp开发的活跃，有非常多的包在<code>Atmophere（Meteor的包管理工具）</code>，它提供了许多常见的操作，如帐户管理，从区块链中获得最新的50个区块等等。</p>
+<h2 id="DApp浏览器"><a href="#DApp浏览器" class="headerlink" title="DApp浏览器"></a>DApp浏览器</h2><p>一个DApp浏览器，正如它字面所表达的，用来让DApp客户端（常常使用JS与以太坊的智能合约进行交互）的使用更加容易。</p>
+<p>DApp浏览器的主要目的是：</p>
+<ol>
+<li>提供到一个以太坊节点的连接（或者连接到一个本地节点或者远程节点），和一个方便的切换不同节点（甚至是不同的网络）。</li>
+<li>提供一个帐户（或者一个钱包）来方便用户与DApp交互。</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://github.com/ethereum/mist">Mist</a>是以太坊官方的DApp浏览器。一个漂亮的界面来与以太坊节点交互，与智能合约发、收交易。</p>
+<p><a target="_blank" rel="noopener" href="https://status.im/">Status</a>是一个手机上可以使用的DApp浏览器。</p>
+<p><a target="_blank" rel="noopener" href="https://metamask.io/">MetaMask</a>是一个Google浏览器扩展，把Chrome变成了一个DApp浏览器。它的核心特性是注入以太坊提供的js客户端库<code>web3</code>，到每一个界面，来让DApp连接到MetaMask提供的以太坊节点服务。不过这个Chrome扩展，可以允许你管理你的钱包，以及连接到不同的以太坊网络（译者注：包括本地的开发网络）。</p>
+<p><a target="_blank" rel="noopener" href="https://parity.io/parity.html">Parity</a>是一个以太坊客户端（也是一个全节点的实现），集成到了Web浏览器，并使之成为一个DApp浏览器。</p>
+<h2 id="以太坊节点"><a href="#以太坊节点" class="headerlink" title="以太坊节点"></a>以太坊节点</h2><p>与比特币的节点类似。每个节点都存储了整个区块链的数据，并重放所有的交易以验证结果的状态。你可以通过<a target="_blank" rel="noopener" href="https://github.com/ethereum/go-ethereum/wiki/geth">geth</a>来运行一个全节点（官方的节点，go语言），或者<a target="_blank" rel="noopener" href="https://github.com/paritytech/parity">parity</a>来运行一个轻节点，它是第三方的，Rust语言写的。</p>
+<p>你的节点需要知道从哪个区块链下载数据，以及与哪些节点交互，后面会说明一些常见的网络。</p>
+<p>你也许可以运行下所有这些节点客户端。如果你不想自己运行一个这样的节点，有第三方的网关服务，比如<a target="_blank" rel="noopener" href="https://infura.io/">Infura</a>可以选择。另外还有专门用于测试和开发的，本地版本的节点，后面会提到。</p>
+<p>如果你正在开发一个DApp的客户端，你并不总是需要主动提供连接到以太坊的节点。因为DApp的浏览器一般会提供对应的连接（译者注：话说这样，那使用这个，还得额外安装一个DApp浏览器呀）。</p>
+<h2 id="以太坊代币"><a href="#以太坊代币" class="headerlink" title="以太坊代币"></a>以太坊代币</h2><p>现在你应该知道我们可以通过写智能合约，并将状态存到区块链上了？那如果，在状态这块，我们存的是一个Map类型，键是地址，值是整数。然后我们将这些整数值叫做余额，谁的余额呢？它就是我们要说的代币（译者注：代币的数据结构就是这样简单，存的就是某个用户，它当前的余额）。</p>
+<p>是的，所有你刚才听到的代币，只是一些数据，存储在一个哈希表里，通过api或者所谓的协议，来进行增删改查。<a target="_blank" rel="noopener" href="https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/token/BasicToken.sol">这是一个简单的基本合约</a>。</p>
+<p>你可以看看<a target="_blank" rel="noopener" href="https://www.ethereum.org/crowdsale">ethereum的创建一个众筹合约的官方教程</a>。你将会发现它仅仅是一个合约（Crowdsale）与另一个合约（MyToken）交互，和前面的基本合约类似。并没有什么神奇的地方。</p>
+<p>人们使用代币来做各种各样的事情，阻拦大家如何使用的只有想像力。代币常常用来激励用户与某个协议进行交互，或者证明对某个资产的所有权，投票权等等。<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=rktHO5R8Y9c">Coinbase的Fred有一个很好的关于代币，为什么存在，如何使用的文章</a>。</p>
+<p><a target="_blank" rel="noopener" href="http://vitalik.ca/general/2017/06/09/sales.html">Ethereum的创始人Vitalik最近有一个关于代币发售模型，也是一篇不错的文章</a>。</p>
+<h2 id="ERC20代币与ERC23代币"><a href="#ERC20代币与ERC23代币" class="headerlink" title="ERC20代币与ERC23代币"></a>ERC20代币与ERC23代币</h2><p>每个人都开始定义自己与代币的交互协议，但这些很快显得陈旧，所以一些人开始集结起来，<a target="_blank" rel="noopener" href="https://github.com/ethereum/eips/issues/20">创建了ERC20代币接口标准</a>。大概意思是说，我们定义这些接口，这样大家可以相互统一调用，比如转帐定义为<code>transfer</code>，第一个参数为要转去的帐户地址<code>address _to</code>，第二个参数为要发送的ether的<code>uint _value</code>数量。</p>
+<p>有些人觉得ERC20协议过于复杂了，所以他们提议了<a target="_blank" rel="noopener" href="https://github.com/ethereum/EIPs/issues/179">ERC197</a>，稍微简单一点。</p>
+<p>由于在ERC20中存在的一个小问题，有人提议了一个新的<a target="_blank" rel="noopener" href="https://github.com/ethereum/EIPs/issues/223">ERC23</a>。ERC23是向后兼容ERC20的。如果你已经创建了一个代币合约，可以尝试来支持ERC23。</p>
+<blockquote>
+<p>看起来ERC223和ERC23是相同的概念；ERC的值是223，但是当引用时，作者和所有的其它人误写成了ERC23非常多次，它现在也还是这样引用的。如果一句话说清楚的话，ERC223是规范号，代币说明时称为ERC23代币就好了。</p>
+</blockquote>
+<h2 id="协议代币与App币"><a href="#协议代币与App币" class="headerlink" title="协议代币与App币"></a>协议代币与App币</h2><p>协议代币为用来激励对某个协议的使用。比如，REP，Augur的声誉代币，用来鼓励对Augur去中心化预测协议的使用。大多数的以太坊的ERC20&#x2F;ERC23代币都是协议代币，比如Golem的GNT，ICONOMI，BAT等等。</p>
+<p>App币则是用来激励对某个特定DApp或客户端的使用，而不是因为其使用的协议提供的价值。其中一个例子是Status的SNT代币，可以用来在应用内获得价值（比如，进行消息推送，投票权，获得用户名等等）。</p>
+<p>这种范式的转变是，我们可以开始投资协议代币而不是应用程序代币，因为我们可以建立在它们之上（任何人都可以在协议之上构建一个dapp，或为实现该协议的Dapp构建一个Dapp客户端）。</p>
+<p>之前，这并不可能，因为加密代币，以及接下来的<a target="_blank" rel="noopener" href="http://continuations.com/post/148098927445/crypto-tokens-and-the-coming-age-of-protocol">协议创新的时代</a>，为了实现货币化，你自己可以在协议之上创建一个应用，并实现赢利。因为你自己可以实现协议的货币化，大家可以在未来更好的协作。</p>
+<p>你也许可以阅读一下，关于0xProject的下面这篇<a target="_blank" rel="noopener" href="https://blog.0xproject.com/the-difference-between-app-coins-and-protocol-tokens-7281a428348c">文章，关于这两者区别的详细说明</a>。</p>
+<h2 id="与智能合约交互"><a href="#与智能合约交互" class="headerlink" title="与智能合约交互"></a>与智能合约交互</h2><p>你与智能合约的交互（也称做调用函数和读取状态）通过连接到某个以太坊节点，并执行操作码。当前有各种各样的以太坊客户端，可以方便进行开发。Geth和parity都提供了控制台或浏览器的方式来更好的与智能合约交互。</p>
+<p>如果你想要一个程序的库用来与智能合约交互的接口，也有这样的客户端实现。对于JS语言，可以使用<a target="_blank" rel="noopener" href="https://github.com/ethereum/web3.js/">web3.js</a>。以于go语言，可以使用在<a target="_blank" rel="noopener" href="https://github.com/ethereum/go-ethereum">go-ethereum</a>中的<code>abigen</code>的程序，提供了go包，用来与智能合约交互。</p>
+<p>如果只是用来测试和开发，可以使用<a target="_blank" rel="noopener" href="https://github.com/ethereumjs/testrpc">ethereumjs-testrpc</a>来运行一个本地节点（译者注：这个节点压短区块时间等，可以方便打整的开发与测试）。</p>
+<p>当你部署了一个智能合约，你实际进行的操作是向地址<code>0x0</code>发送了一个交易，使用当前合约内容作为参数，<a target="_blank" rel="noopener" href="https://medium.com/@codetractio/inside-an-ethereum-transaction-fa94ffca912f">一个以太坊交易详解</a>。</p>
+<h2 id="Truffle和Embark"><a href="#Truffle和Embark" class="headerlink" title="Truffle和Embark"></a>Truffle和Embark</h2><p>一旦你开始写智能合约，你会重复做大量的操作，比如编译源码为字节码和abi，部署到网络，测试然后部署合约等等。你也许希望更关注于你想要实现的东西。</p>
+<p>Truffle和Embark框架，标准化和自动化了这些琐碎的工作。它们提供了一个好的开发，部署，以及更为重要的，测试智能合约的体验。</p>
+<p>你可以<a target="_blank" rel="noopener" href="http://truffleframework.com/docs/getting_started">查看这个文章</a>来开启使用Truffle的旅程。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.zeppelin.solutions/the-hitchhikers-guide-to-smart-contracts-in-ethereum-848f08001f05">这篇文章，提供了使用Truffle来部署以及与智能合约交互的文章。</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/iurimatias/embark-framework">Embark</a>提供了类似的，帮助开发者组织工程的稍有些不同的工具。</p>
+<p>当你一开始接触智能合约这块时，应该尽量不要使用框架。直到你明白了使用框架能带来的价值时，才应该开始使用，正如你不应该通过<code>rails new</code>来学习HTML语言一样。</p>
+<h2 id="ETHPM"><a href="#ETHPM" class="headerlink" title="ETHPM"></a>ETHPM</h2><p>分享是关心，所以<a target="_blank" rel="noopener" href="https://www.ethpm.com/registry">ETHPM是一个去中心化的智能合约包管理资源库</a>。使用ETHPM，你可以关联或连接到某个著名的合约或库，减少代码重复，尽可能理想的为未来的开发提供好的基础。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ethereum/EIPs/issues/190">这里的这个规范</a>，详细的说明了相关的信息以及背景。Truffle和Embark均可与之集成，并创造一个愉快的开发体验。</p>
+<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><p>Mainnet-以太坊主网，通常是所有客户端的默认网络。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ethereum/ropsten">Ropsten</a> - 以太坊使用工作量证明的主测试网络。这个网络，因为低的计算量，容易遭到DDOS攻击，分片，或者其它问题。垃圾邮件攻击后被暂时放弃，最近才恢复使用。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/kovan-testnet/proposal">Kovan</a>-parity客户端组成的测试网络，使用授权证明来提升对垃圾邮件攻击的抗扰度，并且持续4秒的阻塞时间。</p>
+<p><a target="_blank" rel="noopener" href="https://www.rinkeby.io/">Rinkeby</a>-geth客户端组成的测试网络，使用集团共识，尽管计算量低，但是对恶意行为者更有弹性。</p>
+<p>你可以自己搭建你自己的测试网络，也许使用<a target="_blank" rel="noopener" href="https://github.com/MaximilianMeister/kuberneteth">kubernetes</a>或者<a target="_blank" rel="noopener" href="https://capgemini.github.io/blockchain/ethereum-docker-compose/">docker-compose</a>，但也许你将很快就可以不需要花什么时间。</p>
+<h2 id="帐户与钱包"><a href="#帐户与钱包" class="headerlink" title="帐户与钱包"></a>帐户与钱包</h2><p>一个以太坊帐户就是一个私钥和公钥地址对。它们可以用来存储ether，创建时不需要花费gas。</p>
+<p>钱包则是用来管理ether的智能合约（一些代码）。<a target="_blank" rel="noopener" href="https://github.com/ethereum/meteor-dapp-wallet/blob/develop/Wallet.sol">这里是使用solidity写的一个钱包，运行于Mist浏览器</a>。他们可以有许多的特性，比如多用户签名，纸？等等。</p>
+<p>这样，我们就正确的定义了两个名词，前面看到其它人对这两个术语的困惑，并把所有能存ether的都叫作Wallet。</p>
+<h2 id="EVM以及智能合约创建的状态"><a href="#EVM以及智能合约创建的状态" class="headerlink" title="EVM以及智能合约创建的状态"></a>EVM以及智能合约创建的状态</h2><p>在每个全节点网络上运行的智能合约代码在EVM内执行。这是您的标准虚拟机，执行一些字节码，除了这个vm与网络，文件系统，进程等隔离。没有人想要编写字节码，所以我们有一些更高级别的语言编译为EVM字节码。</p>
+<h3 id="Solidity"><a href="#Solidity" class="headerlink" title="Solidity"></a>Solidity</h3><p><a target="_blank" rel="noopener" href="https://solidity.readthedocs.io/en/latest/">Solidity</a>是第一批的描述智能合约的语言。当前是最流行的语言，因此也有最多的例子，文档，和教程。你应该学习这个，除非你有要学习其它的理由。</p>
+<p>你可以使用基于浏览器的<a target="_blank" rel="noopener" href="https://ethereum.github.io/browser-solidity/">Remix IDE</a>来进行快速验证。</p>
+<p>下面是一个Solidity的合约：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.11;</span><br><span class="line">contract BasicToken &#123;</span><br><span class="line">mapping(address =&gt; uint256) balances;</span><br><span class="line">function transfer(address _to, uint256 _value) returns () &#123;</span><br><span class="line">    balances[msg.sender] = balances[msg.sender] - _value;</span><br><span class="line">    balances[_to] = balances[_to] + _value;</span><br><span class="line">  &#125;</span><br><span class="line">function balanceOf(address _owner) constant returns (uint256 balance) &#123;</span><br><span class="line">    return balances[_owner];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="LLL"><a href="#LLL" class="headerlink" title="LLL"></a>LLL</h2><p>LLL，是一门Lisp风格的底层编程语言，就像语言名称看到的这样。虽然以太坊官方并没有将它作为主要需要支持的语言，但它仍旧持续进行着更新，且与<a target="_blank" rel="noopener" href="https://github.com/ethereum/solidity">solidity在同一个资源库</a>。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/benjaminion/LLL_erc20/blob/1c659e890e2b30408555b9467a8dfd8988211b3b/erc20.lll">这是一个使用LLL语言写的一个ERC20代币的合约</a></p>
+<p>LLL示例如下：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(seq</span><br><span class="line">  (def &#x27;node-bytes  0x00)</span><br><span class="line">  (def &#x27;owner    0x20) ; address</span><br><span class="line">  (def &#x27;set-node-owner    0x5b0fc9c3) ; setOwner(bytes32,address)</span><br><span class="line">  (def &#x27;get-owner (node)</span><br><span class="line">      (sload (+ node owner)))</span><br><span class="line"></span><br><span class="line">//只是用来示例，不能编译通过</span><br></pre></td></tr></table></figure>
+
+<p>如果你正在学习，也许不是那么的容易习惯LLL语言的写法。</p>
+<h3 id="Serpent"><a href="#Serpent" class="headerlink" title="Serpent"></a>Serpent</h3><p><a target="_blank" rel="noopener" href="https://github.com/ethereum/serpent/tree/develop">Serpent</a>是一个类Python的高级语言，最终也会被编译为EVM字节码。它主要被Augur团队使用。</p>
+<p>但最近<a target="_blank" rel="noopener" href="https://blog.zeppelin.solutions/serpent-compiler-audit-3095d1257929">Zeppelin Solution团队发现其编译器有一个严重的bug</a>，在这个问题被修复之前都不建议继续使用。</p>
+<p>如果你对Augur如何解决这些漏洞感兴趣，你可以阅读Zeppelin Solution的<a target="_blank" rel="noopener" href="https://blog.zeppelin.solutions/augur-rep-token-critical-vulnerability-disclosure-3d8bdffd79d2">这篇文章</a>。</p>
+<p>Serpent的合约看起来如下：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def register(key, value):</span><br><span class="line">    # Key not yet claimed</span><br><span class="line">    if not self.storage[key]:</span><br><span class="line">        self.storage[key] = value</span><br><span class="line">        return(1)</span><br><span class="line">    else:</span><br><span class="line">        return(0)  # Key already claimed</span><br><span class="line"></span><br><span class="line">def ask(key):</span><br><span class="line">    return(self.storage[key])</span><br></pre></td></tr></table></figure>
+
+<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><p>在各种可用性和发展状态中还有一堆其他的高级语言，而且无疑将会被开发出来。 为了广泛采用，语言和编译器必须经过彻底的审查和测试，这当然需要时间。</p>
+<h3 id="智能合约反编译-x2F-Disassembly"><a href="#智能合约反编译-x2F-Disassembly" class="headerlink" title="智能合约反编译&#x2F;Disassembly"></a>智能合约反编译&#x2F;Disassembly</h3><p>可以通过<a target="_blank" rel="noopener" href="https://github.com/comaeio/porosity">prosity</a>来反编译以太坊智能合约的字节码，可以使用<a target="_blank" rel="noopener" href="https://github.com/Arachnid/evmdis">evmdis</a>来Disassembly。</p>
+<h2 id="智能合约的安全"><a href="#智能合约的安全" class="headerlink" title="智能合约的安全"></a>智能合约的安全</h2><p>一旦一个智能合约部署到了以太坊的网络上，它将是永不可变的，且将永久存在。如果你写了一个bug，你将不能下架这个有问题的版本，你只能在后续的版本中修复。</p>
+<p>由于许多工程师开发的Ethereum和其他智能合同平台来自于Web开发，所以这个概念实在是太新，而且是疯狂的。</p>
+<p>ConsenSys有一个<a target="_blank" rel="noopener" href="https://github.com/ConsenSys/smart-contract-best-practices">非常棒的资源叫智能合约的最佳实践</a>，你应该深入的理解一下。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.zeppelin.solutions/on-the-parity-wallet-multisig-hack-405a8c12e8f7">一个Parity的钱包被黑的解释</a>。</p>
+<p>在你部署你的智能合约的时候，由于你管理的是真正的资金，你应该先开一个<a target="_blank" rel="noopener" href="https://blog.zeppelin.solutions/setting-up-a-bug-bounty-smart-contract-with-openzeppelin-a0e56434ad0e">赏金计划</a>，并尽量保证它完整的测试过。</p>
+<h2 id="Whisper"><a href="#Whisper" class="headerlink" title="Whisper"></a>Whisper</h2><p><a target="_blank" rel="noopener" href="https://github.com/ethereum/go-ethereum/wiki/Whisper-Overview">Whisper</a>是一个集成进以太坊的消息系统。它允许DApp发布小量的信息来进行非实时的消息通信。</p>
+<p>它使用<code>shh</code>协议。</p>
+<p>尽管它已经有段时间没有更新了，<a target="_blank" rel="noopener" href="https://github.com/ethereum/meteor-dapp-whisper-chat-client">这是一个使用Whisper协议实现一个聊天客户端的例子</a>。</p>
+<h2 id="去中心自动化组织（DAOs）"><a href="#去中心自动化组织（DAOs）" class="headerlink" title="去中心自动化组织（DAOs）"></a>去中心自动化组织（DAOs）</h2><p>这是一个组织（就像，一群人），其中，使用代码来保证最终的强制执行，而不是使用传统的法律文件。这群人使用智能合约来做常见组织做的所有的事情，比如在某件事上进行投票，比如决定是否对什么进行投资等等。</p>
+<p>副作用是决策，管理，以及对什么进行投资的结果将会不可改变的存储在区块链上。</p>
+<p>之前slock.it创建了标准的DAO框架来说明这个理念。在<a target="_blank" rel="noopener" href="https://github.com/slockit/DAO/">这里</a>有对DAO概念的总览，以及如何使用框架来实现一个自己的DAO（译者注：这个项目由于bug被黑客攻击了）。</p>
+<h2 id="Aragon"><a href="#Aragon" class="headerlink" title="Aragon"></a>Aragon</h2><p><a target="_blank" rel="noopener" href="https://aragon.one/">Aragon</a>也正在应对挑战，设计一个根据智能合约逻辑运作的公司，重点是创建一个可以接受投资，处理会计，支付雇员，分配股权，正如我们现在知道的完成每天的公司的业务。他们也实现了漂亮的DApp客户端来让他们的协议使用起来更为简单。</p>
+<p>查看这里<a target="_blank" rel="noopener" href="https://github.com/aragon/aragon-core/tree/master/contracts">Aragon核心合约</a>来更多的理解它是如何做的。</p>
+<h2 id="IPFS-amp-FileCoin"><a href="#IPFS-amp-FileCoin" class="headerlink" title="IPFS&amp;FileCoin"></a>IPFS&amp;FileCoin</h2><p><a target="_blank" rel="noopener" href="https://ipfs.io/">IPFS</a>（星际文件系统）是一个协议，用来分发文件。你可以认为它是一个基于<code>bittorrent</code>和<code>git</code>这样概念的一个文件系统，文件可以定位，且是不可变的。IPFS以<a target="_blank" rel="noopener" href="http://ipld.io/">IPLD</a>数据模型存储信息，它非常有趣，提供了一些特别的特性，你可以通过下面的说明了解一些。</p>
+<p>这是一个新的协议，它有一个http的网关和文件系统适配器，这让你可以通过http，挂载整个互联网文件系统到你本地的盘<code>/ipfs</code>。IPFS还提供了一个寻址服务IPNS（星际命名空间），它允许可变的状态（需要注意的是在IPFS里的所有东西都是不可变的）。你甚至可以使用DNS TXT记录来定位到你的IPNS客户端，允许你生成用户友好的链接来指向到对应的数据。</p>
+<p><a target="_blank" rel="noopener" href="https://filecoin.io/">FileCoin</a>是Protocol Lab为创建一个去中心化的基于IPFS的存储市场的努力结果，也就是向整个网络提供存储资源的激励层。FileCoin的共识协议没有使用浪费资源的工作量证明，而是使用了<code>Proff of Replication</code>和<code>Proof of SpaceTime</code>来保证每片数据被复制某个特定的拷贝数量且存储某个特定的时间。</p>
+<p>你应该读一下<a target="_blank" rel="noopener" href="https://github.com/ipfs/ipfs/blob/master/papers/ipfs-cap2pfs/ipfs-p2p-file-system.pdf">IPFS的白皮书</a>，<a target="_blank" rel="noopener" href="https://filecoin.io/filecoin.pdf">FileCoin的白皮书</a>，以及<a target="_blank" rel="noopener" href="https://github.com/ipld/specs/tree/master/ipld">IPLD的规范</a>。</p>
+<p>由于当前FileCoin还没有上线，你可以使用当前的IPFS存储网络来运行html&#x2F;css&#x2F;js，并把作为一个类似<a target="_blank" rel="noopener" href="https://github.com/orbitdb/orbit-db">orbit-db</a>的数据库。</p>
+<h2 id="Swarm"><a href="#Swarm" class="headerlink" title="Swarm"></a>Swarm</h2><p>Swarm是一个去中心化的存储网络，集成于以太坊生态系统，作为第一阵营的项目，看看这里<a target="_blank" rel="noopener" href="https://github.com/ethersphere/go-ethereum/wiki/IPFS-&-SWARM">关于IPFS与这个项目的比较和优劣</a>。但本质上，基本上是一样的，除了它们有不同的哲学，并在底层使用稍微不同的协议。</p>
+<h2 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h2><h3 id="Augur"><a href="#Augur" class="headerlink" title="Augur"></a>Augur</h3><p><a target="_blank" rel="noopener" href="https://augur.net/">Augur</a>是一个去中心化的预测市场，让大家对于某个现实世界的事件进行对赌。一方面，用户在某个具体可以发生的事件上投注，一旦结果成真，它们赢得的代币有真正的价值。为了实现这个，你需要实现一个去中心化的先知协议，来输入现实世界中的信息，它使用<a target="_blank" rel="noopener" href="http://blog.augur.net/guide-to-augurs-rep/">REP协议代币来进行经济激励</a>。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/AugurProject/augur-core">你可以看看Augur项目的合约代码</a>，以及了解下<a target="_blank" rel="noopener" href="https://medium.com/@AugurProject/augur-master-plan-42dda65a3e3d">Augur Master Plan</a>。</p>
+<h3 id="Gnosis"><a href="#Gnosis" class="headerlink" title="Gnosis"></a>Gnosis</h3><p><a target="_blank" rel="noopener" href="https://gnosis.pm/">Gnosis</a>与Augur有类似的理念，也是一个去中心化的预测市场。<a target="_blank" rel="noopener" href="https://gnosis.pm/resources/default/pdf/gnosis_whitepaper.pdf">这是项目的白皮书</a>，以及与<a target="_blank" rel="noopener" href="https://medium.com/@akhounov/hopefully-impartial-comparison-of-gnosis-and-augur-f743d11d6d37">Augur项目的对比</a>。</p>
+<h3 id="Golem"><a href="#Golem" class="headerlink" title="Golem"></a>Golem</h3><p><a target="_blank" rel="noopener" href="https://golem.network/">Golem</a>是一个分布式的算力市场，以与IPFS一样的方式构建了一整套的提供算力市场。</p>
+<p>你可以看看<a target="_blank" rel="noopener" href="https://github.com/golemfactory/golem/wiki/FAQ">FAQ</a>来更好的理解。</p>
+<h3 id="0xProject"><a href="#0xProject" class="headerlink" title="0xProject"></a>0xProject</h3><p>0xProject创建了一个交换代币的协议，以及一个DApp来实现这个协议。开发者可以创建一个基于它们自己的分布式应用创建交易所（技术上叫中继层），而用户也不用信任这些app就可完成交易，结算在区块链上完成。0x协议旨在使用离线的第三方来广播交易和管理订单（可以创建&#x2F;更新&#x2F;删除订单，而不用直接向Ethereum发送缓慢&#x2F;昂贵的交易），但最终会使用Ethereum进行结算。</p>
+<p>它们实现了<a target="_blank" rel="noopener" href="https://blog.0xproject.com/announcing-0x-otc-5db58dc9ba8">场外交易</a>，一个DApp使用这个协议来在用户之间直接交换代币。<a target="_blank" rel="noopener" href="https://github.com/0xProject/contracts">你可以在github上查看他们的合约</a>。</p>
+<p>你还可以跳过这些酷炫的概念，<a target="_blank" rel="noopener" href="https://0xproject.com/faq">直接阅读FAQ</a>。</p>
+<h2 id="Swap"><a href="#Swap" class="headerlink" title="Swap"></a>Swap</h2><p>ConsenSys的<a target="_blank" rel="noopener" href="https://swap.tech/">Swap</a>协议也是非常类似的，但更专注于p2p的直接交易（而不是基于订单表），这里<a target="_blank" rel="noopener" href="https://swap.tech/pdfs/SwapWhitepaper.pdf">有一个白皮书，可以看看</a>，这里有一个关于<a target="_blank" rel="noopener" href="https://media.consensys.net/introducing-swap-a-protocol-for-decentralized-peer-to-peer-trading-on-the-ethereum-blockchain-d4058f3179cf">Swap协议的介绍</a>。</p>
+<h2 id="Bancor"><a href="#Bancor" class="headerlink" title="Bancor"></a>Bancor</h2><p>代币的流动性是相对来说在加密币的生态中是一个非常大的问题。在用户间的交易需要满足买方和卖方两边的想法。</p>
+<p><a target="_blank" rel="noopener" href="https://www.bancor.network/">Bancor</a>是一个协议，可以让你的代币1）可以根据订单自动给予价格2）可以通过持有其它的代币作为抵押器来即时创造流动性。</p>
+<p><a target="_blank" rel="noopener" href="https://www.bancor.network/static/bancor_protocol_whitepaper_en.pdf">查看这里的白皮书</a></p>
+<h2 id="Makerdao-amp-Dai"><a href="#Makerdao-amp-Dai" class="headerlink" title="Makerdao &amp; Dai"></a>Makerdao &amp; Dai</h2><p>以太坊区块链管理的代币价值往往会有巨大的波动。这个特性在现实生活中则非常不好，比如你的目标是用来保值。</p>
+<p><a target="_blank" rel="noopener" href="https://makerdao.com/">Maker DAO</a>是一个DAO来管理<a target="_blank" rel="noopener" href="https://github.com/makerdao/docs/blob/master/Dai.md">Dai稳定币</a>。Dai现在还不存在，但他们已经<a target="_blank" rel="noopener" href="https://blog.makerdao.com/2017/06/05/introducing-sai/">发布了一个alpha的版本叫Sai</a>来展示这门技术。</p>
+<p>这里是<a target="_blank" rel="noopener" href="https://github.com/makerdao/docs/blob/master/Dai.md">DAI的白皮书</a>。</p>
+<h2 id="Oraclize"><a href="#Oraclize" class="headerlink" title="Oraclize"></a>Oraclize</h2><p>如果我们要向智能合约中输入一些信息，比如纽约今天的天气，我也许需要实现一个去中心化的先知协议询问一批人（花费高且慢），但如果写一个服务以中心化的方式来提供信息，又违背了去中心化应用的理念。</p>
+<p><a target="_blank" rel="noopener" href="http://docs.oraclize.it/#background">Oraclize</a>尝试用以下方式来解决问题1）从一个外部数据源向你的智能合约发送数据。2）提供一个证明，数据来自某个数据源，且没有被修改过。由此如果你信任random.org，你可以使用Oraclize来提供一个随机数生成合约。</p>
+<p>他们的集成非常强大; 您可以获取URL，解析JSON和XPATH，查询Wolfram Alpha等。</p>
+<h2 id="BTCRelay"><a href="#BTCRelay" class="headerlink" title="BTCRelay"></a>BTCRelay</h2><p><a target="_blank" rel="noopener" href="http://btcrelay.org/">BTCRelay</a>作为比特币区块链交易的先知机制，这意味着你可以在以太坊上编写智能合约来响应比特币区块链上的某个交易，进行触发后续的操作。比如，你可以让人通过BTC为你的服务付费，使用BTCRelay在以太坊上校验付款成功后，继而在以太坊上提供对应的服务。</p>
+<h2 id="Open-Zeppelin-amp-zeppelinOS"><a href="#Open-Zeppelin-amp-zeppelinOS" class="headerlink" title="Open Zeppelin &amp; zeppelinOS"></a>Open Zeppelin &amp; zeppelinOS</h2><p>Zeppelin Solutions是一个科技公司，在这个领域内正完成一些伟大，而且专业的事。它们实在做了太多事，太难一一说清了。</p>
+<p>他们管理了<a target="_blank" rel="noopener" href="https://openzeppelin.org/">Open Zeppelin</a>，一系列经过审查的，最佳的智能合约实践，你可以继承并应用于你自己的DApp中。你可以<a target="_blank" rel="noopener" href="https://github.com/OpenZeppelin/zeppelin-solidity">查看他们的github资源来学习更多</a>。你应该读一下里面的每一个合约。</p>
+<p>他们坚持代码复用的理念，然后进一步创建了<a target="_blank" rel="noopener" href="https://blog.zeppelin.solutions/introducing-zeppelinos-the-operating-system-for-smart-contract-applications-82b042514aa8">Zeppelin OS</a>。你可以忽略OS，它不是传统意义上的操作系统的概念。zeppelinOS特性，工具和服务的集合，旨在提供稳固的开发人员体验，同时最大限度地提高智能合同安全性。</p>
+<p>zeppelinOS中的其中一部分是“zeppelinOS Kernel”。其实他们不是传统意义上的核心，而且是一组<a target="_blank" rel="noopener" href="https://blog.aragon.one/library-driven-development-in-solidity-2bebcaf88736">库</a>。<a target="_blank" rel="noopener" href="https://blog.zeppelin.solutions/proxy-libraries-in-solidity-79fbe4b970fd">它们是通过库模型实现的可升级的智能合约</a>，可以在出现安全问题时独立的进行更新。因为你在合约内包含的代码更少，部署也将花费更少的gas，而开发者也减少了代码的重复。</p>
+<p>zeppelinOS还有一些其他整齐的规划，比如调度程序（智能合约的异步执行，因为默认合同一般不会主动触发某个行为），市场级的协议和链下开发者体验工具。</p>
+<h2 id="ENS-以太坊的命名服务"><a href="#ENS-以太坊的命名服务" class="headerlink" title="ENS - 以太坊的命名服务"></a>ENS - 以太坊的命名服务</h2><p><a target="_blank" rel="noopener" href="https://ens.domains/">ENS</a>是一个去中心化的名称注册服务。并有一个描述性的项目名称。</p>
+<h2 id="BAT-基础注意力代币-amp-Brave浏览器"><a href="#BAT-基础注意力代币-amp-Brave浏览器" class="headerlink" title="BAT 基础注意力代币 &amp; Brave浏览器"></a>BAT 基础注意力代币 &amp; Brave浏览器</h2><p><a target="_blank" rel="noopener" href="https://basicattentiontoken.org/">BAT</a>尝试去中心化广告系统，通过监控大家的注意力，并在内容提供商，广告商和用户之间分发收益，切掉中间人。</p>
+<p>Brave和BAT由JS创始人Brendan Eich创建，同时他也是Mozilla的联合创始人。</p>
+<h2 id="uPort"><a href="#uPort" class="headerlink" title="uPort"></a>uPort</h2><p><a target="_blank" rel="noopener" href="https://www.uport.me/">uPort</a>在解决去中心化的身份识别问题。</p>
+<h2 id="district0x"><a href="#district0x" class="headerlink" title="district0x"></a>district0x</h2><p><a target="_blank" rel="noopener" href="https://district0x.io/">district0x</a>是一个更高层级的去中心化的市场和社区。核心是通过一系列的智能合约来管理用户发布信息，搜索，过滤信息，在社区内维护信誉，管理支付等等。它可以用来建议如<a target="_blank" rel="noopener" href="https://ethlance.com/">Ethlance</a>和<a target="_blank" rel="noopener" href="https://namebazaar.io/">NameBazaar</a>这样的市场。</p>
+<p>他们有非常棒的视觉设计。</p>
+<h2 id="Steem"><a href="#Steem" class="headerlink" title="Steem"></a>Steem</h2><p><a target="_blank" rel="noopener" href="https://steemit.com/">Steem</a>是区块链上的reddit，它使用协议代币（STEEM）来激励这个社交社区的参与度。</p>
+<p><a target="_blank" rel="noopener" href="https://steem.io/SteemWhitePaper.pdf">在这里查看白皮书</a>。</p>
+<p>有一些<a target="_blank" rel="noopener" href="https://medium.com/m/global-identity?redirectUrl=https://decentralize.today/the-ugly-truth-behind-steemit-1a525f5e156">关于Steemit块链如何启动以及支持组织如何运作的反应</a>。</p>
+<h2 id="参与者与领域内的玩家"><a href="#参与者与领域内的玩家" class="headerlink" title="参与者与领域内的玩家"></a>参与者与领域内的玩家</h2><h2 id="ConsenSys"><a href="#ConsenSys" class="headerlink" title="ConsenSys"></a>ConsenSys</h2><p>ConsenSys（有点像共识<code>Consensus</code>，但作为一个公司名称;它很聪明，巧妙的把<code>u</code>改成了<code>s</code>，但我一般念为“con-SEn-SIS”，避免读错）是一个“风险投资和产品工作室”。他们是一个（其实非常大）伞形组织，它赞助了一大堆<a target="_blank" rel="noopener" href="https://consensys.net/ventures/spokes/">项目</a>和<a target="_blank" rel="noopener" href="https://consensys.net/ventures/core-components/">核心组件</a>的开发。值得一提的是，它们资助了Truffle，Infura，MetaMask，Gnosis和uPort。</p>
+<h2 id="Zeppelin-Solutions"><a href="#Zeppelin-Solutions" class="headerlink" title="Zeppelin Solutions"></a>Zeppelin Solutions</h2><p><a target="_blank" rel="noopener" href="https://zeppelin.solutions/">Zeppelin Solutions</a>在上面我们有提到过，他也审查智能合约代码，提供咨询服务。<a target="_blank" rel="noopener" href="https://blog.zeppelin.solutions/">他们的博客质量相当高</a>。</p>
+<h2 id="Protocol-Labs"><a href="#Protocol-Labs" class="headerlink" title="Protocol Labs"></a>Protocol Labs</h2><p><a target="_blank" rel="noopener" href="https://protocol.ai/">Protocol Labs</a>是一群让人印象深刻的人，致力于IPFS，FileCoin，lip2p以及IPLD等其它项目的开发。</p>
+<h2 id="区块链资本概况"><a href="#区块链资本概况" class="headerlink" title="区块链资本概况"></a>区块链资本概况</h2><p><a target="_blank" rel="noopener" href="https://medium.com/@etiennebr">Etienne Brunet</a>有一篇<a target="_blank" rel="noopener" href="https://medium.com/@etiennebr/my-token-ico-blockchain-capital-markets-landscape-617e6ff1eae1">关于代币，ICO和VC的概况文章</a>。</p>
+
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="/2022/09/12/solidity%E7%BC%96%E7%A8%8B%E6%94%BB%E7%95%A5%E4%B9%8B%E4%B8%80/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">solidity编程攻略之一</span>
+                <span class="nav-mobile">上一篇</span>
+            </a>
+        
+        
+            <a class="next" href="/2021/04/24/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E4%B9%8B%E9%9C%80%E6%B1%82%E7%AE%A1%E7%90%86/">
+                <span class="nav-default">项目管理之需求管理</span>
+                <span class="nav-mobile">下一篇</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+            2022
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Justin ZM</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>

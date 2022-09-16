@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>草根之明</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                首页
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="/tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+            <a href="/about/" class="header-nav-link">
+                关于
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Justin ZM's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">基本可视化之Matplotlib</h2>
+            <div class="post-meta">
+                <span class="post-time">2019-12-15</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/Python/">Python</a>
+                    
+                </span>
+                
+                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Matplotlib"><span class="toc-text">Matplotlib</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%A7%88"><span class="toc-text">概览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE"><span class="toc-text">图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%90%E6%A0%87%E7%B3%BB-amp-%E5%AD%90%E5%9B%BE"><span class="toc-text">坐标系 &amp; 子图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%90%E5%9B%BE"><span class="toc-text">子图</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%C3%972-%E5%AD%90%E5%9B%BE"><span class="toc-text">1×2 子图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%C3%971-%E5%AD%90%E5%9B%BE"><span class="toc-text">2×1 子图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%C3%972-%E5%AD%90%E5%9B%BE"><span class="toc-text">2×2 子图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="toc-text">坐标系</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%8D%E8%A7%84%E5%88%99%E7%BD%91%E6%A0%BC"><span class="toc-text">不规则网格</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%A7%E5%9B%BE%E5%A5%97%E5%B0%8F%E5%9B%BE"><span class="toc-text">大图套小图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%87%8D%E5%8F%A0%E5%9B%BE"><span class="toc-text">重叠图</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E7%94%9F%E6%88%90%E5%9D%90%E6%A0%87%E7%B3%BB%E7%9A%84%E6%8E%A8%E8%8D%90%E4%BB%A3%E7%A0%81"><span class="toc-text">两种生成坐标系的推荐代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9D%90%E6%A0%87%E8%BD%B4"><span class="toc-text">坐标轴</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%BB%E5%BA%A6"><span class="toc-text">刻度</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%89%8D%E6%9C%9F%E5%B7%A5%E4%BD%9C"><span class="toc-text">前期工作</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%BB%E5%BA%A6%E5%B1%95%E7%A4%BA"><span class="toc-text">刻度展示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-6-%E5%9F%BA%E7%A1%80%E5%85%83%E7%B4%A0"><span class="toc-text">1.6 基础元素</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%94%BB%E7%BE%8E%E6%84%9F%E5%9B%BE"><span class="toc-text">2 画美感图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E5%9B%BE%E7%9A%84%E9%BB%98%E8%AE%A4%E8%AE%BE%E7%BD%AE"><span class="toc-text">2.2 图的默认设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-%E8%AE%BE%E7%BD%AE%E5%B0%BA%E5%AF%B8%E5%92%8C-DPI"><span class="toc-text">2.3 设置尺寸和 DPI</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-%E8%AE%BE%E7%BD%AE%E9%A2%9C%E8%89%B2-%E9%A3%8E%E6%A0%BC-%E5%AE%BD%E5%BA%A6"><span class="toc-text">2.4 设置颜色-风格-宽度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-%E8%AE%BE%E7%BD%AE%E8%BE%B9%E7%95%8C"><span class="toc-text">2.5 设置边界</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-%E8%AE%BE%E7%BD%AE%E5%88%BB%E5%BA%A6%E5%92%8C%E6%A0%87%E7%AD%BE"><span class="toc-text">2.6 设置刻度和标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-%E6%B7%BB%E5%8A%A0%E5%9B%BE%E4%BE%8B"><span class="toc-text">2.7 添加图例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-8-%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%BA%8C%E5%B9%85%E5%9B%BE"><span class="toc-text">2.8 添加第二幅图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-9-%E4%B8%A4%E4%B8%AA%E5%9D%90%E6%A0%87%E7%B3%BB-amp-%E4%B8%A4%E5%B9%85%E5%AD%90%E5%9B%BE"><span class="toc-text">2.9 两个坐标系 &amp; 两幅子图</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%A4%E4%B8%AA%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="toc-text">两个坐标系</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%A4%E5%B9%85%E5%AD%90%E5%9B%BE"><span class="toc-text">两幅子图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-10-%E8%AE%BE%E7%BD%AE%E6%A0%87%E6%B3%A8"><span class="toc-text">2.10 设置标注</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-11-%E8%AE%BE%E7%BD%AE%E9%80%8F%E6%98%8E%E5%BA%A6"><span class="toc-text">2.11 设置透明度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-12-%E5%AE%8C%E5%96%84%E7%BB%86%E8%8A%82"><span class="toc-text">2.12 完善细节</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%94%BB%E6%9C%89%E6%95%88%E5%9B%BE"><span class="toc-text">3 画有效图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-%E6%A6%82%E8%A7%88"><span class="toc-text">3.1 概览</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="toc-text">3.2 直方图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-%E6%95%A3%E7%82%B9%E5%9B%BE"><span class="toc-text">3.3 散点图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-%E6%8A%98%E7%BA%BF%E5%9B%BE"><span class="toc-text">3.4 折线图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-%E9%A5%BC%E7%8A%B6%E5%9B%BE"><span class="toc-text">3.5 饼状图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-6-%E5%90%8C%E7%90%86%E5%BF%83"><span class="toc-text">3.6 同理心</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BA%E7%94%A8%E6%88%B7%E4%B9%A0%E6%83%AF%E8%80%83%E8%99%91"><span class="toc-text">为用户习惯考虑</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BA%E5%9B%BE%E8%A1%A8%E4%BF%A1%E6%81%AF%E8%80%83%E8%99%91"><span class="toc-text">为图表信息考虑</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BA%E8%89%B2%E7%9B%B2%E7%94%A8%E6%88%B7%E8%80%83%E8%99%91"><span class="toc-text">为色盲用户考虑</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E6%80%BB%E7%BB%93"><span class="toc-text">4总结</span></a></li></ol></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <p>Matplotlib 是 Python 中最基本的可视化工具，官网里 ((<a target="_blank" rel="noopener" href="https://matplotlib.org/">https://matplotlib.org/</a>) 有无数好资料，但这不是重点，本文肯定和市面上的所有讲解都不一样。<span id="more"></span></p>
+<p>和 NumPy, SciPy, Pandas 一样，要用 Matplotlib，首先引用其库。</p>
+<pre><code>import matplotlib
+</code></pre>
+<p>先来类比一下人类和 Matplotlib 画图过程。</p>
+<p><img src="http://img.9lake.com/uPic/kgENNB.jpg" alt="kgENNB"></p>
+<p>想想平时我们怎么画图，是不是分三步</p>
+<ul>
+<li>找画板</li>
+<li>用调色板</li>
+<li>画画</li>
+</ul>
+<p>Matplotlib 模拟了类似过程，也分三步</p>
+<ul>
+<li>FigureCanvas</li>
+<li>Renderer</li>
+<li>Artist</li>
+</ul>
+<p>上面是 Matplotlib 里的三层 API：</p>
+<ul>
+<li>FigureCanvas 帮你确定画图的地方</li>
+<li>Renderer 帮你把想画的东西展示在屏幕上</li>
+<li>Artist 帮你用 Renderer 在 Canvas 上画图</li>
+</ul>
+<p>95% 的用户 (我们这些凡人) 只需用 Artist 就能自由的在电脑上画图了。</p>
+<p>下面代码就是给 matplotlib 起了个别名 mpl，由于用 matplotlib.plot 比较多，也给它起了个别名 plt。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib as mpl</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
+
+<p>而 %matplotlib inline 就是在 Jupyter notebook 里面内嵌画图的，</p>
+<p>在画图中，个人偏好百度 Echarts 里面的一组颜色，因此将其 hex 颜色代码定义出来留在后面用。其中红色的 r_hex 和深青色的 dt_hex 是大爱。 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">r_hex = &#x27;#dc2624&#x27;     # red,       RGB = 220,38,36</span><br><span class="line">dt_hex = &#x27;#2b4750&#x27;    # dark teal, RGB = 43,71,80</span><br><span class="line">tl_hex = &#x27;#45a0a2&#x27;    # teal,      RGB = 69,160,162</span><br><span class="line">r1_hex = &#x27;#e87a59&#x27;    # red,       RGB = 232,122,89</span><br><span class="line">tl1_hex = &#x27;#7dcaa9&#x27;   # teal,      RGB = 125,202,169</span><br><span class="line">g_hex = &#x27;#649E7D&#x27;     # green,     RGB = 100,158,125</span><br><span class="line">o_hex = &#x27;#dc8018&#x27;     # orange,    RGB = 220,128,24</span><br><span class="line">tn_hex = &#x27;#C89F91&#x27;    # tan,       RGB = 200,159,145</span><br><span class="line">g50_hex = &#x27;#6c6d6c&#x27;   # grey-50,   RGB = 108,109,108</span><br><span class="line">bg_hex = &#x27;#4f6268&#x27;    # blue grey, RGB = 79,98,104</span><br><span class="line">g25_hex = &#x27;#c7cccf&#x27;   # grey-25,   RGB = 199,204,207</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://img.9lake.com/uPic/fdaF5c.jpg" alt="fdaF5c"></p>
+<p>本章我们用以下思路来讲解：</p>
+<ul>
+<li><p>第一章介绍 matplotlib 中的绘图逻辑，图包含的重要元素和他们之间的层级 (hierarchy)</p>
+</li>
+<li><p>第二章只关注折线图 (line chart)，但是一步步从最初的烂图完善到最终的美图。这样可以把一种类型的图中的性质吃透，类比到其他类型的图一点也不难。</p>
+</li>
+<li><p>第三章从画图的四大目的出发，即分布、联系、比较和构成，介绍了相对应的直方图 (historgram chart)，散点图 (scatter chart)，折线图 (line chart) 和饼状图 (pie chart)。这章偏向于用合适的图来实现不同的目的，没有在如何完善图的方面上下功夫，但在最后一节提到了如何画出使信息更有效的表达的图。</p>
+</li>
+</ul>
+<h2 id="Matplotlib"><a href="#Matplotlib" class="headerlink" title="Matplotlib"></a>Matplotlib</h2><h3 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h3><p>Matplotlib 是一个巨无霸，咋一看无从下手，只能分解之后各点击破。总体来说，它包含两类元素：</p>
+<ul>
+<li><strong>基础 (primitives) 类</strong>：线 (line), 点 (marker), 文字 (text), 图例 (legend), 网格 (grid), 标题 (title), 图片 (image) 等。</li>
+<li><strong>容器 (containers) 类</strong>：图 (figure), 坐标系 (axes), 坐标轴 (axis) 和刻度 (tick)</li>
+</ul>
+<p>基础类元素是我们想画出的标准对象，而容器类元素是基础类元素的寄居出，它们也有层级结构。</p>
+<pre><code>图 → 坐标系 → 坐标轴 → 刻度
+</code></pre>
+<p><img src="http://img.9lake.com/uPic/GZLAWh.jpg" alt="GZLAWh"></p>
+<p>由上图看出：</p>
+<ul>
+<li>图包含着坐标系 (多个)</li>
+<li>坐标系由坐标轴组成 (横轴 xAxis 和纵轴 yAxis)</li>
+<li>坐标轴上面有刻度 (主刻度 MajorTicks 和副刻度 MinorTicks)</li>
+</ul>
+<p>Python 中万物皆对象，Matplotlib 里这些元素也都是对象。下面代码打印出坐标系、坐标轴和刻度。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(1,1,1)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line">xax = ax.xaxis</span><br><span class="line">yax = ax.yaxis</span><br><span class="line"></span><br><span class="line">print( &#x27;fig.axes:&#x27;, fig.axes, &#x27;\n&#x27;)</span><br><span class="line">print( &#x27;ax.xaxis:&#x27;, xax )</span><br><span class="line">print( &#x27;ax.yaxis:&#x27;, yax, &#x27;\n&#x27; )</span><br><span class="line">print( &#x27;ax.xaxis.majorTicks:&#x27;, xax.majorTicks, &#x27;\n&#x27; )</span><br><span class="line">print( &#x27;ax.yaxis.majorTicks:&#x27;, yax.majorTicks, &#x27;\n&#x27;)</span><br><span class="line">print( &#x27;ax.xaxis.minorTicks:&#x27;, xax.minorTicks )</span><br><span class="line">print( &#x27;ax.yaxis.minorTicks:&#x27;, yax.minorTicks )</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://img.9lake.com/uPic/SykcaA.jpg" alt="SykcaA"></p>
+<p><img src="http://img.9lake.com/uPic/A7OKpu.jpg" alt="A7OKpu"></p>
+<p>从打印结果可看出坐标系、坐标轴和刻度都是对象。细看一下发现 xaxis 和 yaxis 上面都有 6 个主刻度 (majorTicks)。</p>
+<p>此外，由坐标系和坐标轴指向同一个图 (侧面验证了图、坐标系和坐标轴的层级性)。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print( &#x27;axes.figure:&#x27;, ax.figure )</span><br><span class="line">print( &#x27;xaxis.figure:&#x27;, xax.figure )</span><br><span class="line">print( &#x27;yaxis.figure:&#x27;, yax.figure )</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">axes.figure: Figure(432x288)</span><br><span class="line">xaxis.figure: Figure(432x288)</span><br><span class="line">yaxis.figure: Figure(432x288)</span><br></pre></td></tr></table></figure>
+
+<p>创造完以上四个容器元素后，我们可在上面添加各种基础元素，比如：</p>
+<ul>
+<li>在<strong>坐标轴和刻度</strong>上添加标签</li>
+<li>在<strong>坐标系</strong>中添加线、点、网格、图例和文字</li>
+<li>在<strong>图</strong>中添加图例</li>
+</ul>
+<p>如下图所示：</p>
+<p><img src="http://img.9lake.com/uPic/6xREbX.jpg" alt="6xREbX"></p>
+<p>接下来四节分别介绍四大容器，让我们先从「图」开始。</p>
+<h3 id="图"><a href="#图" class="headerlink" title="图"></a>图</h3><p>图是整个层级的顶部。</p>
+<p>在图中可以添加基本元素「文字」。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plt.figure()</span><br><span class="line">plt.text( 0.5, 0.5, &#x27;Figure&#x27;, ha=&#x27;center&#x27;, </span><br><span class="line">          va=&#x27;center&#x27;, size=20, alpha=.5 )</span><br><span class="line">plt.xticks([]), plt.yticks([])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="http://img.9lake.com/uPic/W5VtkZ.jpg" alt="W5VtkZ"></p>
+<p>用 plt.text() 函数，其参数解释如下：</p>
+<ul>
+<li>第一、二个参数是指横轴和纵轴坐标</li>
+<li>第三个参数字符是指要显示的内容</li>
+<li>ha, va 是横向和纵向位置</li>
+<li>size 设置字体大小</li>
+<li>alpha 设置字体透明度 (0.5 是半透明)</li>
+<li>在图中可以添加基本元素「图片」。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from PIL import Image</span><br><span class="line">plt.figure()</span><br><span class="line">plt.xticks([]), plt.yticks([])</span><br><span class="line">im = np.array(Image.open(&#x27;Houston Rockets.png&#x27;))</span><br><span class="line">plt.imshow(im)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://img.9lake.com/uPic/zxugfW.jpg" alt="zxugfW"></p>
+<p>用 Image.open() 将图片转成像素存在 ndarray 中，再用 plt.imshow() 展示。</p>
+<p>在图中可以添加基本元素「折线」。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plt.figure()</span><br><span class="line">plt.plot( [0,1],[0,1] )</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://img.9lake.com/uPic/o6iTGg.jpg" alt="o6iTGg"></p>
+<p>plt.plot() 函数是用来画折线图的，前两个参数分别是 x 和 y，该函数会在第二节细讲。</p>
+<p>当我们每次说画东西，看起来是在图 (Figure) 里面进行的，实际上是在坐标系 (Axes) 里面进行的。一幅图中可以有多个坐标系，因此在坐标系里画东西更方便 (有些设置使用起来也更灵活)。</p>
+<p>下面来看看层级中排名第二的「坐标系」。</p>
+<h3 id="坐标系-amp-子图"><a href="#坐标系-amp-子图" class="headerlink" title="坐标系 &amp; 子图"></a>坐标系 &amp; 子图</h3><p>一幅图 (Figure) 中可以有多个坐标系 (Axes)，那不是说一幅图中有多幅子图 (Subplot)，因此坐标系和子图是不是同样的概念？</p>
+<p>在绝大多数情况下是的，两者有一点细微差别：</p>
+<ul>
+<li>子图在母图中的网格结构一定是规则的</li>
+<li>坐标系在母图中的网格结构可以是不规则的</li>
+</ul>
+<p>由此可见，子图是坐标系的一个特例，来我们先研究特例。</p>
+<h4 id="子图"><a href="#子图" class="headerlink" title="子图"></a>子图</h4><p>把图想成矩阵，那么子图就是矩阵中的元素，因此可像定义矩阵那样定义子图 - (行数、列数、第几个子图)。</p>
+<pre><code>subplot(rows, columns, i-th plots)
+</code></pre>
+<p>文字解释起来有些晦涩，看代码和图就好懂了。</p>
+<h5 id="1×2-子图"><a href="#1×2-子图" class="headerlink" title="1×2 子图"></a>1×2 子图</h5><p><img src="http://img.9lake.com/uPic/didvI1.jpg" alt="didvI1"></p>
+<p><img src="http://img.9lake.com/uPic/98H3Og.jpg" alt="98H3Og"></p>
+<p>这两个子图类似于一个列向量</p>
+<ul>
+<li>subplot(2,1,1) 是第一幅</li>
+<li>subplot(2,1,2) 是第二幅</li>
+</ul>
+<p>声明完子图后，下面所有代码就只在这幅子图上生效，直到声明下一幅子图。</p>
+<h5 id="2×1-子图"><a href="#2×1-子图" class="headerlink" title="2×1 子图"></a>2×1 子图</h5><p><img src="http://img.9lake.com/uPic/MSblwi.jpg" alt="MSblwi"></p>
+<p><img src="http://img.9lake.com/uPic/rK1U1V.jpg" alt="rK1U1V"></p>
+<p>这两个子图类似于一个行向量</p>
+<ul>
+<li>subplot(1,2,1) 是第一幅</li>
+<li>subplot(1,2,2) 是第二幅</li>
+</ul>
+<h5 id="2×2-子图"><a href="#2×2-子图" class="headerlink" title="2×2 子图"></a>2×2 子图</h5><p><img src="http://img.9lake.com/uPic/JRxKmK.jpg" alt="JRxKmK"></p>
+<p><img src="http://img.9lake.com/uPic/hhDntd.jpg" alt="hhDntd"></p>
+<p>这次我们用过坐标系来生成子图 (子图是坐标系的特例嘛)，第 1 行</p>
+<pre><code>fig, axes = plt.subplots(nrows=2, ncols=2)
+</code></pre>
+<p>得到的 axes 是一个 2×2 的对象。在第 3 行的 for 循环中用 axes.flat 将其打平，然后在每个 ax 上生成子图。 </p>
+<h4 id="坐标系"><a href="#坐标系" class="headerlink" title="坐标系"></a>坐标系</h4><p>坐标系比子图更通用，有两种生成方式</p>
+<ul>
+<li>用 gridspec 包加上 subplot() </li>
+<li>用 plt.axes()</li>
+</ul>
+<h5 id="不规则网格"><a href="#不规则网格" class="headerlink" title="不规则网格"></a>不规则网格</h5><p><img src="http://img.9lake.com/uPic/XvvvSb.jpg" alt="XvvvSb"></p>
+<p><img src="http://img.9lake.com/uPic/Txvquz.jpg" alt="Txvquz"></p>
+<p>第 2 行将整幅图分成 3×3 份赋值给 G，第 4, 8, 12, 16, 20 行分别用</p>
+<pre><code>plt.subplot(G[]) 
+</code></pre>
+<p>生成五个坐标系。G[] 里面的切片和 Numpy 数组用法一样：</p>
+<ul>
+<li>G[0, :] &#x3D; 图的第一行 (Axes 1)</li>
+<li>G[1, :-1] &#x3D; 图的第二行，第二三列 (Axes 2)</li>
+<li>G[1:, -1] &#x3D; 图的第二三行，第三列 (Axes 3)</li>
+<li>G[-1, 0] &#x3D; 图的第三行，第一列 (Axes 4)</li>
+<li>G[-1, -2] &#x3D; 图的第三行，第二列 (Axes 5)</li>
+</ul>
+<h5 id="大图套小图"><a href="#大图套小图" class="headerlink" title="大图套小图"></a>大图套小图</h5><p><img src="http://img.9lake.com/uPic/2wqy9P.jpg" alt="2wqy9P"></p>
+<p><img src="http://img.9lake.com/uPic/RLEgEu.jpg" alt="RLEgEu"></p>
+<p> 第 1 和 5 行分别用</p>
+<pre><code>plt.axes([l,b,w,h]) 
+</code></pre>
+<p>其中 [l, b, w, h] 可以定义坐标系</p>
+<ul>
+<li>l 代表坐标系左边到 Figure 左边的水平距离</li>
+<li>b 代表坐标系底边到 Figure 底边的垂直距离</li>
+<li>w 代表坐标系的宽度</li>
+<li>h 代表坐标系的高度</li>
+</ul>
+<p>如果 l, b, w, h 都小于 1，那它们是标准化 (normalized) 后的距离。比如 Figure 底边长度为 10， 坐标系底边到它的垂直距离是 2，那么 b &#x3D; 2&#x2F;10 &#x3D; 0.2。</p>
+<h5 id="重叠图"><a href="#重叠图" class="headerlink" title="重叠图"></a>重叠图</h5><p><img src="http://img.9lake.com/uPic/R4O7FS.jpg" alt="R4O7FS"></p>
+<p><img src="http://img.9lake.com/uPic/ZvdZmz.jpg" alt="ZvdZmz"></p>
+<p>不解释，懂了 [l, b, w, h] 的意思这幅重叠图应该知道怎么生成了。</p>
+<p>在本小节最后，总结一下两种生成单个坐标系的方法 (生成多个坐标系可以类推)。</p>
+<h6 id="两种生成坐标系的推荐代码"><a href="#两种生成坐标系的推荐代码" class="headerlink" title="两种生成坐标系的推荐代码"></a>两种生成坐标系的推荐代码</h6><p><strong>代码 1</strong></p>
+<p>同时生成图和坐标系。</p>
+<p><img src="http://img.9lake.com/uPic/XzQPtk.jpg" alt="XzQPtk"></p>
+<p><img src="http://img.9lake.com/uPic/B6l9R1.jpg" alt="B6l9R1"></p>
+<p><strong>代码 2</strong></p>
+<p>先生成图，再添加坐标系。</p>
+<p><img src="http://img.9lake.com/uPic/smzqS5.jpg" alt="smzqS5"></p>
+<p><img src="http://img.9lake.com/uPic/z6I417.jpg" alt="z6I417"></p>
+<p>超级细心的读者可能会发现，上面所有的图都看不到坐标轴和刻度啊，是的，我是故意这样做的，在深度研究坐标系和子图时，剔除不必要的信息，用的是以下代码 (将刻度设为空集 [])：</p>
+<pre><code>plt.xticks([]), plt.yticks([])
+</code></pre>
+<p>或</p>
+<pre><code>ax.set( xticks=[], yticks=[] )   
+</code></pre>
+<p>现在是时候来看看层级中排名第三的「坐标轴」。</p>
+<h4 id="坐标轴"><a href="#坐标轴" class="headerlink" title="坐标轴"></a>坐标轴</h4><p>一个坐标系 (Axes)，通常是二维，有两条坐标轴 (Axis)：</p>
+<ul>
+<li>横轴：XAxis</li>
+<li>纵轴：YAxis</li>
+</ul>
+<p>每个坐标轴都包含两个元素</p>
+<ul>
+<li>容器类元素「刻度」，该对象里还包含刻度本身和刻度标签</li>
+<li>基础类元素「标签」，该对象包含的是坐标轴标签</li>
+</ul>
+<p>「刻度」和「标签」都是对象，下面代码通过改变它们一些属性值来进行可视化。</p>
+<p><img src="http://img.9lake.com/uPic/Rk81yg.jpg" alt="Rk81yg"></p>
+<p><img src="http://img.9lake.com/uPic/9Fpcgg.jpg" alt="9Fpcgg"></p>
+<p>第 2 和 3 行打印出 x 轴和 y 轴的标签。</p>
+<p>第 5 到 9 行处理「刻度」对象里的刻度标签，将它颜色设定为深青色，字体大小为 20，旋转度 45 度。</p>
+<p>第 11 到 15 行处理「标签」对象的刻度本身 (即一条短线)，将它颜色设定为红色，标记长度和宽度为 500 和 30 (夸张了些，但就为大家看清楚这条代表刻度的短线！)。</p>
+<p>万物皆对象，坐标轴也不例外，下面代码打印出 x 轴的标签、刻度位置点、刻度标签、刻度线，刻度标签位置、主刻度。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">print( ax.xaxis.get_label() )</span><br><span class="line">print( ax.xaxis.get_ticklocs() )</span><br><span class="line">print( ax.xaxis.get_ticklabels() )</span><br><span class="line">print( ax.xaxis.get_ticklines() )</span><br><span class="line">print( ax.xaxis.get_ticks_position() )</span><br><span class="line">print( ax.xaxis.get_major_ticks() )</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Text(0.5, 17.200000000000003, &#x27;Label on x-axis&#x27;)</span><br><span class="line">[0. 0.2 0.4 0.6 0.8 1. ]</span><br><span class="line">&lt;a list of 6 Text major ticklabel objects&gt;</span><br><span class="line">&lt;a list of 12 Line2D ticklines objects&gt;</span><br><span class="line">bottom</span><br><span class="line"></span><br><span class="line">[&lt;matplotlib.axis.XTick object at 0x000001ED438A95C0&gt;,</span><br><span class="line"> &lt;matplotlib.axis.XTick object at 0x000001ED438A1F28&gt;,</span><br><span class="line"> &lt;matplotlib.axis.XTick object at 0x000001ED43886940&gt;,</span><br><span class="line"> &lt;matplotlib.axis.XTick object at 0x000001ED438C92E8&gt;,</span><br><span class="line"> &lt;matplotlib.axis.XTick object at 0x000001ED438C98D0&gt;,</span><br><span class="line"> &lt;matplotlib.axis.XTick object at 0x000001ED438C9DA0&gt;]</span><br></pre></td></tr></table></figure>
+
+<p><strong>问题：其他都好懂，比如 6 个刻度标签，但为什么有 12 条刻度线？不应该是 6 条吗？我查了半天资料都查不到，知道答案的同学可留言。</strong></p>
+<p><strong>我的猜测是，当每条刻度线加粗后的像是一个刻度矩形，由 2 条刻度线组成，那么总共就是 12 条？</strong></p>
+<p>下面来看看层级中排名第四也是最后的「刻度」。</p>
+<h4 id="刻度"><a href="#刻度" class="headerlink" title="刻度"></a>刻度</h4><p>刻度 (Tick) 其实在坐标轴那节已经讲过了，它核心内容就是</p>
+<ul>
+<li>一条短线 (刻度本身)</li>
+<li>一串字符 (刻度标签)</li>
+</ul>
+<p>本节想继续深挖刻度，即看看不同类型的刻度，需要用到各种各样的 Tick Locators。</p>
+<h5 id="前期工作"><a href="#前期工作" class="headerlink" title="前期工作"></a>前期工作</h5><p>为了显示不同类型的刻度，首先定义一个 setup(ax) 函数，主要功能有</p>
+<ul>
+<li>去除左纵轴 (y 轴)、右纵轴和上横轴</li>
+<li>去除 y 轴上的刻度</li>
+<li>将 x 轴上的刻度位置定在轴底</li>
+<li>设置主刻度和副刻度的长度和宽度</li>
+<li>设置 x 轴和 y 轴的边界</li>
+<li>将图中 patch 设成完全透明</li>
+<li><img src="http://img.9lake.com/uPic/L3cRID.jpg" alt="L3cRID"></li>
+</ul>
+<p>注：这些操作都是为了下面显示刻度用，往下看就知道为什么这么做的。</p>
+<p>为了感受一下上面每个操作对原图产生的效果，我们画出 6 个子图，其中</p>
+<ul>
+<li>第一幅是原图</li>
+<li>第二幅处理左、右、上轴</li>
+<li>第三幅处理刻度标签</li>
+<li>第四幅处理刻度尺寸</li>
+<li>第五幅处理坐标轴边界</li>
+<li>第六幅处理颜色和透明度</li>
+</ul>
+<p>代码如下：</p>
+<p><img src="http://img.9lake.com/uPic/FKd4cK.jpg" alt="FKd4cK"></p>
+<p><img src="http://img.9lake.com/uPic/caaOVA.jpg" alt="caaOVA"></p>
+<p>将上面效果全部合并，这个 setup(ax) 就是把坐标系里所有元素都去掉，只留 x 轴来添加各种刻度。</p>
+<h4 id="刻度展示"><a href="#刻度展示" class="headerlink" title="刻度展示"></a>刻度展示</h4><p>不同的 locator() 可以生成不同的刻度对象，我们来研究以下 8 种：</p>
+<ul>
+<li>NullLocator(): 空刻度</li>
+<li>MultipleLocator(a): 刻度间隔 &#x3D; 标量 a</li>
+<li>FixedLocator(a): 刻度位置由数组 a 决定</li>
+<li>LinearLocator(a): 刻度数目 &#x3D; a, a 是标量</li>
+<li>IndexLocator(b, o): 刻度间隔 &#x3D; 标量 b，偏移量 &#x3D; 标量 o</li>
+<li>AutoLocator(): 根据默认设置决定</li>
+<li>MaxNLocator(a): 最大刻度数目 &#x3D; 标量 a</li>
+<li>LogLocator(b, n): 基数 &#x3D; 标量 b，刻度数目 &#x3D; 标量 n</li>
+</ul>
+<p>代码如下：<br><img src="http://img.9lake.com/uPic/AONeX0.jpg" alt="AONeX0"></p>
+<p><img src="http://img.9lake.com/uPic/4NtBYh.jpg" alt="4NtBYh"></p>
+<p><img src="http://img.9lake.com/uPic/2hRCJC.jpg" alt="2hRCJC"></p>
+<p>上图其实包含 8 个子图，但只含有 x 轴，这也是为什么要先定一个 setup(ax) 函数来只保留 x 轴。另外将 patch 的 alpha 设为 0 使其完全透明，就是为了有些标签在子图交界处还能显示出来。感兴趣的同学可以把 alpha 设成 1 看看上图变成什么样子了。</p>
+<h4 id="1-6-基础元素"><a href="#1-6-基础元素" class="headerlink" title="1.6 基础元素"></a>1.6 基础元素</h4><p>目前，我们已经介绍四个最重要的容器以及它们之间的层级</p>
+<pre><code>Figure → Axes → Axis → Ticks
+
+    图 → 坐标系 → 坐标轴 → 刻度
+</code></pre>
+<p>但要画出一幅有内容的图，还需要在容器里添加基础元素比如线 (line), 点 (marker), 文字 (text), 图例 (legend), 网格 (grid), 标题 (title), 图片 (image) 等，具体来说</p>
+<p>画一条线，用 plt.plot() 或 ax.plot()</p>
+<p>画个记号，用 plt.scatter() 或 ax.scatter()</p>
+<p>添加文字，用 plt.text() 或 ax.text()</p>
+<p>添加图例，用 plt.legend() 或 ax.legend()</p>
+<p>添加图片，用 plt.imshow() 或 ax.imshow()</p>
+<p>最后用 Matplotlib 官网的图来总结所有元素。</p>
+<p><img src="http://img.9lake.com/uPic/r84Mmk.jpg" alt="r84Mmk"></p>
+<p>现在你基本理解了 Matplotlib 里面的绘图逻辑和元素，下两节分别从不同维度 (深度和广度) 研究如何画图：</p>
+<p>第二节只研究一种类型的图「折线图」，但从头到尾不断根据需求添加元素完善它。深度研究做到完美！</p>
+<p>第三节研究四种类型的图 (展示数据的分布、联系、对比和组成)，却没在美感上下功夫，广度研究满足目的！</p>
+<p>但读完后两节后，你应该可以在各种类型的图上做到完美。</p>
+<h3 id="2-画美感图"><a href="#2-画美感图" class="headerlink" title="2 画美感图"></a>2 画美感图</h3><p>首先用 pd.read_csv 函数从存好的 S&amp;P500.csv，截屏如下：</p>
+<p><img src="http://img.9lake.com/uPic/ZOVD6c.jpg" alt="ZOVD6c"></p>
+<p>该函数中三个参数代表：</p>
+<ul>
+<li>index_col &#x3D; 0 是说把第一列 Date 当成行标签 (index)</li>
+<li>parse_dates &#x3D; True 是说把行标签转成 date 对象</li>
+<li>dayFirst &#x3D; True 是说日期是 DD&#x2F;MM&#x2F;YYYY 这样的格式</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data = pd.read_csv( &#x27;S&amp;P500.csv&#x27;, </span><br><span class="line">                    index_col=0, </span><br><span class="line">                    parse_dates=True,</span><br><span class="line">                    dayfirst=True )</span><br><span class="line">data.head(3).append(data.tail(3))</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://img.9lake.com/uPic/uTUesN.jpg" alt="uTUesN"></p>
+<p>S&amp;P 500 的数据从 1950 年 1 月 3 号开始，老板只需要 2007 年 1 月 1 日到 2010 年 1 月 1 日的数据。做个切片即可，存储成 spx。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spx = data[[&#x27;Adj Close&#x27;]]</span><br><span class="line">      .loc[&#x27;2007-01-01&#x27;:&#x27;2010-01-01&#x27;]</span><br><span class="line">spx.head(3).append(spx.tail(3))</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://img.9lake.com/uPic/MRJTP3.jpg" alt="MRJTP3"></p>
+<p>spx 是个 DataFrame，将它的值一个个画出折线图只需用 plt.plot() 函数，展示在屏幕需用 plt.show()。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.plot( spx.values )</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>在 plot() 函数里面只有变量 y 时 (y &#x3D; spx.values)，那么自变量就是默认赋值为 range(len(y))。</p>
+<p><img src="http://img.9lake.com/uPic/cIgc2A.jpg" alt="cIgc2A"></p>
+<p>此外我们没有设置图的尺寸，像素、线的颜色宽度、坐标轴的刻度和标签、图例、标题等等，所有设置都用的是 matplotlib 的默认设置。</p>
+<p>此图虽丑，但也满足了老板的需求，即标准普尔 500 指数在 2007-2010 的走势图。</p>
+<h4 id="2-2-图的默认设置"><a href="#2-2-图的默认设置" class="headerlink" title="2.2 图的默认设置"></a>2.2 图的默认设置</h4><p>要修改图就必须知道它的属性，用 plt.rcParams 可查看上图的所有默认属性 (非常多的属性值)。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.rcParams</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://img.9lake.com/uPic/Zfv5RH.jpg" alt="Zfv5RH"></p>
+<p>看完上面的属性值后，斯蒂文决定在图表尺寸 (figsize)，每英寸像素点 (dpi)，线条颜色 (color)，线条风格 (linestyle)，线条宽度 (linewidth)，横纵轴刻度 (xticks, yticks)，横纵轴边界 (xlim, ylim) 做改进。那就先看看它们的默认属性值是多少。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">print( &#x27;figure size:&#x27;, plt.rcParams[&#x27;figure.figsize&#x27;] )</span><br><span class="line">print( &#x27;figure dpi:&#x27;,plt.rcParams[&#x27;figure.dpi&#x27;] )</span><br><span class="line">print( &#x27;line color:&#x27;,plt.rcParams[&#x27;lines.color&#x27;] )</span><br><span class="line">print( &#x27;line style:&#x27;,plt.rcParams[&#x27;lines.linestyle&#x27;] )</span><br><span class="line">print( &#x27;line width:&#x27;,plt.rcParams[&#x27;lines.linewidth&#x27;] )</span><br><span class="line"></span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(1, 1, 1)</span><br><span class="line">ax.plot( spx[&#x27;Adj Close&#x27;].values )</span><br><span class="line"></span><br><span class="line">print( &#x27;xticks:&#x27;, ax.get_xticks() )</span><br><span class="line">print( &#x27;yticks:&#x27;, ax.get_yticks() )</span><br><span class="line">print( &#x27;xlim:&#x27;, ax.get_xlim() )</span><br><span class="line">print( &#x27;ylim:&#x27;, ax.get_ylim() )</span><br></pre></td></tr></table></figure>
+<p><img src="http://img.9lake.com/uPic/ZZFrEz.jpg" alt="ZZFrEz"></p>
+<p><img src="http://img.9lake.com/uPic/LNEzAr.jpg" alt="LNEzAr"></p>
+<p>将属性值打印结果和图一起看一目了然。现在我们知道这张图大小是 6×4，每英寸像素有 72 个，线颜色 C0 代表是蓝色，风格 - 是连续线，宽度 1.5，等等。</p>
+<p>斯蒂文现在有个“大胆”的想法，把这些默认属性值显性的在代码出写出来，画出来的跟什么设置都不写生成的图应该是一样的。来验证一下：</p>
+<p><img src="http://img.9lake.com/uPic/k1quZK.jpg" alt="k1quZK"></p>
+<p><img src="http://img.9lake.com/uPic/FuSMmG.jpg" alt="FuSMmG"></p>
+<h4 id="2-3-设置尺寸和-DPI"><a href="#2-3-设置尺寸和-DPI" class="headerlink" title="2.3 设置尺寸和 DPI"></a>2.3 设置尺寸和 DPI</h4><p>用 figsize 和 dpi 一起可以控制图的大小和像素。</p>
+<p>函数 figsize(w,h) 决定图的宽和高 (单位是英寸)，而属性 dpi 全称 dots per inches，测量每英寸多少像素。两个属性一起用，那么得到的图的像素为</p>
+<pre><code>(w*dpi, h*dpi)
+</code></pre>
+<p>套用在下面代码中，我们其实将图的大小设置成 16×6 平方英寸，而像素设置成 (1600, 600)，因为 dpi &#x3D; 100。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plt.figure( figsize=(16,6), dpi=100 )</span><br><span class="line">plt.plot( spx.values )</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://img.9lake.com/uPic/jyY8sG.jpg" alt="jyY8sG"></p>
+<p>运行代码生成大宽屏图！</p>
+<h4 id="2-4-设置颜色-风格-宽度"><a href="#2-4-设置颜色-风格-宽度" class="headerlink" title="2.4 设置颜色-风格-宽度"></a>2.4 设置颜色-风格-宽度</h4><p>在 plt.plot() 用 color，linewidth  和 linestyle 属性一起可以控制折线的颜色 (上面定义的深青色)、宽度 (2 像素) 和风格 (连续线)。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">plt.figure( figsize=(16,6), dpi=100 )</span><br><span class="line">plt.plot( spx.values, color=dt_hex, </span><br><span class="line">          linewidth=2, linestyle=&#x27;-&#x27; )</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://img.9lake.com/uPic/wN26mR.jpg" alt="wN26mR"></p>
+<p>现在线条更明显了，而深青色看起来也比较有品位。</p>
+<h4 id="2-5-设置边界"><a href="#2-5-设置边界" class="headerlink" title="2.5 设置边界"></a>2.5 设置边界</h4><p>下面代码第 2 行在图中 (fig) 添加了一个坐标系 (ax)，然后所有操作都在 ax 里面完成，比如用</p>
+<p>ax.plot() 来画折线</p>
+<p>ax.set_xlim(), ax_set_ylim() 来设置横轴和纵轴的边界</p>
+<p><img src="http://img.9lake.com/uPic/QdbMqJ.jpg" alt="QdbMqJ"></p>
+<p><img src="http://img.9lake.com/uPic/fIzZ3z.jpg" alt="fIzZ3z"></p>
+<p>第 3 行的 x 是日期 (回顾 spx 是一个 DataFrame，行标签是日期)。</p>
+<p>第 6 行将横轴的上下边界设为 2007-01-01 和 2010-01-01，只好是整个时间序列的起始日和终止日。</p>
+<p>第 7 行将纵轴的上下边界设为 spx 的最小值的 0.8 倍和最大值的 1.2 倍。</p>
+<p>现在横轴的刻度标签都是日期，比数字刻度带来的信息多；而 spx 图离顶部也有空间，看起来没那么挤。</p>
+<h4 id="2-6-设置刻度和标签"><a href="#2-6-设置刻度和标签" class="headerlink" title="2.6 设置刻度和标签"></a>2.6 设置刻度和标签</h4><p>上图横轴的刻度个数 (老板说日期隔得有点开) 和标签显示 (老板说只有年月) 都是默认设置。为了满足老板的要求，斯蒂文只能手动设置，用以下两个函数：</p>
+<ul>
+<li>先用 ax.set_ticks() 设置出数值刻度</li>
+<li>再用 ax.set_xticklabels() 在对应的数值刻度上写标签</li>
+</ul>
+<p><img src="http://img.9lake.com/uPic/2LUaeM.jpg" alt="2LUaeM"></p>
+<p><img src="http://img.9lake.com/uPic/7l3vuA.jpg" alt="7l3vuA"></p>
+<p>第 7 行设置横轴的边界，下界是 - 1，上界是 len(x) +1。</p>
+<p>第 10 行先设置横轴「数值刻度」为 range(0,len(x), 40)，即 0, 40, 80, ….</p>
+<p>第 11 行在这些「数值刻度」上写标签，即格式为 %Y-%m-%d 的日期。由于日期个数比较多，而且日期字符比较长，直接在图中显示出来会相互重叠非常难看。这里调节参数 rotation &#x3D; 90 使得日期逆时针转了 90 度，看上图效果好多了。</p>
+<p>现在横轴的刻度标签是带「年-月-日」的日期，而且标签的间隔刚刚好。</p>
+<h4 id="2-7-添加图例"><a href="#2-7-添加图例" class="headerlink" title="2.7 添加图例"></a>2.7 添加图例</h4><p>添加图例 (legend) 非常简单，只需要在 ax.plot() 里多设定一个参数 label，然后用</p>
+<pre><code>ax.legend()
+</code></pre>
+<p>其中 loc &#x3D; 0 表示 matplotlib 自动安排一个最好位置显示图例，而 frameon &#x3D; True 给图例加了外框。</p>
+<p><img src="http://img.9lake.com/uPic/ca6LGZ.jpg" alt="ca6LGZ"></p>
+<p><img src="http://img.9lake.com/uPic/8VQWaq.jpg" alt="8VQWaq"></p>
+<p>注意图的右上角多了图例 S&amp;P500。</p>
+<h4 id="2-8-添加第二幅图"><a href="#2-8-添加第二幅图" class="headerlink" title="2.8 添加第二幅图"></a>2.8 添加第二幅图</h4><p>在改进代码之前，先介绍一下 VIX 指数。</p>
+<p><strong>VIX 指数是芝加哥期权交易所 (CBOE) 市场波动率指数的交易代号，常见于衡量 S&amp;P500 指数期权的隐含波动性，通常被称为「恐慌指数」，它是了解市场对未来30天市场波动性预期的一种衡量方法。</strong></p>
+<p>由其定义可知，S&amp;P500 指数涨时，VIX 跌，而 S&amp;P500 指数暴跌时，VIX 暴涨。</p>
+<p>和之前一样，首先用 pd.read_csv 函数从存好的 VIX.csv 读取数据存成 DataFrame。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">data = pd.read_csv( &#x27;VIX.csv&#x27;, index_col=0, </span><br><span class="line">                               parse_dates=True,</span><br><span class="line">                               dayfirst=True )</span><br><span class="line">vix = data[[&#x27;Adj Close&#x27;]]</span><br><span class="line">     .loc[&#x27;2007-01-01&#x27;:&#x27;2010-01-01&#x27;]</span><br><span class="line">vix.head(3).append(vix.tail(3))</span><br></pre></td></tr></table></figure>
+<p><img src="http://img.9lake.com/uPic/ZMjXad.jpg" alt="ZMjXad"></p>
+<p>添加第二幅图也很简单，用两次 plt.plot() 或者 ax.plot() 即可。这里面用的是 plt 没用 ax，没有特殊原因，在本例中两者可以随意使用，但两者在使用「.methods」时有个小细节不知道大家注意到没有</p>
+<ul>
+<li><p>plt.xlim</p>
+</li>
+<li><p>plt.ylim</p>
+</li>
+<li><p>plt.xticks</p>
+</li>
+<li><p>ax.set_xlim</p>
+</li>
+<li><p>ax.set_ylim</p>
+</li>
+<li><p>ax_set_xticks</p>
+</li>
+</ul>
+<p><img src="http://img.9lake.com/uPic/II9xoQ.jpg" alt="II9xoQ"></p>
+<p><img src="http://img.9lake.com/uPic/SmpW9b.jpg" alt="SmpW9b"></p>
+<p>这图怎么成这样？？？VIX 怎么是一条平线？</p>
+<h4 id="2-9-两个坐标系-amp-两幅子图"><a href="#2-9-两个坐标系-amp-两幅子图" class="headerlink" title="2.9 两个坐标系 &amp; 两幅子图"></a>2.9 两个坐标系 &amp; 两幅子图</h4><p>S&amp;P500 的量纲都是千位数，而 VIX 的量刚是两位数，两者放在一起，那可不是 VIX 就像一条水平线一样。两种改进方式：</p>
+<ul>
+<li>用两个坐标系 (two axes)</li>
+<li>用两幅子图 (two subplots)</li>
+</ul>
+<h5 id="两个坐标系"><a href="#两个坐标系" class="headerlink" title="两个坐标系"></a>两个坐标系</h5><p><img src="http://img.9lake.com/uPic/F0CBk1.jpg" alt="F0CBk1"></p>
+<p><img src="http://img.9lake.com/uPic/2JQHWu.jpg" alt="2JQHWu"></p>
+<p>用 ax1 和 ax2 就能实现在两个坐标系上画图，代码核心部分是第 19 行的</p>
+<pre><code>ax2 = ax1.twinx()
+</code></pre>
+<p>在每个坐标系下画图以及各种设置前面都讲的很清楚了。</p>
+<h5 id="两幅子图"><a href="#两幅子图" class="headerlink" title="两幅子图"></a>两幅子图</h5><p><img src="http://img.9lake.com/uPic/hboZJ1.jpg" alt="hboZJ1"></p>
+<p><img src="http://img.9lake.com/uPic/9Lz0dK.jpg" alt="9Lz0dK"></p>
+<p>定义 subplot(2,1,1) 和 subplot(2,1,2) 就能实现再两幅子图上画图。</p>
+<p>在每幅子图上画图以及各种设置前面都讲的很清楚了。</p>
+<p>这两种方法都可用，但在本例中，S&amp;P500 和 VIX 放在一起 (用两个坐标系) 更能看出它们之间的关系，比如 2008 年 9 月到 2009 年 3 月的金融危机期间，S&amp;P 500 在狂泻和 VIX 在飙升 。</p>
+<h4 id="2-10-设置标注"><a href="#2-10-设置标注" class="headerlink" title="2.10 设置标注"></a>2.10 设置标注</h4><p>在金融危机时期，市场发生了 5 件大事，分别是</p>
+<ul>
+<li>2017-10-11: 牛市顶点</li>
+<li>2008-03-12: 贝尔斯登倒闭</li>
+<li>2008-09-15: 雷曼兄弟倒闭</li>
+<li>2009-01-20: 苏格兰皇家银行股票抛售</li>
+<li>2009-04-02: G20 峰会</li>
+</ul>
+<p>加标注的代码略长，新内容为</p>
+<ul>
+<li>第 3-7 行的定义危机事件，以元组的列表存储</li>
+<li>第 26-34 行的事件标注，用到 annotate() 函数</li>
+</ul>
+<p><img src="http://img.9lake.com/uPic/TSfrft.jpg" alt="TSfrft"></p>
+<p><img src="http://img.9lake.com/uPic/fimjyg.jpg" alt="fimjyg"></p>
+<p><img src="http://img.9lake.com/uPic/h5Cd3H.jpg" alt="h5Cd3H"></p>
+<p>从第 26 行开始，用 for 循环读取 crisis_data 里面每个日期 date 和事件 label。</p>
+<p>第 28 和 29 行是获取每一个 date 在整个日期数组中的索引 xi，以及对应的 spx 值 yi。</p>
+<p>第 30 行用 scatter() 函数画出一个圆点，标注事件在 spx 折现上的位置。</p>
+<p>第 31 和 34 行是重头戏，在 annotate() 函数里设置了事件，箭头坐标，事件打印的坐标，箭头性质，以及对齐属性。</p>
+<p>事件的确标注在图上了，但是效果像一坨。</p>
+<h4 id="2-11-设置透明度"><a href="#2-11-设置透明度" class="headerlink" title="2.11 设置透明度"></a>2.11 设置透明度</h4><p>为了把 VIX 折线弄得透明些，只用设置 ax2.plot() 里的 alpha 参数为 0.3，具体设什么值看你想要多透明，alpha 在 0 和 1 之间，0 是完全透明，1 是完全不透明。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ax2.plot( y2, color=r_hex, </span><br><span class="line">              linewidth=2, </span><br><span class="line">              linestyle=&#x27;-&#x27;, </span><br><span class="line">              label=&#x27;VIX&#x27;, </span><br><span class="line">              alpha=0.3 )</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://img.9lake.com/uPic/OGUWAM.jpg" alt="OGUWAM"></p>
+<p>美如画！雷曼兄弟倒闭 (事件 3) 后 S&amp;P 暴跌最厉害，而同期的 VIX 也飙到天际。在 G20 峰会 (事件 5) 过后，大国领导者一起解决金融危机问题，从那个点开始，S&amp;P500 上涨 VIX 下跌。</p>
+<h4 id="2-12-完善细节"><a href="#2-12-完善细节" class="headerlink" title="2.12 完善细节"></a>2.12 完善细节</h4><p>既然老板关注这五个事件，而它们发生的日期可能没有落在横轴标签上，那老板不是在图上还是找不到他们发生的具体时间么？把它们加上去怎么样？</p>
+<p><img src="http://img.9lake.com/uPic/jmWOzW.jpg" alt="jmWOzW"></p>
+<p><img src="http://img.9lake.com/uPic/2rbar0.jpg" alt="2rbar0"></p>
+<p><img src="http://img.9lake.com/uPic/HkZzJQ.jpg" alt="HkZzJQ"></p>
+<p>新添加的代码在第 20-22 行和第 43-48 行。主要就是把日期分成两类：</p>
+<ul>
+<li>常规日期标签 init_tick</li>
+<li>五个事件日期标签 impt_tick</li>
+</ul>
+<h3 id="3-画有效图"><a href="#3-画有效图" class="headerlink" title="3 画有效图"></a>3 画有效图</h3><h4 id="3-1-概览"><a href="#3-1-概览" class="headerlink" title="3.1 概览"></a>3.1 概览</h4><p>在做图表设计时候经常面临着怎么选用合适的图表，图表展示的关系分为四大类 (点击下图放大)：</p>
+<ul>
+<li>分布 (distribution)</li>
+<li>联系 (relationship)</li>
+<li>比较 (comparison)</li>
+<li>构成 (composition)</li>
+</ul>
+<p><img src="http://img.9lake.com/uPic/mxF2VJ.jpg" alt="mxF2VJ"></p>
+<p>在选用图表前首先要想清楚：你要表达什么样的数据关系。上面的图表分类太过繁多，接下来我们只讨论在量化金融中用的最多的几种类型，即</p>
+<ul>
+<li>用直方图来展示股票价格和收益的分布</li>
+<li>用散点图来展示两支股票之间的联系</li>
+<li>用折线图来比较汇率在不同窗口的移动平均线</li>
+<li>用饼状图来展示股票组合的构成成分</li>
+</ul>
+<p>首先用 YahooFinancials API 来下载若干资产的一年历史数据 (安装该 API 用 pip install yahoofinancials)：</p>
+<ul>
+<li>起始日：2018-04-29</li>
+<li>终止日：2019-04-29</li>
+<li>五只股票：英伟达、亚马逊、阿里巴巴、脸书、苹果</li>
+<li>三个汇率：欧元美元、美元日元、美元人民币</li>
+</ul>
+<p>下面代码就是从 API 获取数据，股票用的是股票代号 (stock code)，而货币用的该 API 要求的格式，比如「欧元美元」用 EURUSD&#x3D;X，而不是市场常见的 EURUSD，而「美元日元」用 JPY&#x3D;X 而不是 USDJPY。</p>
+<p><img src="http://img.9lake.com/uPic/OR8m7c.jpg" alt="OR8m7c"></p>
+<p>该 API 返回结果 stock_daily 和 currency_daily 是「字典」格式，样子非常丑陋，感受一下。</p>
+<p><img src="http://img.9lake.com/uPic/p6sZEP.jpg" alt="p6sZEP"></p>
+<p><img src="http://img.9lake.com/uPic/TJ0sKO.jpg" alt="TJ0sKO"></p>
+<p>学过 Pandas 之后，我们应该可以把上面的「原始数据」转换成 DataFrame，代码如下：</p>
+<p><img src="http://img.9lake.com/uPic/PeYmN3.jpg" alt="PeYmN3"></p>
+<p>第 3 行完全是为了 YahooFinancial 里面的输入格式准备的。如果 Asset 是股票类，直接用其股票代码；如果 Asset 是汇率类，一般参数写成 EURUSD 或 USDJPY</p>
+<ul>
+<li>如果是 EURUSD，转换成 EURUSD&#x3D;X</li>
+<li>如果是 USDJPY，转换成 JPY&#x3D;X</li>
+</ul>
+<p>第 6 行定义好开盘价、收盘价、最低价和最高价的标签。</p>
+<p>第 7 行获取出一个「字典」格式的数据。</p>
+<p>第 8, 9 行用列表解析式 (list comprehension) 将日期和价格获取出来。</p>
+<p>第 11 到 13 行定义一个 DataFrame</p>
+<ul>
+<li>值为第 9 行得到的 price 列表</li>
+<li>行标签为第 8 行得到的 index 列表</li>
+<li>列标签为第 6 行定义好的 columns 列表</li>
+</ul>
+<p>处理过后的数据格式美如画，不信你看 (用 EURUSD 和 NVDA 举例)</p>
+<p>EURUSD &#x3D; data_converter( currency_daily, ‘EURUSD’, ‘FX’ )<br>EURUSD.head(3).append(EURUSD.tail(3))</p>
+<p><img src="http://img.9lake.com/uPic/xPzrgV.jpg" alt="xPzrgV"></p>
+<p>NVDA &#x3D; data_converter( stock_daily, ‘NVDA’,’ EQ’ )<br>NVDA.head(3).append(NVDA.tail(3))</p>
+<p><img src="http://img.9lake.com/uPic/ryWXiX.jpg" alt="ryWXiX"></p>
+<h4 id="3-2-直方图"><a href="#3-2-直方图" class="headerlink" title="3.2 直方图"></a>3.2 直方图</h4><p>直方图 (histogram chart)，又称质量分布图，是一种统计报告图，由一系列高度不等的纵向条纹或线段表示数据分布的情况。 一般用横轴表示数据类型，纵轴表示分布情况。在 Matplotlib 里的语法是</p>
+<ul>
+<li>plt.hist()</li>
+<li>ax.hist()</li>
+</ul>
+<p>我们先看看英伟达 (NVDA) 的价格分布。</p>
+<p><img src="http://img.9lake.com/uPic/0weHXu.jpg" alt="0weHXu"></p>
+<p><img src="http://img.9lake.com/uPic/6Hn7Et.jpg" alt="6Hn7Et"></p>
+<p>在本例中函数 hist() 里的参数有</p>
+<ul>
+<li>p_NVDA：Series，也可以是 list 或者 ndarray</li>
+<li>bins：分成多少堆</li>
+<li>colors：用之前定义的深青色</li>
+</ul>
+<p>从上图可看出，NVDA 的价格分布在有 220 划分的两个范围 (regime)。在 2018 年 11 月 16 日 (星期五)，英伟达第三季度的报表低于预期，那么股价暴跌 19%，在之后的星期一，又跌 12%，两个交易日股价一下子从原来的 220 左右跌到 150。</p>
+<p>在研究股票价格序列中，由于收益率有些好的统计性质，我们对其更感兴趣，接下来再看看英伟达 (NVDA) 的对数收益 (log-return) 的分布。</p>
+<p><img src="http://img.9lake.com/uPic/Dc48ZG.jpg" alt="Dc48ZG"></p>
+<p><img src="http://img.9lake.com/uPic/v8Dwf4.jpg" alt="v8Dwf4"></p>
+<p>首先对数收益的计算公式为</p>
+<pre><code>r(t) = ln(P(t)/P(t-1)
+</code></pre>
+<p>得到 r_NVDA。计算一天的收益率需要两天的价格，因此用 p_NVDA 计算 r_NVDA 时，会丢失最新一天的数据，因此我们用 date[1:] 作为 r_NVDA 的行标签 (index)。</p>
+<p>不考虑在 -0.20 和 -0.15 那两个极端值，对数收益率的分布像一个正态分布 (人人都喜欢正态分布)。</p>
+<h4 id="3-3-散点图"><a href="#3-3-散点图" class="headerlink" title="3.3 散点图"></a>3.3 散点图</h4><p>散点图 (scatter chart) 用两组数据构成多个坐标点，考察坐标点的分布，判断两变量之间是否存在某种联系的分布模式。在 Matplotlib 里的语法是</p>
+<ul>
+<li>plt.scatter()</li>
+<li>ax.scatter()</li>
+</ul>
+<p>我们看看中美两大电商亚马逊 (AMZN) 和阿里巴巴 (BABA) 之间的价格和对数收益率的联系。</p>
+<p>首先计算价格和对数收益率。</p>
+<p><img src="http://img.9lake.com/uPic/MFABaS.jpg" alt="MFABaS"></p>
+<p>用两个子图分别展示「价格」和「收益率」的散点图。</p>
+<p><img src="http://img.9lake.com/uPic/otcNuO.jpg" alt="otcNuO"></p>
+<p><img src="http://img.9lake.com/uPic/dYLiIE.jpg" alt="dYLiIE"></p>
+<p>在本例中函数 scatter() 里的参数有</p>
+<ul>
+<li>p_AMZN (r_AMZN)：Series，也可以是 list 或者 ndarray</li>
+<li>p_BABA (r_BABA)：Series，也可以是 list 或者 ndarray</li>
+<li>colors：用之前定义的深青色和红色</li>
+</ul>
+<p>从右图来看，亚马逊和阿里巴巴在这端时期的表现正相关，如果做线性回归是一条斜率为正的线。</p>
+<h4 id="3-4-折线图"><a href="#3-4-折线图" class="headerlink" title="3.4 折线图"></a>3.4 折线图</h4><p>折线图 (line chart) 显示随时间而变化的连续数据，因此非常适用于显示在相等时间间隔下数据的趋势。在 Matplotlib 里的语法是</p>
+<ul>
+<li>plt.plot()</li>
+<li>ax.plot()</li>
+</ul>
+<p>我们来看看如何画 EURUSD 的 20 天和 60 天移动平均 (moving average, MA) 线。</p>
+<p>首先获取 EURUSD 的收盘价。</p>
+<p><img src="http://img.9lake.com/uPic/3O3mel.jpg" alt="3O3mel"></p>
+<p>用 Pandas 里面的 rolling() 函数来计算 MA，在画出收盘价，MA20 和 MA60 三条折线。</p>
+<p><img src="http://img.9lake.com/uPic/CiZqNP.jpg" alt="CiZqNP"></p>
+<p><img src="http://img.9lake.com/uPic/cBRHNp.jpg" alt="cBRHNp"></p>
+<p>在本例中函数 plot() 里的参数有</p>
+<ul>
+<li>rate, MA_20, MA_60：Series，也可以是 list 或者 ndarray</li>
+<li>colors：用之前定义的深青色，红色，绿色</li>
+<li>linewidth：像素 2</li>
+<li>label：用于显示图例</li>
+</ul>
+<p>上面代码最关键的就是第 10 和 11 行，用 rolling(n) 函数对 rate 求 n 天移动均值。从图中注意到绿色的 MA60最短，红色的 MA20 其次。原因很简单，假如一年有 252 个交易日，那么第 1 个 MA60 值需要第 1 到 60 个汇率，第 2 个 MA60 值需要第 2 到 61 个汇率，第 193 个 MA60 值需要第 193 到 252 个汇率。最终只有 193 个 MA60。同理可得到只有 223 个 MA20。</p>
+<p><strong>双均线策略如下</strong>：MA60 和 MA20 必有交点，若 20 天平均线「上穿越」60 天均线，则为买入点；反之为卖出点。该策略基于不同天数均线的交叉点抓住股票的强势和弱势时刻进行交易。</p>
+<h4 id="3-5-饼状图"><a href="#3-5-饼状图" class="headerlink" title="3.5 饼状图"></a>3.5 饼状图</h4><p>饼状图 (pie chart) 是一个划分为几个扇形的圆形统计图表，用于描述量、频率或百分比之间的相对关系。 在饼状图中，每个扇区面积大小为其所表示的数量的比例。在 Matplotlib 里的语法是</p>
+<ul>
+<li>plt.pie()</li>
+<li>ax.pie()</li>
+</ul>
+<p>我们来看看如何画出一个股票投资组合在 2019 年 4 月 26 日的饼状图，假设组合里面有 100 股英伟达，20 股亚马逊，50 股阿里巴巴，30 股脸书和 40 股苹果 (一个科技股爱好者的组合 )。</p>
+<p>首先计算组合里五支股票在 2019 年 4 月 26 日的市值 (market value, MV)。</p>
+<p><img src="http://img.9lake.com/uPic/bNt72W.jpg" alt="bNt72W"></p>
+<p>第 4 行用了列表解析式来获取 stock_list 每支股票的价格，第 5 行将价格乘上数量得到市值。</p>
+<p>设定好五种颜色和百分数格式 %.0f%% (小数点后面保留 0 位)，画出饼状图。</p>
+<p><img src="http://img.9lake.com/uPic/ptWhHY.jpg" alt="ptWhHY"></p>
+<p><img src="http://img.9lake.com/uPic/xRuih7.jpg" alt="xRuih7"> </p>
+<p>在本例中函数 pie() 里的参数有</p>
+<ul>
+<li>MV：股票组合市值，ndarray</li>
+<li>labels：标识，list</li>
+<li>colors：用之前定义的一组颜色，list</li>
+<li>autopct：显示百分数的格式，str</li>
+</ul>
+<p>虽然画出了饼状图，但看起来有些别扭，且听下节分解如何改进。</p>
+<h4 id="3-6-同理心"><a href="#3-6-同理心" class="headerlink" title="3.6 同理心"></a>3.6 同理心</h4><h5 id="为用户习惯考虑"><a href="#为用户习惯考虑" class="headerlink" title="为用户习惯考虑"></a>为用户习惯考虑</h5><p>把饼当成钟，大多数人习惯顺时针的看里面的内容，因此把面积最大的那块的一条边 (见下图) 放在 12 点的位置最能突显其重要性，之后按面积从大到小顺时针排列。</p>
+<p>在画饼状图前，我们需要额外做两件事：</p>
+<ol>
+<li>按升序排列 5 只股票的市值</li>
+<li>设定 pie() 的相关参数达到上述「最大块放 12 点位置」的效果</li>
+</ol>
+<p>首先按市值大小按升序排序。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">idx = MV.argsort()[::-1]</span><br><span class="line">MV = MV[idx]</span><br><span class="line">stock_list = [ stock_list[i] for i in idx ]</span><br><span class="line">print( MV )</span><br><span class="line">print( stock_list )</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[39012.60009766 17808.99963379</span><br><span class="line">9354.49981689 8172.00012207</span><br><span class="line">5744.70016479]</span><br><span class="line"></span><br><span class="line">[&#x27;AMZN&#x27;, &#x27;NVDA&#x27;, &#x27;BABA&#x27;, &#x27;AAPL&#x27;, &#x27;FB&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p>设定参数</p>
+<ul>
+<li>startangle &#x3D; 90 是说第一片扇形 (AMZN 深青色那块) 的左边在 90 度位置</li>
+<li>counterclock &#x3D; False 是说顺时针拜访每块扇形</li>
+</ul>
+<p><img src="http://img.9lake.com/uPic/gARBN8.jpg" alt="gARBN8"></p>
+<p><img src="http://img.9lake.com/uPic/GigJlg.jpg" alt="GigJlg"></p>
+<p>和上节最后的图相比，现在这饼状图看上去是不是顺眼多了。你承不承认你第一眼就注意到 12 点那个位置的扇形？</p>
+<h5 id="为图表信息考虑"><a href="#为图表信息考虑" class="headerlink" title="为图表信息考虑"></a>为图表信息考虑</h5><p>当饼状图里面扇形多过 5 个时，面积相近的扇形大小并不容易一眼辨别出来，不信看上图的 BABA 和 APPL，没看到数字很难看出那个面积大。但绝大多数人是感官动物，图形和数字肯定先选择看图形，这个时候用柱状图 (bar chart) 来代替饼状图，每个市值成分大小一目了然 (好图就是能让用户能最快的抓住核心信息)。</p>
+<p>用 ax.bar() 函数来画柱状图，为了和饼状图的信息一致，几个关键操作为</p>
+<ul>
+<li>第 4 行计算出市值的百分数 pct_MV</li>
+<li>第 8, 9 行设置横轴刻度 (0,1,2,3,4) 和标签 (stock_list)</li>
+<li>第 12, 13 行在特定位置上 (x+0.04, y+0.05&#x2F;100) 将 pct_MV 以 {0:.0%} 的格式 (不保留小数点) 写出来，这些位置试几次看图的效果就可以确定下来。</li>
+</ul>
+<p><img src="http://img.9lake.com/uPic/Uo91tl.jpg" alt="Uo91tl"></p>
+<p><img src="http://img.9lake.com/uPic/VU6Rtn.jpg" alt="VU6Rtn"></p>
+<p>在本例中函数 bar() 里的参数有</p>
+<ul>
+<li>index：横轴刻度，ndarray</li>
+<li>pct_MV：股票组合市值比例，ndarray</li>
+<li>facecolor：柱状颜色，红色</li>
+<li>edgecolor：柱边颜色，深青色</li>
+</ul>
+<p>如果柱状很多时，或者标签名字很长时，用横向柱状图 (horizontal bar chart)，函数为 ax.barh()。代码和上面非常类似，就是把横轴和纵轴的调换了一下。</p>
+<p><img src="http://img.9lake.com/uPic/dwDcmP.jpg" alt="dwDcmP"></p>
+<p><img src="http://img.9lake.com/uPic/DnnvJi.jpg" alt="DnnvJi"></p>
+<h5 id="为色盲用户考虑"><a href="#为色盲用户考虑" class="headerlink" title="为色盲用户考虑"></a>为色盲用户考虑</h5><p>世界上有 1&#x2F;12 的男人和 1&#x2F;200 的女人都有不同程度的色盲症状。因此当你将结果展示给重要客户时，最好考虑到这一点，我相信对方会非常欣赏你这种「同理心」。</p>
+<p>幸运的是，Matplotlib 里面有专门为色盲考虑的色彩风格，首先用下列语句看查看所有的色彩风格。</p>
+<pre><code>print(plt.style.available)
+</code></pre>
+<p><img src="http://img.9lake.com/uPic/Ri189t.jpg" alt="Ri189t"></p>
+<p>不难发现 seaborn-colorblind 和 tableau-colorblind10 就是我们所需要的。下面我们看看不同色彩风格下的「饼状图」和「柱状图」。</p>
+<p>首先看从 R 中借用过来的大名鼎鼎的 ggplot 的效果。</p>
+<pre><code>plt.style.use(&#39;ggplot&#39;)
+</code></pre>
+<p><img src="http://img.9lake.com/uPic/PX8fsq.jpg" alt="PX8fsq"></p>
+<p><img src="http://img.9lake.com/uPic/vLj4As.jpg" alt="vLj4As"></p>
+<p>再看 seaborn-colorblind 的效果。</p>
+<pre><code>plt.style.use(&#39;seaborn-colorblind&#39;)
+</code></pre>
+<p><img src="http://img.9lake.com/uPic/uSVQlK.jpg" alt="uSVQlK"></p>
+<p>最后看 tableau-colorblind10 的效果。</p>
+<pre><code>plt.style.use(&#39;tableau-colorblind10&#39;)
+</code></pre>
+<p><img src="http://img.9lake.com/uPic/ZDehSH.jpg" alt="ZDehSH"></p>
+<h3 id="4总结"><a href="#4总结" class="headerlink" title="4总结"></a>4总结</h3><p>本贴的思路非常清晰：</p>
+<ul>
+<li>第一章了解 Matplotlib 的绘图逻辑，以及里面包含的画图元素以及它们之间的层级。 </li>
+<li>第二章深度学 Matplotlib，只研究折线图，通过研究它的属性，一步步改进图的尺寸、像素、线条颜色宽度风格、坐标轴边界、刻度标签、图例、多图、多坐标系、标注、透明度等等，画出了一幅美图。 </li>
+<li>第三章广度学 Matplotlib，通过数据的分布、联系、比较和构成研究了直方图、散点图、折线图和饼状图，最后还为用户着想 (习惯、色盲等等) 画出更能有效表达信息的图。</li>
+</ul>
+<p>我们现在处于一个大数据的时代，制图能力现在和写作能力一样重要。任何人现在都可以用各种制图工具或者编程语言来画图，但是很少人懂得画出好图。</p>
+<p>好图不是指的绚烂的颜色 (fancy colors) 和复杂的层级 (complex layers)，当一张图里的信息能够以最清晰和有效的方式传递给使用者，那么这张图就是好图。</p>
+
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="/2020/02/15/%E9%87%91%E8%9E%8D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">金融数据结构--数据类型</span>
+                <span class="nav-mobile">上一篇</span>
+            </a>
+        
+        
+            <a class="next" href="/2019/12/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8BPandas/">
+                <span class="nav-default">数据结构之Pandas</span>
+                <span class="nav-mobile">下一篇</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+            2022
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Justin ZM</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>
