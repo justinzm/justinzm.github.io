@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"justinzm.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="技术、交流和市场需求方面的快速变化给公司带来了相当大的压力，迫使产品开发变得更加有效和高效。随着对新产品开发的成功因素的深入理解，适用于特定情境下的一系列新产品流程应运而生。本章概述了多种新产品流程，包括门径管理流程、并行工程、集成产品开发、精益和敏捷。介绍了每种流程的优势和局限性，以及各自对应的具体情景。本章也提及了成功的新产品流程所需的工具与度量。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NPDP-新产品流程">
+<meta property="og:url" content="https://justinzm.github.io/2022/03/18/NPDP-%E6%96%B0%E4%BA%A7%E5%93%81%E6%B5%81%E7%A8%8B/index.html">
+<meta property="og:site_name" content="草根之明">
+<meta property="og:description" content="技术、交流和市场需求方面的快速变化给公司带来了相当大的压力，迫使产品开发变得更加有效和高效。随着对新产品开发的成功因素的深入理解，适用于特定情境下的一系列新产品流程应运而生。本章概述了多种新产品流程，包括门径管理流程、并行工程、集成产品开发、精益和敏捷。介绍了每种流程的优势和局限性，以及各自对应的具体情景。本章也提及了成功的新产品流程所需的工具与度量。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://img.9lake.com/image-20211014104218191.png">
+<meta property="og:image" content="http://img.9lake.com/image-20211014104352747.png">
+<meta property="og:image" content="http://img.9lake.com/image-20210917131800477.png">
+<meta property="og:image" content="http://img.9lake.com/738b4710b912c8fc124c2958f2039245d78821ec">
+<meta property="og:image" content="http://img.9lake.com/image-20211014133821320.png">
+<meta property="og:image" content="http://img.9lake.com/image-20211014134214665.png">
+<meta property="og:image" content="http://img.9lake.com/image-20211014140231931.png">
+<meta property="og:image" content="http://img.9lake.com/uPic/2fGJaM.png">
+<meta property="og:image" content="http://img.9lake.com/image-20210916152741487.png">
+<meta property="og:image" content="http://img.9lake.com/image-20210916163146537.png">
+<meta property="og:image" content="http://img.9lake.com/image-20210916163034825.png">
+<meta property="og:image" content="http://img.9lake.com/image-20211014142516829.png">
+<meta property="article:published_time" content="2022-03-18T05:28:35.000Z">
+<meta property="article:modified_time" content="2022-09-18T07:28:56.695Z">
+<meta property="article:author" content="草根之明">
+<meta property="article:tag" content="项目管理、产品管理、区块链">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://img.9lake.com/image-20211014104218191.png">
+
+<link rel="canonical" href="https://justinzm.github.io/2022/03/18/NPDP-%E6%96%B0%E4%BA%A7%E5%93%81%E6%B5%81%E7%A8%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>NPDP-新产品流程 | 草根之明</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">草根之明</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">管理及技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://justinzm.github.io/2022/03/18/NPDP-%E6%96%B0%E4%BA%A7%E5%93%81%E6%B5%81%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="草根之明">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="草根之明">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          NPDP-新产品流程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-18 13:28:35" itemprop="dateCreated datePublished" datetime="2022-03-18T13:28:35+08:00">2022-03-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-18 15:28:56" itemprop="dateModified" datetime="2022-09-18T15:28:56+08:00">2022-09-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">产品经理</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>技术、交流和市场需求方面的快速变化给公司带来了相当大的压力，迫使产品开发变得更加有效和高效。随着对新产品开发的成功因素的深入理解，适用于特定情境下的一系列新产品流程应运而生。本章概述了多种新产品流程，包括门径管理流程、并行工程、集成产品开发、精益和敏捷。介绍了每种流程的优势和局限性，以及各自对应的具体情景。本章也提及了成功的新产品流程所需的工具与度量。</p>
+<span id="more"></span>
+
+<p>经组织理解认可的开发新产品或改进现有产品的<strong>途径</strong></p>
+<p>一个共识是，将<strong>结构化和持续性流程贯彻应用于组织中</strong>是产品开发成功的关键因素。</p>
+<h3 id="产品开发：一个“风险与回报”的过程"><a href="#产品开发：一个“风险与回报”的过程" class="headerlink" title="产品开发：一个“风险与回报”的过程"></a>产品开发：一个“风险与回报”的过程</h3><p>成功率在很大程度上取决于企业采用的新产品<strong>开发实践和流程</strong>的质量。调查表明，开发实践和流程是成功率提升的基础。</p>
+<h4 id="管控新产品失败风险"><a href="#管控新产品失败风险" class="headerlink" title="管控新产品失败风险"></a>管控新产品失败风险</h4><p>在整个产品开发流程中，随着产品开发往前推进，累计成本大幅增加。产品开发者面对的挑战是，<strong>如何确保随着成本增加，产品失败（不确定性水平）的风险下降</strong>。</p>
+<p><img src="http://img.9lake.com/image-20211014104218191.png" alt="image-20211014104218191"></p>
+<p>新产品开发<strong>创意生成、原型开发、从规模化到商业化、产品上市</strong> 四个开发阶段</p>
+<h4 id="知识能够改进决策，降低不确定性"><a href="#知识能够改进决策，降低不确定性" class="headerlink" title="知识能够改进决策，降低不确定性"></a>知识能够改进决策，降低不确定性</h4><p>产品开发流程的成功建立在一系列正确的决策之上。<strong>决策来自知识、信息和数据</strong>。</p>
+<p><img src="http://img.9lake.com/image-20211014104352747.png" alt="image-20211014104352747"></p>
+<p>知识的来源包括内部、外部</p>
+<p>做出正确决策所需的<strong>知识、信息和数据</strong>的来源十分广泛：</p>
+<ul>
+<li>组织记录（内部）</li>
+<li>组织员工（内部）</li>
+<li>外部顾问（外部）</li>
+<li>发表的文献</li>
+<li>专利</li>
+<li>竞争对手（外部）</li>
+<li>客户，等等（外部）</li>
+</ul>
+<h4 id="产品开发流程中“前端”的重要性"><a href="#产品开发流程中“前端”的重要性" class="headerlink" title="产品开发流程中“前端”的重要性"></a>产品开发流程中“前端”的重要性</h4><p><strong>模糊前端</strong>：在进入正式的产品开发流程之前，组织在该阶段<strong>识别机会、形成概念</strong>。该阶段包括<strong>创意生成阶段、初始概念开发阶段和商业论证阶段</strong>。</p>
+<ul>
+<li>模糊前端是项目的起点，包括创新产生、概念开发和立项分析等早期过程。</li>
+<li>是项目中定义最不明确的一个阶段</li>
+<li>项目在此阶段的“通过”决策将可能导致项目后期的成本大增。</li>
+</ul>
+<p>在这个早期阶段，明智的决策能够显著地减少不确定性，并为持续投资该项目提供信心。</p>
+<h3 id="几个产品开发流程"><a href="#几个产品开发流程" class="headerlink" title="几个产品开发流程"></a>几个产品开发流程</h3><h4 id="各种产品开发流程的介绍和对比"><a href="#各种产品开发流程的介绍和对比" class="headerlink" title="各种产品开发流程的介绍和对比"></a>各种产品开发流程的介绍和对比</h4><p>20世纪60年代，博斯、艾伦和汉密尔顿提出6个基本阶段构成的流程，奠定了大多数近年开发的流程的基础：</p>
+<ul>
+<li>探索</li>
+<li>筛选</li>
+<li>商业评估</li>
+<li>开发</li>
+<li>测试</li>
+<li>商业化</li>
+</ul>
+<p>流程包括：</p>
+<ul>
+<li>门径管理流程</li>
+<li>集成产品开发</li>
+<li>精益开发</li>
+<li>敏捷开发</li>
+<li>瀑布流程</li>
+<li>设计思维</li>
+</ul>
+<h4 id="门径管理流程"><a href="#门径管理流程" class="headerlink" title="门径管理流程"></a>门径管理流程</h4><p><strong>20世纪80年代</strong> 库珀和艾杰特首先开发出来。</p>
+<p><img src="http://img.9lake.com/image-20210917131800477.png" alt="image-20210917131800477"></p>
+<p>主要阶段是：</p>
+<ul>
+<li><strong>发现</strong>：寻找新的机会和新产品创意</li>
+<li><strong>筛选：初步评估市场机会、技术需求以及能力的可获得性</strong></li>
+<li><strong>立项分析：建立在筛选阶段之上的一个关键阶段，包括更为深入的技术、市场以及商业可行性分析</strong></li>
+<li><strong>开发：产品设计、原型制造、可制造性设计、制造准备和上市规划</strong></li>
+<li><strong>测试与修正：测试产品及其商业化计划的所有方面，以修正所有假设和结论</strong></li>
+<li><strong>上市</strong>：产品的完整商业化，包括规模制造以及商业化上市</li>
+</ul>
+<p>门径管理流程中，划分出的阶段数据应根据具体情况进行调整，这取决于：</p>
+<ul>
+<li>新产品上市的紧迫性。<strong>时间越紧张、流程受到挤压，阶段就越少</strong>。</li>
+<li>与新产品的不确定性或风险水平相关的技术和市场领域的现有知识。<strong>现有的知识面越广，风险越小，所需的阶段也就越少</strong></li>
+<li>为降低风险，<strong>当不确定性越大时，所需的信息越多，这将导致流程更长</strong></li>
+</ul>
+<p><strong>阶段促工作，关口促决策</strong>；</p>
+<h5 id="什么是阶段"><a href="#什么是阶段" class="headerlink" title="什么是阶段"></a>什么是阶段</h5><p>阶段是整个产品开发流程中的一个确定区域，包括：</p>
+<ul>
+<li>活动：项目负责人和团队成员依照项目计划必须完成的工作；</li>
+<li>综合分析：通过垮职能部门间的交流，项目负责人和团队成员综合分析所有职能活动的结果；</li>
+<li>可交付成果：综合分析结果的呈现，这是团队必须完成并在进入关口时所要提交的内容。</li>
+</ul>
+<h5 id="什么是关口"><a href="#什么是关口" class="headerlink" title="什么是关口"></a>什么是关口</h5><p>关口是产品开发流程中的一个确定节点。流程进展至此处时，<strong>需要做出有关项目未来的关键决策</strong>，包括：</p>
+<ul>
+<li>可交付成果：关口评审点的输入内容。可交付成果是前一阶段行为的结果。是事先确定的。在每个关口都有一个可交付成果的标准清单。</li>
+<li>标准：评判项目时所采用的标尺，由此决定项目是否通过以及项目的优先级。这些标准通常被设计为一个包括财务标准和定性标准在内的打分表。</li>
+<li>输出：关口评审的结果。关口处必须给出明确的输出内容，包括决策（通过&#x2F;枪毙&#x2F;搁置&#x2F;重做）及下一阶段的路径（通过审批的项目计划、下一个关口的日期和可交付成果）。</li>
+</ul>
+<h5 id="门径管理流程的优势和局限性"><a href="#门径管理流程的优势和局限性" class="headerlink" title="门径管理流程的优势和局限性"></a>门径管理流程的优势和局限性</h5><p>优势：</p>
+<ul>
+<li>为产品开发提供准则和约束</li>
+<li>强调要有质量的决策</li>
+<li>对所有参与者而言都是透明的</li>
+<li>适用于多种类型的组织</li>
+</ul>
+<p>局限性</p>
+<ul>
+<li>有可能变得过度官僚化</li>
+<li>在没有完全理解的情况下，可能引起过于僵化和成本昂贵的误解</li>
+<li>遵循准则和约束可能一定程度上创造力有所扼杀</li>
+</ul>
+<p>例子：10-12岁模型玩具车；营养品、乳制品、药品的开发</p>
+<h4 id="集成产品开发"><a href="#集成产品开发" class="headerlink" title="集成产品开发"></a>集成产品开发</h4><p><strong>20世纪90年代</strong>被广泛应用于航天航空产业</p>
+<h5 id="并行工程"><a href="#并行工程" class="headerlink" title="并行工程"></a>并行工程</h5><p>集成产品开发的概念是由“并行工程”发展而来的。“并行工程是一种集成、并行设计产品及相关过程的系统方法，包括制造和支持。这种方法使得开发商从<strong>一开始就要考虑产品生命周期中的所以要素</strong>，从概念到实施，从质量、成本、进度到用户需求。“</p>
+<p>并行工程的基础前提建立在以下两个概念上：</p>
+<ul>
+<li>产品生命周期中的<strong>所有要素</strong>，从功能性、可制造性、等等，都要<strong>在早期设计阶段中逐一考虑</strong></li>
+<li>考虑到并行推动流程能显著提高生产力和产品质量，<strong>设计活动都应同时进行</strong>，即并行。</li>
+</ul>
+<p>并行工程的特征：<strong>并行交叉和尽早开始工作</strong></p>
+<h5 id="瀑布模型"><a href="#瀑布模型" class="headerlink" title="瀑布模型"></a>瀑布模型</h5><p><strong>20世纪初（1970年），瀑布模型被广泛应用于软件行业</strong>。</p>
+<p><img src="http://img.9lake.com/738b4710b912c8fc124c2958f2039245d78821ec" alt="img"></p>
+<p>瀑布流程的5个典型阶段是：</p>
+<ul>
+<li>需求：了解设计产品所需的功能、用途、用户需求等</li>
+<li><strong>设计：确定完成项目所需的软件和硬件，随后将它们转化为物理设计</strong></li>
+<li>实施：根据项目要求和设计规范编写实际代码</li>
+<li>验证：确保产品符合客户期望</li>
+<li>维护：通过客户确定产品设计中的不足或错误，进而修改</li>
+</ul>
+<h5 id="集成产品开发-1"><a href="#集成产品开发-1" class="headerlink" title="集成产品开发"></a>集成产品开发</h5><p>集成产品开发的定义为：<strong>系统地、综合地应用不同职能体系的成果和理念，有效、高效地开发新产品、满足客户需求的方法。</strong></p>
+<p><img src="http://img.9lake.com/image-20211014133821320.png" alt="image-20211014133821320"></p>
+<p>一些机构致力于以集成产品开发原理为核心，利用循序渐进的方式来改进整体的产品开发体系，以实现以下目标：从产品开发基本工具的应用推进到项目管理的应用，再推进到客户心声、战略联结，<strong>最终构建出基于知识获取和管理的学习文化</strong>。</p>
+<p><img src="http://img.9lake.com/image-20211014134214665.png" alt="image-20211014134214665"></p>
+<p>基于集成产品开发系统的组织实践层级：<strong>重点：第5步：知识技能与创新（知识获取与管理、能力开发、创新文化开发）</strong></p>
+<h4 id="精益产品开发"><a href="#精益产品开发" class="headerlink" title="精益产品开发"></a>精益产品开发</h4><p>精益产品开发TPS的主要目的是从制造流程中去掉<strong>Muda或浪费</strong></p>
+<p>精益产品开发是有关生产率（Productivity）的</p>
+<h5 id="精益原则"><a href="#精益原则" class="headerlink" title="精益原则"></a>精益原则</h5><ul>
+<li><strong>消除浪费</strong></li>
+<li>强化学习</li>
+<li>尽快交付</li>
+<li><strong>推迟决策</strong></li>
+<li>授权团队</li>
+<li>全局优化</li>
+<li>品质为先</li>
+</ul>
+<h5 id="什么是精益产品开发"><a href="#什么是精益产品开发" class="headerlink" title="什么是精益产品开发"></a>什么是精益产品开发</h5><p>精益产品开发是有关生产率的。</p>
+<ul>
+<li>每小时或每单元生产的利润</li>
+<li>对设计者或开发者的有效利用</li>
+<li>更短的上市时间</li>
+<li>单位时间内完成更多的项目</li>
+<li>在更多的时间内积累更多满意的客户</li>
+<li><strong>更少的浪费</strong></li>
+</ul>
+<h5 id="潜在的浪费来源包括"><a href="#潜在的浪费来源包括" class="headerlink" title="潜在的浪费来源包括"></a>潜在的浪费来源包括</h5><ul>
+<li><u>混乱的工作环境</u></li>
+<li><u>缺乏可用资源</u></li>
+<li><u>缺乏明确的沟通存在障碍</u></li>
+<li><u>糟糕的产品需求定义</u></li>
+<li><u>缺乏对可制造性的早期考虑</u></li>
+<li><u>过度设计</u></li>
+<li><u>太多的无成效会议</u></li>
+<li><u>太多的电子邮件</u></li>
+</ul>
+<p>精益最核心的内容：</p>
+<ul>
+<li><u>建立由客户定义的价值，去掉无法带来增值的浪费；</u></li>
+<li><u>首席工程师体系；</u></li>
+<li><u>实施严格的标准化流程，以降低变数，创造灵活性，产出可预见的结果</u></li>
+<li><u>充分整合供应商，将其纳入产品开发体系</u></li>
+<li><u>建立学习与持续改进的理念</u></li>
+</ul>
+<h5 id="精益产品开发的优势和局限性"><a href="#精益产品开发的优势和局限性" class="headerlink" title="精益产品开发的优势和局限性"></a>精益产品开发的优势和局限性</h5><p>优势：</p>
+<ul>
+<li>流程的聚焦点在于信息的顺畅流动，而非严厉管控</li>
+<li><strong>通过事件驱动</strong>方法简化合作，优化设计</li>
+<li>重视对进度、成本、绩效和质量方面的风险的积极管控</li>
+<li>适用于各种规模的项目</li>
+<li>用于记录学习和进展，判定优先级和解决问题的工具通常是简单的、可视化的</li>
+</ul>
+<p>局限性：</p>
+<ul>
+<li>参与人员必须是相当敬业且经验丰富的。如此才能够为系统改进提出建议，对系统变化做出积极响应</li>
+<li><strong>需要改变组织的结构和文化。</strong>特别是，组织应具有统一坚定的项目文化以及适当的支持性组织结构</li>
+<li><strong>需要强有力的供应商管理。</strong>若要进行精益产品开发或实现准时交付，就需要与供应商协调同步，保持良好的沟通</li>
+<li><strong>组织有意愿且有能力接受项目目标和方向上的变化</strong></li>
+</ul>
+<p><img src="http://img.9lake.com/image-20211014140231931.png" alt="image-20211014140231931"></p>
+<h4 id="敏捷产品开发"><a href="#敏捷产品开发" class="headerlink" title="敏捷产品开发"></a>敏捷产品开发</h4><p>敏捷方法是在合作环境下由<strong>自我管理的团队</strong>进行产品迭代开发的过程。</p>
+<p>通过渐进式的迭代工作步骤。团队可以应对未预期的事项，这也被称为冲刺。</p>
+<h5 id="敏捷软件开发宣言"><a href="#敏捷软件开发宣言" class="headerlink" title="敏捷软件开发宣言"></a>敏捷软件开发宣言</h5><ul>
+<li><strong>个体和交互</strong>胜过过程和工具；</li>
+<li><strong>可运行的软件</strong>胜过面面俱到的文档；</li>
+<li><strong>客户合作</strong>胜过合同谈判；</li>
+<li><strong>响应变化</strong>胜过遵循计划；</li>
+</ul>
+<p>尽管每一句中，右侧的事项确有价值，但我们认为左侧的事项更重要、价值更大。</p>
+<h5 id="敏捷产品开发的关键原则"><a href="#敏捷产品开发的关键原则" class="headerlink" title="敏捷产品开发的关键原则"></a>敏捷产品开发的关键原则</h5><ol>
+<li>我们的首要任务是通过<strong>尽早和持续交付有价值的软件来满足客户</strong>；</li>
+<li><strong>即使在开发后期，我们也欢迎需求变更</strong>。敏捷流程将这些变更转化为客户的竞争优势；</li>
+<li>频繁地交付可运行的软件，数周或者数月交付一次，时间间隔越短越好；</li>
+<li>项目期间，<strong>业务人员与开发者共同工作</strong>；</li>
+<li>招揽积极主动的人员来开发项目，为他们提供所需的环境和支持，相信他们能做好自己的工作；</li>
+<li>开发团队里最省时有效的信息传递方式是<strong>面对面交流</strong>；</li>
+<li>可运行的软件是衡量进展的主要标准；</li>
+<li>敏捷流程有利于可持续开发。发起人、开发人员和用户应始终保持一个固定的前进步伐；</li>
+<li>持续关注先进的技术和优秀的设计，提高敏捷性；</li>
+<li>简洁 —- 令代办工作最少化的艺术是一切的基础；</li>
+<li>只有<strong>自我管理的团队</strong>才能做出最好的架构和设计；</li>
+<li><strong>团队定期反思</strong>如何提高效率并调整工作流程。</li>
+</ol>
+<h5 id="敏捷产品开发过程的关键要素"><a href="#敏捷产品开发过程的关键要素" class="headerlink" title="敏捷产品开发过程的关键要素"></a>敏捷产品开发过程的关键要素</h5><p>基本要素包括：</p>
+<ul>
+<li>产品待办列表</li>
+<li>敏捷流程</li>
+<li>冲刺</li>
+<li>产品主管</li>
+<li>敏捷负责人</li>
+<li>敏捷团队</li>
+</ul>
+<h5 id="SCRUM"><a href="#SCRUM" class="headerlink" title="SCRUM"></a>SCRUM</h5><p>scrum是敏捷的实施方法之一。来源于橄榄球中的“带球过人”。</p>
+<p>这个框架中整个开发过程由诺干个短的迭代周期组成，一个短的迭代周期称为一个冲刺（sprint），每个冲刺的建议长度是2到4周。</p>
+<p><img src="http://img.9lake.com/uPic/2fGJaM.png" alt="2fGJaM"></p>
+<p>在scrum中，有3个角色、3个工件、5个事件</p>
+<h5 id="3个角色"><a href="#3个角色" class="headerlink" title="3个角色"></a>3个角色</h5><ul>
+<li>产品负责人（PO）	<ul>
+<li>产品负责人代表客户利益，决定产品待办列表的优先级，以及<strong>最大化产品及开发团队工作的价值</strong>。</li>
+<li>产品负责人在冲刺规划会议上向团队介绍产品待办列表的内容，和团队一起定义完成的标准（DoD）。一旦冲刺开始，团队就开始工作，这时产品负责人只能变更产品待办列表的内容，而不能变更冲刺待办列表内容。</li>
+<li>在冲刺开始后，产品主管不应当再管理团队。产品主管的主要职责是平衡有竞争关系的利益相关者之间的利益。</li>
+</ul>
+</li>
+<li>敏捷教练（SM）<ul>
+<li>敏捷教练负责确保scrum被<strong>理解并实施</strong></li>
+<li>负责消除团队和产品负责人之间的障碍，激发团队的创造力。</li>
+<li>敏捷教练是scrum团队中的<strong>服务式领导</strong>。<ul>
+<li>提升团队生产率；</li>
+<li>改进工程工具和实施；</li>
+<li>确保团队取得进展的信息实时更新，让各方成员均可见</li>
+</ul>
+</li>
+<li>产品负责人和敏捷教练之间的区别是产品负责人负责“<strong>目标</strong>”，开发正确的产品；敏捷教练负责“<strong>方式</strong>”，使用正确的方法实施scrum</li>
+</ul>
+</li>
+<li>团队（team）<ul>
+<li>由7人组成，可以增加或减少2人。团队成员通常由多个职能部门、不是专业（跨职能团队）的人员组成。软件开发团队的成员包括软件工程师、架构师、程序员、分析员、质量专家、测试员已经UI设计师等。</li>
+<li><strong>自组织团队</strong>，有完成工作所需要的授权</li>
+<li>集中办公，自我管理实现冲刺目标</li>
+<li>团队在实现目标的方法上有选择自主权，并需对这些目标负责</li>
+</ul>
+</li>
+</ul>
+<h5 id="5个事件"><a href="#5个事件" class="headerlink" title="5个事件"></a>5个事件</h5><ul>
+<li><p>冲刺（sprint）</p>
+<ul>
+<li>冲刺是指完成特定任务，使开发阶段得以进入审查环节的一段时期。规划会议是每次冲刺的起点。冲刺周期一般为2-4周，由<strong>敏捷教练</strong>决定。在冲刺结束后，团队将已经完成的工作提交给产品负责人，产品负责人会按照冲刺规划会议上定义的DoD，决定接受或拒绝这些工作。</li>
+<li>sprint由冲刺规划会议、每日站会，冲刺评审会议和冲刺回顾会议组成。</li>
+</ul>
+</li>
+<li><p>冲刺规划会议</p>
+<ul>
+<li>sprint中要做的工作在冲刺规划会议中来做计划。这份工作计划是由整个scrum团队共同协作完成的。</li>
+<li>冲刺规划会议是限时的，以一个月的sprint来说，最多8小时。敏捷教练要确保会议顺利举行，并且每个参会者都理解会议的目的。敏捷教练要教导scrum团队遵守<strong>时间盒</strong>的规则。</li>
+<li>冲刺规划会议需要回答以下问题：<ul>
+<li>接下来sprint交付的增量中要包含什么内容？</li>
+<li>要如何完成交付增量所需的工作？</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://img.9lake.com/image-20210916152741487.png" alt="image-20210916152741487"></p>
+</li>
+<li><p>每日站会</p>
+<ul>
+<li>以15分钟为限。让开发团队同步开发活动，并为接下来的24小时制订计划。</li>
+<li>每日站会在同一地方同一时间举行。每个成员都需要说明：<ul>
+<li>我昨天做了什么</li>
+<li>我今天准备做什么</li>
+<li>有没有遇到什么阻碍</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>冲刺评审会</p>
+<ul>
+<li>冲刺评审会在sprint快结束的时候召开，演示sprint中开发的产品功能给产品负责人。</li>
+<li>产品负责人会组织这阶段的会议并且邀请相关的干系人参加，并决定是否接受团队完成的成果。</li>
+</ul>
+</li>
+<li><p>冲刺回顾会议</p>
+<ul>
+<li>冲刺回顾会议是团队检视自身并创建下一个sprint改进计划的机会。</li>
+<li>冲刺回顾会议发生在冲刺评审会议结束之后，下个冲刺规划会议之前。对于长度为一个月的sprint来说，限时为3小时。</li>
+<li>敏捷教练要确保会议举行，并且每个参会者都明白会议的目的。敏捷教练教导大家遵守时间盒的规则。</li>
+<li>冲刺回顾会议的目的在于：<ul>
+<li>检视前一个sprint中关于人、关系、过程和工具的情况如何。</li>
+<li>找出并加以排序做得好的和潜在需要改进的主要方面。</li>
+<li>制定改进scrum团队工作方式的计划</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="3个工件"><a href="#3个工件" class="headerlink" title="3个工件"></a>3个工件</h5><ul>
+<li><p>产品待办列表</p>
+<p>产品待办列表是一份包含系统所需的一系列事项要求并将他们<u>按优先次序排列的清单，包括功能性和非功能性的客户需求，以及技术团队产生的需求</u>。虽然产品需求列表有多种来源，但是<u>确定优先级次序是产品主管的独有职责</u>。<u>一个产品需求列表<strong>项</strong>是一个足够小的工作单元，团队能够在一次冲刺迭代周期中完成。</u></p>
+<ul>
+<li>是一个排序的列表，包含所有产品需要的东西，也是产品需求变动的唯一来源。是一个持续完善的清单，根据产品和开发环境的变化而演进。其列出来所有的特性、功能、需求、改进方法和缺陷修复等对未来发布产品进行的改变。</li>
+<li>产品待办列表条目包含描述、次序和估算的特征。通常以价值、风险、优先级和必须性排序。</li>
+<li>产品负责人负责产品待办事项<u>列表的内容、可用性和优先级</u></li>
+</ul>
+</li>
+<li><p>冲刺待办列表</p>
+<ul>
+<li>是一组为当前sprint选出的产品待办列表条目，外加交付产品增量和实现sprint目标的计划。以及交付哪些功能所需工作的预计。</li>
+<li>冲刺待办列表定义了开发团队把产品待办列表条目转换成“完成”的增量所需执行的工作。</li>
+<li>在一次sprint中，一旦确定冲刺待办事项列表，就不再变化。</li>
+</ul>
+</li>
+<li><p>燃尽图</p>
+<ul>
+<li>一个sprint中，反映工作量完成状况的趋势图</li>
+</ul>
+</li>
+</ul>
+<h5 id="敏捷产品开发的优势和局限性"><a href="#敏捷产品开发的优势和局限性" class="headerlink" title="敏捷产品开发的优势和局限性"></a>敏捷产品开发的优势和局限性</h5><p>优势：</p>
+<ul>
+<li>对于业务要求很难被文化或难以成功的产品开发项目而言，敏捷流程带来了新的可行机会。</li>
+<li>凭借敏捷方法、快速变化中的前沿开发得以被迅速编码和测试。一旦出现错误，也可以很容易地纠正。</li>
+<li>通过定期会议经常性地更新工作进展。敏捷是一种轻量级的管控方法，因此项目开发有明显的可视性。</li>
+<li>像任何其他敏捷方法一样，其本质是迭代，需要来自用户的连续反馈。</li>
+<li>由于冲刺周期短、反馈及时，团队更容易应对变化。</li>
+<li>通过日常会议可以评估个体的生产力，从而提高团队成员的生产率。</li>
+<li>通过日常会议可以提前识别问题，随后迅速解决问题。</li>
+<li>敏捷方法与任何技术或编程语言兼容，特别是快速发展的网络项目或新媒体项目。</li>
+<li>在流程和管理方面的运营成本最小，因此项目进展更快，花费更少。</li>
+</ul>
+<p>局限性：</p>
+<ul>
+<li>敏捷是出现“范围蔓延”问题的主要原因。这是因为，除非有一个明确的截止日期，否则项目管理相关者会不断要求团队交付新功能。</li>
+<li>如果任务的定义不明确，对项目成本和时间的预估是不准确的。在这种情况下，可以将任务分散为多次冲刺。</li>
+<li>如果团队成员没有全力以赴，项目将永远不会完成或将失败。</li>
+<li>因为敏捷方法由小型团队完成，它适用于快速变化的小型项目。</li>
+<li>敏捷方法需要有经验的团队成员。如果团队中有新手，项目可能无法按时完成。</li>
+<li>若敏捷负责人信任手下的团队，敏捷方法与项目管理的配合效果良好。若敏捷负责人对团队成员实行过于严格的控制将会给团队带来极大的挫败感，导致团队缺乏动力，进而导致项目失败。</li>
+<li>任何一个团队成员在开发过程中离开都会对项目开发产生巨大的负面效果。</li>
+<li>难以实施和量化项目质量管理，除非测试团队能够在每次冲刺后进行回归测试。</li>
+</ul>
+<h4 id="瀑布与敏捷项目对比"><a href="#瀑布与敏捷项目对比" class="headerlink" title="瀑布与敏捷项目对比"></a>瀑布与敏捷项目对比</h4><p>软件更像一个活着的植物，软件开发是自底向上逐步有序的生长过程，类似于植物自然生长；敏捷开发遵循软件客观规律，不断的进行迭代增量开发，最终交付符合客户价值的产品。</p>
+<p><img src="http://img.9lake.com/image-20210916163146537.png" alt="image-20210916163146537"></p>
+<p><img src="http://img.9lake.com/image-20210916163034825.png" alt="image-20210916163034825"></p>
+<p>瀑布模型：</p>
+<ul>
+<li>固定的、没有弹性的</li>
+<li>很困难去达到互动</li>
+<li>假如说需求没有完全的被了解，或是可能需要完全地改变项目的需求，瀑布式的model是比较不适合的</li>
+</ul>
+<p>敏捷方法：</p>
+<ul>
+<li>完整地开发，每少数几周或是少数几个月里可以测试功能</li>
+<li>强调在获得最简短的可执行功能的部分，能够及早给予企业价值</li>
+<li>在整个项目的生命周期里，可以持续的改善，增加未来的功能</li>
+</ul>
+<h3 id="产品开发流程模型的对比与总结"><a href="#产品开发流程模型的对比与总结" class="headerlink" title="产品开发流程模型的对比与总结"></a>产品开发流程模型的对比与总结</h3><h4 id="敏捷与精益"><a href="#敏捷与精益" class="headerlink" title="敏捷与精益"></a>敏捷与精益</h4><p>精益<strong>旨在减少浪费，提高运营效率</strong>，特别适用于制造过程中常见的重复性任务。对于产品开发而言，精益方法的真正价值在于，它的聚焦点 —– 一系列核心原则或指导方针 —– 是新产品开发流程的基础。</p>
+<p>敏捷的设计初衷是在短时间内执行任务，与客户进行频繁互动并能够对变化做出迅速响应。在应用于产品或产品组件的开发时，敏捷的结构、流程和角色都有明确的定义。敏捷体现了以时间为中心的迭代哲学 —– 以循序渐进的方式构建产品，以小件形式交付产品。它的主要优势之一是，在任意阶段都具有适应和变化的能力，并只提供余市场相关的产品</p>
+<h4 id="敏捷与门径管理"><a href="#敏捷与门径管理" class="headerlink" title="敏捷与门径管理"></a>敏捷与门径管理</h4><p>门径管理流程不是一个项目管理或微观规划模型。相反，它是一个全面的、完整的、从创意到上市阶段的体系，是一个宏观规划流程，是跨职能的。它极其关注关口。关口构成了一个投资决策模型的基础。在关口处要解答的关键问题是：你在做正确的项目吗？你是否在正确地做项目？</p>
+<p><img src="http://img.9lake.com/image-20211014142516829.png" alt="image-20211014142516829"></p>
+<h4 id="集成产品开发与其他流程模型"><a href="#集成产品开发与其他流程模型" class="headerlink" title="集成产品开发与其他流程模型"></a>集成产品开发与其他流程模型</h4><p>集成产品开发提供一种将产品开发中的功能、角色和行为集成起来的框架。定义为：系统地、综合地应用不同职能体系的成果和理念，有效、高效地开发新产品、满足客户需求的方式。</p>
+<p>门径管理模型的<strong>宏观规划特性和决策基础</strong>；</p>
+<p>敏捷模型的<strong>微观规划和灵活性</strong>；</p>
+<p>精益对<strong>减少时间和精力浪费的重视</strong>；</p>
+<p>学习型组织对产品开发的综合集成是潜在可互补的，而不是相互排斥的</p>
+<h3 id="产品开发流程的治理"><a href="#产品开发流程的治理" class="headerlink" title="产品开发流程的治理"></a>产品开发流程的治理</h3><p>将<strong>治理</strong>定义为“用来指导项目、程序和项目组合管理中的活动的框架、功能和流程。在组织的项目管理中，治理为组织的项目管理的战略执行框架提供了<strong>指导、决策和监督</strong>”</p>
+<h3 id="产品创新规程（产品创新章程）（PIC）"><a href="#产品创新规程（产品创新章程）（PIC）" class="headerlink" title="产品创新规程（产品创新章程）（PIC）"></a>产品创新规程（产品创新章程）（PIC）</h3><p>产品开发项目成功实施的基础是建立在创新战略之上的明确意图和方向。该基础的确切定义由“<strong>产品创新规程</strong>”提供。</p>
+<p><strong>产品创新规程</strong>是指，一份<strong>关键的战略性文件</strong>，是组织推动新产品商业化过程的核心。它覆盖了项目的立项原因、目的、目标、准则和边界。回答了产品开发项目中“谁、什么、哪里、何时、为什么”5个问题；</p>
+<p>在发现阶段，产品创新规程可以包括对市场偏好、客户需求、销售和利润潜力的假设</p>
+<p>随着项目进入开发阶段，这些假设通过原型开发和市场测试进行验证</p>
+<h4 id="产品创新规程的内容"><a href="#产品创新规程的内容" class="headerlink" title="产品创新规程的内容"></a>产品创新规程的内容</h4><p>通常是一个相对简短的总结性文件以及一些其他附加文件：</p>
+<ul>
+<li>背景</li>
+<li>重点舞台</li>
+<li>目标和目的</li>
+<li>特别准则</li>
+</ul>
+<h5 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h5><ul>
+<li>验证项目 —– 项目的目的、与经营战略和创新战略的关系。为什么组织要做这个项目？</li>
+<li>项目的范围 —– 项目的关注点有多窄或多宽</li>
+<li>项目团队在实现项目目标中的作用</li>
+<li>项目限制 —– 资源、资金、制造、市场营销等任何可能影响项目成功的因素</li>
+<li>任何现有和未来的关键技术</li>
+<li>环境、行业和市场分析，能够解释新产品所处的情景 —– 客户、竞争对手、法律法规等。</li>
+</ul>
+<h5 id="重点舞台"><a href="#重点舞台" class="headerlink" title="重点舞台"></a>重点舞台</h5><p>扩展到了商业领域，以表示呈现并完成业务活动的地点。包括有：</p>
+<ul>
+<li><strong>目标市场</strong></li>
+<li>关键技术和营销方法</li>
+<li>支持项目成功的关键技术和市场规模</li>
+<li>竞争对手的优势和劣势 —– 技术、营销、品牌、市场占有率、制造等</li>
+</ul>
+<h5 id="目标和目的"><a href="#目标和目的" class="headerlink" title="目标和目的"></a>目标和目的</h5><ul>
+<li>为经营战略做出贡献的特定目标。如：在新市场中的份额，当前市场份额的增加</li>
+<li>经营目标 —– 利润、销售量、成本消减、生产力增加</li>
+<li>每个目的或目标应该对应着具体的、可衡量的成功标准 —– 绩效指标</li>
+</ul>
+<h5 id="特别准则"><a href="#特别准则" class="headerlink" title="特别准则"></a>特别准则</h5><ul>
+<li>项目团队内的工作关系 —– 如何、何时召开会议</li>
+<li>项目汇报 —– 频率、形式、利益相关者</li>
+<li>预算支出责任</li>
+<li>外部机构的参与 如监管机构</li>
+<li>与上市时间或产品质量有关的特别规定</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/18/NPDP-%E7%BB%84%E5%90%88%E7%AE%A1%E7%90%86/" rel="prev" title="NPDP-组合管理">
+      <i class="fa fa-chevron-left"></i> NPDP-组合管理
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/04/18/NPDP-%E6%96%87%E5%8C%96%E3%80%81%E7%BB%84%E7%BB%87%E5%92%8C%E5%9B%A2%E9%98%9F/" rel="next" title="NPDP-文化、组织和团队">
+      NPDP-文化、组织和团队 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91%EF%BC%9A%E4%B8%80%E4%B8%AA%E2%80%9C%E9%A3%8E%E9%99%A9%E4%B8%8E%E5%9B%9E%E6%8A%A5%E2%80%9D%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">产品开发：一个“风险与回报”的过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%A1%E6%8E%A7%E6%96%B0%E4%BA%A7%E5%93%81%E5%A4%B1%E8%B4%A5%E9%A3%8E%E9%99%A9"><span class="nav-number">1.1.</span> <span class="nav-text">管控新产品失败风险</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E8%83%BD%E5%A4%9F%E6%94%B9%E8%BF%9B%E5%86%B3%E7%AD%96%EF%BC%8C%E9%99%8D%E4%BD%8E%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7"><span class="nav-number">1.2.</span> <span class="nav-text">知识能够改进决策，降低不确定性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B%E4%B8%AD%E2%80%9C%E5%89%8D%E7%AB%AF%E2%80%9D%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7"><span class="nav-number">1.3.</span> <span class="nav-text">产品开发流程中“前端”的重要性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%A0%E4%B8%AA%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">几个产品开发流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%84%E7%A7%8D%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B%E7%9A%84%E4%BB%8B%E7%BB%8D%E5%92%8C%E5%AF%B9%E6%AF%94"><span class="nav-number">2.1.</span> <span class="nav-text">各种产品开发流程的介绍和对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%A8%E5%BE%84%E7%AE%A1%E7%90%86%E6%B5%81%E7%A8%8B"><span class="nav-number">2.2.</span> <span class="nav-text">门径管理流程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%98%B6%E6%AE%B5"><span class="nav-number">2.2.1.</span> <span class="nav-text">什么是阶段</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%85%B3%E5%8F%A3"><span class="nav-number">2.2.2.</span> <span class="nav-text">什么是关口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%97%A8%E5%BE%84%E7%AE%A1%E7%90%86%E6%B5%81%E7%A8%8B%E7%9A%84%E4%BC%98%E5%8A%BF%E5%92%8C%E5%B1%80%E9%99%90%E6%80%A7"><span class="nav-number">2.2.3.</span> <span class="nav-text">门径管理流程的优势和局限性</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9B%86%E6%88%90%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91"><span class="nav-number">2.3.</span> <span class="nav-text">集成产品开发</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B9%B6%E8%A1%8C%E5%B7%A5%E7%A8%8B"><span class="nav-number">2.3.1.</span> <span class="nav-text">并行工程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%80%91%E5%B8%83%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.3.2.</span> <span class="nav-text">瀑布模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9B%86%E6%88%90%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91-1"><span class="nav-number">2.3.3.</span> <span class="nav-text">集成产品开发</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B2%BE%E7%9B%8A%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91"><span class="nav-number">2.4.</span> <span class="nav-text">精益产品开发</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%B2%BE%E7%9B%8A%E5%8E%9F%E5%88%99"><span class="nav-number">2.4.1.</span> <span class="nav-text">精益原则</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%B2%BE%E7%9B%8A%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91"><span class="nav-number">2.4.2.</span> <span class="nav-text">什么是精益产品开发</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%BD%9C%E5%9C%A8%E7%9A%84%E6%B5%AA%E8%B4%B9%E6%9D%A5%E6%BA%90%E5%8C%85%E6%8B%AC"><span class="nav-number">2.4.3.</span> <span class="nav-text">潜在的浪费来源包括</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%B2%BE%E7%9B%8A%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91%E7%9A%84%E4%BC%98%E5%8A%BF%E5%92%8C%E5%B1%80%E9%99%90%E6%80%A7"><span class="nav-number">2.4.4.</span> <span class="nav-text">精益产品开发的优势和局限性</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%8F%E6%8D%B7%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91"><span class="nav-number">2.5.</span> <span class="nav-text">敏捷产品开发</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%8F%E6%8D%B7%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%AE%A3%E8%A8%80"><span class="nav-number">2.5.1.</span> <span class="nav-text">敏捷软件开发宣言</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%8F%E6%8D%B7%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91%E7%9A%84%E5%85%B3%E9%94%AE%E5%8E%9F%E5%88%99"><span class="nav-number">2.5.2.</span> <span class="nav-text">敏捷产品开发的关键原则</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%8F%E6%8D%B7%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E7%9A%84%E5%85%B3%E9%94%AE%E8%A6%81%E7%B4%A0"><span class="nav-number">2.5.3.</span> <span class="nav-text">敏捷产品开发过程的关键要素</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SCRUM"><span class="nav-number">2.5.4.</span> <span class="nav-text">SCRUM</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3%E4%B8%AA%E8%A7%92%E8%89%B2"><span class="nav-number">2.5.5.</span> <span class="nav-text">3个角色</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5%E4%B8%AA%E4%BA%8B%E4%BB%B6"><span class="nav-number">2.5.6.</span> <span class="nav-text">5个事件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3%E4%B8%AA%E5%B7%A5%E4%BB%B6"><span class="nav-number">2.5.7.</span> <span class="nav-text">3个工件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%8F%E6%8D%B7%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91%E7%9A%84%E4%BC%98%E5%8A%BF%E5%92%8C%E5%B1%80%E9%99%90%E6%80%A7"><span class="nav-number">2.5.8.</span> <span class="nav-text">敏捷产品开发的优势和局限性</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%80%91%E5%B8%83%E4%B8%8E%E6%95%8F%E6%8D%B7%E9%A1%B9%E7%9B%AE%E5%AF%B9%E6%AF%94"><span class="nav-number">2.6.</span> <span class="nav-text">瀑布与敏捷项目对比</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%AF%B9%E6%AF%94%E4%B8%8E%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">产品开发流程模型的对比与总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%8F%E6%8D%B7%E4%B8%8E%E7%B2%BE%E7%9B%8A"><span class="nav-number">3.1.</span> <span class="nav-text">敏捷与精益</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%8F%E6%8D%B7%E4%B8%8E%E9%97%A8%E5%BE%84%E7%AE%A1%E7%90%86"><span class="nav-number">3.2.</span> <span class="nav-text">敏捷与门径管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9B%86%E6%88%90%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91%E4%B8%8E%E5%85%B6%E4%BB%96%E6%B5%81%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.3.</span> <span class="nav-text">集成产品开发与其他流程模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B%E7%9A%84%E6%B2%BB%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">产品开发流程的治理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A7%E5%93%81%E5%88%9B%E6%96%B0%E8%A7%84%E7%A8%8B%EF%BC%88%E4%BA%A7%E5%93%81%E5%88%9B%E6%96%B0%E7%AB%A0%E7%A8%8B%EF%BC%89%EF%BC%88PIC%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">产品创新规程（产品创新章程）（PIC）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%A7%E5%93%81%E5%88%9B%E6%96%B0%E8%A7%84%E7%A8%8B%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">5.1.</span> <span class="nav-text">产品创新规程的内容</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">5.1.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%87%8D%E7%82%B9%E8%88%9E%E5%8F%B0"><span class="nav-number">5.1.2.</span> <span class="nav-text">重点舞台</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87%E5%92%8C%E7%9B%AE%E7%9A%84"><span class="nav-number">5.1.3.</span> <span class="nav-text">目标和目的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%89%B9%E5%88%AB%E5%87%86%E5%88%99"><span class="nav-number">5.1.4.</span> <span class="nav-text">特别准则</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="草根之明"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">草根之明</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/justinzm" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;justinzm" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:3907721@qq.com" title="E-Mail → mailto:3907721@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">草根之明</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -152,6 +152,451 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://justinzm.github.io/2021/02/25/%E4%BA%86%E8%A7%A3%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%9A%84%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="草根之明">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="草根之明">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/25/%E4%BA%86%E8%A7%A3%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%9A%84%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B/" class="post-title-link" itemprop="url">了解数据分析的整体流程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-02-25 14:43:40" itemprop="dateCreated datePublished" datetime="2021-02-25T14:43:40+08:00">2021-02-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-24 12:09:34" itemprop="dateModified" datetime="2021-04-24T12:09:34+08:00">2021-04-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">项目管理</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="目标确定"><a href="#目标确定" class="headerlink" title="目标确定"></a>目标确定</h3><p>我们需要探究数据分析的目的是什么？是为了解决什么问题？达到什么目标？</p>
+<p>一般分析目的分为两种：</p>
+<p>1、针对现有情况 - 描述性分析</p>
+<p>2、基于现状，预测未来情况 - 预测性分析</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例如：对于一只股票，分析他的走势，涨跌。这是描述性分析针对这些涨跌，回测应该在什么时间点买入什么时间点卖出。这是预测性分析</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据获取"><a href="#数据获取" class="headerlink" title="数据获取"></a>数据获取</h3><p>针对目标，就要想要获取哪些数据，数据获取分为两个部分</p>
+<p>1、字段设计</p>
+<p>2、数据提取</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例如：需要分析某销售团队的销售数据，基础指标有平均销售额，销售总额，增减幅度等，但是这些指标在数据库中都没有，那么就需要从数据库中提取现有的字段加以处理得到上面的基础指标 - 这是字段设计从销售软件中导入导出数据，用 SQL 从数据库中导入导出 - 这是数据提取</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据清洗"><a href="#数据清洗" class="headerlink" title="数据清洗"></a>数据清洗</h3><p>从数据获取的步骤过来后我们就获取到需要的数据了，但是这样的数据我们还没办法直接使用，需要做进一步的处理，这就是数据清洗</p>
+<p>数据清洗主要是针对空白值、无效值、重复值等异常值。</p>
+<h3 id="数据整理"><a href="#数据整理" class="headerlink" title="数据整理"></a>数据整理</h3><p>做过清洗过的数据还是没有办法直接使用的，这里需要进行数据整理这一步骤，这一步骤主要是针对数据的格式化。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例如：日期的处理，将数据中的日期处理为统一格式行列的格式化基础的计算，如平均值、总额、众数等的歌</span><br></pre></td></tr></table></figure>
+
+<h3 id="描述分析"><a href="#描述分析" class="headerlink" title="描述分析"></a>描述分析</h3><p>做完上面的数据操作之后就可以开始描述分析了</p>
+<p>描述分析分为两个部分</p>
+<p>1、数据描述：描述数据的基本情况，比如数据的总数、时间跨度、数据来源等</p>
+<p>2、指标统计：结合实际业务分析实际情况的数据指标，比如要分析网站流量，网站的 PV 、IP 、留存、跳转率、转化率等等</p>
+<p>针对指标统计有四类的主要描述场景</p>
+<p>1）变化：随着时间的变动的增减变化</p>
+<p>2）分布：不同层次上的表现，例如地域分布、男女分布、人群分布</p>
+<p>3）对比：数据项之间的比较</p>
+<p>4）预测：根据现有的增减幅度，预测未来的变化</p>
+<h3 id="洞察结论"><a href="#洞察结论" class="headerlink" title="洞察结论"></a>洞察结论</h3><p>这个部分是结合你自己数据分析的功底，结合你对于手上所负责的业务的了解程度，这部分是数据报告的核心，也同样体现了你的数据分析能力</p>
+<h3 id="撰写报告"><a href="#撰写报告" class="headerlink" title="撰写报告"></a>撰写报告</h3><p>经过一通分析，你需要将你得出来的内容汇总成数据分析报告</p>
+<p>数据报告主要包含下面的内容</p>
+<p>1、报告背景：主要描述你要解决的业务现状</p>
+<p>2、报告目的：主要描述你要解决什么问题</p>
+<p>3、数据基本情况：主要体现数据的可信度，你的数据来源是否可靠，数据维度、数据完整性等等</p>
+<p>4、可视化图表：数据的可理解程度，增强看报表的人的理解</p>
+<p>5、策略选择：提出解决方案，阐述你的结论，提供解决策略等</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://justinzm.github.io/2021/02/12/%E4%BA%A7%E5%93%81%E6%88%98%E7%95%A5%E5%92%8C%E6%88%98%E6%9C%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="草根之明">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="草根之明">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/12/%E4%BA%A7%E5%93%81%E6%88%98%E7%95%A5%E5%92%8C%E6%88%98%E6%9C%AF/" class="post-title-link" itemprop="url">产品战略和战术</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-02-12 11:50:43" itemprop="dateCreated datePublished" datetime="2021-02-12T11:50:43+08:00">2021-02-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-24 12:09:34" itemprop="dateModified" datetime="2021-04-24T12:09:34+08:00">2021-04-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">产品经理</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>战略的重要作用是用分析工具判断一个行业的好坏，战略分析解决四个问题。</p>
+<ul>
+<li>第一，行业分析。这个行业是好还是坏？要进入这个行业还是要进入另一个行业？</li>
+<li>第二，产品选择。比如互联网行业是做门户还是社区？游戏还是视频？</li>
+<li>第三，行业定位。是做领导者还是跟随者？</li>
+<li>第四，如何打倒对手的关键竞争要素的选择。</li>
+</ul>
+<h3 id="行业分析"><a href="#行业分析" class="headerlink" title="行业分析"></a>行业分析</h3><p>波特五力模型是最重要的一个行业分析工具。</p>
+<h4 id="确定行业规模"><a href="#确定行业规模" class="headerlink" title="确定行业规模"></a>确定行业规模</h4><p>行业规模可以理解为市场容量或市场规模。</p>
+<h4 id="竞争者结构分析"><a href="#竞争者结构分析" class="headerlink" title="竞争者结构分析"></a>竞争者结构分析</h4><p>竞争者结构分析中有一个重要的概念是行业集中度。集中度是判断行业好坏的风向标，行业的集中度越低，竞争就越多，行业越不好做；反之，集中度越高，那么竞争就越少，行业越好做。</p>
+<h4 id="与上游谈判价格的能力"><a href="#与上游谈判价格的能力" class="headerlink" title="与上游谈判价格的能力"></a>与上游谈判价格的能力</h4><p>要想办法提升自己和上游谈判价格的地位，方法是扩大规模。</p>
+<h4 id="与下游谈判价格的能力"><a href="#与下游谈判价格的能力" class="headerlink" title="与下游谈判价格的能力"></a>与下游谈判价格的能力</h4><h4 id="进入者分析"><a href="#进入者分析" class="headerlink" title="进入者分析"></a>进入者分析</h4><p>竞争壁垒越高的行业，这个行业就越好。</p>
+<h4 id="替代品威胁"><a href="#替代品威胁" class="headerlink" title="替代品威胁"></a>替代品威胁</h4><h3 id="产品战略的五个方面"><a href="#产品战略的五个方面" class="headerlink" title="产品战略的五个方面"></a>产品战略的五个方面</h3><h4 id="观念"><a href="#观念" class="headerlink" title="观念"></a>观念</h4><p>产品的观念即产品的愿景</p>
+<h4 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h4><p>产品定位包括产品方向、产品类型和产品价值三个方面的内容</p>
+<h4 id="竞争"><a href="#竞争" class="headerlink" title="竞争"></a>竞争</h4><p>产品的差异化体现在什么地方，选择哪些关键竞争要素，成本优势有哪些，是进攻型、跟随型、联盟型还是防御型</p>
+<h4 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h4><p>模式即产品的商业模式或赢利模式，用来说明产品通过什么样的方式来赚钱。</p>
+<h4 id="规划"><a href="#规划" class="headerlink" title="规划"></a>规划</h4><ul>
+<li>波士顿BCG矩阵评估与分析现有产品线</li>
+<li>产品组合及产品线规划的麦肯锡三层面法</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://justinzm.github.io/2021/02/12/%E4%BA%A7%E5%93%81%E5%AE%9A%E4%B9%89%E5%92%8C%E4%BB%B7%E5%80%BC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="草根之明">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="草根之明">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/12/%E4%BA%A7%E5%93%81%E5%AE%9A%E4%B9%89%E5%92%8C%E4%BB%B7%E5%80%BC/" class="post-title-link" itemprop="url">产品定义和价值</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-02-12 10:59:24" itemprop="dateCreated datePublished" datetime="2021-02-12T10:59:24+08:00">2021-02-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-10 15:22:35" itemprop="dateModified" datetime="2022-09-10T15:22:35+08:00">2022-09-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">产品经理</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>微创新的三个方面：第一，产品设计要从小处着眼，贴近用户需求心理；第二，产品功能一定要专注，不求大而全；第三，在产品更新上小步快跑，不断试错。</p>
+<p>产品是能够提供给市场、供用户使用或消费的、可满足某种欲望和需要的任何东西。产品是满足用户需要的复杂利益的集合。</p>
+<h3 id="产品的五个要素"><a href="#产品的五个要素" class="headerlink" title="产品的五个要素"></a>产品的五个要素</h3><h4 id="1-产品的内涵"><a href="#1-产品的内涵" class="headerlink" title="1 产品的内涵"></a>1 产品的内涵</h4><p>产品的内涵指为用户提供的基本效用或利益，满足用户的本质需求。</p>
+<h4 id="2-产品的形式"><a href="#2-产品的形式" class="headerlink" title="2 产品的形式"></a>2 产品的形式</h4><p>产品的形式指实现产品的内涵所采取的方式，包括功能、内容、设计等。</p>
+<h4 id="3-产品的外延"><a href="#3-产品的外延" class="headerlink" title="3 产品的外延"></a>3 产品的外延</h4><p>产品的外延指用户在使用或购买产品时所得到的附加服务或利益。</p>
+<h4 id="4-产品的理念"><a href="#4-产品的理念" class="headerlink" title="4 产品的理念"></a>4 产品的理念</h4><p>产品的理念指产品的理念和宗旨，用户使用或购买产品时期望得到的价值</p>
+<h4 id="5-产品的终端"><a href="#5-产品的终端" class="headerlink" title="5 产品的终端"></a>5 产品的终端</h4><p>在那些终端可以使用或消费产品</p>
+<h3 id="产品的价值"><a href="#产品的价值" class="headerlink" title="产品的价值"></a>产品的价值</h3><h4 id="核心价值"><a href="#核心价值" class="headerlink" title="核心价值"></a>核心价值</h4><p>核心价值对应产品定义中的内涵要素，为用户提供基本的效用或利益，满足用户的本质或核心需求。</p>
+<h4 id="期望价值"><a href="#期望价值" class="headerlink" title="期望价值"></a>期望价值</h4><p>对应产品定义的形式、理念和终端要素。</p>
+<h4 id="附加价值"><a href="#附加价值" class="headerlink" title="附加价值"></a>附加价值</h4><p>对应产品定义中的外延，用户在使用或购买产品时所得到的附加服务或利益。</p>
+<p>能引导和创造用户需求的产品，创造或改变目标用户生活方式的产品，拥有良好用户体验的产品，同时为企业带来赢利商业价值的产品才是成功产品。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://justinzm.github.io/2021/02/06/ToB%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E8%B0%88%E9%9C%80%E6%B1%82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="草根之明">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="草根之明">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/06/ToB%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E8%B0%88%E9%9C%80%E6%B1%82/" class="post-title-link" itemprop="url">ToB产品经理谈需求</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-02-06 10:33:49" itemprop="dateCreated datePublished" datetime="2021-02-06T10:33:49+08:00">2021-02-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-10 15:33:12" itemprop="dateModified" datetime="2022-09-10T15:33:12+08:00">2022-09-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">产品经理</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>产品经理的日常工作往往与需求分不开，然而需求在有些人眼里仿佛并不重要，并且将其放于可有可无的位置，这样的想法其实是错误的。无论是初级产品经理还是高级产品经理，都不能不谈需求，抓住需求是基本功，在此基础上才能锻炼硬功夫。
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/02/06/ToB%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E8%B0%88%E9%9C%80%E6%B1%82/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://justinzm.github.io/2021/02/06/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BB%E7%AB%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="草根之明">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="草根之明">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/06/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BB%E7%AB%AF/" class="post-title-link" itemprop="url">如何快速上手B端?</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-02-06 10:11:48" itemprop="dateCreated datePublished" datetime="2021-02-06T10:11:48+08:00">2021-02-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-10 15:28:36" itemprop="dateModified" datetime="2022-09-10T15:28:36+08:00">2022-09-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">产品经理</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>编辑导读：C端行业已经是一片红海，流量红利几乎已经见顶，不少企业将目光转向了B端行业。尽管B端产品未来可期，但是初次接触B端的产品经理还是一头雾水，更有观望者迟迟不能下定决心。本文作者从自身工作经验出发，分享总结了快速上手B端业务的几点方法，与大家分享。
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/02/06/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BB%E7%AB%AF/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://justinzm.github.io/2021/02/01/%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%A0%E8%B0%B1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -556,454 +1001,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://justinzm.github.io/2020/12/30/%E4%B8%80%E5%BC%A0%E5%9B%BE%E8%AE%A9%E4%BD%A0%E6%8E%8C%E6%8F%A1%E5%81%9A%E4%BA%8B%E7%9A%84%E6%96%B9%E6%B3%95%E5%92%8C%E6%8A%80%E5%B7%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="草根之明">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="草根之明">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/30/%E4%B8%80%E5%BC%A0%E5%9B%BE%E8%AE%A9%E4%BD%A0%E6%8E%8C%E6%8F%A1%E5%81%9A%E4%BA%8B%E7%9A%84%E6%96%B9%E6%B3%95%E5%92%8C%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">一张图让你掌握做事的方法和技巧</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-12-30 14:50:41" itemprop="dateCreated datePublished" datetime="2020-12-30T14:50:41+08:00">2020-12-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-10 15:28:36" itemprop="dateModified" datetime="2022-09-10T15:28:36+08:00">2022-09-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">项目管理</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="http://img.9lake.com/uPic/20201230145207.jpg"></p>
-<p><img src="http://img.9lake.com/uPic/20201230145319.jpg"></p>
-<p><img src="http://img.9lake.com/uPic/20201230145335.png"></p>
-<p><img src="http://img.9lake.com/uPic/20201230145342.png"></p>
-<p><img src="http://img.9lake.com/uPic/20201230145349.png"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://justinzm.github.io/2020/11/20/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E9%9D%9E%E5%B8%B8%E9%81%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="草根之明">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="草根之明">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/20/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E9%9D%9E%E5%B8%B8%E9%81%93/" class="post-title-link" itemprop="url">项目管理非常道</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-20 10:59:18" itemprop="dateCreated datePublished" datetime="2020-11-20T10:59:18+08:00">2020-11-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-24 12:09:34" itemprop="dateModified" datetime="2021-04-24T12:09:34+08:00">2021-04-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">项目管理</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="如何评价一个组织的项目成熟度"><a href="#如何评价一个组织的项目成熟度" class="headerlink" title="如何评价一个组织的项目成熟度"></a>如何评价一个组织的项目成熟度</h3><h4 id="1-组织有战略规划"><a href="#1-组织有战略规划" class="headerlink" title="1.组织有战略规划"></a>1.组织有战略规划</h4><p>即所谓做正确的事，组织有定期的战略规划和配套的运营体系，以向团队内外明确组织前进方向，并且上通下达人力等资源将要聚焦的重要事项</p>
-<h4 id="2-组织有战略执行"><a href="#2-组织有战略执行" class="headerlink" title="2.组织有战略执行"></a>2.组织有战略执行</h4><p>即所谓正确的做事，组织通过分等级的项目化运作，甚至是利用风险，高效抵达战略规划的终点，拿到目标和收益</p>
-<h4 id="3-组织有持续闭环"><a href="#3-组织有持续闭环" class="headerlink" title="3.组织有持续闭环"></a>3.组织有持续闭环</h4><p>要有组织的战役大盘，明确组织前进方向的健康度。并建立高层与执行层的反馈渠道，定期汇报<br>通过汇报持续对焦，让组织有限的资源投入战略方向内的高优先级项目，同时形成对关键风险的一致理解和应对</p>
-<h4 id="4-组织有统一打法"><a href="#4-组织有统一打法" class="headerlink" title="4.组织有统一打法"></a>4.组织有统一打法</h4><p>要沉淀出紧贴组织业务特性，符合组织文化，适用于组织大部分项目的运作标准规范</p>
-<p>规范的核心，是抽象出典型的项目生命周期模型，建议模型最多有6个阶段，每个阶段末设关口评审</p>
-<p>生命周模型其实就是项目范围管理的最核心层：WBS第1级，也可以适当细分拆解2-3级。在组织内，具体的项目可以高效套用这个模型，从而提升组织效能</p>
-<h3 id="如何评价一个项目经理的成熟度"><a href="#如何评价一个项目经理的成熟度" class="headerlink" title="如何评价一个项目经理的成熟度"></a>如何评价一个项目经理的成熟度</h3><h4 id="1-项目经理的能力组成"><a href="#1-项目经理的能力组成" class="headerlink" title="1.项目经理的能力组成"></a>1.项目经理的能力组成</h4><p>项目经理的能力从表及里，可以分3个层次：</p>
-<h5 id="1-理论知识"><a href="#1-理论知识" class="headerlink" title="1).理论知识"></a>1).理论知识</h5><p>通过主动学习便可获得，可用PMI的体系为主干框架，这时候的PM纸上谈兵没问题了</p>
-<h5 id="2-实操经验"><a href="#2-实操经验" class="headerlink" title="2).实操经验"></a>2).实操经验</h5><p>需要深入了解业务才能获得。同时组织不会专门培训一个从0到1转型到项目经理的人。如果想获取这个层次的能力，需要在工作中主动找机会积累</p>
-<h5 id="3-性格品质"><a href="#3-性格品质" class="headerlink" title="3).性格品质"></a>3).性格品质</h5><p>如共赢，大局观，目标导向、换位思考。这些品质更多是先天性格决定，并左右了你的思考惯性。也可以后天习得，但可能比较痛苦</p>
-<p>做好前面这2点，可以成为优秀的PM。如果3点都做到，可以成为卓越的PM</p>
-<h4 id="2-项目经理的人格优势和缺陷"><a href="#2-项目经理的人格优势和缺陷" class="headerlink" title="2.项目经理的人格优势和缺陷"></a>2.项目经理的人格优势和缺陷</h4><p>基于上述3种能力组成的PM，有非常强的执行力，能来事，能办事</p>
-<p>从项目经理的岗来说，已经非常完美了</p>
-<p>但是从一个人的职业生涯来说，项目经理普遍有天生缺陷：缺少决策能力</p>
-<p>当然这也是有矛盾的点,PM的天职就是在组织中高效执行和落地重大战略目标，搞成大事情。是为管理者服务的</p>
-<p>但如果PM用“自以为”的决策力在项目中给自己加戏，导致目标走歪了，管理者是不放心的</p>
-<p>也是注定了，会“自以为”的决策的人在项目经理岗位领域是走不远的</p>
-<p>辩证看，如果PM在熟悉业务背景下，在战略一致性原则指导下其决策能力对组织是有贡献的</p>
-<p>这也是成长到后期的PM，其能力模型会在决策力方面发生突破<br>这个时候，他可能不一定再继续做PM了 ；）</p>
-<h4 id="3-项目经理的信息处理"><a href="#3-项目经理的信息处理" class="headerlink" title="3.项目经理的信息处理"></a>3.项目经理的信息处理</h4><p>管理项目，信息的同步非常重要，是项目成败的关键。</p>
-<p>一般来说，项目信息处理分3步骤：</p>
-<ul>
-<li>识别信息受众群体</li>
-<li>确定信息同步形式</li>
-<li>确定信息更新频率</li>
-</ul>
-<p>在项目启动阶段，项目经理要识别、报告、管理项目成功的关键度量指标。以便在项目后期，能争取让所有的关键人员都视项目结果为成功</p>
-<p>稍微提醒一下，项目最核心的指标永远包括：<strong>项目的范围、进度、成本、收益</strong></p>
-<p>项目推动过程中，信息同步的建议</p>
-<ul>
-<li>运营型的信息，适合每天更新，适合同步给一线项目组</li>
-<li>战术型的信息，适合每周更新，适合同步给项目组，以及项目组的TL们</li>
-<li>战略型的信息，适合以月&#x2F;季的时间颗粒度进行更新，通常用于公司管理层的汇报</li>
-</ul>
-<p>在工作期间，发现一个规律</p>
-<p>PM可以借力高层级的项目信息同步会(汇报会)，来借力高效管理项目</p>
-<p>因为每次在项目汇报之前，大家都会非常卖力的干活，以防止自己的工作在汇报过程中被高层定义为不理想</p>
-<p>需要注意，面向管理层的汇报材料，关键信息得在一个屏幕内展示，不要随便翻屏</p>
-<p>当管理者对汇报材料产生信任的时候，才会愿意做出决策</p>
-<h4 id="4-项目经理的反馈闭环习惯"><a href="#4-项目经理的反馈闭环习惯" class="headerlink" title="4.项目经理的反馈闭环习惯"></a>4.项目经理的反馈闭环习惯</h4><p>任何一个合格的管理流程、信息化系统、团队运作、公司管理，必须有监控反馈机制。以便随时保持内外界的互动，同时能够第一时间处理异常情况</p>
-<p>对于项目经理管项目，也是一样的</p>
-<p>PM在任何安排到项目里面的工作任务，都必须有设置反馈闭环的思维习惯和管理行为</p>
-<p>这也是之前多次要求PM在项目邮件中写上一句“<strong>有任何需要沟通的，联系XX PM</strong>”，从而建立反馈渠道的原因 ；）</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://justinzm.github.io/2020/10/27/%E9%A1%B9%E7%9B%AE%E6%B4%BB%E5%8A%A8%E7%9A%84%E7%95%8C%E5%AE%9A/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="草根之明">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="草根之明">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/27/%E9%A1%B9%E7%9B%AE%E6%B4%BB%E5%8A%A8%E7%9A%84%E7%95%8C%E5%AE%9A/" class="post-title-link" itemprop="url">项目活动的界定</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-10-27 16:14:39" itemprop="dateCreated datePublished" datetime="2020-10-27T16:14:39+08:00">2020-10-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-12 15:19:52" itemprop="dateModified" datetime="2022-09-12T15:19:52+08:00">2022-09-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">项目管理</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>项目活动定义工作</strong>是项目进度管理要做的第一项重要的内容，它包括项目活动的<strong>识别、分解、定义、确认、文档化</strong>等一系列具体工作。在项目任务的界定过程中，主要依据<strong>WBS、范围定义、历史资料、制约因素和假设条件</strong>等5个方面内容。</p>
-<h4 id="WBS"><a href="#WBS" class="headerlink" title="WBS"></a>WBS</h4><p>项目WBS对项目需要完成的全部工作给予清晰的、整体性的描述。运用项目活动分解技术，可以把一些活动分解成为更小、更容易掌控的活动，以便实现更精确的管理</p>
-<h4 id="范围定义"><a href="#范围定义" class="headerlink" title="范围定义"></a>范围定义</h4><p>它给出了项目目标、项目产出物、项目交付物和项目工作范围，以及一系列相关信息和资料。</p>
-<h4 id="历史资料"><a href="#历史资料" class="headerlink" title="历史资料"></a>历史资料</h4><p>两个方面内容：一是项目前期工作的准备情况和实际执行情况；二是过去开展的类似项目的例子</p>
-<h4 id="制约因素"><a href="#制约因素" class="headerlink" title="制约因素"></a>制约因素</h4><p>是项目活动定义必须考虑的因素，包括<strong>资金、技术人员、施工人员、材料供应、法律法规</strong>等。</p>
-<h4 id="假设条件"><a href="#假设条件" class="headerlink" title="假设条件"></a>假设条件</h4><p>是对不完善的信息做出人为的假定，目的是防范风险，毕竟我们在考虑一系列制约因素时还是有很多不能确定的因素</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://justinzm.github.io/2020/10/11/%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98%E7%9A%8412%E6%9D%A1%E7%A7%98%E8%AF%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="草根之明">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="草根之明">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/11/%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98%E7%9A%8412%E6%9D%A1%E7%A7%98%E8%AF%80/" class="post-title-link" itemprop="url">项目复盘的12条秘诀</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-10-11 10:26:49" itemprop="dateCreated datePublished" datetime="2020-10-11T10:26:49+08:00">2020-10-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-09 23:14:23" itemprop="dateModified" datetime="2022-09-09T23:14:23+08:00">2022-09-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">项目管理</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>学习有三种方法：从书本中学习，向身边的人学习，向自己学习。</p>
-<p>其中向自己学习最靠谱。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/10/11/%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98%E7%9A%8412%E6%9D%A1%E7%A7%98%E8%AF%80/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://justinzm.github.io/2020/10/11/%E5%B8%A6%E4%BD%A0%E7%9C%8B%E5%AE%8C%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%85%A8%E6%B5%81%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="草根之明">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="草根之明">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/11/%E5%B8%A6%E4%BD%A0%E7%9C%8B%E5%AE%8C%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%85%A8%E6%B5%81%E7%A8%8B/" class="post-title-link" itemprop="url">带你看完项目管理全流程</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-10-11 10:15:58" itemprop="dateCreated datePublished" datetime="2020-10-11T10:15:58+08:00">2020-10-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-10 15:28:36" itemprop="dateModified" datetime="2022-09-10T15:28:36+08:00">2022-09-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">项目管理</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>虽然很多人已经学习过项目管理，也拿到了证书，但这并不意味着他真正掌握了项目管理的知识。</p>
-<p>甚至还有人对项目管理的全流程都没有清晰的了解，只知道有<strong>启动、规划、执行、监控、收尾</strong>这五大过程组。</p>
-<p>但是</p>
-<p>这五大过程组之间的关系是怎样的？</p>
-<p>项目管理的全流程又是什么样的？</p>
-<p>在每个流程中有什么核心工作是项目经理需要重点关注的？</p>
-<p>恐怕很多人都没想明白。</p>
-<p>没有弄懂项目管理流程各部分工作的含义和相互之间的关系，项目经理很难说自己真的学会了PMP。</p>
-<p>下面这张图，就对项目管理的全流程做了详细的解析。</p>
-<p>从图中可以看到一个完整的项目流程全貌，以及在不同流程需要项目经理重点关注的内容。</p>
-<p><img src="http://img.9lake.com/uPic/rLL0q2.jpg" alt="rLL0q2"></p>
-<p><img src="http://img.9lake.com/uPic/ZVvO0i.jpg" alt="ZVvO0i"></p>
-<p><img src="http://img.9lake.com/uPic/AxeE6r.jpg" alt="AxeE6r"></p>
-<p><img src="http://img.9lake.com/uPic/tyFuzc.jpg" alt="tyFuzc"></p>
-<p><img src="http://img.9lake.com/uPic/7mHYSQ.jpg" alt="7mHYSQ"></p>
-<p>当然，理清了项目管理全流程还远远不够，项目经理还需要通过不断的实践，在实际做项目的过程中加深理解，积累经验，这样才能<strong>真正掌握项目管理的精髓</strong>。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1071,7 +1072,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-count">61</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

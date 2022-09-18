@@ -152,6 +152,602 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://justinzm.github.io/2019/10/06/python%E7%9A%845%E7%A7%8D%E5%AE%9E%E6%88%98%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="草根之明">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="草根之明">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/06/python%E7%9A%845%E7%A7%8D%E5%AE%9E%E6%88%98%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">python的5种实战小技巧</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-06 20:34:10" itemprop="dateCreated datePublished" datetime="2019-10-06T20:34:10+08:00">2019-10-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-10 15:32:52" itemprop="dateModified" datetime="2022-09-10T15:32:52+08:00">2022-09-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="字符串运算"><a href="#字符串运算" class="headerlink" title="字符串运算"></a>字符串运算</h3><p>字符串本质上也是一种元组，但是字符串有很多“运算”方式。最直观的是字符串的 + 和 * 运算，它们分别表示重复和连接。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; my_string = &quot;Hi Medium..!&quot;</span><br><span class="line">&gt;&gt;&gt; print(my_string * 2)</span><br><span class="line">Hi Medium..!Hi Medium..!</span><br><span class="line">&gt;&gt;&gt; print(my_string + &quot; I love Python&quot; * 2)</span><br><span class="line">Hi Medium..! I love Python I love Python</span><br></pre></td></tr></table></figure>
+
+<p>此外，如果希望获得反向字符串，也可以直接使用 [::-1] 进行索引：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(my_string[::-1])</span><br><span class="line">!..muideM iH</span><br><span class="line">&gt;&gt;&gt; my_list = [1,2,3,4,5]</span><br><span class="line">&gt;&gt;&gt; print(my_list[::-1])</span><br><span class="line">[5, 4, 3, 2, 1]</span><br></pre></td></tr></table></figure>
+
+<p>如果列表元素都是字符串，那么我们可以快速地使用 join() 方法将所有元素拼接在一起：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; word_list = [&quot;awesome&quot;, &quot;is&quot;, &quot;this&quot;]</span><br><span class="line">&gt;&gt;&gt; print(&#x27; &#x27;.join(word_list[::-1]) + &#x27;!&#x27;)</span><br><span class="line">this is awesome!</span><br></pre></td></tr></table></figure>
+
+<p>如上我们使用 .join() 方法拼接列表元素，其中 『 』 表示连接方式为空格。其实在自然语言处理中，这个方法会经常使用，例如我们将句子拆分为了字符，那么处理后的合并就需要使用 join() 了。</p>
+<h3 id="列表推导式"><a href="#列表推导式" class="headerlink" title="列表推导式"></a>列表推导式</h3><p>我们先定义一个简单的函数，它会算变量的平方并加 5：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; def stupid_func(x):</span><br><span class="line">&gt;&gt;&gt; return x**2 + 5</span><br></pre></td></tr></table></figure>
+
+<p>如果我们希望将该函数应用到列表中的奇数项，那么不采用列表推导式的情况下，我们一般会写成以下形式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; my_list = [1, 2, 3, 4, 5]</span><br><span class="line">&gt;&gt;&gt; new_list = []</span><br><span class="line">&gt;&gt;&gt; for x in my_list:</span><br><span class="line">&gt;&gt;&gt; if x % 2 != 0:</span><br><span class="line">&gt;&gt;&gt; new_list.append(stupid_func(x))</span><br><span class="line">&gt;&gt;&gt; print(new_list)</span><br><span class="line">[6, 14, 30]</span><br></pre></td></tr></table></figure>
+
+<p>但是现在我们有了列表推导式，那么上面代码可以等价修改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; my_list = [1, 2, 3, 4, 5]</span><br><span class="line">&gt;&gt;&gt; print([stupid_func(x) for x in my_list if x % 2 != 0])</span><br><span class="line">[6, 14, 30]</span><br></pre></td></tr></table></figure>
+
+<p>列表推导式的一般语法可以表示为 [ expression for item in list ]，如果你希望加上一些布尔型条件语句，那么上面的语法可以修改为 [ expression for item in list if conditional ]，它的结构其实和下面是等价的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; for item in list:</span><br><span class="line">&gt;&gt;&gt; if conditional:</span><br><span class="line">&gt;&gt;&gt; expression</span><br></pre></td></tr></table></figure>
+
+<p>上面的列表推导式可以进一步简化，即不需要定义一个新函数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print([x ** 2 + 5 for x in my_list if x % 2 != 0])</span><br><span class="line">[6, 14, 30]</span><br></pre></td></tr></table></figure>
+
+<h3 id="Lambda-和-Map"><a href="#Lambda-和-Map" class="headerlink" title="Lambda 和 Map"></a>Lambda 和 Map</h3><p>Lambda 是一种匿名函数，它看起来可能有一点奇怪，但是一旦你理解了它，那么它就会变得非常直观与强大。</p>
+<p>一般而言，Lambda 函数都比较小，它也不需要定义函数名。那么为什么需要匿名函数？简单而言，Lambda 最常执行一些直观的运算，它并不需要标准的函数定义，而且也不需要新的函数名再次调用。</p>
+<p>还是拿上面的先平方再加 5 为例，前面我们是定义了一个标准的函数，def stupid_func(x)，现在我们可以试试 Lambda 匿名函数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; stupid_func = (lambda x : x ** 2 + 5)</span><br><span class="line">&gt;&gt;&gt; print([stupid_func(1), stupid_func(3), stupid_func(5)])</span><br><span class="line">[6, 14, 30]</span><br></pre></td></tr></table></figure>
+
+<p>那么我们为什么要用上面的表达式？很大一部分原因在于，当我们想执行一些简单运算时，可以不需要定义真实函数就能完成。例如排序列表元素，一种直观的方法可以使用 sorted() 方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; my_list = [2, 1, 0, -1, -2]</span><br><span class="line">&gt;&gt;&gt; print(sorted(my_list))</span><br><span class="line">[-2, -1, 0, 1, 2]</span><br></pre></td></tr></table></figure>
+
+<p>这只能默认从大到小或从小到大排序，但是借助 Lambda 表达式，我们可以实现更自由的排序标准。如下所示我们希望根据最小的平方数对列表进行排序，其可以使用 Lambda 函数定义键，从而告诉 sorted() 方法该怎样排序。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(sorted(my_list, key = lambda x : x ** 2))</span><br><span class="line">[0, -1, 1, -2, 2]</span><br></pre></td></tr></table></figure>
+
+<p>Map 是一个简单的函数，它可以将某个函数应用到其它一些序列元素，例如列表。如果我们有两个列表，我们希望将这两个列表对应的元素相乘，那么使用 lambda 函数和 map 可以快速实现这一功能：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(list(map(lambda x, y : x * y, [1, 2, 3], [4, 5, 6])))</span><br><span class="line">[4, 10, 18]</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码非常优雅，如果不用它们两者，那么一般的表达需要写成这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; x, y = [1, 2, 3], [4, 5, 6]</span><br><span class="line">&gt;&gt;&gt; z = []</span><br><span class="line">&gt;&gt;&gt; for i in range(len(x)):</span><br><span class="line">&gt;&gt;&gt; z.append(x[i] * y[i])</span><br><span class="line">&gt;&gt;&gt; print(z)</span><br><span class="line">[4, 10, 18]</span><br></pre></td></tr></table></figure>
+
+<h3 id="单行条件语句"><a href="#单行条件语句" class="headerlink" title="单行条件语句"></a>单行条件语句</h3><p>如果我们使用条件语句，那么最可能写成下面这个样子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; x = int(input())</span><br><span class="line">&gt;&gt;&gt; if x &gt;= 10:</span><br><span class="line">&gt;&gt;&gt; print(&quot;Horse&quot;)</span><br><span class="line">&gt;&gt;&gt; elif 1 &lt; x &lt; 10:</span><br><span class="line">&gt;&gt;&gt; print(&quot;Duck&quot;)</span><br><span class="line">&gt;&gt;&gt; else:</span><br><span class="line">&gt;&gt;&gt; print(&quot;Baguette&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>但其实我们也可以把所有条件都写在 print 函数内，即上面 7 行代码可以等价写成如下一行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(&quot;Horse&quot; if x &gt;= 10 else &quot;Duck&quot; if 1 &lt; x &lt; 10 else &quot;Baguette&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>这样看起来真的非常简洁，如果你查看以前写的代码，真的有很多都可以改成这种表达式。</p>
+<h3 id="zip"><a href="#zip" class="headerlink" title="zip()"></a>zip()</h3><p>前面在介绍 map() 函数时，我们举了个例子将某个函数应用到平行的两个列表，而 zip() 函数可以更简单地做到这一点。</p>
+<p>如果我们有两个列表，第一个列表包含了名，第二个列表包含了姓，使用 zip() 函数，我们可以将它们拼接在一起。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; first_names = [&quot;Peter&quot;, &quot;Christian&quot;, &quot;Klaus&quot;]</span><br><span class="line">&gt;&gt;&gt; last_names = [&quot;Jensen&quot;, &quot;Smith&quot;, &quot;Nistrup&quot;]</span><br><span class="line">&gt;&gt;&gt; print([&#x27; &#x27;.join(x) for x in zip(first_names, last_names)])</span><br><span class="line">[&#x27;Peter Jensen&#x27;, &#x27;Christian Smith&#x27;, &#x27;Klaus Nistrup&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p>也就是说，zip 将两个等长的列表变为了一对一对的，即 ((“Peter”, “Jensen”), (“Christian”, “Smith”), (“Klaus”, “Nistrup”))。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://justinzm.github.io/2019/10/05/Python-Tablib%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BAN%E7%A7%8D%E6%A0%BC%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="草根之明">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="草根之明">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/05/Python-Tablib%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BAN%E7%A7%8D%E6%A0%BC%E5%BC%8F/" class="post-title-link" itemprop="url">Python Tablib实现数据导出N种格式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-05 20:28:31" itemprop="dateCreated datePublished" datetime="2019-10-05T20:28:31+08:00">2019-10-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-10 15:32:45" itemprop="dateModified" datetime="2022-09-10T15:32:45+08:00">2022-09-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="遇见-Tablib"><a href="#遇见-Tablib" class="headerlink" title="遇见 Tablib"></a>遇见 Tablib</h3><p>我们在 Python 实际开发过程中，经常涉及将数据导出为 Excel、Csv、Yaml、Json 等各种格式的文件的需求，一些粗鲁的实现方式是通过安装各种第三方模块以支持不同格式文件的导出操作。</p>
+<p>接下来要我们要介绍的这个模块，再也不需要担心因导出不同格式数据时而调用各种第三方模块了，当然使用 Pandas 也是一个不错的选择，只是过于重量级了。</p>
+<p>Python Tablib 是麻省理工学院授权的与格式无关的表格数据集库。支持导入、导出和操作表格数据集。优雅的将数据导出为各种不同的格式，包括Excel，Json，Html，Yaml，Csv，Tsv等格式。</p>
+<h3 id="Tablib-安装"><a href="#Tablib-安装" class="headerlink" title="Tablib 安装"></a>Tablib 安装</h3><p>我们在 Windows10 Python3 环境下，使用 pip 进行安装 ，安装命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install tablib</span><br></pre></td></tr></table></figure>
+<p>接下来，让我们一步步了解如何使用 Tablib ，简洁而又优雅的实现将数据导出为各种格式。</p>
+<h3 id="创建数据集"><a href="#创建数据集" class="headerlink" title="创建数据集"></a>创建数据集</h3><p>我们使用 tablib.Dataset 方法，采用如下方式创建数据集：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import tablib</span><br><span class="line"></span><br><span class="line"># 表头 字段名或者列名</span><br><span class="line">headers = (&#x27;id&#x27;, &#x27;name&#x27;, &#x27;age&#x27;, &#x27;grade&#x27;)</span><br><span class="line"># 数据</span><br><span class="line">data = [</span><br><span class="line">    [1, &#x27;Troy&#x27;, 20, 78],</span><br><span class="line">    [2, &#x27;Orla&#x27;, 21, 89],</span><br><span class="line">    [3, &#x27;Cody&#x27;, 20, 96],</span><br><span class="line">    [4, &#x27;Yana&#x27;, 19, 77],</span><br><span class="line">    [5, &#x27;Maya&#x27;, 21, 59],</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"># 创建数据集</span><br><span class="line">dataset_o = tablib.Dataset(*data, headers=headers)</span><br><span class="line">print(dataset_o)</span><br><span class="line"></span><br><span class="line"># id|name|age|grade</span><br><span class="line"># --|----|---|-----</span><br><span class="line"># 1 |Troy|20 |78   </span><br><span class="line"># 2 |Orla|21 |89   </span><br><span class="line"># 3 |Cody|20 |96   </span><br><span class="line"># 4 |Yana|19 |77   </span><br><span class="line"># 5 |Maya|21 |59 </span><br></pre></td></tr></table></figure>
+<p>我们还可以另一种方式创建数据集，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import tablib</span><br><span class="line"></span><br><span class="line">dataset_t = tablib.Dataset()</span><br><span class="line"></span><br><span class="line"># 添加表头 字段名或者列名</span><br><span class="line">dataset_t.headers = (&#x27;id&#x27;, &#x27;name&#x27;, &#x27;age&#x27;, &#x27;grade&#x27;)</span><br><span class="line"># 数据</span><br><span class="line">data = [</span><br><span class="line">    [1, &#x27;Troy&#x27;, 20, 78],</span><br><span class="line">    [2, &#x27;Orla&#x27;, 21, 89],</span><br><span class="line">    [3, &#x27;Cody&#x27;, 20, 96],</span><br><span class="line">    [4, &#x27;Yana&#x27;, 19, 77],</span><br><span class="line">    [5, &#x27;Maya&#x27;, 21, 59],</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">for t in data:</span><br><span class="line">    # 添加数据</span><br><span class="line">    dataset_t.append(t)</span><br><span class="line">print(dataset_t)</span><br><span class="line"></span><br><span class="line"># id|name|age|grade</span><br><span class="line"># --|----|---|-----</span><br><span class="line"># 1 |Troy|20 |78   </span><br><span class="line"># 2 |Orla|21 |89   </span><br><span class="line"># 3 |Cody|20 |96   </span><br><span class="line"># 4 |Yana|19 |77   </span><br><span class="line"># 5 |Maya|21 |59 </span><br></pre></td></tr></table></figure>
+
+<p>我们还可以通过导入现有文件数据的方式创建数据集，如下，我们为 dump.json 文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[&quot;Jack&quot;, &quot;20&quot;], [&quot;Tom&quot;, &quot;30&quot;]]</span><br></pre></td></tr></table></figure>
+
+<p>我们使用 tablib.Dataset.load 方法导入 dump.json 文件数据，实现如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import tablib</span><br><span class="line"></span><br><span class="line">dataset_json = tablib.Dataset().load(open(&#x27;dump.json&#x27;).read())</span><br><span class="line">print(dataset_json)</span><br><span class="line">print(dataset_json.json)</span><br><span class="line"></span><br><span class="line"># Jack|20</span><br><span class="line"># Tom |30</span><br><span class="line"># [[&quot;Jack&quot;, &quot;20&quot;], [&quot;Tom&quot;, &quot;30&quot;]]</span><br></pre></td></tr></table></figure>
+
+<p>创建一个 tablib.Dataset 通过 load 方法，导入现已存在的文件。强大之处是 tablib 能够自动检测传入的文件类型，并使用适当的格式化方法进行导入，实现从各种不同的文件类型中导入。</p>
+<p>比如，我们再导入 dataset.xlsx 文件，代码实现如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import tablib</span><br><span class="line">dataset_xlsx = tablib.Dataset().load(open(&#x27;dump.xlsx&#x27;).read())</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加行"><a href="#添加行" class="headerlink" title="添加行"></a>添加行</h3><p>我们可以使用 tablib.Dataset.append 方法，实现向数据集尾部添加行数据，需要注意的是每行的元素数量应与数据集的列数相同</p>
+<p>我们也可以使用 tablib.Dataset.insert 方法，实现向数据集指定位置添加行数据，同样需要注意每行的元素数量应与数据集的列数相同</p>
+<p>代码实现如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">import tablib</span><br><span class="line"></span><br><span class="line"># 表头 字段名或者列名</span><br><span class="line">headers = (&#x27;id&#x27;, &#x27;name&#x27;, &#x27;age&#x27;, &#x27;grade&#x27;)</span><br><span class="line"># 数据</span><br><span class="line">data = [</span><br><span class="line">    [1, &#x27;Troy&#x27;, 20, 78],</span><br><span class="line">    [2, &#x27;Orla&#x27;, 21, 89],</span><br><span class="line">    [3, &#x27;Cody&#x27;, 20, 96],</span><br><span class="line">    [4, &#x27;Yana&#x27;, 19, 77],</span><br><span class="line">    [5, &#x27;Maya&#x27;, 21, 59],</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"># 创建数据集</span><br><span class="line">dataset_o = tablib.Dataset(*data, headers=headers)</span><br><span class="line"></span><br><span class="line"># 添加到最后一行的下面</span><br><span class="line">dataset_o.append([7, &#x27;Lucy&#x27;, 21, 68])</span><br><span class="line"></span><br><span class="line"># 向数据集的第6行，添加数据</span><br><span class="line">dataset_o.insert(5, [6, &#x27;Zoya&#x27;, 20, 99])</span><br><span class="line">print(dataset_o)</span><br><span class="line"></span><br><span class="line"># id|name|age|grade</span><br><span class="line"># --|----|---|-----</span><br><span class="line"># 1 |Troy|20 |78   </span><br><span class="line"># 2 |Orla|21 |89   </span><br><span class="line"># 3 |Cody|20 |96   </span><br><span class="line"># 4 |Yana|19 |77   </span><br><span class="line"># 5 |Maya|21 |59   </span><br><span class="line"># 6 |Zoya|20 |99   </span><br><span class="line"># 6 |Lucy|21 |68 </span><br></pre></td></tr></table></figure>
+
+<h3 id="添加列"><a href="#添加列" class="headerlink" title="添加列"></a>添加列</h3><p>我们可以使用 tablib.Dataset.append_col 方法，实现向数据集<strong>尾部添加列数据</strong>，需要注意的是每列的元素数量应与数据集的行数相同。</p>
+<p>我们也可以使用 tablib.Dataset.insert_col 方法，实现向数据集指定位置添加列数据，需要注意的是每列的元素数量应于数据集的行数相同，代码实现如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import tablib</span><br><span class="line"></span><br><span class="line"># 表头 字段名或者列名</span><br><span class="line">headers = (&#x27;id&#x27;, &#x27;name&#x27;, &#x27;age&#x27;, &#x27;grade&#x27;)</span><br><span class="line"># 数据</span><br><span class="line">data = [</span><br><span class="line">    [1, &#x27;Troy&#x27;, 20, 78],</span><br><span class="line">    [2, &#x27;Orla&#x27;, 21, 89],</span><br><span class="line">    [3, &#x27;Cody&#x27;, 20, 96],</span><br><span class="line">    [4, &#x27;Yana&#x27;, 19, 77],</span><br><span class="line">    [5, &#x27;Maya&#x27;, 21, 59],</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"># 创建数据集</span><br><span class="line">dataset_o = tablib.Dataset(*data, headers=headers)</span><br><span class="line"></span><br><span class="line"># 添加列到最后一列，数据集中有5行，因此该列数据应为5个元素</span><br><span class="line">dataset_o.append_col([&#x27;302&#x27;, &#x27;303&#x27;, &#x27;304&#x27;, &#x27;305&#x27;, &#x27;306&#x27;], header=&#x27;class&#x27;)</span><br><span class="line"></span><br><span class="line"># 在第3列添加新列，数据集中有5行，因此该列数据应为5个元素。</span><br><span class="line">dataset_o.insert_col(2, (&#x27;male&#x27;, &#x27;female&#x27;, &#x27;abc&#x27;, &#x27;efg&#x27;, &#x27;zxc&#x27;), header=&#x27;sex&#x27;)</span><br><span class="line"></span><br><span class="line">print(dataset_o)</span><br><span class="line"></span><br><span class="line"># id|name|sex   |age|grade|class</span><br><span class="line"># --|----|------|---|-----|-----</span><br><span class="line"># 1 |Troy|male  |20 |78   |302  </span><br><span class="line"># 2 |Orla|female|21 |89   |303  </span><br><span class="line"># 3 |Cody|abc   |20 |96   |304  </span><br><span class="line"># 4 |Yana|efg   |19 |77   |305  </span><br><span class="line"># 5 |Maya|zxc   |21 |59   |306 </span><br></pre></td></tr></table></figure>
+
+<h3 id="选择行和列"><a href="#选择行和列" class="headerlink" title="选择行和列"></a>选择行和列</h3><p>我们可以像Python列表一样通过切片和索引获取行数据。像Python字典通过列名和索引获取列数据，代码实现如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">import tablib</span><br><span class="line"></span><br><span class="line"># 表头 字段名或者列名</span><br><span class="line">headers = (&#x27;id&#x27;, &#x27;name&#x27;, &#x27;age&#x27;, &#x27;grade&#x27;)</span><br><span class="line"># 数据</span><br><span class="line">data = [</span><br><span class="line">    [1, &#x27;Troy&#x27;, 20, 78],</span><br><span class="line">    [2, &#x27;Orla&#x27;, 21, 89],</span><br><span class="line">    [3, &#x27;Cody&#x27;, 20, 96],</span><br><span class="line">    [4, &#x27;Yana&#x27;, 19, 77],</span><br><span class="line">    [5, &#x27;Maya&#x27;, 21, 59],</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"># 创建数据集</span><br><span class="line">dataset_o = tablib.Dataset(*data, headers=headers)</span><br><span class="line"></span><br><span class="line"># 获得表头</span><br><span class="line">print(dataset_o.headers)</span><br><span class="line"></span><br><span class="line"># 获取第一行</span><br><span class="line">print(dataset_o[0])</span><br><span class="line"></span><br><span class="line"># 获取grade列</span><br><span class="line">print(dataset_o[&#x27;grade&#x27;])</span><br><span class="line"></span><br><span class="line"># 获取最后一行</span><br><span class="line">print(dataset_o[-1])</span><br><span class="line"></span><br><span class="line"># [&#x27;id&#x27;, &#x27;name&#x27;, &#x27;age&#x27;, &#x27;grade&#x27;]</span><br><span class="line"># (1, &#x27;Troy&#x27;, 20, 78)</span><br><span class="line"># [78, 89, 96, 77, 59]</span><br><span class="line"># (5, &#x27;Maya&#x27;, 21, 59)</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除行"><a href="#删除行" class="headerlink" title="删除行"></a>删除行</h3><p>我们可以使用以下方式，实现行删除：</p>
+<ul>
+<li>tablib.Dataset.pop ：删除最后一行</li>
+<li>tablib.Dataset.lpop ：删除第一行</li>
+<li>del dataset[n: m] ：删除指定范围的行</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import tablib</span><br><span class="line"></span><br><span class="line"># 表头 字段名或者列名</span><br><span class="line">headers = (&#x27;id&#x27;, &#x27;name&#x27;, &#x27;age&#x27;, &#x27;grade&#x27;)</span><br><span class="line"># 数据</span><br><span class="line">data = [</span><br><span class="line">    [1, &#x27;Troy&#x27;, 20, 78],</span><br><span class="line">    [2, &#x27;Orla&#x27;, 21, 89],</span><br><span class="line">    [3, &#x27;Cody&#x27;, 20, 96],</span><br><span class="line">    [4, &#x27;Yana&#x27;, 19, 77],</span><br><span class="line">    [5, &#x27;Maya&#x27;, 21, 59],</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"># 创建数据集</span><br><span class="line">dataset_o = tablib.Dataset(*data, headers=headers)</span><br><span class="line"></span><br><span class="line"># 删除最后一行</span><br><span class="line">dataset_o.pop()</span><br><span class="line"></span><br><span class="line"># 删除第一行</span><br><span class="line">dataset_o.lpop()</span><br><span class="line"></span><br><span class="line"># 删除第[2,)行数据，只保留前两行</span><br><span class="line">del dataset_o[2:]</span><br><span class="line"></span><br><span class="line">print(dataset_o)</span><br><span class="line"></span><br><span class="line"># id|name|age|grade</span><br><span class="line"># --|----|---|-----</span><br><span class="line"># 2 |Orla|21 |89   </span><br><span class="line"># 3 |Cody|20 |96   </span><br></pre></td></tr></table></figure>
+
+<h3 id="删除列"><a href="#删除列" class="headerlink" title="删除列"></a>删除列</h3><p>我们可以使用 del dataset[‘column_name’] ，实现删除指定列，代码实现如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import tablib</span><br><span class="line"></span><br><span class="line"># 表头 字段名或者列名</span><br><span class="line">headers = (&#x27;id&#x27;, &#x27;name&#x27;, &#x27;age&#x27;, &#x27;grade&#x27;)</span><br><span class="line"># 数据</span><br><span class="line">data = [</span><br><span class="line">    [1, &#x27;Troy&#x27;, 20, 78],</span><br><span class="line">    [2, &#x27;Orla&#x27;, 21, 89],</span><br><span class="line">    [3, &#x27;Cody&#x27;, 20, 96],</span><br><span class="line">    [4, &#x27;Yana&#x27;, 19, 77],</span><br><span class="line">    [5, &#x27;Maya&#x27;, 21, 59],</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"># 创建数据集</span><br><span class="line">dataset_o = tablib.Dataset(*data, headers=headers)</span><br><span class="line"></span><br><span class="line"># 删除age列</span><br><span class="line">del dataset_o[&#x27;age&#x27;]</span><br><span class="line"></span><br><span class="line">print(dataset_o)</span><br><span class="line"></span><br><span class="line"># id|name|grade</span><br><span class="line"># --|----|-----</span><br><span class="line"># 1 |Troy|78   </span><br><span class="line"># 2 |Orla|89   </span><br><span class="line"># 3 |Cody|96   </span><br><span class="line"># 4 |Yana|77   </span><br><span class="line"># 5 |Maya|59   </span><br></pre></td></tr></table></figure>
+
+<h3 id="数据格式转换"><a href="#数据格式转换" class="headerlink" title="数据格式转换"></a>数据格式转换</h3><p>我们可以将数据集转换为如下任一格式，强无敌。</p>
+<ul>
+<li>Excel ( 支持Books)</li>
+<li>Json ( 支持Books)</li>
+<li>Yaml (支持 Books)</li>
+<li>Pandas DataFrames</li>
+<li>Csv</li>
+<li>Html</li>
+<li>Jira</li>
+<li>Tsv</li>
+<li>Ods</li>
+<li>Dbf</li>
+<li>Dict</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">import tablib</span><br><span class="line"></span><br><span class="line"># 表头 字段名或者列名</span><br><span class="line">headers = (&#x27;id&#x27;, &#x27;name&#x27;, &#x27;age&#x27;, &#x27;grade&#x27;)</span><br><span class="line"># 数据</span><br><span class="line">data = [</span><br><span class="line">    [1, &#x27;Troy&#x27;, 20, 20],</span><br><span class="line">    [2, &#x27;Orla&#x27;, 21, 89],</span><br><span class="line">    [3, &#x27;Cody&#x27;, 20, 96],</span><br><span class="line">    [4, &#x27;Yana&#x27;, 19, 77],</span><br><span class="line">    [5, &#x27;Maya&#x27;, 21, 59],</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"># 创建数据集</span><br><span class="line">dataset_o = tablib.Dataset(*data, headers=headers)</span><br><span class="line"></span><br><span class="line">print(dataset_o.yaml)</span><br><span class="line">print(dataset_o.csv)</span><br><span class="line">print(dataset_o.json)</span><br><span class="line">print(dataset_o.df)</span><br><span class="line"></span><br><span class="line"># - age: 20</span><br><span class="line">#   grade: 20</span><br><span class="line">#   id: 1</span><br><span class="line">#   name: Troy</span><br><span class="line"># - age: 21</span><br><span class="line">#   grade: 89</span><br><span class="line">#   id: 2</span><br><span class="line">#   name: Orla</span><br><span class="line"># - age: 20</span><br><span class="line">#   grade: 96</span><br><span class="line">#   id: 3</span><br><span class="line">#   name: Cody</span><br><span class="line"># - age: 19</span><br><span class="line">#   grade: 77</span><br><span class="line">#   id: 4</span><br><span class="line">#   name: Yana</span><br><span class="line"># - age: 21</span><br><span class="line">#   grade: 59</span><br><span class="line">#   id: 5</span><br><span class="line">#   name: Maya</span><br><span class="line"># </span><br><span class="line"># id,name,age,grade</span><br><span class="line"># 1,Troy,20,20</span><br><span class="line"># 2,Orla,21,89</span><br><span class="line"># 3,Cody,20,96</span><br><span class="line"># 4,Yana,19,77</span><br><span class="line"># 5,Maya,21,59</span><br><span class="line"># </span><br><span class="line"># [&#123;&quot;id&quot;: 1, &quot;name&quot;: &quot;Troy&quot;, &quot;age&quot;: 20, &quot;grade&quot;: 20&#125;, &#123;&quot;id&quot;: 2, &quot;name&quot;: &quot;Orla&quot;, &quot;age&quot;: 21, &quot;grade&quot;: 89&#125;, &#123;&quot;id&quot;: 3, &quot;name&quot;: &quot;Cody&quot;, &quot;age&quot;: 20, &quot;grade&quot;: 96&#125;, &#123;&quot;id&quot;: 4, &quot;name&quot;: &quot;Yana&quot;, &quot;age&quot;: 19, &quot;grade&quot;: 77&#125;, &#123;&quot;id&quot;: 5, &quot;name&quot;: &quot;Maya&quot;, &quot;age&quot;: 21, &quot;grade&quot;: 59&#125;]</span><br><span class="line">#    id  name  age  grade</span><br><span class="line"># 0   1  Troy   20     20</span><br><span class="line"># 1   2  Orla   21     89</span><br><span class="line"># 2   3  Cody   20     96</span><br><span class="line"># 3   4  Yana   19     77</span><br><span class="line"># 4   5  Maya   21     59</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据导出"><a href="#数据导出" class="headerlink" title="数据导出"></a>数据导出</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import tablib</span><br><span class="line"></span><br><span class="line"># 表头 字段名或者列名</span><br><span class="line">headers = (&#x27;id&#x27;, &#x27;name&#x27;, &#x27;age&#x27;, &#x27;grade&#x27;)</span><br><span class="line"># 数据</span><br><span class="line">data = [</span><br><span class="line">    [1, &#x27;Troy&#x27;, 20, 20],</span><br><span class="line">    [2, &#x27;Orla&#x27;, 21, 89],</span><br><span class="line">    [3, &#x27;Cody&#x27;, 20, 96],</span><br><span class="line">    [4, &#x27;Yana&#x27;, 19, 77],</span><br><span class="line">    [5, &#x27;Maya&#x27;, 21, 59],</span><br><span class="line">]</span><br><span class="line">                          </span><br><span class="line"># 创建数据集</span><br><span class="line">dataset_o = tablib.Dataset(*data, headers=headers)</span><br><span class="line"></span><br><span class="line"># 设置标签（sheet）</span><br><span class="line">dataset_o.title = &#x27;dataset_o&#x27;</span><br><span class="line">with open(&#x27;dataset_o.xlsx&#x27;, &#x27;wb&#x27;) as xlsx:</span><br><span class="line">    xlsx.write(dataset_o.xlsx)</span><br></pre></td></tr></table></figure>
+<p>使用DataBook 导出多页数据</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://justinzm.github.io/2019/10/05/python%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="草根之明">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="草根之明">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/05/python%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">python实用技巧</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-05 19:13:25" itemprop="dateCreated datePublished" datetime="2019-10-05T19:13:25+08:00">2019-10-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-10 15:33:04" itemprop="dateModified" datetime="2022-09-10T15:33:04+08:00">2022-09-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="重复元素判定"><a href="#重复元素判定" class="headerlink" title="重复元素判定"></a>重复元素判定</h3><p>以下方法可以检查给定列表是不是存在重复元素，它会使用 set() 函数来移除所有重复元素。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def all_unique(lst):</span><br><span class="line">    return len(lst) == len(set(lst))</span><br><span class="line"></span><br><span class="line">x = [1,1,2,2,3,2,3,4,5,6]</span><br><span class="line">y = [1,2,3,4,5]</span><br><span class="line">all_unique(x) # False</span><br><span class="line">all_unique(y) # True</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符元素组成判定"><a href="#字符元素组成判定" class="headerlink" title="字符元素组成判定"></a>字符元素组成判定</h3><p>检查两个字符串的组成元素是不是一样的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from collections import Counter</span><br><span class="line"></span><br><span class="line">def anagram(first, second):</span><br><span class="line">    return Counter(first) == Counter(second)</span><br><span class="line"></span><br><span class="line">anagram(&quot;abcd3&quot;, &quot;3acdb&quot;) # True</span><br></pre></td></tr></table></figure>
+
+<h3 id="内存占用"><a href="#内存占用" class="headerlink" title="内存占用"></a>内存占用</h3><p>下面的代码块可以检查变量 variable 所占用的内存。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import sys </span><br><span class="line"></span><br><span class="line">variable = 30 </span><br><span class="line">print(sys.getsizeof(variable)) # 24</span><br></pre></td></tr></table></figure>
+
+<h3 id="字节占用"><a href="#字节占用" class="headerlink" title="字节占用"></a>字节占用</h3><p>下面的代码块可以检查字符串占用的字节数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def byte_size(string):</span><br><span class="line">    return(len(string.encode(&#x27;utf-8&#x27;)))</span><br><span class="line"></span><br><span class="line">byte_size(&#x27;😀&#x27;) # 4</span><br><span class="line">byte_size(&#x27;Hello World&#x27;) # 11   </span><br></pre></td></tr></table></figure>
+
+<h3 id="打印-N-次字符串"><a href="#打印-N-次字符串" class="headerlink" title="打印 N 次字符串"></a>打印 N 次字符串</h3><p>该代码块不需要循环语句就能打印 N 次字符串。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">n = 2; </span><br><span class="line">s =&quot;Programming&quot;; </span><br><span class="line"></span><br><span class="line">print(s * n);</span><br><span class="line"># ProgrammingProgramming  </span><br></pre></td></tr></table></figure>
+
+<h3 id="大写第一个字母"><a href="#大写第一个字母" class="headerlink" title="大写第一个字母"></a>大写第一个字母</h3><p>以下代码块会使用 title() 方法，从而大写字符串中每一个单词的首字母。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s = &quot;programming is awesome&quot;</span><br><span class="line"></span><br><span class="line">print(s.title())</span><br><span class="line"># Programming Is Awesome</span><br></pre></td></tr></table></figure>
+
+<h3 id="分块"><a href="#分块" class="headerlink" title="分块"></a>分块</h3><p>给定具体的大小，定义一个函数以按照这个大小切割列表。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from math import ceil</span><br><span class="line"></span><br><span class="line">def chunk(lst, size):</span><br><span class="line">    return list(</span><br><span class="line">        map(lambda x: lst[x * size:x * size + size],</span><br><span class="line">            list(range(0, ceil(len(lst) / size)))))</span><br><span class="line"></span><br><span class="line">chunk([1,2,3,4,5],2)</span><br><span class="line"># [[1,2],[3,4],5]</span><br></pre></td></tr></table></figure>
+
+<h3 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h3><p>这个方法可以将布尔型的值去掉，例如（False，None，0，“”），它使用 filter() 函数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def compact(lst):</span><br><span class="line">    return list(filter(bool, lst))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">compact([0, 1, False, 2, &#x27;&#x27;, 3, &#x27;a&#x27;, &#x27;s&#x27;, 34])</span><br><span class="line"># [ 1, 2, 3, &#x27;a&#x27;, &#x27;s&#x27;, 34 ]</span><br></pre></td></tr></table></figure>
+
+<h3 id="解包"><a href="#解包" class="headerlink" title="解包"></a>解包</h3><p>如下代码段可以将打包好的成对列表解开成两组不同的元组。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">array = [[&#x27;a&#x27;, &#x27;b&#x27;], [&#x27;c&#x27;, &#x27;d&#x27;], [&#x27;e&#x27;, &#x27;f&#x27;]]</span><br><span class="line">transposed = zip(*array)</span><br><span class="line">print(transposed)</span><br><span class="line"># [(&#x27;a&#x27;, &#x27;c&#x27;, &#x27;e&#x27;), (&#x27;b&#x27;, &#x27;d&#x27;, &#x27;f&#x27;)]</span><br></pre></td></tr></table></figure>
+
+<h3 id="链式对比"><a href="#链式对比" class="headerlink" title="链式对比"></a>链式对比</h3><p>我们可以在一行代码中使用不同的运算符对比多个不同的元素。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = 3</span><br><span class="line">print( 2 &lt; a &lt; 8) # True</span><br><span class="line">print(1 == a &lt; 2) # False</span><br></pre></td></tr></table></figure>
+
+<h3 id="逗号连接"><a href="#逗号连接" class="headerlink" title="逗号连接"></a>逗号连接</h3><p>下面的代码可以将列表连接成单个字符串，且每一个元素间的分隔方式设置为了逗号。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hobbies = [&quot;basketball&quot;, &quot;football&quot;, &quot;swimming&quot;]</span><br><span class="line"></span><br><span class="line">print(&quot;My hobbies are: &quot; + &quot;, &quot;.join(hobbies))</span><br><span class="line"># My hobbies are: basketball, football, swimming</span><br></pre></td></tr></table></figure>
+
+<h3 id="元音统计"><a href="#元音统计" class="headerlink" title="元音统计"></a>元音统计</h3><p>以下方法将统计字符串中的元音 (‘a’, ‘e’, ‘i’, ‘o’, ‘u’) 的个数，它是通过正则表达式做的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line"></span><br><span class="line">def count_vowels(str):</span><br><span class="line">    return len(len(re.findall(r&#x27;[aeiou]&#x27;, str, re.IGNORECASE)))</span><br><span class="line"></span><br><span class="line">count_vowels(&#x27;foobar&#x27;) # 3</span><br><span class="line">count_vowels(&#x27;gym&#x27;) # 0</span><br></pre></td></tr></table></figure>
+
+<h3 id="首字母小写"><a href="#首字母小写" class="headerlink" title="首字母小写"></a>首字母小写</h3><p>如下方法将令给定字符串的第一个字符统一为小写。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def decapitalize(string):</span><br><span class="line">    return str[:1].lower() + str[1:]</span><br><span class="line"></span><br><span class="line">decapitalize(&#x27;FooBar&#x27;) # &#x27;fooBar&#x27;</span><br><span class="line">decapitalize(&#x27;FooBar&#x27;) # &#x27;fooBar&#x27;</span><br></pre></td></tr></table></figure>
+
+<h3 id="展开列表"><a href="#展开列表" class="headerlink" title="展开列表"></a>展开列表</h3><p>该方法将通过递归的方式将列表的嵌套展开为单个列表。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">def spread(arg):</span><br><span class="line">    ret = []</span><br><span class="line">    for i in arg:</span><br><span class="line">        if isinstance(i, list):</span><br><span class="line">            ret.extend(i)</span><br><span class="line">        else:</span><br><span class="line">            ret.append(i)</span><br><span class="line">    return ret</span><br><span class="line"></span><br><span class="line">def deep_flatten(lst):</span><br><span class="line">    result = []</span><br><span class="line">    result.extend(</span><br><span class="line">        spread(list(map(lambda x: deep_flatten(x) if type(x) == list else x, lst))))</span><br><span class="line">    return result</span><br><span class="line"></span><br><span class="line">deep_flatten([1, [2], [[3], 4], 5]) </span><br><span class="line"># [1,2,3,4,5]</span><br></pre></td></tr></table></figure>
+
+<h3 id="列表的差"><a href="#列表的差" class="headerlink" title="列表的差"></a>列表的差</h3><p>该方法将返回第一个列表的元素，其不在第二个列表内。如果同时要反馈第二个列表独有的元素，还需要加一句 set_b.difference(set_a)。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def difference(a, b):</span><br><span class="line">    set_a = set(a)</span><br><span class="line">    set_b = set(b)</span><br><span class="line">    comparison = set_a.difference(set_b)</span><br><span class="line">    return list(comparison)</span><br><span class="line"></span><br><span class="line">difference([1,2,3], [1,2,4]) </span><br><span class="line"># [3]</span><br></pre></td></tr></table></figure>
+
+<h3 id="通过函数取差"><a href="#通过函数取差" class="headerlink" title="通过函数取差"></a>通过函数取差</h3><p>如下方法首先会应用一个给定的函数，然后再返回应用函数后结果有差别的列表元素。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def difference_by(a, b, fn):</span><br><span class="line">    b = set(map(fn, b))</span><br><span class="line">    return [item for item in a if fn(item) not in b]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">from math import floor</span><br><span class="line">difference_by([2.1, 1.2], [2.3, 3.4],floor) # [1.2]</span><br><span class="line">difference_by([&#123; &#x27;x&#x27;: 2 &#125;, &#123; &#x27;x&#x27;: 1 &#125;], [&#123; &#x27;x&#x27;: 1 &#125;], lambda v : v[&#x27;x&#x27;])</span><br><span class="line"># [ &#123; x: 2 &#125; ]</span><br></pre></td></tr></table></figure>
+
+<h3 id="链式函数调用"><a href="#链式函数调用" class="headerlink" title="链式函数调用"></a>链式函数调用</h3><p>你可以在一行代码内调用多个函数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def add(a, b):</span><br><span class="line">    return a + b</span><br><span class="line"></span><br><span class="line">def subtract(a, b):</span><br><span class="line">    return a - b</span><br><span class="line"></span><br><span class="line">a, b = 4, 5</span><br><span class="line">print((subtract if a &gt; b else add)(a, b)) </span><br><span class="line"># 9 </span><br></pre></td></tr></table></figure>
+
+<h3 id="检查重复项"><a href="#检查重复项" class="headerlink" title="检查重复项"></a>检查重复项</h3><p>如下代码将检查两个列表是不是有重复项。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def has_duplicates(lst):</span><br><span class="line">    return len(lst) != len(set(lst))</span><br><span class="line"></span><br><span class="line">x = [1,2,3,4,5,5]</span><br><span class="line">y = [1,2,3,4,5]</span><br><span class="line">has_duplicates(x) # True</span><br><span class="line">has_duplicates(y) # False</span><br></pre></td></tr></table></figure>
+
+<h3 id="合并两个字典"><a href="#合并两个字典" class="headerlink" title="合并两个字典"></a>合并两个字典</h3><p>下面的方法将用于合并两个字典。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def merge_two_dicts(a, b):</span><br><span class="line">    c = a.copy()   # make a copy of a </span><br><span class="line">    c.update(b)    # modify keys and values of a with the ones from b</span><br><span class="line">    return c</span><br><span class="line"></span><br><span class="line">a = &#123; &#x27;x&#x27;: 1, &#x27;y&#x27;: 2&#125;</span><br><span class="line">b = &#123; &#x27;y&#x27;: 3, &#x27;z&#x27;: 4&#125;</span><br><span class="line">print(merge_two_dicts(a, b))</span><br><span class="line"># &#123;&#x27;y&#x27;: 3, &#x27;x&#x27;: 1, &#x27;z&#x27;: 4&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在 Python 3.5 或更高版本中，我们也可以用以下方式合并字典：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def merge_dictionaries(a, b)</span><br><span class="line">   return &#123;**a, **b&#125;</span><br><span class="line"></span><br><span class="line">a = &#123; &#x27;x&#x27;: 1, &#x27;y&#x27;: 2&#125;</span><br><span class="line">b = &#123; &#x27;y&#x27;: 3, &#x27;z&#x27;: 4&#125;</span><br><span class="line">print(merge_dictionaries(a, b))</span><br><span class="line"># &#123;&#x27;y&#x27;: 3, &#x27;x&#x27;: 1, &#x27;z&#x27;: 4&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="将两个列表转化为字典"><a href="#将两个列表转化为字典" class="headerlink" title="将两个列表转化为字典"></a>将两个列表转化为字典</h3><p>如下方法将会把两个列表转化为单个字典。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def to_dictionary(keys, values):</span><br><span class="line">    return dict(zip(keys, values))</span><br><span class="line"></span><br><span class="line">keys = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]    </span><br><span class="line">values = [2, 3, 4]</span><br><span class="line">print(to_dictionary(keys, values))</span><br><span class="line"># &#123;&#x27;a&#x27;: 2, &#x27;c&#x27;: 4, &#x27;b&#x27;: 3&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用枚举"><a href="#使用枚举" class="headerlink" title="使用枚举"></a>使用枚举</h3><p>我们常用 For 循环来遍历某个列表，同样我们也能枚举列表的索引与值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">list = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;]</span><br><span class="line">for index, element in enumerate(list): </span><br><span class="line">    print(&quot;Value&quot;, element, &quot;Index &quot;, index, )</span><br><span class="line"></span><br><span class="line"># (&#x27;Value&#x27;, &#x27;a&#x27;, &#x27;Index &#x27;, 0)</span><br><span class="line"># (&#x27;Value&#x27;, &#x27;b&#x27;, &#x27;Index &#x27;, 1)</span><br><span class="line"># (&#x27;Value&#x27;, &#x27;c&#x27;, &#x27;Index &#x27;, 2)</span><br><span class="line"># (&#x27;Value&#x27;, &#x27;d&#x27;, &#x27;Index &#x27;, 3)    </span><br></pre></td></tr></table></figure>
+
+<h3 id="执行时间"><a href="#执行时间" class="headerlink" title="执行时间"></a>执行时间</h3><p>如下代码块可以用来计算执行特定代码所花费的时间。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line"></span><br><span class="line">start_time = time.time()</span><br><span class="line"></span><br><span class="line">a = 1</span><br><span class="line">b = 2</span><br><span class="line">c = a + b</span><br><span class="line">print(c) #3</span><br><span class="line"></span><br><span class="line">end_time = time.time()</span><br><span class="line">total_time = end_time - start_time</span><br><span class="line">print(&quot;Time: &quot;, total_time)</span><br><span class="line"></span><br><span class="line"># (&#x27;Time: &#x27;, 1.1205673217773438e-05)  </span><br></pre></td></tr></table></figure>
+
+<h3 id="Try-else"><a href="#Try-else" class="headerlink" title="Try else"></a>Try else</h3><p>我们在使用 try&#x2F;except 语句的时候也可以加一个 else 子句，如果没有触发错误的话，这个子句就会被运行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    2*3</span><br><span class="line">except TypeError:</span><br><span class="line">    print(&quot;An exception was raised&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;Thank God, no exceptions were raised.&quot;)</span><br><span class="line"></span><br><span class="line"># Thank God, no exceptions were raised.</span><br></pre></td></tr></table></figure>
+
+<h3 id="元素频率"><a href="#元素频率" class="headerlink" title="元素频率"></a>元素频率</h3><p>下面的方法会根据元素频率取列表中最常见的元素。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def most_frequent(list):</span><br><span class="line">    return max(set(list), key = list.count)</span><br><span class="line"></span><br><span class="line">list = [1,2,1,2,3,2,1,4,2]</span><br><span class="line">most_frequent(list)  </span><br></pre></td></tr></table></figure>
+
+<h3 id="回文序列"><a href="#回文序列" class="headerlink" title="回文序列"></a>回文序列</h3><p>以下方法会检查给定的字符串是不是回文序列，它首先会把所有字母转化为小写，并移除非英文字母符号。最后，它会对比字符串与反向字符串是否相等，相等则表示为回文序列。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def palindrome(string):</span><br><span class="line">    from re import sub</span><br><span class="line">    s = sub(&#x27;[\W_]&#x27;, &#x27;&#x27;, string.lower())</span><br><span class="line">    return s == s[::-1]</span><br><span class="line"></span><br><span class="line">palindrome(&#x27;taco cat&#x27;) # True</span><br></pre></td></tr></table></figure>
+
+<h3 id="不使用-if-else-的计算子"><a href="#不使用-if-else-的计算子" class="headerlink" title="不使用 if-else 的计算子"></a>不使用 if-else 的计算子</h3><p>这一段代码可以不使用条件语句就实现加减乘除、求幂操作，它通过字典这一数据结构实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import operator</span><br><span class="line">action = &#123;</span><br><span class="line">    &quot;+&quot;: operator.add,</span><br><span class="line">    &quot;-&quot;: operator.sub,</span><br><span class="line">    &quot;/&quot;: operator.truediv,</span><br><span class="line">    &quot;*&quot;: operator.mul,</span><br><span class="line">    &quot;**&quot;: pow</span><br><span class="line">&#125;</span><br><span class="line">print(action[&#x27;-&#x27;](50, 25)) </span><br><span class="line"># 25</span><br></pre></td></tr></table></figure>
+
+<h3 id="Shuffle"><a href="#Shuffle" class="headerlink" title="Shuffle"></a>Shuffle</h3><p>该算法会打乱列表元素的顺序，它主要会通过 Fisher-Yates 算法对新列表进行排序：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">from copy import deepcopy</span><br><span class="line">from random import randint</span><br><span class="line"></span><br><span class="line">def shuffle(lst):</span><br><span class="line">    temp_lst = deepcopy(lst)</span><br><span class="line">    m = len(temp_lst)</span><br><span class="line">    while (m):</span><br><span class="line">        m -= 1</span><br><span class="line">        i = randint(0, m)</span><br><span class="line">        temp_lst[m], temp_lst[i] = temp_lst[i], temp_lst[m]</span><br><span class="line">    return temp_lst</span><br><span class="line"></span><br><span class="line">foo = [1,2,3]</span><br><span class="line">shuffle(foo) </span><br><span class="line"># [2,3,1] , foo = [1,2,3]</span><br></pre></td></tr></table></figure>
+
+<h3 id="展开列表-1"><a href="#展开列表-1" class="headerlink" title="展开列表"></a>展开列表</h3><p>将列表内的所有元素，包括子列表，都展开成一个列表。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def spread(arg):</span><br><span class="line">    ret = []</span><br><span class="line">    for i in arg:</span><br><span class="line">        if isinstance(i, list):</span><br><span class="line">            ret.extend(i)</span><br><span class="line">        else:</span><br><span class="line">            ret.append(i)</span><br><span class="line">    return ret</span><br><span class="line"></span><br><span class="line">spread([1,2,3,[4,5,6],[7],8,9]) </span><br><span class="line"># [1,2,3,4,5,6,7,8,9]</span><br></pre></td></tr></table></figure>
+
+<h3 id="交换值"><a href="#交换值" class="headerlink" title="交换值"></a>交换值</h3><p>不需要额外的操作就能交换两个变量的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def swap(a, b):</span><br><span class="line">  return b, a</span><br><span class="line"></span><br><span class="line">a, b = -1, 14</span><br><span class="line">swap(a, b) </span><br><span class="line"># (14, -1)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="字典默认值"><a href="#字典默认值" class="headerlink" title="字典默认值"></a>字典默认值</h3><p>通过 Key 取对应的 Value 值，可以通过以下方式设置默认值。如果 get() 方法没有设置默认值，那么如果遇到不存在的 Key，则会返回 None。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;&#x27;a&#x27;: 1, &#x27;b&#x27;: 2&#125;</span><br><span class="line"></span><br><span class="line">print(d.get(&#x27;c&#x27;, 3)) </span><br><span class="line"># 3</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://justinzm.github.io/2019/10/05/Mongodb%E7%B4%A2%E5%BC%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="草根之明">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="草根之明">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/05/Mongodb%E7%B4%A2%E5%BC%95/" class="post-title-link" itemprop="url">MongoDB索引类型</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-05 14:16:00" itemprop="dateCreated datePublished" datetime="2019-10-05T14:16:00+08:00">2019-10-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-10 15:32:03" itemprop="dateModified" datetime="2022-09-10T15:32:03+08:00">2022-09-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/" itemprop="url" rel="index"><span itemprop="name">开发手册</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="MongoDB索引的类型"><a href="#MongoDB索引的类型" class="headerlink" title="MongoDB索引的类型"></a>MongoDB索引的类型</h3><h4 id="索引的概念"><a href="#索引的概念" class="headerlink" title="索引的概念"></a>索引的概念</h4><p>数据库索引是对数据库中一列或多列的值进行排序的一种数据结构，使用索引可以快速访问数据库表中的特定信息</p>
+<p>数据库索引的功能类似于书籍的索引，书籍有了索引就不需要翻查整本书。与此类似，在进行查询时，数据库会首先在索引中查找，找到相应的条目后，就可以直接挑转到目标文档的位置</p>
+<p>所有的索引信息被保存在system.indexes集合中，且默认总是为_id创建索引。db.system.indexes.find()可以查看当前数据库中创建的所有索引。</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7nb9qbmbnj31a60n2niu.jpg"></p>
+<h4 id="单字段索引"><a href="#单字段索引" class="headerlink" title="单字段索引"></a>单字段索引</h4><p>MongoDB可以在单个字段上建立索引，字段可以是普通字段、整个子文档以及子文档的某个字段。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.student.createIndex(&#123;&#x27;address&#x27;:1&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>_id索引是系统默认创建的<strong>单字段升序且具有唯一属性</strong>的索引，每个集合文档都会包含该字段，不能被删除，默认值是ObjectId类型。</p>
+<h4 id="复合索引"><a href="#复合索引" class="headerlink" title="复合索引"></a>复合索引</h4><p>复合索引是建立在多个字段上的索引，功能比单字段索引强大，但使用较复杂。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.student.createIndex(&#123;name:1, age:-1&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>索引字段的排序方向</strong> 上面例子中，索引数据会首先按照name升序排序，对于name相同的文档会按照age进行降序排序。<br><strong>索引字段排序顺序</strong>MongoDB在使用索引时，会自动进行优化，利用上面的索引可以支持如下的两个排序操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">db.student.find().sort(&#123;name:1, age:-1&#125;)</span><br><span class="line">db.student.find().sort(&#123;name:-1, age:1&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>对于复合索引，Mongodb支持前缀匹配</p>
+<h4 id="多键索引"><a href="#多键索引" class="headerlink" title="多键索引"></a>多键索引</h4><p>多键索引是对数组类型建立的索引，<strong>对数组建立索引，实际上是对数组的每个元素建立索引，而不是对数组本身建立索引</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">obj1 = &#123;name:&#x27;bob&#x27;, scores:[95, 98]&#125;</span><br><span class="line">obj2 = &#123;name:&#x27;joe&#x27;, scores:[95, 99]&#125;</span><br><span class="line">db.student.createIndex(&#123;scores:1&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="哈希索引"><a href="#哈希索引" class="headerlink" title="哈希索引"></a>哈希索引</h4><p>哈希索引项中存储的是索引键的哈希值，哈希索引只支持等值查询，不支持范围查找</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.student.createIndex(&#123;name:&quot;hashed&quot;&#125;)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://justinzm.github.io/2019/10/01/%E8%AE%AD%E7%BB%83%E6%95%B0%E6%8D%AE%E9%9B%86%E4%B8%8E%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%87%E5%88%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="草根之明">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="草根之明">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/01/%E8%AE%AD%E7%BB%83%E6%95%B0%E6%8D%AE%E9%9B%86%E4%B8%8E%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%87%E5%88%86/" class="post-title-link" itemprop="url">训练数据集与测试数据集切分</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-01 20:46:11" itemprop="dateCreated datePublished" datetime="2019-10-01T20:46:11+08:00">2019-10-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-10 15:30:52" itemprop="dateModified" datetime="2022-09-10T15:30:52+08:00">2022-09-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="train-test-split-训练数据集与测试数据集-切分"><a href="#train-test-split-训练数据集与测试数据集-切分" class="headerlink" title="train test split 训练数据集与测试数据集 切分"></a>train test split 训练数据集与测试数据集 切分</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">from sklearn import datasets</span><br><span class="line"></span><br><span class="line"># http://sklearn.lzjqsdd.com/modules/generated/sklearn.datasets.load_iris.html</span><br><span class="line"># iris数据集(鸢尾花)</span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line"></span><br><span class="line">X = iris.data</span><br><span class="line">y = iris.target</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义-切分函数"><a href="#自定义-切分函数" class="headerlink" title="自定义 切分函数"></a>自定义 切分函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">def train_test_split(X, y, test_ratio=0.2, seed=None):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    将数据X和y，按照test_ratio分割成X_train, y_train; X_test, y_test</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    if seed:</span><br><span class="line">        np.random.seed(seed)</span><br><span class="line"></span><br><span class="line">    # 对索引的乱序</span><br><span class="line">    shuffle_indexes = np.random.permutation(len(X))</span><br><span class="line"></span><br><span class="line">    test_size = int(len(X) * test_ratio)</span><br><span class="line"></span><br><span class="line">    test_indexes = shuffle_indexes[:test_size]</span><br><span class="line">    train_indexes = shuffle_indexes[test_size:]</span><br><span class="line"></span><br><span class="line">    X_train = X[train_indexes]</span><br><span class="line">    y_train = y[train_indexes]</span><br><span class="line"></span><br><span class="line">    X_test = X[test_indexes]</span><br><span class="line">    y_test = y[test_indexes]</span><br><span class="line"></span><br><span class="line">    return X_train, y_train, X_test, y_test</span><br></pre></td></tr></table></figure>
+
+<h3 id="sklearn中的train-test-split"><a href="#sklearn中的train-test-split" class="headerlink" title="sklearn中的train_test_split"></a>sklearn中的train_test_split</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line"></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=666)</span><br><span class="line"></span><br><span class="line"># random_state 随机种子</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://justinzm.github.io/2019/10/01/Pandas%E5%BA%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -571,117 +1167,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://justinzm.github.io/2019/10/01/mysql-connector%20%E9%A9%B1%E5%8A%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="草根之明">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="草根之明">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/01/mysql-connector%20%E9%A9%B1%E5%8A%A8/" class="post-title-link" itemprop="url">mysql-connector 驱动</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-01 13:39:09" itemprop="dateCreated datePublished" datetime="2019-10-01T13:39:09+08:00">2019-10-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-10 15:32:11" itemprop="dateModified" datetime="2022-09-10T15:32:11+08:00">2022-09-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install mysql-connector</span><br></pre></td></tr></table></figure>
-
-<h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><p>创建数据库使用 “CREATE DATABASE” 语句，以下创建一个名为 runoob_db 的数据库：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import mysql.connector</span><br><span class="line"> </span><br><span class="line">mydb = mysql.connector.connect(</span><br><span class="line">  host=<span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">  user=<span class="string">&quot;root&quot;</span>,</span><br><span class="line">  passwd=<span class="string">&quot;123456&quot;</span></span><br><span class="line">)</span><br><span class="line"> </span><br><span class="line">mycursor = mydb.cursor()</span><br><span class="line"> </span><br><span class="line">mycursor.execute(<span class="string">&quot;CREATE DATABASE runoob_db&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="链接数据库"><a href="#链接数据库" class="headerlink" title="链接数据库"></a>链接数据库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import mysql.connector</span><br><span class="line"> </span><br><span class="line">mydb = mysql.connector.connect(</span><br><span class="line">  host=<span class="string">&quot;localhost&quot;</span>,       <span class="comment"># 数据库主机地址</span></span><br><span class="line">  user=<span class="string">&quot;yourusername&quot;</span>,    <span class="comment"># 数据库用户名</span></span><br><span class="line">  passwd=<span class="string">&quot;yourpassword&quot;</span>   <span class="comment"># 数据库密码</span></span><br><span class="line">  database=<span class="string">&quot;runoob_db&quot;</span>    <span class="comment"># 数据库名称</span></span><br><span class="line">)</span><br><span class="line"><span class="built_in">print</span>(mydb)</span><br></pre></td></tr></table></figure>
-
-<h3 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import mysql.connector</span><br><span class="line"> </span><br><span class="line">mydb = mysql.connector.connect(</span><br><span class="line">  host=<span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">  user=<span class="string">&quot;root&quot;</span>,</span><br><span class="line">  passwd=<span class="string">&quot;123456&quot;</span>,</span><br><span class="line">  database=<span class="string">&quot;runoob_db&quot;</span></span><br><span class="line">)</span><br><span class="line">mycursor = mydb.cursor()</span><br><span class="line"> </span><br><span class="line">sql = <span class="string">&quot;INSERT INTO sites (name, url) VALUES (%s, %s)&quot;</span></span><br><span class="line">val = (<span class="string">&quot;RUNOOB&quot;</span>, <span class="string">&quot;https://www.runoob.com&quot;</span>)</span><br><span class="line">mycursor.execute(sql, val)</span><br><span class="line"> </span><br><span class="line">mydb.commit()    <span class="comment"># 数据表内容有更新，必须使用到该语句</span></span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span>(mycursor.rowcount, <span class="string">&quot;记录插入成功。&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<h4 id="批量插入数据"><a href="#批量插入数据" class="headerlink" title="批量插入数据"></a>批量插入数据</h4><p>批量插入使用 executemany() 方法，该方法的第二个参数是一个元组列表，包含了我们要插入的数据：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import mysql.connector</span><br><span class="line"> </span><br><span class="line">mydb = mysql.connector.connect(</span><br><span class="line">  host=<span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">  user=<span class="string">&quot;root&quot;</span>,</span><br><span class="line">  passwd=<span class="string">&quot;123456&quot;</span>,</span><br><span class="line">  database=<span class="string">&quot;runoob_db&quot;</span></span><br><span class="line">)</span><br><span class="line">mycursor = mydb.cursor()</span><br><span class="line"> </span><br><span class="line">sql = <span class="string">&quot;INSERT INTO sites (name, url) VALUES (%s, %s)&quot;</span></span><br><span class="line">val = [</span><br><span class="line">  (<span class="string">&#x27;Google&#x27;</span>, <span class="string">&#x27;https://www.google.com&#x27;</span>),</span><br><span class="line">  (<span class="string">&#x27;Github&#x27;</span>, <span class="string">&#x27;https://www.github.com&#x27;</span>),</span><br><span class="line">  (<span class="string">&#x27;Taobao&#x27;</span>, <span class="string">&#x27;https://www.taobao.com&#x27;</span>),</span><br><span class="line">  (<span class="string">&#x27;stackoverflow&#x27;</span>, <span class="string">&#x27;https://www.stackoverflow.com/&#x27;</span>)</span><br><span class="line">]</span><br><span class="line"> </span><br><span class="line">mycursor.executemany(sql, val)</span><br><span class="line"> </span><br><span class="line">mydb.commit()    <span class="comment"># 数据表内容有更新，必须使用到该语句</span></span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span>(mycursor.rowcount, <span class="string">&quot;记录插入成功。&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>如果我们想在数据记录插入后，获取该记录的 ID ，可以使用以下代码 (mycursor.lastrowid)：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import mysql.connector</span><br><span class="line"> </span><br><span class="line">mydb = mysql.connector.connect(</span><br><span class="line">  host=<span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">  user=<span class="string">&quot;root&quot;</span>,</span><br><span class="line">  passwd=<span class="string">&quot;123456&quot;</span>,</span><br><span class="line">  database=<span class="string">&quot;runoob_db&quot;</span></span><br><span class="line">)</span><br><span class="line">mycursor = mydb.cursor()</span><br><span class="line"> </span><br><span class="line">sql = <span class="string">&quot;INSERT INTO sites (name, url) VALUES (%s, %s)&quot;</span></span><br><span class="line">val = (<span class="string">&quot;Zhihu&quot;</span>, <span class="string">&quot;https://www.zhihu.com&quot;</span>)</span><br><span class="line">mycursor.execute(sql, val)</span><br><span class="line"> </span><br><span class="line">mydb.commit()</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;1 条记录已插入, ID:&quot;</span>, mycursor.lastrowid)</span><br></pre></td></tr></table></figure>
-
-<h3 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h3><p>查询数据使用 SELECT 语句：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import mysql.connector</span><br><span class="line"> </span><br><span class="line">mydb = mysql.connector.connect(</span><br><span class="line">  host=<span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">  user=<span class="string">&quot;root&quot;</span>,</span><br><span class="line">  passwd=<span class="string">&quot;123456&quot;</span>,</span><br><span class="line">  database=<span class="string">&quot;runoob_db&quot;</span></span><br><span class="line">)</span><br><span class="line">mycursor = mydb.cursor()</span><br><span class="line"> </span><br><span class="line">mycursor.execute(<span class="string">&quot;SELECT * FROM sites&quot;</span>)</span><br><span class="line"> </span><br><span class="line">myresult = mycursor.fetchall()     <span class="comment"># fetchall() 获取所有记录</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> myresult:</span><br><span class="line">  <span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
-<p>执行代码，输出结果为：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(1, <span class="string">&#x27;RUNOOB&#x27;</span>, <span class="string">&#x27;https://www.runoob.com&#x27;</span>)</span><br><span class="line">(2, <span class="string">&#x27;Google&#x27;</span>, <span class="string">&#x27;https://www.google.com&#x27;</span>)</span><br><span class="line">(3, <span class="string">&#x27;Github&#x27;</span>, <span class="string">&#x27;https://www.github.com&#x27;</span>)</span><br><span class="line">(4, <span class="string">&#x27;Taobao&#x27;</span>, <span class="string">&#x27;https://www.taobao.com&#x27;</span>)</span><br><span class="line">(5, <span class="string">&#x27;stackoverflow&#x27;</span>, <span class="string">&#x27;https://www.stackoverflow.com/&#x27;</span>)</span><br><span class="line">(6, <span class="string">&#x27;Zhihu&#x27;</span>, <span class="string">&#x27;https://www.zhihu.com&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>如果我们只想读取一条数据，可以使用 fetchone() 方法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import mysql.connector</span><br><span class="line"> </span><br><span class="line">mydb = mysql.connector.connect(</span><br><span class="line">  host=<span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">  user=<span class="string">&quot;root&quot;</span>,</span><br><span class="line">  passwd=<span class="string">&quot;123456&quot;</span>,</span><br><span class="line">  database=<span class="string">&quot;runoob_db&quot;</span></span><br><span class="line">)</span><br><span class="line">mycursor = mydb.cursor()</span><br><span class="line">mycursor.execute(<span class="string">&quot;SELECT * FROM sites&quot;</span>)</span><br><span class="line">myresult = mycursor.fetchone()</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span>(myresult)</span><br></pre></td></tr></table></figure>
-
-<h3 id="where-条件语句"><a href="#where-条件语句" class="headerlink" title="where 条件语句"></a>where 条件语句</h3><p>如果我们要读取指定条件的数据，可以使用 where 语句</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import mysql.connector</span><br><span class="line"> </span><br><span class="line">mydb = mysql.connector.connect(</span><br><span class="line">  host=<span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">  user=<span class="string">&quot;root&quot;</span>,</span><br><span class="line">  passwd=<span class="string">&quot;123456&quot;</span>,</span><br><span class="line">  database=<span class="string">&quot;runoob_db&quot;</span></span><br><span class="line">)</span><br><span class="line">mycursor = mydb.cursor()</span><br><span class="line"> </span><br><span class="line">sql = <span class="string">&quot;SELECT * FROM sites WHERE name =&#x27;RUNOOB&#x27;&quot;</span></span><br><span class="line">mycursor.execute(sql)</span><br><span class="line">myresult = mycursor.fetchall()</span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> myresult:</span><br><span class="line">  <span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
-
-<p>为了防止数据库查询发生 SQL 注入的攻击，我们可以使用 %s 占位符来转义查询的条件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import mysql.connector</span><br><span class="line"> </span><br><span class="line">mydb = mysql.connector.connect(</span><br><span class="line">  host=<span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">  user=<span class="string">&quot;root&quot;</span>,</span><br><span class="line">  passwd=<span class="string">&quot;123456&quot;</span>,</span><br><span class="line">  database=<span class="string">&quot;runoob_db&quot;</span></span><br><span class="line">)</span><br><span class="line">mycursor = mydb.cursor()</span><br><span class="line"> </span><br><span class="line">sql = <span class="string">&quot;SELECT * FROM sites WHERE name = %s&quot;</span></span><br><span class="line">na = (<span class="string">&quot;RUNOOB&quot;</span>, )</span><br><span class="line"> </span><br><span class="line">mycursor.execute(sql, na)</span><br><span class="line">myresult = mycursor.fetchall()</span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> myresult:</span><br><span class="line">  <span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
-
-<h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><p>删除记录使用 “DELETE FROM” 语句</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import mysql.connector</span><br><span class="line"> </span><br><span class="line">mydb = mysql.connector.connect(</span><br><span class="line">  host=<span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">  user=<span class="string">&quot;root&quot;</span>,</span><br><span class="line">  passwd=<span class="string">&quot;123456&quot;</span>,</span><br><span class="line">  database=<span class="string">&quot;runoob_db&quot;</span></span><br><span class="line">)</span><br><span class="line">mycursor = mydb.cursor()</span><br><span class="line"> </span><br><span class="line">sql = <span class="string">&quot;DELETE FROM sites WHERE name = &#x27;stackoverflow&#x27;&quot;</span></span><br><span class="line"> </span><br><span class="line">mycursor.execute(sql)</span><br><span class="line">mydb.commit()</span><br><span class="line"><span class="built_in">print</span>(mycursor.rowcount, <span class="string">&quot; 条记录删除&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="更新表数据"><a href="#更新表数据" class="headerlink" title="更新表数据"></a>更新表数据</h3><p>数据表更新使用 “UPDATE” 语句</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import mysql.connector</span><br><span class="line"> </span><br><span class="line">mydb = mysql.connector.connect(</span><br><span class="line">  host=<span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">  user=<span class="string">&quot;root&quot;</span>,</span><br><span class="line">  passwd=<span class="string">&quot;123456&quot;</span>,</span><br><span class="line">  database=<span class="string">&quot;runoob_db&quot;</span></span><br><span class="line">)</span><br><span class="line">mycursor = mydb.cursor()</span><br><span class="line"> </span><br><span class="line">sql = <span class="string">&quot;UPDATE sites SET name = &#x27;ZH&#x27; WHERE name = &#x27;Zhihu&#x27;&quot;</span></span><br><span class="line"> </span><br><span class="line">mycursor.execute(sql)</span><br><span class="line">mydb.commit()</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span>(mycursor.rowcount, <span class="string">&quot; 条记录被修改&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -749,7 +1238,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-count">61</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
