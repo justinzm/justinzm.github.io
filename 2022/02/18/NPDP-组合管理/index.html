@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"justinzm.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="将战略与项目选择相关联。产品组合的定义：为产品开发计划奠定基础的当前和潜在新产品的集合，包括产品改进、产品成本降低，产品线延伸和对公司而言新的产品。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NPDP-组合管理">
+<meta property="og:url" content="https://justinzm.github.io/2022/02/18/NPDP-%E7%BB%84%E5%90%88%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="草根之明">
+<meta property="og:description" content="将战略与项目选择相关联。产品组合的定义：为产品开发计划奠定基础的当前和潜在新产品的集合，包括产品改进、产品成本降低，产品线延伸和对公司而言新的产品。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://img.9lake.com/uPic/image-20220220143558145.png">
+<meta property="og:image" content="http://img.9lake.com/image-20210916090603756.png">
+<meta property="og:image" content="http://img.9lake.com/image-20211013132637160.png">
+<meta property="og:image" content="http://img.9lake.com/image-20211013132747828.png">
+<meta property="og:image" content="http://img.9lake.com/uPic/image-20220220150250486.png">
+<meta property="og:image" content="http://img.9lake.com/image-20220918125514234.png">
+<meta property="og:image" content="http://img.9lake.com/uPic/image-20220220151607699.png">
+<meta property="og:image" content="http://img.9lake.com/uPic/image-20220220151619774.png">
+<meta property="og:image" content="http://img.9lake.com/uPic/image-20220220153048358.png">
+<meta property="article:published_time" content="2022-02-18T04:21:13.000Z">
+<meta property="article:modified_time" content="2022-09-18T05:08:51.227Z">
+<meta property="article:author" content="草根之明">
+<meta property="article:tag" content="项目管理、产品管理、区块链">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://img.9lake.com/uPic/image-20220220143558145.png">
+
+<link rel="canonical" href="https://justinzm.github.io/2022/02/18/NPDP-%E7%BB%84%E5%90%88%E7%AE%A1%E7%90%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>NPDP-组合管理 | 草根之明</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">草根之明</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">管理及技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://justinzm.github.io/2022/02/18/NPDP-%E7%BB%84%E5%90%88%E7%AE%A1%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="草根之明">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="草根之明">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          NPDP-组合管理
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-18 12:21:13" itemprop="dateCreated datePublished" datetime="2022-02-18T12:21:13+08:00">2022-02-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-18 13:08:51" itemprop="dateModified" datetime="2022-09-18T13:08:51+08:00">2022-09-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">产品经理</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>将战略与项目选择相关联。产品组合的定义：为产品开发计划奠定基础的当前和潜在新产品的集合，包括产品改进、产品成本降低，产品线延伸和对公司而言新的产品。</p>
+<span id="more"></span>
+
+<p>介绍多种项目选择的方法。这些方法既是评估项目潜力的手段，也是确保单个项目的优先级与整体战略协调一致、实现产品类型平衡的途径。</p>
+<p>组合管理是跨职能行为，存在于新产品开发直至上市的整个流程中。组合管理是对现有产品的持续核查，以确保产品与战略和资源可用性形成最佳匹配。</p>
+<p>建立并维持现有项目与新产品开发项目间的平衡，使其与经营战略和创新战略协调一致</p>
+<p>公司战略或经营战略以及创新战略，为竞争性创新投资之间的权衡决策提供了整体方向和框架。</p>
+<p>基于创新战略的组合管理是一个重要工具，它确保了产品开发和产品管理项目的正确优先顺序和平衡关系。</p>
+<h3 id="什么是产品组合"><a href="#什么是产品组合" class="headerlink" title="什么是产品组合"></a>什么是产品组合</h3><p>定义为：一个组织正在投资的并将对其做出<strong>战略性权衡取舍</strong>的一系列项目或产品</p>
+<h4 id="什么是组合管理"><a href="#什么是组合管理" class="headerlink" title="什么是组合管理"></a>什么是组合管理</h4><p>（产品）组合是以组合形式被管理的一系列程序、项目和或操作的集合。一个组合的构成元素未必是互相依赖的，甚至未必是相关的，但他们被集合成一个组合，以此为单位接受管理，以实现战略目标。</p>
+<p>企业可以通过两种途径实现新产品成功：<strong>正确地完成项目，完成正确的项目</strong>。组合管理讲述的是完成正确的项目</p>
+<p>组合管理中的五大目标：</p>
+<ul>
+<li><strong>价值最大化</strong>：通过资源分配最大化组合价值</li>
+<li><strong>项目平衡</strong>：基于预先设定的决策准则，维持正确项目间的恰当平衡，这些准则包括长期与短期平衡、高风险与低风险平衡、具体项目或市场类别平衡</li>
+<li><strong>战略协同</strong>：确保组织整体战略与经营战略及创新战略始终保持一致</li>
+<li><strong>管道平衡</strong>：确保资源和焦点不会过于分散，多数公司在产品组合中往往囊括了太多的项目。应确定正确的项目数量，以达到管道资源需求和可用资源之间的最佳平衡<br><strong>财务稳健</strong>：确保产品组合中所选项目能够实现产品创新战略中所设定的财务目标</li>
+</ul>
+<p>组合管理通常被认为由两个独立活动 <strong>组合选择和组合审查</strong></p>
+<p><img src="http://img.9lake.com/uPic/image-20220220143558145.png" alt="image-20220220143558145"></p>
+<p>组合管理的主要特征有：</p>
+<ul>
+<li>是处于动态环境中的决策过程，需要持续不断地审查；</li>
+<li>项目处于不同的完成阶段；</li>
+<li>涉及未来事件，因此无法确保成功。组合管理是用来提高整个项目或产品的成功可能性的；</li>
+<li>产品开发和产品管理的资源是有限的，通常要与其他业务功能共享。为了获得最大回报，组织需要对这些资源进行分配。依照组织的整体目标和创新战略分配资源，是权衡取舍成功的基础。</li>
+</ul>
+<h4 id="组合中的项目（产品）类型"><a href="#组合中的项目（产品）类型" class="headerlink" title="组合中的项目（产品）类型"></a>组合中的项目（产品）类型</h4><ul>
+<li><strong>突破性项目</strong>：激进或颠覆式项目，通过新技术向市场引入崭新产品的项目，与组织的现有项目有明显不同，且风险水平较高</li>
+<li><strong>平台型项目</strong>：开发出一系列子系统及其接口，由此建立一个通用架构，继而高效地开发、制造出其他延伸产品</li>
+<li><strong>衍生项目</strong>：由现有产品或平台衍生出的项目。可以弥补现有产品线的不足，一般风险水平较低</li>
+<li><strong>支持性项目</strong>：对现有产品渐进式改进，或提升现有产品的制造效率。通常风险水平较低</li>
+</ul>
+<h3 id="产品组合与战略的关系"><a href="#产品组合与战略的关系" class="headerlink" title="产品组合与战略的关系"></a>产品组合与战略的关系</h3><h4 id="连接战略与组合"><a href="#连接战略与组合" class="headerlink" title="连接战略与组合"></a>连接战略与组合</h4><p>库珀提出了在组合管理中实现战略协同的三大目标：</p>
+<ul>
+<li><strong>战略匹配</strong>：项目与所采用的战略是否一致？</li>
+<li><strong>战略贡献</strong>：在经营战略中定义了那些特点目标？这些项目在多大程度上促成了这些目标的实现？</li>
+<li><strong>战略优先性</strong>：组合中的各项投资额度是否反映了战略优先级？</li>
+</ul>
+<p>项目选择和持续审查的3种方法，以确保在战略和产品组合之间建立起一个明确的联系：</p>
+<ul>
+<li>自上而下</li>
+<li>自下而上</li>
+<li>二者结合</li>
+</ul>
+<p>确保组合中的项目搭配是最优的，由此在资源有限的条件下实现战略目标。</p>
+<h4 id="自上而下（适用于平台型项目）"><a href="#自上而下（适用于平台型项目）" class="headerlink" title="自上而下（适用于平台型项目）"></a>自上而下（适用于平台型项目）</h4><p>称为“战略桶”方法，包括以下步骤：</p>
+<ul>
+<li>首先<strong>明确组织战略和经营战略</strong>，以及与创新相关的战略目标和优先级。</li>
+<li>确定可用于整个项目组合的资源水平</li>
+<li>根据在组织中所占的战略重要性，排列出业务单元或产品类别的优先顺序</li>
+<li>确定战略桶和分配至各个业务单元或产品类别的理想比例</li>
+<li>根据优先顺序将项目对应分配入战略桶中。</li>
+</ul>
+<h4 id="自下而上"><a href="#自下而上" class="headerlink" title="自下而上"></a>自下而上</h4><p>始于单个项目。通过严格的项目评估和筛选过程，最终形成一个战略调整后的项目组合，步骤如下：</p>
+<ul>
+<li><strong>确定潜在的项目</strong></li>
+<li>定义评估项目的战略标准</li>
+<li>依照选择标准对每个潜在项目进行评估</li>
+<li>项目的选择决策主要取决于该项目是否满足选择标准，而不考虑业务单元或产品类别的优先级，并且也不刻意追求在项目组合中达成某种意义的平衡</li>
+</ul>
+<h4 id="二者结合的方法"><a href="#二者结合的方法" class="headerlink" title="二者结合的方法"></a>二者结合的方法</h4><ul>
+<li>列出业务单元或各类产品费用的战略优先级；</li>
+<li>依照战略标准和费用对每个潜在项目进行估计和排序</li>
+<li>综合考虑单个项目的优先级与预算，以及业务单元或各类产品的优先级并由此<strong>将项目分配至对应的战略桶中</strong></li>
+</ul>
+<h3 id="新产品机会的选择"><a href="#新产品机会的选择" class="headerlink" title="新产品机会的选择"></a>新产品机会的选择</h3><p>新产品机会来自：</p>
+<ul>
+<li><strong>分析当前产品组合</strong>，确定产品改进或产品线延伸的领域</li>
+<li><strong>创意生成或创造性思维工具</strong></li>
+</ul>
+<h4 id="产品计划评估"><a href="#产品计划评估" class="headerlink" title="产品计划评估"></a>产品计划评估</h4><p>从广义上讲，评估和筛选新产品机会的工具可以分为两大类 —- 非财务类和财务类</p>
+<p><img src="http://img.9lake.com/image-20210916090603756.png" alt="image-20210916090603756"></p>
+<p>顶尖公司与其他公司对使用项目评估工具差别最大的是 <strong>战略水桶</strong>；使用项目评估工具最多的是 <strong>投资回收期</strong></p>
+<h5 id="非财务类评估"><a href="#非财务类评估" class="headerlink" title="非财务类评估"></a>非财务类评估</h5><p>非财务类方法或评分方法依据的是<strong>主观判定</strong>。以评分方法为组合管理工具的组织取得了显著成功。</p>
+<p>关键的成功因素是：</p>
+<ul>
+<li>拥有一个独特的、优越的产品。该产品有别于竞争对手的产品，能够为客户提供独特利益和卓越价值</li>
+<li>瞄准一个吸引人的市场 —- 不断增大的大型市场。该市场的利润率高，竞争不激烈，竞争阻力较小</li>
+<li>利用组织内部的优势 —- 产品和项目。这些产品和项目的基础是组织在营销和技术方面的优势、能力以及经验</li>
+</ul>
+<p>评估标准包括：</p>
+<ul>
+<li>战略一致性</li>
+<li>产品优势</li>
+<li>风险水平</li>
+<li>法律法规影响</li>
+<li>上市时间</li>
+</ul>
+<h6 id="通过-x2F-失败方法或者排序"><a href="#通过-x2F-失败方法或者排序" class="headerlink" title="通过&#x2F;失败方法或者排序"></a>通过&#x2F;失败方法或者排序</h6><p><strong>通过&#x2F;失败方法</strong>主要是指，产品创意“首次通过”评估 —- 判断创意是否满足 —- 的一些基本准则。</p>
+<p>最好邀请<strong>跨职能部门的代表们</strong>来参与评审</p>
+<p><img src="http://img.9lake.com/image-20211013132637160.png" alt="image-20211013132637160"></p>
+<h6 id="评分方法或者检查清单"><a href="#评分方法或者检查清单" class="headerlink" title="评分方法或者检查清单"></a>评分方法或者检查清单</h6><p><strong>评分方法</strong>是更为详细的分析方法，通常在通过&#x2F;失败筛选之后进行。</p>
+<p><img src="http://img.9lake.com/image-20211013132747828.png" alt="image-20211013132747828"></p>
+<h5 id="财务类评估"><a href="#财务类评估" class="headerlink" title="财务类评估"></a>财务类评估</h5><p>财务类评估有以下两种用途：</p>
+<ul>
+<li>决定新产品在财务上是否可行 —- 它是否有可能提供<strong>一个令人满意的投资回报率</strong>；</li>
+<li>决定项目的优先级，此时财务类评估被视为组合选择或持续性组合管理过程的一部分</li>
+</ul>
+<p>新产品机会的财务分析框架。这个框架清楚地表明进行一次详细的财务分析所需的信息，即：</p>
+<ul>
+<li>利益或回报。来自销售数量和价格</li>
+<li>成本。基于制造和营销成本</li>
+<li>资金成本。与投资建筑物、厂房及设备相关的成本</li>
+</ul>
+<p><img src="http://img.9lake.com/uPic/image-20220220150250486.png" alt="image-20220220150250486"></p>
+<p>评估指标包括：</p>
+<h6 id="净现值（NPV）"><a href="#净现值（NPV）" class="headerlink" title="净现值（NPV）"></a>净现值（NPV）</h6><p>净现值表示期望项目收益的未来值。NPV考虑了现在和未来的收益及通货膨胀。</p>
+<ul>
+<li>NPV越大越好，NPV&gt;0说明项目在考虑货币贬值的情况下，依然值得投资</li>
+<li>NPV&#x3D;0说明项目在考虑货币贬值的情况下，不赚不亏，恰好是回收期</li>
+<li>NPV&lt;0说明项目不值得投资</li>
+</ul>
+<p><img src="http://img.9lake.com/image-20220918125514234.png" alt="image-20220918125514234"></p>
+<h6 id="内部收益率（IRR）"><a href="#内部收益率（IRR）" class="headerlink" title="内部收益率（IRR）"></a>内部收益率（IRR）</h6><p>内部收益率定义为净现值为零时的折现率，它用于评估项目或产品投资的吸引力。内部收益率的计算提供了与公司的最低预期回报率以及内部或外部投资的替代形式的比较。</p>
+<h6 id="投资回收期"><a href="#投资回收期" class="headerlink" title="投资回收期"></a>投资回收期</h6><p>投资回收期是指多长时间能够收回在产品上的资金投入。</p>
+<p>虽然投资回收期是一种常用的、相对简单的投资回报衡量标准，但它无法捕捉货币的时间价值这一重要因素。它没有考虑到投资收益的时间安排</p>
+<h6 id="投资回报率（ROI）"><a href="#投资回报率（ROI）" class="headerlink" title="投资回报率（ROI）"></a>投资回报率（ROI）</h6><p>投资回报率是指通过投资而应返回的价值，即企业从一项投资活动中得到的经济回报</p>
+<h3 id="什么是平衡组合"><a href="#什么是平衡组合" class="headerlink" title="什么是平衡组合"></a>什么是平衡组合</h3><p>为了达到良好的<strong>风险与回报平衡</strong>,大多数组织尝试在产品组合中加入一系列新产品机会。</p>
+<p>这些新产品机会的选取范围和比例应取决于公司整体战略和经营战略，同时也应与创新战略协调一致</p>
+<p>新产品机会的分类标准：</p>
+<ul>
+<li>突破性项目、衍生项目、平台型项目、支持性项目</li>
+<li>研发成本、商业化成本</li>
+<li>潜在的回报和利益</li>
+<li>风险水平 —- 开发阶段或商业化阶段</li>
+<li>技术难度 —- 开发或维护</li>
+<li>上市时间 —- 从决定开发到获得商业回报时间</li>
+<li>设施设备上的资金投入</li>
+<li>知识产权的价值创造潜力</li>
+</ul>
+<h4 id="描绘平衡组合"><a href="#描绘平衡组合" class="headerlink" title="描绘平衡组合"></a>描绘平衡组合</h4><h5 id="气泡图"><a href="#气泡图" class="headerlink" title="气泡图"></a><u>气泡图</u></h5><p><img src="http://img.9lake.com/uPic/image-20220220151607699.png" alt="image-20220220151607699"></p>
+<p><img src="http://img.9lake.com/uPic/image-20220220151619774.png" alt="image-20220220151619774"></p>
+<h3 id="资源配置"><a href="#资源配置" class="headerlink" title="资源配置"></a>资源配置</h3><p>适当分配项目资源非常必要</p>
+<p>大多数公司的新产品开发的成功率与持续性产品管理的有效性受限于以下因素：</p>
+<ul>
+<li>项目太多</li>
+<li>执行太差</li>
+<li>上市延期</li>
+<li>新产品开发项目可能与其他业务单元的优先级存在竞争</li>
+<li>企业可能有足够的人员去做项目，但是缺乏正确的技能，比如缺乏项目团队领导</li>
+</ul>
+<p>资源配置的好处：</p>
+<ul>
+<li>项目流程更好（更少的项目延迟）</li>
+<li>输出更多（更多的上市产品）</li>
+<li>员工满意度较高</li>
+<li>能实现有效的组合管理</li>
+</ul>
+<h4 id="资源配置的方法"><a href="#资源配置的方法" class="headerlink" title="资源配置的方法"></a>资源配置的方法</h4><p>资源配置的两个基本原则 —- <strong>项目资源需求和新产品目标</strong></p>
+<p>基于项目资源的需求：</p>
+<ul>
+<li>按现有项目清单的优先级排序</li>
+<li>为每个项目制订详细的计划 —- 使用项目管理软件</li>
+<li>在项目计划中，根据特定的类别分配资源</li>
+<li>按照时间段，确定每个类别的累积资源需求和时间要求</li>
+<li>识别资源过载的部分，随后重新排列项目时间的优先顺序，或从项目组合中删除一些项目；增加资源—-雇佣更多的人或外包</li>
+</ul>
+<p>基于新业务目标：</p>
+<ul>
+<li>从新产品目标开始</li>
+<li>计算组合中每个备选新产品的潜在回报或利润，可使用财务分析方法</li>
+<li>基于业务单元目标，对项目及其潜在回报排序，选择出累计财务回报能满足业务单元目标的项目</li>
+</ul>
+<p><img src="http://img.9lake.com/uPic/image-20220220153048358.png" alt="image-20220220153048358"></p>
+<p>资源规划负责人：每月与项目经理和资源主管会面一次，讨论资源配置的优化和组合假设情景分析</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/01/17/NPDP-%E6%96%B0%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91%E6%88%98%E7%95%A5/" rel="prev" title="NPDP-新产品开发战略">
+      <i class="fa fa-chevron-left"></i> NPDP-新产品开发战略
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/09/12/%E4%BB%A5%E5%A4%AA%E5%9D%8A%E5%85%A5%E9%97%A8%E7%AF%87/" rel="next" title="以太坊入门篇">
+      以太坊入门篇 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%A7%E5%93%81%E7%BB%84%E5%90%88"><span class="nav-number">1.</span> <span class="nav-text">什么是产品组合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BB%84%E5%90%88%E7%AE%A1%E7%90%86"><span class="nav-number">1.1.</span> <span class="nav-text">什么是组合管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E4%B8%AD%E7%9A%84%E9%A1%B9%E7%9B%AE%EF%BC%88%E4%BA%A7%E5%93%81%EF%BC%89%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">组合中的项目（产品）类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A7%E5%93%81%E7%BB%84%E5%90%88%E4%B8%8E%E6%88%98%E7%95%A5%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">2.</span> <span class="nav-text">产品组合与战略的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%88%98%E7%95%A5%E4%B8%8E%E7%BB%84%E5%90%88"><span class="nav-number">2.1.</span> <span class="nav-text">连接战略与组合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%EF%BC%88%E9%80%82%E7%94%A8%E4%BA%8E%E5%B9%B3%E5%8F%B0%E5%9E%8B%E9%A1%B9%E7%9B%AE%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">自上而下（适用于平台型项目）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A"><span class="nav-number">2.3.</span> <span class="nav-text">自下而上</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E8%80%85%E7%BB%93%E5%90%88%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">2.4.</span> <span class="nav-text">二者结合的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E4%BA%A7%E5%93%81%E6%9C%BA%E4%BC%9A%E7%9A%84%E9%80%89%E6%8B%A9"><span class="nav-number">3.</span> <span class="nav-text">新产品机会的选择</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%A7%E5%93%81%E8%AE%A1%E5%88%92%E8%AF%84%E4%BC%B0"><span class="nav-number">3.1.</span> <span class="nav-text">产品计划评估</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9D%9E%E8%B4%A2%E5%8A%A1%E7%B1%BB%E8%AF%84%E4%BC%B0"><span class="nav-number">3.1.1.</span> <span class="nav-text">非财务类评估</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%80%9A%E8%BF%87-x2F-%E5%A4%B1%E8%B4%A5%E6%96%B9%E6%B3%95%E6%88%96%E8%80%85%E6%8E%92%E5%BA%8F"><span class="nav-number">3.1.1.1.</span> <span class="nav-text">通过&#x2F;失败方法或者排序</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%AF%84%E5%88%86%E6%96%B9%E6%B3%95%E6%88%96%E8%80%85%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95"><span class="nav-number">3.1.1.2.</span> <span class="nav-text">评分方法或者检查清单</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B4%A2%E5%8A%A1%E7%B1%BB%E8%AF%84%E4%BC%B0"><span class="nav-number">3.1.2.</span> <span class="nav-text">财务类评估</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%87%80%E7%8E%B0%E5%80%BC%EF%BC%88NPV%EF%BC%89"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">净现值（NPV）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%86%85%E9%83%A8%E6%94%B6%E7%9B%8A%E7%8E%87%EF%BC%88IRR%EF%BC%89"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">内部收益率（IRR）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%8A%95%E8%B5%84%E5%9B%9E%E6%94%B6%E6%9C%9F"><span class="nav-number">3.1.2.3.</span> <span class="nav-text">投资回收期</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%8A%95%E8%B5%84%E5%9B%9E%E6%8A%A5%E7%8E%87%EF%BC%88ROI%EF%BC%89"><span class="nav-number">3.1.2.4.</span> <span class="nav-text">投资回报率（ROI）</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%B9%B3%E8%A1%A1%E7%BB%84%E5%90%88"><span class="nav-number">4.</span> <span class="nav-text">什么是平衡组合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%8F%E7%BB%98%E5%B9%B3%E8%A1%A1%E7%BB%84%E5%90%88"><span class="nav-number">4.1.</span> <span class="nav-text">描绘平衡组合</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B0%94%E6%B3%A1%E5%9B%BE"><span class="nav-number">4.1.1.</span> <span class="nav-text">气泡图</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B5%84%E6%BA%90%E9%85%8D%E7%BD%AE"><span class="nav-number">5.</span> <span class="nav-text">资源配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B5%84%E6%BA%90%E9%85%8D%E7%BD%AE%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">5.1.</span> <span class="nav-text">资源配置的方法</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="草根之明"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">草根之明</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/justinzm" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;justinzm" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:3907721@qq.com" title="E-Mail → mailto:3907721@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">草根之明</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
