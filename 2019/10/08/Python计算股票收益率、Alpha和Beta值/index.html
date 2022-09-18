@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"justinzm.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="使用Python计算股票的收益率，重点展示如何利用Python对日收益率数据向月、年收益率转换，然后演示个股Alpha和Beta值的计算。 收益率单期收益率单期（一个时期）的收益率计算方法如下：  其中，r 是收益率，pt 是时间 t 时的资产价格，p0 是初始时间的资产价格。我们利用 Python 程序来实现这个过程： 12rate_return &#x3D; 102.0&#x2F;100 - 1print(rat">
+  <meta name="description" content="使用Python计算股票的收益率，重点展示如何利用Python对日收益率数据向月、年收益率转换，然后演示个股Alpha和Beta值的计算。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python计算股票收益率、Alpha和Beta值">
 <meta property="og:url" content="https://justinzm.github.io/2019/10/08/Python%E8%AE%A1%E7%AE%97%E8%82%A1%E7%A5%A8%E6%94%B6%E7%9B%8A%E7%8E%87%E3%80%81Alpha%E5%92%8CBeta%E5%80%BC/index.html">
 <meta property="og:site_name" content="草根之明">
-<meta property="og:description" content="使用Python计算股票的收益率，重点展示如何利用Python对日收益率数据向月、年收益率转换，然后演示个股Alpha和Beta值的计算。 收益率单期收益率单期（一个时期）的收益率计算方法如下：  其中，r 是收益率，pt 是时间 t 时的资产价格，p0 是初始时间的资产价格。我们利用 Python 程序来实现这个过程： 12rate_return &#x3D; 102.0&#x2F;100 - 1print(rat">
+<meta property="og:description" content="使用Python计算股票的收益率，重点展示如何利用Python对日收益率数据向月、年收益率转换，然后演示个股Alpha和Beta值的计算。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6gy1g7r5o3ph4gj309u02owef.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6gy1g7r5qpk26hj309602i748.jpg">
@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6gy1g7r677nbabj307y0280sn.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6gy1g7r67ki419j30au022gll.jpg">
 <meta property="article:published_time" content="2019-10-08T13:02:40.000Z">
-<meta property="article:modified_time" content="2022-09-10T07:32:57.628Z">
+<meta property="article:modified_time" content="2022-09-18T07:35:39.882Z">
 <meta property="article:author" content="草根之明">
 <meta property="article:tag" content="项目管理、产品管理、区块链">
 <meta name="twitter:card" content="summary">
@@ -198,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-10 15:32:57" itemprop="dateModified" datetime="2022-09-10T15:32:57+08:00">2022-09-10</time>
+                <time title="修改时间：2022-09-18 15:35:39" itemprop="dateModified" datetime="2022-09-18T15:35:39+08:00">2022-09-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -222,6 +222,7 @@
 
       
         <p>使用Python计算股票的收益率，重点展示如何利用Python对日收益率数据向月、年收益率转换，然后演示个股Alpha和Beta值的计算。</p>
+<span id="more"></span>
 <h3 id="收益率"><a href="#收益率" class="headerlink" title="收益率"></a>收益率</h3><h4 id="单期收益率"><a href="#单期收益率" class="headerlink" title="单期收益率"></a>单期收益率</h4><p>单期（一个时期）的收益率计算方法如下：</p>
 <p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g7r5o3ph4gj309u02owef.jpg"></p>
 <p>其中，r 是收益率，pt 是时间 t 时的资产价格，p0 是初始时间的资产价格。我们利用 Python 程序来实现这个过程：</p>
