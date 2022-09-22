@@ -20,16 +20,33 @@
     var CONFIG = {"hostname":"justinzm.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="在产品开发的所有层面 战略形成、组合管理、新产品流程、设计、生命周期管理等 都会使用到多种工具。重点介绍一系列通用工具，包括创意生成、财务分析、质量功能展开（QFD）、TRIZ、六西格玛、项目管理和风险管理。">
+<meta property="og:type" content="article">
 <meta property="og:title" content="NPDP-工具与绩效度量">
 <meta property="og:url" content="https://justinzm.github.io/2022/05/18/NPDP-%E5%B7%A5%E5%85%B7%E4%B8%8E%E7%BB%A9%E6%95%88%E5%BA%A6%E9%87%8F/index.html">
 <meta property="og:site_name" content="草根之明">
+<meta property="og:description" content="在产品开发的所有层面 战略形成、组合管理、新产品流程、设计、生命周期管理等 都会使用到多种工具。重点介绍一系列通用工具，包括创意生成、财务分析、质量功能展开（QFD）、TRIZ、六西格玛、项目管理和风险管理。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://img.9lake.com/image-20210930104343693.png">
+<meta property="og:image" content="http://img.9lake.com/image-20220225133255429.png">
+<meta property="og:image" content="http://img.9lake.com/image-20220225134339674.png">
+<meta property="og:image" content="http://img.9lake.com/image-20210930105927305.png">
+<meta property="og:image" content="http://img.9lake.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210910154111.png">
+<meta property="og:image" content="http://img.9lake.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210910154741.png">
+<meta property="og:image" content="http://img.9lake.com/image-20210930112215741.png">
+<meta property="og:image" content="http://img.9lake.com/image-20210930112734903.png">
+<meta property="og:image" content="http://img.9lake.com/image-20210930113419575.png">
+<meta property="og:image" content="http://img.9lake.com/image-20210930114328991.png">
+<meta property="og:image" content="http://img.9lake.com/image-20211025134258697.png">
+<meta property="og:image" content="http://img.9lake.com/uPic/image-20211106103950200.png">
+<meta property="og:image" content="http://img.9lake.com/image-20211025134910234.png">
+<meta property="og:image" content="http://img.9lake.com/image-20220225142400674.png">
 <meta property="article:published_time" content="2022-05-18T05:29:12.000Z">
-<meta property="article:modified_time" content="2022-09-18T05:30:57.297Z">
+<meta property="article:modified_time" content="2022-09-22T01:58:40.328Z">
 <meta property="article:author" content="草根之明">
 <meta property="article:tag" content="项目管理、产品管理、区块链">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://img.9lake.com/image-20210930104343693.png">
 
 <link rel="canonical" href="https://justinzm.github.io/2022/05/18/NPDP-%E5%B7%A5%E5%85%B7%E4%B8%8E%E7%BB%A9%E6%95%88%E5%BA%A6%E9%87%8F/">
 
@@ -185,7 +202,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-18 13:30:57" itemprop="dateModified" datetime="2022-09-18T13:30:57+08:00">2022-09-18</time>
+                <time title="修改时间：2022-09-22 09:58:40" itemprop="dateModified" datetime="2022-09-22T09:58:40+08:00">2022-09-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -208,7 +225,486 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <p>在产品开发的所有层面 <strong>战略形成、组合管理、新产品流程、设计、生命周期管理等</strong> 都会使用到多种工具。<br>重点介绍一系列通用工具，包括创意生成、财务分析、质量功能展开（QFD）、TRIZ、六西格玛、项目管理和风险管理。</p>
+<span id="more"></span>
+
+<p>有关各种工具的讨论旨在发掘其潜在的应用方向，以及他们在产品开发和产品管理中的价值。<br>还介绍了绩效度量，特别是度量指标在学习和持续改进上的应用。</p>
+<h3 id="创意工具"><a href="#创意工具" class="headerlink" title="创意工具"></a>创意工具</h3><h4 id="什么是创意开发"><a href="#什么是创意开发" class="headerlink" title="什么是创意开发"></a>什么是创意开发</h4><p>创意开发是<strong>生成、发展、交流新创意的创造性过程</strong>。创意是想法构思的基本要素，它可以是形象化的、具体的或抽象的。创意开发是设计流程的必要部分。<br>创意开发包含四个阶段：<strong>创意生成、创意筛选、创意孵化、以及正式立项</strong>。</p>
+<p>创意来源：</p>
+<ul>
+<li>消费者</li>
+<li>企业的业务人员</li>
+<li>科研人员</li>
+<li>竞品分析</li>
+</ul>
+<h4 id="创意工具-1"><a href="#创意工具-1" class="headerlink" title="创意工具"></a>创意工具</h4><h5 id="Scamper策略（奔驰法）"><a href="#Scamper策略（奔驰法）" class="headerlink" title="Scamper策略（奔驰法）"></a>Scamper策略（奔驰法）</h5><p>一系列激发创意的行为，特别适用于修改现有产品或制造新产品的情况，有助于生产创意。</p>
+<ul>
+<li>S（Substitute）指<strong>替代、替换</strong>：寻找当前选项的替代选项<ul>
+<li>有什么事物可以被取代</li>
+<li>有什么人物可以被取代</li>
+<li>可以更改成分或者原料吗？</li>
+<li>可以采用其他的工艺或者方法吗？</li>
+</ul>
+</li>
+<li>C（Combine）指<strong>合并、整合、综合</strong>：将现有产品和别的产品或系统结合在一起使用，或者与其他产品合并而成为一个整体<ul>
+<li>有什么想法可以合并</li>
+<li>有什么目的可以合并</li>
+<li>可以提供套餐服务或者一系统产品吗</li>
+<li>如何组合包装一系列产品</li>
+<li>有什么材料可以合并吗</li>
+</ul>
+</li>
+<li>A（Adapt）指<strong>改造、调整</strong>：找出所有可以调整的选项<ul>
+<li>有什么其他事物与我们的产品类似</li>
+<li>过去有什么类似的事物吗</li>
+<li>我们可以从哪里借鉴模仿</li>
+<li>我们可以引入别的什么想法</li>
+<li>有什么其他的工艺可以用到这里吗</li>
+<li>有什么其他领域的创意可以借鉴吗</li>
+</ul>
+</li>
+<li>M（Modify）指<strong>修改</strong>：修改现有的所有或部分选项，重新组合出新产品<ul>
+<li>如何改进现有的事物</li>
+<li>可否改变名字、颜色、味道、声音、形状、包装</li>
+<li>有什么可以放大的</li>
+<li>有什么可以夸张的</li>
+<li>有什么可以更高、更长、更强、更频繁</li>
+<li>有什么可以推向极致</li>
+</ul>
+</li>
+<li>P（Put to another use）指<strong>改变用途、移作他用</strong>：不断寻找现有产品的新用途，将现有产品推广到新地方<ul>
+<li>这样产品还可以做什么用途</li>
+<li>改进以后是否可以有其他用途</li>
+<li>扩展以后是否有其他用途</li>
+<li>是否有其他市场</li>
+</ul>
+</li>
+<li>E（Eliminate）指<strong>去除、消除</strong>：消除不必要的选项，减少不需要的功能<ul>
+<li>产品有没有可以删减的地方</li>
+<li>有没有可以缩小的地方</li>
+<li>有没有可以分割的地方</li>
+<li>简化版还是浓缩版</li>
+<li>有没有可以取消的规则</li>
+<li>有没有不必要的成分</li>
+</ul>
+</li>
+<li>R（Reverse）指<strong>逆向操作、重组</strong>：重组或重新安排选项的顺序，或把选项的位置对调。这是一种逆向思维<ul>
+<li>正负可以反过来吗</li>
+<li>这个服务反过来会是什么样</li>
+<li>颠倒一下呢</li>
+<li>时间顺序上反过来呢？还有什么其他的排放顺序吗</li>
+<li>产品的组成部分是可以互换的吗</li>
+<li>可以有其他的顺序或者构造吗</li>
+</ul>
+</li>
+</ul>
+<h5 id="头脑风暴"><a href="#头脑风暴" class="headerlink" title="头脑风暴"></a>头脑风暴</h5><p>一群人（6-10人）共同使用的方法。鼓励人们提出创意，同时人们可以自<strong>由发表自己的看法</strong>，而<strong>不用担心会受到批评</strong>。人们通常会合并、完善多个创意，或创造出另一个好创意。</p>
+<ul>
+<li><strong>禁止批评和评论</strong>，也不要自谦</li>
+<li>目标集中，追求设想数量，越多越好</li>
+<li>鼓励巧妙的利用和改善他人的设想</li>
+<li>与会人员一律平等，各种设想全部记录下来</li>
+<li>主张独立思考，不允许私下交谈，以免干扰别人的思维</li>
+<li>提倡自由发言，畅所欲言，任意思考</li>
+</ul>
+<h5 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h5><p>在各种信息或创意之间建立思维连接的图形化技术。</p>
+<h5 id="故事板"><a href="#故事板" class="headerlink" title="故事板"></a>故事板</h5><p>聚集于故事开发，一般是关于用户如何使用产品的，以便更好的理解可能带来特定产品设计属性的问题或事项。</p>
+<h5 id="头脑书写法"><a href="#头脑书写法" class="headerlink" title="头脑书写法"></a>头脑书写法</h5><p>参与者不通过口头表达来传递创意，而是写下用于解决具体问题的创意。然后，每个参与者将他们的创意传递给其他人。后者写出自己的看法，再将创意传递给下一个人。将创意收集在一起，进行小组讨论。</p>
+<h5 id="六顶思考帽"><a href="#六顶思考帽" class="headerlink" title="六顶思考帽"></a>六顶思考帽</h5><p>鼓励团队成员将思维模式分为六种明确的职能和角色。每种角色对应一个颜色的“思考帽”</p>
+<ul>
+<li><strong>白色</strong>：聚焦事实</li>
+<li><strong>黄色</strong>：寻找积极的价值和利益</li>
+<li><strong>黑色</strong>：魔鬼的倡议，寻找问题或缺陷</li>
+<li><strong>红色</strong>：表达情感—-喜欢、不喜欢、担心等</li>
+<li><strong>绿色</strong>：创造力—-寻找新的创意、可能性、其他选项</li>
+<li><strong>蓝色</strong>：控制—-确保按适当的流程进行</li>
+</ul>
+<h6 id="白帽子"><a href="#白帽子" class="headerlink" title="白帽子"></a>白帽子</h6><p>特点：白色是中立而客观的、代表信息、事实和数据；努力发现信息和增强信息基础是思维的关键部分；使用白帽子思维时将注意力集中在平行的排列信息上，要牢记三个问题：</p>
+<ul>
+<li>我们现在有什么信息？</li>
+<li>我们还需要什么信息？</li>
+<li>我们怎么得到所需要的信息？</li>
+</ul>
+<p>作用：白色思维可以帮助你做到电脑那样提出事实和数据：</p>
+<ul>
+<li>用事实和数据支持一种观点</li>
+<li>为某种观点搜寻事实和数据</li>
+<li>信任事实和检验事实</li>
+<li>处理两种观点提供的信息冲突</li>
+<li>评估信息的相关性和准确性<br>……</li>
+</ul>
+<h5 id="SWOT分析"><a href="#SWOT分析" class="headerlink" title="SWOT分析"></a>SWOT分析</h5><p>基于<strong>优势、劣势、机会和威胁</strong>的结构化分析方法，广泛应用与包括产品开发在内的商业领域。</p>
+<ul>
+<li>优势：企业或项目优于其他企业或项目的特点</li>
+<li>劣势：企业或项目相对于其他企业或项目的劣势</li>
+<li>机会：企业或项目能利用其优势的要素</li>
+<li>威胁：环境中能给企业或项目带来麻烦的要素</li>
+</ul>
+<h5 id="PESTLE分析（环境分析）"><a href="#PESTLE分析（环境分析）" class="headerlink" title="PESTLE分析（环境分析）"></a>PESTLE分析（环境分析）</h5><p>基于<strong>政治、经济、社会、技术、法律和环境</strong>因素的一种结构化分析工具。是一种极为有效的战略框架，是对趋势的更精准解读，是分析直接影响组织未来，如人口统计、政治因素、颠覆性技术、竞争压力等因素的关键</p>
+<h5 id="德尔菲法"><a href="#德尔菲法" class="headerlink" title="德尔菲法"></a>德尔菲法</h5><p>在一组专家内部反复征询对开发的共识，据此得出对未来情况的最可靠预测。过程中会发出几轮问卷，收回每轮问卷后统计<strong>匿名问卷</strong>&gt;的反馈并分享给小组专家。该方法主要<strong>用于预测未来趋势</strong>。</p>
+<h4 id="发散思维与聚合思维"><a href="#发散思维与聚合思维" class="headerlink" title="发散思维与聚合思维"></a>发散思维与聚合思维</h4><ul>
+<li>发散思维：拒绝做事情的常见方法，而去<strong>寻找更多的新选项</strong>。发散思维以创新型的创造力为中心，创造或开发社会能够接受的新产品、流程、服务、技术或创意。</li>
+<li>聚合思维：假设做事情都有正确的方法，其本质是保守的。首先，假定过往事件的解决方案是正确的，于是通过各种途径收集事实和数据，再运用逻辑和知识寻找解决方案</li>
+</ul>
+<p>在寻找新创意和新机会时广撒网是重要的（发散思维），但是寻求问题的最终解决方案（聚合思维）</p>
+<h3 id="可行性分析"><a href="#可行性分析" class="headerlink" title="可行性分析"></a>可行性分析</h3><p>可行性分析是分析一个项目或者一个新产品成功<strong>可能性的流程</strong>。不同层级的可行性分析应当贯穿于整个项目。在门径管理流程的关口处，可行性分析部分是必不可少的。</p>
+<h4 id="在可行性分析中要考虑什么"><a href="#在可行性分析中要考虑什么" class="headerlink" title="在可行性分析中要考虑什么"></a>在可行性分析中要考虑什么</h4><p>可行性分析包括<strong>市场潜力、财务潜力、技术可行性、营销能力、制造能力、知识产权、法规影响和投资要求</strong>等。</p>
+<ul>
+<li>市场潜力 ATAR<ul>
+<li>市场存在吗？</li>
+<li>你能实现多大销售额？</li>
+</ul>
+</li>
+<li>财务潜力<ul>
+<li>你能赚取多大利润？</li>
+<li>为了实现该利润，你的投入有多大？</li>
+<li>投资回报率如何？</li>
+</ul>
+</li>
+<li>技术可行性<ul>
+<li>公司有能力开发出该产品吗？</li>
+<li>公司有能力制造出该产品吗？</li>
+</ul>
+</li>
+<li>销售能力<ul>
+<li>公司有能力上市该产品吗？</li>
+<li>有财务能力促销该产品吗？</li>
+<li>有渠道分销该产品吗？</li>
+</ul>
+</li>
+<li>制造能力<ul>
+<li>公司有能力制造产品吗？</li>
+<li>有哪些设备可用？</li>
+<li>产能如何？</li>
+<li>原材料&#x2F;部件的可获得性如何？</li>
+</ul>
+</li>
+<li>知识产权<ul>
+<li>该产品有知识产权吗？</li>
+<li>这些知识产权应当如何保护或变现？</li>
+</ul>
+</li>
+<li>法规影响<ul>
+<li>那些法律法规对该产品有影响？会影响其制造和营销吗？</li>
+<li>公司有能力管控这些方面吗？</li>
+</ul>
+</li>
+<li>投资要求：<ul>
+<li>投资成本多大？资金可获得吗？</li>
+<li>投资回报率能满足最低预期回报率吗？</li>
+</ul>
+</li>
+</ul>
+<h3 id="财务分析"><a href="#财务分析" class="headerlink" title="财务分析"></a>财务分析</h3><p>在可行性分析中，财务分析是无可争议的<strong>最核心要素</strong>。在项目<strong>早期启动财务分析</strong>非常重要，随着项目向前推进，财务分析应当更为详细和准确。</p>
+<p><img src="http://img.9lake.com/image-20210930104343693.png" alt="image-20210930104343693"></p>
+<h4 id="销售预测"><a href="#销售预测" class="headerlink" title="销售预测"></a>销售预测</h4><p>预测销售潜力是整个新产品可行性分析和财务分析的<strong>关键部分</strong>。</p>
+<h5 id="A-T-A-R（认知–试验–可用性–重复购买）模型"><a href="#A-T-A-R（认知–试验–可用性–重复购买）模型" class="headerlink" title="A-T-A-R（认知–试验–可用性–重复购买）模型"></a>A-T-A-R（认知–试验–可用性–重复购买）模型</h5><h5 id="销售和财务预测所需的信息"><a href="#销售和财务预测所需的信息" class="headerlink" title="销售和财务预测所需的信息"></a>销售和财务预测所需的信息</h5><ul>
+<li>确保你有最好的市场研究方法—-在预算内的最佳方法</li>
+<li>从广泛的来源（内部和外部）收集信息，尽可能验证你的估计</li>
+<li>接受较为可靠的预测，但同时必须做好准备应对预测结果所显示的潜在风险。运用“假设”或“敏感性”分析来确定不同预测结果的影响，运用概率模型模拟一系列的预测结果及其发生的可能性</li>
+</ul>
+<h4 id="确定成本"><a href="#确定成本" class="headerlink" title="确定成本"></a>确定成本</h4><p>成本的基本组成是固定成本、可变成本、资金成本和工作资本等</p>
+<ul>
+<li><strong>固定成本</strong>是指在相关时间段或生产规模内，总额不与业务活动成比例变化的费用，包括<strong>行政费用、租金、利息、综合管理费用</strong>。</li>
+<li><strong>可变成本</strong>是与企业活动成比例变化的费用，如<strong>生产劳动力、电力、清洁材料、制造材料</strong>。</li>
+<li><strong>资金成本</strong>是指<strong>购买土地、建筑物和设备等资产的成本</strong>，这些是在商品生产或服务提供时要用到的。</li>
+<li><strong>工作资本</strong>是指在等待销售时，与产品或服务相关的直接或可变成本中花费的资金，包括<strong>制造和销售的所有成本，以及新设备的资金成本</strong>等。</li>
+</ul>
+<p>总成本 &#x3D; 固定成本 + 可变成本</p>
+<h4 id="售价"><a href="#售价" class="headerlink" title="售价"></a>售价</h4><p>出厂价格是与产品相关的所有成本与公司获得的利润之和。</p>
+<p><img src="http://img.9lake.com/image-20220225133255429.png" alt="image-20220225133255429"></p>
+<h4 id="投资回报率"><a href="#投资回报率" class="headerlink" title="投资回报率"></a>投资回报率</h4><p>投资回报率的定义为通过<strong>投资而获得的回报与投资成本的比率</strong>。</p>
+<p>最低预期回报率由以下因素决定：</p>
+<ul>
+<li>其他投资渠道的回报率。如：从银行获得的回报，是不是会高于我投资于工厂制造新产品的回报？</li>
+<li>风险水平。较高的投资风险通常对应着较高的最低预期回报率。</li>
+</ul>
+<h4 id="投资回报率的度量"><a href="#投资回报率的度量" class="headerlink" title="投资回报率的度量"></a>投资回报率的度量</h4><p>最常用的3个度量指标是：</p>
+<ul>
+<li>投资回收期</li>
+<li>净现值（NPV）</li>
+<li>内部收益率（IRR）</li>
+</ul>
+<h5 id="投资回收期"><a href="#投资回收期" class="headerlink" title="投资回收期"></a>投资回收期</h5><p>投资回收期是指多长时间能够收回在产品上的资金投入。缺点：<strong>未考虑货币的时间价值</strong></p>
+<p>虽然投资回收期是一种常用的、相对的简单的投资回报衡量标准，但它无法捕捉货币的时间价值这一重要因素。它没有考虑到投资收益的时间安排。</p>
+<h5 id="关于资金时间价值的更多介绍"><a href="#关于资金时间价值的更多介绍" class="headerlink" title="关于资金时间价值的更多介绍"></a>关于资金时间价值的更多介绍</h5><p><img src="http://img.9lake.com/image-20220225134339674.png" alt="image-20220225134339674"></p>
+<p><strong>现值</strong>指未来的钱在今天的价值。通过一个修正因子，可以将未来的钱转化为当前的价值。修正因子代表了钱的价值的变化。</p>
+<p>未来价值&#x3D;原始金额 X （1+利率）期间数</p>
+<p>现值&#x3D;未来价值 X （1+利率）期间数</p>
+<p><strong>净现值（NPV）</strong>等于收益的累积现值减去成本的累积现值</p>
+<h5 id="折现系数"><a href="#折现系数" class="headerlink" title="折现系数"></a>折现系数</h5><p>……</p>
+<h5 id="计算新产品的累积净现值"><a href="#计算新产品的累积净现值" class="headerlink" title="计算新产品的累积净现值"></a>计算新产品的累积净现值</h5><p>……</p>
+<h5 id="内部收益率"><a href="#内部收益率" class="headerlink" title="内部收益率"></a>内部收益率</h5><p>如果项目的内部收益率低于当前的银行利率，在所有其他条件相同的情况下，将钱放在银行比执行项目更有利可图。</p>
+<h5 id="财务分析中的表格"><a href="#财务分析中的表格" class="headerlink" title="财务分析中的表格"></a>财务分析中的表格</h5><p>基于电子表格的“假设”以及“敏感性”分析能够为风险管理奠定良好的基础</p>
+<h3 id="产品概念和设计规范"><a href="#产品概念和设计规范" class="headerlink" title="产品概念和设计规范"></a>产品概念和设计规范</h3><p>从初始创意到最终商业化，其间的<strong>概念清晰度及其发展过程</strong>是新产品成功的关键。随着开发流程的推进，产品规范从相对简单的创意变成更详细的产品概念，最终达到规模化制造和商业化所需的<strong>定量</strong>细节水平。</p>
+<p><img src="http://img.9lake.com/image-20210930105927305.png" alt="image-20210930105927305"></p>
+<h4 id="产品概念描述"><a href="#产品概念描述" class="headerlink" title="产品概念描述"></a>产品概念描述</h4><p>需要对产品概念进行详细描述的原因有两个：为开发团队的所有成员以及与项目相关的成员提供一个<strong>清晰性和一致性</strong>；其次，它是向潜在客户<strong>解释产品</strong>的重要手段之一。借此可以寻求客户对产品利益和特征的看法，以及他们对潜在改变或改进的建议。</p>
+<p>产品概念提供了产品概念的优点和特征的<strong>定性表述</strong>。</p>
+<h4 id="产品设计规范"><a href="#产品设计规范" class="headerlink" title="产品设计规范"></a>产品设计规范</h4><p>产品设计规范则提供了<strong>定量基础</strong>。</p>
+<p>产品设计规范旨在<strong>阐明产品设计，并提供量化的和客观的标准</strong>。它们使得设计团队的其他成员可以就产品设计要求进行沟通，并促使产品开发从设计阶段迈向制造阶段</p>
+<p>从概念描述到设计规格：</p>
+<ol>
+<li>定义用户需求及其相对重要性，这来自用户研究工具，包括焦点小组和观察性研究；</li>
+<li>将消费者需求转化为具有特定单位和目标值的工程设计规格。这些目标值综合了用户研究的结果和竞争对手的对称</li>
+</ol>
+<h3 id="产品设计工具"><a href="#产品设计工具" class="headerlink" title="产品设计工具"></a>产品设计工具</h3><p>产品设计工具中4个工具来讨论：<strong>设计思维、质量功能展开、六西格玛和创新性解决问题方法（TRIZ）</strong>。</p>
+<h4 id="设计思维"><a href="#设计思维" class="headerlink" title="设计思维"></a>设计思维</h4><p>设计思维是一种创造性的问题解决方法，或者说，是以<strong>更全面、系统、协作的方式</strong>发现问题并创造性解决问题的方法</p>
+<p>设计思维是解决问题的非线性方法，设计者通过提出可能的解决方案，制造简单原型，获取客户反馈，进行重新设计，重新建立原型等，最终<strong>迭代</strong>的解决问题。</p>
+<h5 id="设计思维框架"><a href="#设计思维框架" class="headerlink" title="设计思维框架"></a>设计思维框架</h5><ol>
+<li>识别<ul>
+<li><strong>发现</strong>：通过客户洞见发现机会。设计思维的前提是，通过迭代过程统一多种来源的信息</li>
+<li><strong>定义</strong>：深入理解与产品相关的客户需求—–提炼客户的洞见。这反过来引出了某种形式的产品设计规范</li>
+</ul>
+</li>
+<li>解决<ul>
+<li><strong>创建</strong>：开发一个可以与目标市场共享的概念，通过多次迭代使其发展为原型</li>
+<li><strong>评估</strong>：对原型的附加反馈，并用作进行更多迭代改进的基础</li>
+</ul>
+</li>
+</ol>
+<h4 id="质量功能展开和质量屋"><a href="#质量功能展开和质量屋" class="headerlink" title="质量功能展开和质量屋"></a>质量功能展开和质量屋</h4><p>质量功能展开（QFD）是运用矩阵分析论将市场需要与开发工作相结合的结构化方法，通常应用于多职能团队就客户需求与产品细节特征之间的联系达成认可时。</p>
+<p>最常用的质量功能展开的例子是质量屋</p>
+<p><img src="http://img.9lake.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210910154111.png"></p>
+<h5 id="质量功能展开在不同环境中的应用"><a href="#质量功能展开在不同环境中的应用" class="headerlink" title="质量功能展开在不同环境中的应用"></a>质量功能展开在不同环境中的应用</h5><p><img src="http://img.9lake.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210910154741.png"></p>
+<h5 id="建立质量屋"><a href="#建立质量屋" class="headerlink" title="建立质量屋"></a>建立质量屋</h5><p>6个步骤：</p>
+<ol>
+<li><p><strong>识别客户属性</strong>：“什么”对客户有多重要？客户对自身需求排序</p>
+<ul>
+<li>客户所理解的产品或服务需求，信息来自：<ul>
+<li>市场研究</li>
+<li>问卷调查</li>
+<li>焦点小组</li>
+</ul>
+</li>
+<li>“客户期望从产品中得到什么？“</li>
+<li>“为什么客户会买这款产品？“</li>
+<li>来自销售人员和技术人员的信息是解答以上两个问题以及应对产品失败和维修问题的关键</li>
+<li>通常这些需求会扩展到第二层和第三层需求</li>
+</ul>
+<p><img src="http://img.9lake.com/image-20210930112215741.png" alt="image-20210930112215741"></p>
+</li>
+<li><p><strong>识别设计属性&#x2F;要求</strong>：你“如何”满足客户需求？产品需求</p>
+<ul>
+<li>设计属性以设计师&#x2F;工程师的语言为表达载体。作为技术特征（属性）的体现，设计属性必须在整个设计、制造和服务流程中得到开发。</li>
+<li>这些属性必须是可度量的，输出结果必须接受管理和对比。</li>
+<li>质量屋的屋顶（roof）象征性地表明了设计属性之间的相互关系。若在屋顶处发现了有冲突的属性目标则可能需要妥协。</li>
+</ul>
+<p><img src="http://img.9lake.com/image-20210930112734903.png" alt="image-20210930112734903"></p>
+</li>
+<li><p><strong>连接客户属性与设计属性</strong>：“如何”之间的相互作用  强正相关、正相关、负相关、强负相关</p>
+<ul>
+<li>判定每个客户属性和每个设计属性之间是不相关（No）、弱相关（Weak）、中等强度相关（Moderate）、还是强相关（Strong）关系。</li>
+<li>其目的是，确定最终的设计属性是否充分地涵盖了客户属性</li>
+<li>若一个客户属性没有与任何一个设计属性建立起强相关关系，表明该客户属性没有得到应有的强调，或者最终产品难以满足客户的该项需求。</li>
+<li>类似地，如果一项设计属性没有影响任何一个客户属性，那么该设计属性可能是冗余的，也可能是设计师遗漏了一些重要的客户属性</li>
+</ul>
+<p><img src="http://img.9lake.com/image-20210930113419575.png" alt="image-20210930113419575"></p>
+</li>
+<li><p><strong>对竞争产品进行评估</strong>：</p>
+<ul>
+<li>该步骤包括识别每个客户属性的重要性评级，并且评估每个属性的现有产品&#x2F;服务。</li>
+<li>客户重要性评级代表了客户最感兴趣和期望最高的领域</li>
+<li>竞争性评估有助于突出竞争产品的绝对优势和弱点</li>
+<li>通常由内部测试完成，然后转化成可测量的条款</li>
+<li>将评估与客户属性的竞争性评估进行比较，以确定客户评估与技术评估之间的不一致性。例如：如果发现竞争产品能够最好地满足客户属性，但是相关设计属性的评估指向不一样的结论，则说明要买所使用的评估方法是有缺陷的，要么该产品具有影响客户感知的形象差异。</li>
+</ul>
+</li>
+<li><p><strong>评估设计属性和开发目标</strong></p>
+<ul>
+<li>通常由内部测试完成，然后转化成可测量的条款</li>
+<li>根据客户重要性评级和现有产品优缺点，设置每个设计属性的目标和方向</li>
+</ul>
+<p><img src="http://img.9lake.com/image-20210930114328991.png" alt="image-20210930114328991"></p>
+</li>
+<li><p><strong>确定要在剩余部分中开发的设计属性</strong></p>
+</li>
+</ol>
+<ul>
+<li>识别出符合以下条件的设计属性：</li>
+<li>与客户需求关系密切</li>
+<li>竞争产品的表现较差</li>
+<li>卖点十分吸引人</li>
+</ul>
+<h5 id="质量功能展开的优势与不足"><a href="#质量功能展开的优势与不足" class="headerlink" title="质量功能展开的优势与不足"></a>质量功能展开的优势与不足</h5><p>优势：</p>
+<ul>
+<li><strong>采用团队方法达成一致，促进跨职能讨论</strong>；</li>
+<li>让新产品开发团队聚集于客户需求；</li>
+<li>从客户需求出发，质量功能展开为定义产品设计规范和工程设计需求提供了结构化的基础</li>
+</ul>
+<p>劣势：</p>
+<ul>
+<li>可能极为繁琐</li>
+<li>及其复杂，人们经常迷失其中</li>
+</ul>
+<h4 id="六西格玛设计（DFSS）质量工具"><a href="#六西格玛设计（DFSS）质量工具" class="headerlink" title="六西格玛设计（DFSS）质量工具"></a>六西格玛设计（DFSS）质量工具</h4><p>六西格玛是一种<strong>改善企业质量流程管理</strong>的技术，以“零缺陷”的完美商业追求，带动质量成本的大幅度降低，最终实现财务成效的提升与企业竞争力的突破</p>
+<p>六西格玛法旨在通过各种流程中的专门改进来减少业务和制造流程的变动。这需要团队所有成员的持续投入。</p>
+<p>六西格玛的应用专注于<strong>设计或重新设计产品和服务及其支持流程</strong>，以<strong>满足客户</strong>的需求和期望。</p>
+<h5 id="六西格玛-DFSS和DMAIC"><a href="#六西格玛-DFSS和DMAIC" class="headerlink" title="六西格玛  DFSS和DMAIC"></a>六西格玛  DFSS和DMAIC</h5><p>DFSS的目标是完成资源高效利用、高产出、对流程变化稳健的设计。</p>
+<p><img src="http://img.9lake.com/image-20211025134258697.png" alt="image-20211025134258697"></p>
+<p>DMAIC是一种用于改进流程的数据驱动的<strong>质量战略</strong></p>
+<p>DMAIC五个阶段：</p>
+<p><img src="http://img.9lake.com/uPic/image-20211106103950200.png" alt="image-20211106103950200"></p>
+<ul>
+<li>定义(Define)问题、改进行为、机会、项目目标和客户（内部和外部）要求；</li>
+<li>测量（Measure）过程性能；</li>
+<li>分析（Analyze）过程，以确定导致变动和性能不佳（缺陷）的根本原因；</li>
+<li>提高（Improve）流程性能，手段是解决和消除根本原因；</li>
+<li>控制（Control）改进后的流程和未来流程的性能</li>
+</ul>
+<p>DFSS（IDOV）方法：涵盖了<strong>从客户心声到产品或服务上市的全系列产品设计和服务设计</strong>。</p>
+<p>IDOV是设计新产品和服务以满足六西格玛标准的特定方法。IDOV是一个四阶段过程：</p>
+<ul>
+<li><strong>识别（Identify）</strong>：识别客户需求和战略意图</li>
+<li><strong>设计（Design）</strong>：通过评估各种设计方案提供一份详细的设计方案</li>
+<li><strong>优化（Optimize）</strong>：从生产力（业务需求）和质量（客户需求）角度优化设计，并实现它</li>
+<li><strong>验证（Validate）</strong>：试验新设计，根据需求进行更新，并准备发布新设计</li>
+</ul>
+<h4 id="创新性解决问题方法（TRIZ）"><a href="#创新性解决问题方法（TRIZ）" class="headerlink" title="创新性解决问题方法（TRIZ）"></a>创新性解决问题方法（TRIZ）</h4><p>创新性解决问题方法是一种不基于直觉，而基于<strong>逻辑和数据</strong>的问题解决方法，该方法能加速项目团队创造性的解决问题的能力。基于其<strong>结构和算法</strong>，TRIZ是<strong>可重复的、可预期的、可靠的</strong>一种方法。</p>
+<p>TRIZ是一个大规模的创新流程。活动有：</p>
+<ul>
+<li>功能：那些引起了怎样的变化（什么、为什么、什么时间、什么方式）？</li>
+<li>资源：所有东西都是有用的资源</li>
+<li>理想解：只寻找有利益的和减少损害的方法</li>
+<li>矛盾：一方面的改善会影响另一方面</li>
+<li>趋势：通过在单个特性中增加很小的复杂度可获得多少自由度？</li>
+</ul>
+<p>为TRIZ打下基础的主要研究是：</p>
+<ul>
+<li>在各个行业和学科，问题和解决方案是重复的。通过将每个问题的矛盾进行分类，你就能得到解决该问题的优秀的创造性方案。</li>
+<li>在各个行业和学科中，技术演进范式是重复的</li>
+<li>创新经常借用开发领域之外的科学成果</li>
+</ul>
+<h5 id="TRIZ的应用"><a href="#TRIZ的应用" class="headerlink" title="TRIZ的应用"></a>TRIZ的应用</h5><p>TRIZ实践主要指学习解决方案的重复范式。</p>
+<p><img src="http://img.9lake.com/image-20211025134910234.png" alt="image-20211025134910234"></p>
+<h5 id="TRIZ中的工具"><a href="#TRIZ中的工具" class="headerlink" title="TRIZ中的工具"></a>TRIZ中的工具</h5><p>分析型方法：</p>
+<ul>
+<li><strong>理想的最终结果和理想解</strong>；</li>
+<li>功能建模、分析和整理；</li>
+<li>定位冲突区域；</li>
+</ul>
+<p>其中一些更具规范性：</p>
+<ul>
+<li><strong>40个问题解决原则</strong></li>
+<li><strong>分离原则</strong></li>
+<li><strong>技术演化和技术预测的规律</strong></li>
+<li><strong>76个标准解</strong></li>
+</ul>
+<p><img src="http://img.9lake.com/image-20220225142400674.png" alt="image-20220225142400674"></p>
+<p>TRIZ主要适用于<strong>创意生成阶段</strong> —- 面向新产品以及产品改进。</p>
+<h3 id="项目管理"><a href="#项目管理" class="headerlink" title="项目管理"></a>项目管理</h3><h4 id="产品开发情境下的项目管理"><a href="#产品开发情境下的项目管理" class="headerlink" title="产品开发情境下的项目管理"></a>产品开发情境下的项目管理</h4><p>项目分为5个步骤，分别是：</p>
+<ul>
+<li><strong>启动</strong></li>
+<li><strong>规划</strong></li>
+<li><strong>执行</strong></li>
+<li><strong>监控</strong></li>
+<li><strong>收尾</strong></li>
+</ul>
+<h4 id="三重约束"><a href="#三重约束" class="headerlink" title="三重约束"></a>三重约束</h4><p>任何项目面对的最常见挑战之一是管理三重约束 —– <strong>范围、进度和预算</strong></p>
+<h5 id="范围（Scope）"><a href="#范围（Scope）" class="headerlink" title="范围（Scope）"></a>范围（Scope）</h5><ul>
+<li><strong>项目范围</strong>：需要完成的工作，以提供具有指定特性和功能的产品、服务或结果</li>
+<li><strong>产品范围</strong>：产品、服务或结果的特征和功能</li>
+</ul>
+<h5 id="进度（Schedule）"><a href="#进度（Schedule）" class="headerlink" title="进度（Schedule）"></a>进度（Schedule）</h5><p>进度包括实现项目目标的所需活动与关键里程碑。</p>
+<ul>
+<li><strong>关键路径</strong>。在项目计划中，关键路径是从开始到完成的最长路径或没有任何间歇的路径。因此，该路径是项目能够完成的最短时间</li>
+<li><strong>进度压缩</strong>。项目的结束日期是固定的，实现进度压缩：<ul>
+<li>添加资源（和成本）</li>
+<li>并行地执行任务，而非串行</li>
+</ul>
+</li>
+</ul>
+<h5 id="预算"><a href="#预算" class="headerlink" title="预算"></a>预算</h5><p>项目预算是准时完成工作范围所需的预期成本。有几种预算确定方法：</p>
+<ul>
+<li><p>自下而上：识别所有的单个成本要素，加总整个项目的成本要素。</p>
+</li>
+<li><p>参照法：根据过去已经完成的<strong>类似项目</strong>推测该项目的成本</p>
+</li>
+<li><p>历史数据：利用过往项目中<strong>特定的数据</strong>作为预算估计的基础，比如原型开发或市场研究的数据</p>
+</li>
+<li><p>公司自有方法：大型公司通常有用于项目预算的具体模型和方法</p>
+</li>
+</ul>
+<h3 id="风险管理"><a href="#风险管理" class="headerlink" title="风险管理"></a>风险管理</h3><p>风险管理是对风险的识别、评估和优先级排序，然后协调和经济地应用资源，以最小化、监测和控制不幸事件的概率和&#x2F;或影响，或最大限度地实现机会。</p>
+<p>面对风险4种可能的反应，这取决于风险发生的可能性是低还是高，以及若出现财务影响，其影响是高还是低：</p>
+<ul>
+<li><strong>规避反应</strong>：应对高概率、高冲击事件</li>
+<li><strong>转移反应</strong>：应对低概率、高冲击事件（如购买保险）</li>
+<li><strong>减轻反应</strong>：应对高概率，低影响事件</li>
+<li><strong>接受反应</strong>：应对低概率、低影响事件</li>
+</ul>
+<p>风险管理包括6个主要步骤：</p>
+<ul>
+<li><p><strong>风险管理规划</strong>：从风险管理计划开始 —– 规划工作、制订计划；如何管理风险</p>
+</li>
+<li><p><strong>风险识别</strong>：使用以前的文件，如规程、预算、进度、计划等。让了解风险的恰当人员参与项目，确定风险责任人。</p>
+</li>
+<li><p><strong>定性风险分析</strong>：分析可能性和影响，计算风险评分并排序</p>
+</li>
+<li><p><strong>定量风险分析</strong>：用于可以量化的重要风险。</p>
+</li>
+<li><p><strong>风险应对计划</strong>：策略包括：</p>
+<ul>
+<li>规避 —– 不做冒险行为</li>
+<li>转移给其他人 —– 购买保险、设立合同</li>
+<li>减轻 —– 做出改变以降低可能性</li>
+<li>接受 —– 让风险发生，建立应急储备（成本、进度、性能等）</li>
+</ul>
+</li>
+<li><p><strong>风险监测和控制</strong>：重新评估新的和现有的风险。使用审计、方差和趋势分析工具</p>
+</li>
+</ul>
+<h3 id="产品开发中的绩效度量"><a href="#产品开发中的绩效度量" class="headerlink" title="产品开发中的绩效度量"></a>产品开发中的绩效度量</h3><p><strong>绩效度量</strong>是一套跟踪产品开发的测量指标，允许公司在时间维度上衡量流程改进的影响。这些方法因公司而异，通常包含针对流程进行的全面测评，如投放时间、具体阶段的延续时间、每年新产品商业化的数量和新产品的销售比例这类新产品开发的产出</p>
+<p><strong>度量指标应符合以下条件</strong>：</p>
+<ul>
+<li>与战略紧密关联；</li>
+<li>形成学习和持续改进的基础</li>
+</ul>
+<p><strong>成功度量的六大关键：</strong></p>
+<ul>
+<li>只度量公司那些做得差的事项</li>
+<li>理解度量指标真正能做什么，不能做什么</li>
+<li>度量恰当数量的事项</li>
+<li>度量指标与公司目标一致</li>
+<li>在定义度量指标时，邀请决定度量内容的负责人参加</li>
+<li>监控并立即行动</li>
+</ul>
+<p>度量最常用于汇报环节，主要是为了说明与组织所做的所有其他投资相比，产品开发投资的价值何在。管理层需要证明这种投资将会为组织带来直接回报。</p>
+<p>绩效度量指标是管理层在汇报产品开发投资的回报并证明未来投资合理性时所用到的关键工具。</p>
+<p><strong>高层管理者汇报时常用的度量指标</strong>有：</p>
+<ul>
+<li><strong>活力指数</strong>（当年销售收入中来自过去N年开发的产品的比例）</li>
+<li>研发费用占收入的百分比</li>
+<li>盈亏平衡时间或盈利时间</li>
+<li>专利申请和授予的数量</li>
+<li>在一定时期内新产品发布数量</li>
+</ul>
+<h4 id="做正确的事"><a href="#做正确的事" class="headerlink" title="做正确的事"></a>做正确的事</h4><ul>
+<li>在每个项目上花更多的时间，但是做更少的项目；</li>
+<li>采用首先上市战略</li>
+<li>建立全球市场和运营战略</li>
+<li>监控新技术</li>
+<li>认识到知识产权的重要性</li>
+<li>有清晰的组合管理战略</li>
+<li>促进创意转化为实践</li>
+</ul>
+<h4 id="正确地做事"><a href="#正确地做事" class="headerlink" title="正确地做事"></a>正确地做事</h4><ul>
+<li>使用更多的工程、研发和设计工具</li>
+<li>使用定性的市场研究工具识别客户需求</li>
+<li>使用社交媒体收集信息；</li>
+<li>有客户反馈系统；</li>
+<li>使用确定的新产品开发流程，但也有灵活性；</li>
+<li>高层管理者参与；</li>
+<li>聚焦开发团队和实践</li>
+</ul>
+<h4 id="文化、氛围和组织"><a href="#文化、氛围和组织" class="headerlink" title="文化、氛围和组织"></a>文化、氛围和组织</h4><ul>
+<li>高层管理者参与</li>
+<li>聚集团队建设和实践</li>
+<li>使用跨职能团队</li>
+<li>有良好的认可和奖励系统</li>
+<li>支持外部合作 —– 开放式创新</li>
+</ul>
+<p>绩效度量不仅是会吧环节和支持<strong>新产品投资的关键基础</strong>，更重要的是，绩效度量是整个项目管理中进行<strong>学习和持续改进的基础</strong>。</p>
+
     </div>
 
     
@@ -288,6 +784,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E6%84%8F%E5%B7%A5%E5%85%B7"><span class="nav-number">1.</span> <span class="nav-text">创意工具</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%88%9B%E6%84%8F%E5%BC%80%E5%8F%91"><span class="nav-number">1.1.</span> <span class="nav-text">什么是创意开发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E6%84%8F%E5%B7%A5%E5%85%B7-1"><span class="nav-number">1.2.</span> <span class="nav-text">创意工具</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Scamper%E7%AD%96%E7%95%A5%EF%BC%88%E5%A5%94%E9%A9%B0%E6%B3%95%EF%BC%89"><span class="nav-number">1.2.1.</span> <span class="nav-text">Scamper策略（奔驰法）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%B4%E8%84%91%E9%A3%8E%E6%9A%B4"><span class="nav-number">1.2.2.</span> <span class="nav-text">头脑风暴</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><span class="nav-number">1.2.3.</span> <span class="nav-text">思维导图</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%85%E4%BA%8B%E6%9D%BF"><span class="nav-number">1.2.4.</span> <span class="nav-text">故事板</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%B4%E8%84%91%E4%B9%A6%E5%86%99%E6%B3%95"><span class="nav-number">1.2.5.</span> <span class="nav-text">头脑书写法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%AD%E9%A1%B6%E6%80%9D%E8%80%83%E5%B8%BD"><span class="nav-number">1.2.6.</span> <span class="nav-text">六顶思考帽</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%99%BD%E5%B8%BD%E5%AD%90"><span class="nav-number">1.2.6.1.</span> <span class="nav-text">白帽子</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SWOT%E5%88%86%E6%9E%90"><span class="nav-number">1.2.7.</span> <span class="nav-text">SWOT分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PESTLE%E5%88%86%E6%9E%90%EF%BC%88%E7%8E%AF%E5%A2%83%E5%88%86%E6%9E%90%EF%BC%89"><span class="nav-number">1.2.8.</span> <span class="nav-text">PESTLE分析（环境分析）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BE%B7%E5%B0%94%E8%8F%B2%E6%B3%95"><span class="nav-number">1.2.9.</span> <span class="nav-text">德尔菲法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%91%E6%95%A3%E6%80%9D%E7%BB%B4%E4%B8%8E%E8%81%9A%E5%90%88%E6%80%9D%E7%BB%B4"><span class="nav-number">1.3.</span> <span class="nav-text">发散思维与聚合思维</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E8%A1%8C%E6%80%A7%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">可行性分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E5%8F%AF%E8%A1%8C%E6%80%A7%E5%88%86%E6%9E%90%E4%B8%AD%E8%A6%81%E8%80%83%E8%99%91%E4%BB%80%E4%B9%88"><span class="nav-number">2.1.</span> <span class="nav-text">在可行性分析中要考虑什么</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%A2%E5%8A%A1%E5%88%86%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">财务分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%94%80%E5%94%AE%E9%A2%84%E6%B5%8B"><span class="nav-number">3.1.</span> <span class="nav-text">销售预测</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#A-T-A-R%EF%BC%88%E8%AE%A4%E7%9F%A5%E2%80%93%E8%AF%95%E9%AA%8C%E2%80%93%E5%8F%AF%E7%94%A8%E6%80%A7%E2%80%93%E9%87%8D%E5%A4%8D%E8%B4%AD%E4%B9%B0%EF%BC%89%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.1.1.</span> <span class="nav-text">A-T-A-R（认知–试验–可用性–重复购买）模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%94%80%E5%94%AE%E5%92%8C%E8%B4%A2%E5%8A%A1%E9%A2%84%E6%B5%8B%E6%89%80%E9%9C%80%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="nav-number">3.1.2.</span> <span class="nav-text">销售和财务预测所需的信息</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E6%88%90%E6%9C%AC"><span class="nav-number">3.2.</span> <span class="nav-text">确定成本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%94%AE%E4%BB%B7"><span class="nav-number">3.3.</span> <span class="nav-text">售价</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%95%E8%B5%84%E5%9B%9E%E6%8A%A5%E7%8E%87"><span class="nav-number">3.4.</span> <span class="nav-text">投资回报率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%95%E8%B5%84%E5%9B%9E%E6%8A%A5%E7%8E%87%E7%9A%84%E5%BA%A6%E9%87%8F"><span class="nav-number">3.5.</span> <span class="nav-text">投资回报率的度量</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%95%E8%B5%84%E5%9B%9E%E6%94%B6%E6%9C%9F"><span class="nav-number">3.5.1.</span> <span class="nav-text">投资回收期</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E8%B5%84%E9%87%91%E6%97%B6%E9%97%B4%E4%BB%B7%E5%80%BC%E7%9A%84%E6%9B%B4%E5%A4%9A%E4%BB%8B%E7%BB%8D"><span class="nav-number">3.5.2.</span> <span class="nav-text">关于资金时间价值的更多介绍</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%98%E7%8E%B0%E7%B3%BB%E6%95%B0"><span class="nav-number">3.5.3.</span> <span class="nav-text">折现系数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%96%B0%E4%BA%A7%E5%93%81%E7%9A%84%E7%B4%AF%E7%A7%AF%E5%87%80%E7%8E%B0%E5%80%BC"><span class="nav-number">3.5.4.</span> <span class="nav-text">计算新产品的累积净现值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%85%E9%83%A8%E6%94%B6%E7%9B%8A%E7%8E%87"><span class="nav-number">3.5.5.</span> <span class="nav-text">内部收益率</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B4%A2%E5%8A%A1%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E8%A1%A8%E6%A0%BC"><span class="nav-number">3.5.6.</span> <span class="nav-text">财务分析中的表格</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A7%E5%93%81%E6%A6%82%E5%BF%B5%E5%92%8C%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83"><span class="nav-number">4.</span> <span class="nav-text">产品概念和设计规范</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%A7%E5%93%81%E6%A6%82%E5%BF%B5%E6%8F%8F%E8%BF%B0"><span class="nav-number">4.1.</span> <span class="nav-text">产品概念描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83"><span class="nav-number">4.2.</span> <span class="nav-text">产品设计规范</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1%E5%B7%A5%E5%85%B7"><span class="nav-number">5.</span> <span class="nav-text">产品设计工具</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%80%9D%E7%BB%B4"><span class="nav-number">5.1.</span> <span class="nav-text">设计思维</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%80%9D%E7%BB%B4%E6%A1%86%E6%9E%B6"><span class="nav-number">5.1.1.</span> <span class="nav-text">设计思维框架</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B4%A8%E9%87%8F%E5%8A%9F%E8%83%BD%E5%B1%95%E5%BC%80%E5%92%8C%E8%B4%A8%E9%87%8F%E5%B1%8B"><span class="nav-number">5.2.</span> <span class="nav-text">质量功能展开和质量屋</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B4%A8%E9%87%8F%E5%8A%9F%E8%83%BD%E5%B1%95%E5%BC%80%E5%9C%A8%E4%B8%8D%E5%90%8C%E7%8E%AF%E5%A2%83%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">5.2.1.</span> <span class="nav-text">质量功能展开在不同环境中的应用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E8%B4%A8%E9%87%8F%E5%B1%8B"><span class="nav-number">5.2.2.</span> <span class="nav-text">建立质量屋</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B4%A8%E9%87%8F%E5%8A%9F%E8%83%BD%E5%B1%95%E5%BC%80%E7%9A%84%E4%BC%98%E5%8A%BF%E4%B8%8E%E4%B8%8D%E8%B6%B3"><span class="nav-number">5.2.3.</span> <span class="nav-text">质量功能展开的优势与不足</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%AD%E8%A5%BF%E6%A0%BC%E7%8E%9B%E8%AE%BE%E8%AE%A1%EF%BC%88DFSS%EF%BC%89%E8%B4%A8%E9%87%8F%E5%B7%A5%E5%85%B7"><span class="nav-number">5.3.</span> <span class="nav-text">六西格玛设计（DFSS）质量工具</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%AD%E8%A5%BF%E6%A0%BC%E7%8E%9B-DFSS%E5%92%8CDMAIC"><span class="nav-number">5.3.1.</span> <span class="nav-text">六西格玛  DFSS和DMAIC</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E6%96%B0%E6%80%A7%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%E6%96%B9%E6%B3%95%EF%BC%88TRIZ%EF%BC%89"><span class="nav-number">5.4.</span> <span class="nav-text">创新性解决问题方法（TRIZ）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#TRIZ%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">5.4.1.</span> <span class="nav-text">TRIZ的应用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TRIZ%E4%B8%AD%E7%9A%84%E5%B7%A5%E5%85%B7"><span class="nav-number">5.4.2.</span> <span class="nav-text">TRIZ中的工具</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86"><span class="nav-number">6.</span> <span class="nav-text">项目管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91%E6%83%85%E5%A2%83%E4%B8%8B%E7%9A%84%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86"><span class="nav-number">6.1.</span> <span class="nav-text">产品开发情境下的项目管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E9%87%8D%E7%BA%A6%E6%9D%9F"><span class="nav-number">6.2.</span> <span class="nav-text">三重约束</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%8C%83%E5%9B%B4%EF%BC%88Scope%EF%BC%89"><span class="nav-number">6.2.1.</span> <span class="nav-text">范围（Scope）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%9B%E5%BA%A6%EF%BC%88Schedule%EF%BC%89"><span class="nav-number">6.2.2.</span> <span class="nav-text">进度（Schedule）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A2%84%E7%AE%97"><span class="nav-number">6.2.3.</span> <span class="nav-text">预算</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86"><span class="nav-number">7.</span> <span class="nav-text">风险管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E7%BB%A9%E6%95%88%E5%BA%A6%E9%87%8F"><span class="nav-number">8.</span> <span class="nav-text">产品开发中的绩效度量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%81%9A%E6%AD%A3%E7%A1%AE%E7%9A%84%E4%BA%8B"><span class="nav-number">8.1.</span> <span class="nav-text">做正确的事</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A3%E7%A1%AE%E5%9C%B0%E5%81%9A%E4%BA%8B"><span class="nav-number">8.2.</span> <span class="nav-text">正确地做事</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E5%8C%96%E3%80%81%E6%B0%9B%E5%9B%B4%E5%92%8C%E7%BB%84%E7%BB%87"><span class="nav-number">8.3.</span> <span class="nav-text">文化、氛围和组织</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
